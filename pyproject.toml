@@ -1,0 +1,31 @@
+# Single source of truth for the Python toolchain of this repository.
+# - Main dependencies: plotting/utility scripts under scripts/
+# - "docs" group: mkdocs toolchain for docs/ (install with: uv sync --group docs)
+# Environment setup: run "uv sync" at the repo root (see docs/getting-started/installation.md).
+[project]
+name = "muonith"
+version = "0.0.0"
+description = "Python plotting scripts and documentation toolchain for the muonith C++ project"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "matplotlib",
+  "pandas",
+  "scipy",
+  "requests",
+  "json5",
+  "pyproj",
+  "rasterio",
+  "pillow",
+]
+
+[dependency-groups]
+docs = [
+  "mkdocs-material>=9.7",
+  "mkdocs-glightbox>=0.5.2",
+  "pymdown-extensions>=10.2",
+]
+
+[tool.uv]
+# This repository is not a Python package; uv manages the .venv only.
+package = false

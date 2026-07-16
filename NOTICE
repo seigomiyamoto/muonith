@@ -1,0 +1,48 @@
+MUONITH Notice
+==============
+
+MUONITH source code and project-authored documentation are licensed under the
+BSD 3-Clause License. See LICENSE.
+
+Third-party libraries, flux tables, terrain data, detector example data, and
+figures may be governed by separate licenses or attribution requirements. The
+top-level BSD 3-Clause License does not relicense those third-party materials.
+
+Third-party code dependencies
+-----------------------------
+
+The C++ build uses third-party libraries including Eigen, nlohmann/json, fmt,
+spdlog, OpenMP, and BLAS/LAPACK implementations. See LICENSES/ for the current
+third-party license inventory.
+
+Vendored documentation assets
+-----------------------------
+
+MathJax 3.2.2 (Copyright (c) 2009-2022 The MathJax Consortium,
+https://github.com/mathjax/MathJax) is redistributed with this project under
+docs/assets/mathjax/ so that the documentation site renders equations without
+network access. MathJax is licensed under the Apache License, Version 2.0; its
+es5 build also embeds the Speech Rule Engine (Copyright (c) 2014-2024 Volker
+Sorge and the Speech Rule Engine contributors), likewise under the Apache
+License, Version 2.0. The full license text is in
+LICENSES/MathJax-Apache-2.0.txt. The MathJax files are redistributed unmodified.
+
+Flux and range tables
+---------------------
+
+daemonflux-derived materials are governed by daemonflux's BSD 3-Clause License
+and require preservation of the daemonflux copyright notice, license terms, and
+disclaimer when redistributed.
+
+Groom/PDG range-table-derived materials should carry attribution to the source
+publication and the PDG Review of Particle Physics, and should identify any
+interpolation or re-gridding performed by this project.
+
+Terrain and detector example data
+---------------------------------
+
+Synthetic tutorial data may be distributed with MUONITH when marked as
+synthetic. Real terrain data, map-derived files, detector-location examples,
+and figures may require source-specific attribution or permission. Public
+redistributions should keep those data conditions separate from the software
+license.

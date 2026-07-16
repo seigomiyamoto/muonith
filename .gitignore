@@ -1,0 +1,29 @@
+# .gitignore for the public muonith repo (draft, bd id-7p96ho).
+# Installed as .gitignore by copy-to-muonith.sh.
+# NOTE: docs/assets/mathjax/ and docs/assets/javascripts/iframe-worker.js are
+# intentionally NOT ignored here — the public repo must commit them so the
+# offline manual renders math without a CDN.
+
+# build artifacts
+build/
+build-debug/
+build-release/
+build-asan/
+logs/
+*.log
+.ccache/
+
+# generated documentation
+site/
+apidocs/
+
+# station working directories (created by setup_station.sh)
+work/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# editor / OS noise
+.DS_Store

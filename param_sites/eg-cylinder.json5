@@ -1,0 +1,183 @@
+{
+  // ==========================================================================
+  // eg-cylinder (synthetic cylinder-shaped demo mountain) for muonith
+  //
+  // A LICENSE-FREE demo station: the DEM is a flat-topped cylinder and the
+  // detector layout is reused from the tutorial station. It carries an internal
+  // rectangular density anomaly (cuboid_params) so the forward model produces a
+  // synthetic observed signal that the inversion tries to recover.
+  //
+  // DEM:        generated at run time into work/eg-cylinder/dem/eg_cylinder-2m.g2zbin
+  //             by run_prg.sh (dem_generator below); NOT committed to the repo.
+  // Detectors:  data/eg-cylinder/detparams/0.2m2_120days/ (station-owned).
+  //             Same ring layout as the tutorial station, re-centered on
+  //             (0, 0) and pulled 100 m inward.
+  //
+  // Setup (scaffold work dir; detectors come from data/eg-cylinder/):
+  //   bash setup_station.sh eg-cylinder
+  // then run (run_prg.sh regenerates the DEM, then runs the inversion):
+  //   cd work/eg-cylinder/swp001 && bash run_prg.sh true 42 7
+  // ==========================================================================
+
+  // ===== Station identification =====
+  "station_name": "eg-cylinder",
+
+  // skip_detparams reuses the runcards under data/eg-cylinder/ as-is
+  // (no data_source: the detparams lookup defaults to data/<station_name>/).
+  "skip_detparams": true,
+  "epsg": 0,
+  "detparams_renumber_to_det_nn": true,
+
+  "detector_overrides": {
+    "tymin": 0.0,
+    "tymax": 1.6,
+  },
+
+  // ===== DEM (flat-topped cylinder, summit ~400 m) =====
+  // The binary is regenerated at run time (see dem_generator); it is never
+  // committed. dem_file is the basename run_prg.sh writes and prm_muonith reads.
+  "dem_file": "eg_cylinder-2m.g2zbin",
+
+  // ===== DEM generator (run_prg.sh regenerates the DEM before each run) =====
+  // Unified footprint width W=500 m -> cylinder radius = 250 m.
+  //
+  // Horizontal pitch is 2 m, not 5 m: make_primitive_dem.py classifies each cell
+  // as entirely summit or entirely base by its center radius, so the rim is a
+  // staircase whose tread equals the pitch.  At 5 m that staircase is visible in
+  // the per-element tx/ty figures.  2 m shrinks it below one angular bin.
+  //
+  // The extent is +/-500 m rather than +/-750 m to offset the 6.9x voxel-count
+  // growth.  The base plane sits at z=40 m, below g2pil_zmin=50 m, so there is no
+  // rock outside the cylinder and the extent is a pure bounding box.  The
+  // outermost detector is at r=499.4 m (det_01), just inside the -501/+501 m
+  // outer bin edges.
+  "dem_generator": {
+    "shape": "cylinder",
+    "x_min": -500,
+    "x_max": 500,
+    "y_min": -500,
+    "y_max": 500,
+    "x_interval": 2,
+    "y_interval": 2,
+    "xcnt": 0,
+    "ycnt": 0,
+    "base": 40,
+    "height": 360,
+    "width": 500,
+  },
+
+  // ===== Mountain center (matches the detector ring center) =====
+  "center_unit": "meter",
+  "center_x": 0.0,
+  "center_y": 0.0,
+  "surface_elevation": 399.0,
+
+  "plot_zmin": 50,
+  "plot_zmax": 400,
+
+  "z_pos_offset": 1.0,
+
+  "detector_spec": {
+    "label": "0.2m2_120days",
+  },
+
+  // ===== swp001 (3D inversion sweep) =====
+  "swp001": {
+    "work_subdir": "swp001-with-err",
+    "initial_uniform_density": 2000,
+    "g2bg_dens_cnt_delta": 500.0,
+    "BL_max": 2000,
+    "PL_max": 2000,
+    "g2pil_zmin": 50.0,
+    "g3vox_zmin": 50,
+    "g3vox_zmax": 400,
+    "n_hit_det_min": 2,
+    // Fine voxel pitch matches the DEM pitch (use_grid2d_of_g2pil copies the x/y
+    // axes), so 2 m here keeps the voxels cubic.  merge_factor 10 restores the
+    // 20 m reconstruction cell on all three axes: 501x501x175 fine voxels merge
+    // to the same 20 m grid the 5 m/factor-4 setup produced (z: 16 bins, 60..380).
+    "z_pitch": 2,
+    "merge_factor": 10,
+    // Lower edge of the 2 m bin straddling the origin (bin spans [-1, +1)).
+    // Grid1d::get_merged bundles outward from the bin containing this value, so
+    // this makes the merged axis symmetric: 50 bins, -501..499 m.
+    "x_merge_center": -1.0,
+    "y_merge_center": -1.0,
+    "z_merge_center": 200.0,
+    "corr_length": 70,
+    "sigma_rho": 300,
+    "PL_hist_max": 1000,
+    // Per-element signal figures: muon counts land in [1.8, 1.9e3] for this
+    // demo, so the shared default of 1.0E-3..1.0E+3 wastes three decades below
+    // the data and clips the top 1%.  Cover the data with three decades.
+    "signal_binz": "18 1.0E+0 1.0E+3",
+    "zcross_min": 50.0,
+    "zcross_max": 390.0,
+    "end_stage": 7,
+    "module8_mode": "none",
+    "tf_prior_error": false,
+    "proj_dens_tf_exec": false,
+    // Stop the tmp/ text dumps (arrdet txty / g2bg).  auto_plot.json5 already
+    // sets det_exec: true, so the same figures are drawn straight from the
+    // binary checkpoints and the text exports only duplicated the work.
+    "tf_out_txty_ascii": false,
+    "tf_out_g2bg_ascii": false,
+    "error_vmax": 500,
+    "error_cbar_step": 100,
+  },
+
+  "swp001_runs": [
+    {
+      "name": "baseline",
+      "work_subdir": "swp001",
+      "tf_prior_error": false,
+      "end_stage": 7,
+      "module8_mode": "none",
+    },
+  ],
+
+  // ===== reconst_voxels (region mask after merge) =====
+  // No mask.  The cylinder mask used to carry a 530 m radius copied from
+  // param_sites/tutorial.json5, which is the radius of the pre-2026-07 detector
+  // ring, not of the mountain (250 m).  n_hit_det_min and the terrain itself
+  // already bound the reconstruction region, so the mask removed zero voxels in
+  // every run ("Cylinder mask applied: n_vox_exist 7136 -> 7136 (removed 0)").
+  "reconst_voxels": {
+    "tf_aabb": false,
+    "tf_cylinder": false,
+    "aabb_zmin_mode": "g3vox_zmin",
+    "aabb_zmax": 400.0,
+  },
+
+  // ===== checkerboard disabled: this demo uses a single cuboid anomaly =====
+  "checkerboard_3d_params": [
+    {
+      "tf_exec": false,
+      "name": "cb_off",
+      "delta_density": 0,
+      "xcnt": 0.0,
+      "ycnt": 0.0,
+      "zcnt": 200.0,
+    },
+  ],
+
+  // ===== cuboid_params (internal rectangular density anomaly) =====
+  // A dense box (+600 kg/m^3) inside the cylinder, near the center at z=200 m.
+  "cuboid_params": [
+    {
+      "tf_exec": true,
+      "name": "cuboid_demo",
+      "delta_density": 600,
+      "xcnt": 0.0,
+      "ycnt": 0.0,
+      "zcnt": 200.0,
+      "xlen": 200.0,
+      "ylen": 200.0,
+      "zlen": 120.0,
+      "theta_x_deg": 0.0,
+      "theta_y_deg": 0.0,
+      "theta_z_deg": 0.0,
+      "rotation_type": "LOCAL",
+    },
+  ],
+}

@@ -1,0 +1,126 @@
+site_name: MUONITH
+site_description: "MUONITH: Muographic Unified Observation and Numerical Inversion & Tomographic Hub"
+site_url: ""
+
+# Use port 8001 to avoid conflict with other mkdocs instances (default: 8000).
+# Override with: mkdocs serve -a 127.0.0.1:<port>
+dev_addr: 127.0.0.1:8001
+
+docs_dir: docs/
+
+# Emit file.html links (not directory-style URLs) so the built site works when
+# opened directly from the filesystem (file://) without a web server, e.g. the
+# distributed manual zip on Windows/macOS/Linux and any browser including Edge.
+use_directory_urls: false
+
+theme:
+  name: material
+  language: en
+  # Use system fonts instead of fetching Roboto from Google Fonts, so the built
+  # site needs no network access (fully offline / zip distribution).
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - glightbox
+  # Official mkdocs-material offline plugin: makes the built site usable from the
+  # filesystem (file://) with no web server, including search (it switches the
+  # search index from a fetch()'d JSON to an inlined script). Requires
+  # use_directory_urls: false (set above).
+  - offline
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+# MathJax is vendored under docs/assets/mathjax/ (not loaded from a CDN) so the
+# built site is fully self-contained and renders equations offline / from the
+# distributed zip without any network access. Update by replacing the files under
+# docs/assets/mathjax/ with a newer MathJax 3 es5 (tex-mml-chtml.js + output/chtml/).
+extra_javascript:
+  - assets/mathjax/tex-mml-chtml.js
+
+# Vendor the iframe-worker shim locally. The offline plugin needs this shim so
+# the search web worker can run from file://; by default it injects it from a
+# CDN (unpkg). Pre-registering a local copy here (the path contains
+# "iframe-worker") makes the offline plugin skip the CDN URL, keeping the build
+# fully offline. See material/plugins/offline/plugin.py.
+extra:
+  polyfills:
+    - assets/javascripts/iframe-worker.js
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Nix Setup (macOS, optional): getting-started/nix-setup.md
+      - Quick Start: getting-started/quickstart.md
+  - Concepts:
+      - Muography: concepts/muography.md
+      - Coordinate System: concepts/coordinate-system.md
+      - Grid System: concepts/grid-system.md
+      - Detector Model: concepts/detector-model.md
+      - Ray Tracing: concepts/ray-tracing.md
+      - 3D Inversion: concepts/inversion.md
+      - Depth vs. Spatial Resolution: concepts/depth-resolution.md
+  - User Guide:
+      - Parameter Files: user-guide/parameter-files.md
+      - Pipeline: user-guide/pipeline.md
+      - Input Data: user-guide/input-data.md
+      - Detector Efficiency:
+          - Overview: user-guide/detector-efficiency/index.md
+          - Efficiency Model (JSON5): user-guide/detector-efficiency/efficiency-model.md
+          - Efficiency Table (text): user-guide/detector-efficiency/efficiency-table.md
+      - Making Penetrating Muon Flux Tables:
+          - Overview: user-guide/flux-tables/index.md
+          - Range Table (CSDA): user-guide/flux-tables/range-table.md
+          - Flux Model (dF/dE): user-guide/flux-tables/flux-model.md
+          - Build and Install: user-guide/flux-tables/build-and-install.md
+      - Placing Detectors from a Map: user-guide/placing-detectors.md
+      - Synthetic DEM Examples: user-guide/synthetic-dem-examples.md
+      - Output: user-guide/output.md
+      - External Reconstruction: user-guide/external-reconstruction.md
+  - Auxiliary Tools:
+      - GSI DEM: auxiliary-tools/gsi-dem.md
+      - Path Viewer: auxiliary-tools/path-view.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - CLI: reference/cli.md
+      - Scripts: reference/scripts.md
+      - Parameter Reference: reference/parameter-reference.md
+      - Appendix: reference/appendix.md
+      - FAQ: reference/faq.md

@@ -1,0 +1,28 @@
+{
+  // Efficiency model: SMALL uncertainty (flat 2.5%).
+  // Same model as eff_table_lab/configs/small_uncertainty.json5, rewritten in
+  // nlohmann-parsable JSON (quoted keys, no trailing commas; comments allowed)
+  // so both scripts/make_eff_table.py (json5) and the C++ EfficiencyModel
+  // (myapp::load_json) can read this one file.
+  //
+  // Model (see include/cls_EfficiencyModel.hpp):
+  //   eff_cnt     = base_eff * g_tx(tx) * g_ty(ty)
+  //   sigma_eff   = sigma.base * 0.5 * (h_tx(tx) + h_ty(ty))
+  //   eff_low/upp = eff_cnt -/+ min(sigma_eff, eff_cnt, 1 - eff_cnt)
+  //
+  // NOTE: no "randomize" block. The C++ side ignores it by design (the band
+  // comes from sigma only), so it is omitted here.
+
+  "base_eff": 0.975,
+
+  // Per-axis central factor g(t) = 1 - 0.0195*t^2: 1.00 at t=0, ~0.95 at |t|=1.6.
+  "tx": { "fn": "poly", "params": { "coef": [1.0, 0.0, -0.0195] } },
+  "ty": { "fn": "poly", "params": { "coef": [1.0, 0.0, -0.0195] } },
+
+  // Absolute uncertainty: flat 2.5% half-band over all tx, ty.
+  "sigma": {
+    "base": 0.025,
+    "tx": { "fn": "flat", "params": {} },
+    "ty": { "fn": "flat", "params": {} }
+  }
+}

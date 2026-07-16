@@ -1,0 +1,89 @@
+{
+  // Colormap settings
+  // Available colormaps: "RdYlBu_r", "viridis", "plasma", "coolwarm", etc.
+  "colormap": "hot_r",
+  "vmin": -3.0,  // log10(p) = -3 => p = 0.001
+  "vmax": 0.0,   // log10(p) = 0  => p = 1
+  "ngrad": 30,  // Number of gradient levels
+  "colorbar_invert": true,  // Invert colorbar axis (swap top/bottom)
+
+  // Colorbar extend: "neither", "min", "max", "both"
+  "extend": "neither",
+  // Colors for out-of-range values (null = use colormap extremes)
+  // "over_color": "white",   // values > vmax
+  // "under_color": "white",  // values < vmin
+
+  // NaN background color (areas with no data)
+  "nan_color": "silver",
+
+  // Suppress noisy contour lines near NaN boundary (0 = disabled, 3 = recommended)
+  "contour_nan_margin": 3,
+
+  // Draw diagonal line (depth = size) using grid style
+  "show_diagonal": true,
+
+  // Contour lines (p-value thresholds)
+  // Each entry: p_value, color, linestyle ("-", "--", ":", "-."), linewidth, label
+  "contours": [
+    {"p_value": 0.3, "color": "white", "linestyle": "-",  "linewidth": 1.5, "label": true},
+    {"p_value": 0.1, "color": "white", "linestyle": "--", "linewidth": 1.5, "label": true},
+    {"p_value": 0.01, "color": "black", "linestyle": "-.", "linewidth": 1.5, "label": true},
+  ],
+
+  "legend_loc" : "auto", // "auto" (by depth_axis_mode) or explicit: "upper right", "lower right", etc.
+
+  // Grid settings
+  "grid": {
+    "enabled": true,
+    "color": "gray",
+    "alpha": 1.0,
+    "linestyle": ":",
+    "linewidth": 1.0,
+  },
+
+  // Axis ranges (null = auto from data)
+  "size_max": 300,
+  "depth_max": 400,
+
+  // Depth axis mode: "bottom" (anomaly bottom = depth_anom_btm, default) or "top" (anomaly top = depth_anom_top)
+  "depth_axis_mode": "detector",
+
+  // Size bars: T-capped vertical bars showing anomaly extent
+  "size_bars": {
+    "enabled": true,              // Enable/disable size bars
+    "sizes": [50, 100, 150, 200], // Anomaly sizes to draw bars for [m]
+    "align": "top",               // "top": align anomaly tops, "bottom": align anomaly bottoms
+    "align_depth": 50,            // Depth to align at [m]
+    "color": "magenta",              // Bar color
+    "linewidth": 2.0,             // Line width
+    "cap_width": 10,              // T-cap horizontal width [m] (data coordinates)
+  },
+
+  // Resolution: n_size_bins, n_depth_bins (null = auto from data step)
+
+  // Figure settings
+  "dpi": 300,
+  "figsize_per_panel": [10, 8],  // [width, height] per panel in inches
+
+  // Font sizes
+  "title_fontsize": 18,
+  "label_fontsize": 15,  // x, y, colorbar labels
+  "tick_fontsize": 14,   // x, y, colorbar ticks
+  "legend_fontsize": 15, // legend
+
+
+  // Parallel processing (for PNG generation)
+  "parallel": {
+    "enabled": true,           // Enable parallel PNG generation
+    "max_workers": 25           // Number of parallel workers
+  },
+
+  // Animation GIF settings (GIFs are created sequentially; gifski uses internal threading)
+  "animation": {
+    "tf_exec": true,           // Enable GIF generation
+    "sec_per_frame": 2,        // Seconds per frame
+    "loop": 0,                 // 0 = infinite loop, N = loop N times
+    "tool": "gifski",          // "convert" (ImageMagick) or "gifski"
+    "output_subdir": "gif"     // Subdirectory for GIF output (relative to PNG dir, "" = same dir)
+  }
+}

@@ -1,0 +1,191 @@
+{
+  // ==========================================================================
+  // tutorial (synthetic omuro-scale volcano) station configuration for muonith
+  //
+  // This is a LICENSE-FREE stand-in for the omuro station: the DEM and the
+  // detector layout are fully synthetic (no GSI survey data), so the whole
+  // station can be shipped with a public tutorial. Structure mirrors
+  // param_sites/omuro.json5 so the same pipeline runs unchanged.
+  //
+  // DEM:        data/tutorial/tutorial-5m.g2zbin
+  //             (built by param_sites/tutorial/make_tutorial_dem.py)
+  // Detectors:  data/tutorial/detparams/0.2m2_120days/runcard_det_NN.json5
+  //             (built by param_sites/tutorial/make_tutorial_detectors.py;
+  //              seated at the foot of the cone, z follows the terrain)
+  //
+  // Validate (dry-run) with:
+  //   python scripts/init_work_site.py param_sites/tutorial.json5 --dry-run
+  // ==========================================================================
+
+  // ===== Station identification =====
+  "station_name": "tutorial",
+
+  // Synthetic local CRS (meters); reuse the pre-built detparams as-is.
+  "skip_detparams": true,
+  "epsg": 0,
+
+  // Detector runcards are already named det_NN; renumber step is a no-op.
+  "detparams_renumber_to_det_nn": true,
+
+  // Per-detector overrides applied to every runcard at setup time
+  // (widen the elevation-angle window, same as omuro).
+  "detector_overrides": {
+    "tymin": 0.0,
+    "tymax": 1.6,
+  },
+
+  // ===== DEM =====
+  "dem_file": "tutorial-5m.g2zbin",
+
+  // ===== Mountain center (local meters; matches the synthetic cone center) =====
+  "center_unit": "meter",
+  "center_x": 130.0,
+  "center_y": 150.0,
+  "surface_elevation": 399.0,   // synthetic summit elevation [m] (DEM max ~399)
+
+  // ===== DEM plot range (tutorial z spans ~50..400) =====
+  "plot_zmin": 50,
+  "plot_zmax": 400,
+
+  // ===== z-offset for detectors (kept for downstream consumers) =====
+  "z_pos_offset": 1.0,
+
+  // Pin the detector spec label so init_work_site.py uses
+  // data/tutorial/detparams/0.2m2_120days/ (0.2 m^2, 120 days; same spec as omuro).
+  "detector_spec": {
+    "label": "0.2m2_120days",
+  },
+
+  // ===== swp001 (3D inversion sweep) =====
+  // Mirrors omuro's conventions; elevation-dependent values retuned to the
+  // tutorial z range (50..400). Density / checkerboard left at omuro defaults.
+  "swp001": {
+    "work_subdir": "swp001-with-err",
+    "initial_uniform_density": 2000,
+    "g2bg_dens_cnt_delta": 500.0,
+    "BL_max": 2000,
+    "PL_max": 2000,
+    "g2pil_zmin": 50.0,
+    "g3vox_zmin": 50,
+    "g3vox_zmax": 400,
+    "n_hit_det_min": 2,
+    "z_pitch": 5,
+    "merge_factor": 4,
+    "x_merge_center": -2.5,
+    "y_merge_center": -2.5,
+    "z_merge_center": 200.0,
+    "corr_length": 70,
+    "sigma_rho": 300,
+    "PL_hist_max": 1000,
+    "zcross_min": 110.0,
+    "zcross_max": 390.0,
+    // Pipeline depth: 7 = inversion-only (Module 7 final), 8 = full.
+    "end_stage": 7,
+    // Module 8 (sweep error/uncertainty): "none" / "all" / "last" / "selected".
+    "module8_mode": "none",
+    "tf_prior_error": false,
+    // PROJ_DENS_EVAL_GROUPED off: skip the projected-density 2D diagnostic so
+    // the first tutorial run stays within the paper's <1 min (recon unchanged).
+    "proj_dens_tf_exec": false,
+    "proj_dens_tf_signal_poisson": false,
+    // Stop the tmp/ text dumps (arrdet txty / g2bg), same as omuro.
+    "tf_out_txty_ascii": false,
+    "tf_out_g2bg_ascii": false,
+    "error_vmax": 500,
+    "error_cbar_step": 100,
+  },
+
+  // ===== swp001_runs (one reconstruction parameter set per run) =====
+  "swp001_runs": [
+    {
+      "name": "baseline",
+      "work_subdir": "swp001", // No noise, no signal Poisson; center-only.
+      "tf_prior_error": false,
+      "end_stage": 7,
+      "module8_mode": "none",
+    },
+    {
+      "name": "degree",
+      // Degree-unit runcards: det_NN.json5 are copied to
+      // detparams/<label>__degree/ with angle_unit rewritten to "degree" and
+      // txmin/txmax/tymin/tymax converted tangent -> degree (atan(v)*180/pi).
+      "work_subdir": "swp001-degree",
+      "detparams_angle_unit": "degree",
+      "tf_prior_error": false,
+      "end_stage": 7,
+      "module8_mode": "none",
+    },
+  ],
+
+  // ===== depth_sweep (detection-limit heatmap; depth x object-size) =====
+  // Mirrors showa's depth_sweep (showa surface_elevation 398 ~ tutorial 399).
+  // Object-center coords use the tutorial local CRS (130, 150). base_density,
+  // vec_delta_density and signal_noise_amplifiers are tuned for the tutorial:
+  // a symmetric Delta_rho sweep that includes dense anomalies (Delta_rho > 0),
+  // not only cavities.
+  "depth_sweep": {
+    "work_subdir": "depth-reso",
+    "base_density": 1800.0,
+    // Symmetric Delta_rho sweep: cavity (<0) and dense (>0), no zero.
+    // anomaly density = base_density + Delta_rho = 1200 / 1500 / 2100 / 2400 kg/m^3.
+    "vec_delta_density": [-600, -300, 300, 600],
+    // signal_amp = 0.01 / 0.1 / 1 / 10 (= 10^-2 .. 10^1); 2nd element is noise = 0.
+    "signal_noise_amplifiers": [
+      [0.01, 0.0],
+      [0.1, 0.0],
+      [1.0, 0.0],
+      [10.0, 0.0],
+    ],
+    "depth_step": 5.0,
+    "obj_size_step": 5.0,
+    "obj_size_upper_limit": 400.0,
+    "obj_size_lower_limit": 1.0,
+    "elev_center_step": 0.0025,
+    "x_cnt_obj": 130.0,
+    "y_cnt_obj": 150.0,
+    "BL_max": 2000,
+    "tf_override_angle_bin": true,
+    "angle_bin_override": {
+      "nbinx": 320, "txmin": -0.4, "txmax": 0.4,
+      "nbiny": 320, "tymin": 0.0, "tymax": 0.8,
+    },
+  },
+
+  // ===== reconst_voxels (region mask after merge) =====
+  // Limit reconstruction to the inner circle of the detector ring:
+  // ring center = mountain center (130,150); nearest detectors sit at r=530 m.
+  "reconst_voxels": {
+    "tf_aabb": false,
+    "x_aabb_meters": 1400.0,
+    "y_aabb_meters": 1400.0,
+    "aabb_zmin_mode": "g3vox_zmin",
+    "aabb_zmax": 400.0,
+    "tf_cylinder": true,
+    "x_cyl_cnt": 130.0,
+    "y_cyl_cnt": 150.0,
+    "cylinder_radius_x_meters": 530.0,
+    "cylinder_radius_y_meters": 530.0,
+  },
+
+  // ===== checkerboard_3d_params (200 m pitch, +/-500 kg/m^3) =====
+  // cell_size = pitch * mult = 5m * 32 = 160 m; box 6*160=960 m centered at (100,100), zcnt = 260 m.
+  "checkerboard_3d_params": [
+    {
+      "tf_exec": true,
+      "name": "cb_3d_500",
+      "delta_density_offset": 0.0,
+      "delta_density": 500,
+      "xlen_cells": 6,
+      "ylen_cells": 6,
+      "zlen_cells": 4,
+      "xcnt": 100.0,
+      "ycnt": 100.0,
+      "zcnt": 260.0,
+      "xlen_interval_mult": 32,
+      "ylen_interval_mult": 32,
+      "zlen_interval_mult": 32,
+      "tf_snap_to_grid": true,
+      "region_type": "aabb",
+    },
+  ],
+}

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# ============================================================
+# Example: Set up a new volcano analysis station
+#
+# 1. Copy this file:  cp setup_new_station.sh.example setup_mystation.sh
+# 2. Edit the variables below
+# 3. Run:  bash setup_mystation.sh
+# ============================================================
+set -euo pipefail
+
+# ----- Edit these -----
+STATION_NAME="mystation"
+DEM_SOURCE="/path/to/mystation_dem.g2zbin"
+KML_SOURCE="/path/to/mystation_detectors.kml"
+
+# ----- Normally no edits below -----
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Step 1: Place input data
+echo "=== Placing input data for station ==="
+mkdir -p "$SCRIPT_DIR/data/$STATION_NAME"
+cp -v "$DEM_SOURCE" "$SCRIPT_DIR/data/$STATION_NAME/"
+cp -v "$KML_SOURCE" "$SCRIPT_DIR/data/$STATION_NAME/"
+
+# Step 2: Create station config from template
+echo "=== Creating station config ==="
+STATION_JSON5="$SCRIPT_DIR/param_sites/$STATION_NAME.json5"
+if [ ! -f "$STATION_JSON5" ]; then
+  cp "$SCRIPT_DIR/param_sites/template.json5" "$STATION_JSON5"
+  echo "Created: $STATION_JSON5"
+  echo "*** Edit $STATION_JSON5 with your station parameters, then re-run this script ***"
+  exit 0
+else
+  echo "Config exists: $STATION_JSON5"
+fi
+
+# Step 3: Generate work station skeleton + run pipeline
+echo "=== Generating work station ==="
+python3 "$SCRIPT_DIR/scripts/init_work_site.py" --verbose --run "$STATION_JSON5"
+
+echo "=== Done ==="
+echo "Work station: $SCRIPT_DIR/work/$STATION_NAME/"
+echo "Next: cd work/$STATION_NAME/depth001 && bash run_prg.sh true 42"

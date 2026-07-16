@@ -1,0 +1,171 @@
+{
+  // ==========================================================================
+  // eg-square-pyramid (synthetic square-pyramid demo mountain)
+  //
+  // A LICENSE-FREE demo station: the DEM is a square pyramid and the detector
+  // layout is reused from the tutorial station. It carries an internal
+  // rectangular density anomaly (cuboid_params) so the forward model produces a
+  // synthetic observed signal that the inversion tries to recover.
+  //
+  // DEM:        generated at run time into
+  //             work/eg-square-pyramid/dem/eg_square_pyramid-2m.g2zbin
+  //             by run_prg.sh (dem_generator below); NOT committed to the repo.
+  // Detectors:  data/eg-square-pyramid/detparams/0.2m2_120days/ (station-owned).
+  //             Ring layout derived from the tutorial station, re-centered on
+  //             (0, 0) and projected onto the max(|x|,|y|) = 380 m square edge.
+  //
+  // Setup (scaffold work dir; detectors come from data/eg-square-pyramid/):
+  //   bash setup_station.sh eg-square-pyramid
+  // then run (run_prg.sh regenerates the DEM, then runs the inversion):
+  //   cd work/eg-square-pyramid/swp001 && bash run_prg.sh true 42 7
+  // ==========================================================================
+
+  // ===== Station identification =====
+  "station_name": "eg-square-pyramid",
+
+  // skip_detparams reuses the runcards under data/eg-square-pyramid/ as-is
+  // (no data_source: the detparams lookup defaults to data/<station_name>/).
+  "skip_detparams": true,
+  "epsg": 0,
+  "detparams_renumber_to_det_nn": true,
+
+  "detector_overrides": {
+    "tymin": 0.0,
+    "tymax": 1.6,
+  },
+
+  // ===== DEM (square pyramid, summit ~400 m) =====
+  // The binary is regenerated at run time (see dem_generator); it is never
+  // committed. dem_file is the basename run_prg.sh writes and prm_muonith reads.
+  "dem_file": "eg_square_pyramid-2m.g2zbin",
+
+  // ===== DEM generator (run_prg.sh regenerates the DEM before each run) =====
+  // Unified footprint width W=500 m -> square-pyramid half-width = 250 m.
+  //
+  // Pitch and extent track eg-cylinder so the two demo stations stay comparable;
+  // see the note in param_sites/eg-cylinder.json5.  The pyramid's flanks are a
+  // continuous slope, so it is the control case: it should show no rim staircase
+  // at either pitch.
+  "dem_generator": {
+    "shape": "square_pyramid",
+    "x_min": -500,
+    "x_max": 500,
+    "y_min": -500,
+    "y_max": 500,
+    "x_interval": 2,
+    "y_interval": 2,
+    "xcnt": 0,
+    "ycnt": 0,
+    "base": 40,
+    "height": 360,
+    "width": 500,
+  },
+
+  // ===== Mountain center (matches the detector ring center) =====
+  "center_unit": "meter",
+  "center_x": 0.0,
+  "center_y": 0.0,
+  "surface_elevation": 399.0,
+
+  "plot_zmin": 50,
+  "plot_zmax": 400,
+
+  "z_pos_offset": 1.0,
+
+  "detector_spec": {
+    "label": "0.2m2_120days",
+  },
+
+  // ===== swp001 (3D inversion sweep) =====
+  "swp001": {
+    "work_subdir": "swp001-with-err",
+    "initial_uniform_density": 2000,
+    "g2bg_dens_cnt_delta": 500.0,
+    "BL_max": 2000,
+    "PL_max": 2000,
+    "g2pil_zmin": 50.0,
+    "g3vox_zmin": 50,
+    "g3vox_zmax": 400,
+    "n_hit_det_min": 2,
+    // Same fine pitch and merge factor as eg-cylinder; see the note there.
+    "z_pitch": 2,
+    "merge_factor": 10,
+    "x_merge_center": -1.0,
+    "y_merge_center": -1.0,
+    "z_merge_center": 200.0,
+    "corr_length": 70,
+    "sigma_rho": 300,
+    "PL_hist_max": 500,
+    // Per-element signal figures: same detector ring and observation time as
+    // eg-cylinder, so the muon counts share its decade range.  See the note in
+    // param_sites/eg-cylinder.json5.
+    "signal_binz": "18 1.0E+0 1.0E+3",
+    "zcross_min": 50.0,
+    "zcross_max": 390.0,
+    "end_stage": 7,
+    "module8_mode": "none",
+    "tf_prior_error": false,
+    "proj_dens_tf_exec": false,
+    // Same as eg-cylinder: no tmp/ text dumps; det_exec draws the txty/g2bg
+    // figures from the binary checkpoints instead.
+    "tf_out_txty_ascii": false,
+    "tf_out_g2bg_ascii": false,
+    "error_vmax": 500,
+    "error_cbar_step": 100,
+  },
+
+  "swp001_runs": [
+    {
+      "name": "baseline",
+      "work_subdir": "swp001",
+      "tf_prior_error": false,
+      "end_stage": 7,
+      "module8_mode": "none",
+    },
+  ],
+
+  // ===== reconst_voxels (region mask after merge) =====
+  // No mask; see the note in param_sites/eg-cylinder.json5.  Here too the old
+  // 530 m cylinder removed zero voxels ("n_vox_exist 2597 -> 2597 (removed 0)").
+  "reconst_voxels": {
+    "tf_aabb": false,
+    "tf_cylinder": false,
+    "aabb_zmin_mode": "g3vox_zmin",
+    "aabb_zmax": 400.0,
+  },
+
+  // ===== checkerboard disabled: this demo uses a single cuboid anomaly =====
+  "checkerboard_3d_params": [
+    {
+      "tf_exec": false,
+      "name": "cb_off",
+      "delta_density": 0,
+      "xcnt": 0.0,
+      "ycnt": 0.0,
+      "zcnt": 200.0,
+    },
+  ],
+
+  // ===== cuboid_params (internal rectangular density anomaly) =====
+  // A low-density box (-1000 kg/m^3, i.e. 1000 kg/m^3 against the 2000 kg/m^3
+  // background) inside the pyramid: a 100 m cube centered on the axis at
+  // z=200 m, so it spans z=150..250 m and stays well inside the flanks
+  // (the pyramid half-width at z=250 m is 104 m).
+  "cuboid_params": [
+    {
+      "tf_exec": true,
+      "name": "cuboid_demo",
+      "delta_density": -1000,
+      "xcnt": 0.0,
+      "ycnt": 0.0,
+      "zcnt": 200.0,
+      "xlen": 100.0,
+      "ylen": 100.0,
+      "zlen": 100.0,
+      "theta_x_deg": 0.0,
+      "theta_y_deg": 0.0,
+      "theta_z_deg": 0.0,
+      "rotation_type": "LOCAL",
+    },
+  ],
+}

@@ -1,0 +1,36 @@
+{
+  "DETECTOR_PARAMETERS": {
+    "name": "det_01"
+  , "tf_read_bin_list": false
+  // angle_unit should be Tangent, tangent, TANGENT, 
+  // or Degree, degree, DEGREE, 
+  // or Radian, radian, RADIAN
+  , "angle_unit": "tangent"
+  // if angle_unit = radian or degree,
+  // 0 is north, 90 (PI/2) is east, 
+  // 180 (PI) is south, -90 (-PI/2) is west
+  // and should be 90 > tymax > tymin >= 0
+  , "nbinx": 320
+  , "txmin": -1.6
+  , "txmax": 1.6
+  , "nbiny": 160
+  , "tymin": 0.0
+  , "tymax": 1.6
+  , "length_hori": 0.333
+  , "length_vert": 0.333
+  , "length_dept": 0.03
+  , "n_unit": 2
+  // rotation type LOCAL or GLOBAL
+  , "rotation_type": "LOCAL"
+  , "yaw_deg": 93.72
+  , "roll_deg": 0.0
+  , "pitch_deg": 0.0
+  , "x": -498.3
+  , "y": 32.4
+  , "z": 41.0
+  , "days": 120.0
+  , "n_reserve_vec_tf_in_PL": 20
+  , "path_eff_table" : "../detparams/eff_table/eff_table_sample00.txt"
+  , "path_eff_model" : "../detparams/eff_model/small_uncertainty.json5"
+  }
+}

@@ -1,0 +1,247 @@
+{
+  // ==========================================================================
+  // Station configuration template for muonith
+  //
+  // Copy this file and rename it to <your_station>.json5, then fill in all
+  // placeholder values.  Run validation with:
+  //   python scripts/init_work_site.py param_sites/<your_station>.json5 --dry-run
+  // ==========================================================================
+
+  // ===== Station identification =====
+
+  // Unique name for this station (used as directory name under work/).
+  "station_name": "",
+
+  // (Optional) Name of the shared data directory under data/.
+  // If omitted, station_name is used.  Useful when multiple configs share one data/ dir.
+  // "data_source": "",
+
+  // EPSG code for the projected coordinate system (e.g. 6680 for JGD2011 zone 12).
+  // Must be >= 1000 unless "skip_detparams": true (see below).
+  "epsg": 0,
+
+  // (Optional) Skip the KML/GeoJSON -> CSV -> runcard_det_*.json5 conversion.
+  // Set to true when the station uses a non-EPSG custom orthogonal CRS where
+  // KML round-trip is impractical (KML requires WGS84 lat/lon).  When true:
+  //   - work/<station>/detparams/<label>/runcard_det_*.json5 must already
+  //     exist in git (or be placed manually); they are reused as-is
+  //   - epsg / detector_input / detector_spec / depth_sweep are not required
+  //   - center_unit must be "meter" (degree -> EPSG transform is disabled)
+  // Default: false.
+  // "skip_detparams": false,
+
+  // ===== DEM =====
+
+  // Path to the DEM file, relative to data/<station_name>/.
+  // Supported format: .g2zbin (binary grid).
+  "dem_file": "",
+
+  // ===== Mountain center =====
+
+  // Center coordinates of the target volcano.
+  // If center_unit is "degree": center_x = longitude, center_y = latitude (WGS84).
+  // If center_unit is "meter" (default): projected CRS coordinates [meters].
+  // Accepted values: "degree"/"degrees"/"deg", "meter"/"meters"/"m", "km"/"kilometer"/"kilometers" (case-insensitive).
+  "center_unit": "degree",
+  "center_x": 0.0,
+  "center_y": 0.0,
+
+  // Approximate summit / reference surface elevation [meters above sea level].
+  "surface_elevation": 0.0,
+
+  // ===== Detector input =====
+
+  // Path to the detector positions file, relative to data/<station_name>/.
+  // Supported format: .kml
+  "detector_input": "",
+
+  // Vertical offset applied to each detector position [meters].
+  // Typically the height from ground to detector center (e.g. 1.0).
+  "z_pos_offset": 0.0,
+
+  // ===== Detector hardware spec =====
+  "detector_spec": {
+    // Human-readable label for this detector configuration.
+    "label": "",
+
+    // Scintillator panel dimensions [meters].
+    "length_hori": 0.0,  // horizontal length
+    "length_vert": 0.0,  // vertical length
+    "length_dept": 0.0,  // depth (thickness)
+
+    // Number of detector units stacked.
+    "n_unit": 0,
+
+    // Observation period [days].
+    "days": 0,
+
+    // Angle binning for the X (horizontal) axis.
+    "nbinx": 0,     // number of bins
+    "txmin": 0.0,    // minimum tangent value
+    "txmax": 0.0,    // maximum tangent value
+
+    // Angle binning for the Y (elevation) axis.
+    "nbiny": 0,     // number of bins
+    "tymin": 0.0,    // minimum tangent value
+    "tymax": 0.0     // maximum tangent value
+  },
+
+  // ===== Display range (DEM plot) =====
+
+  // Elevation range for DEM cross-section plots [meters above sea level].
+  "plot_zmin": 0,
+  "plot_zmax": 0,
+
+  // ===== depth001 parameters =====
+  "depth_sweep": {
+    // Background rock density [kg/m^3] (typical rock: 2000-2700).
+    "base_density": 2500.0,
+
+    // Density contrasts to test [kg/m^3].
+    // Negative values represent voids/low-density anomalies.
+    // Example: [-2000, -1500, -1000, -500]
+    "vec_delta_density": [],
+
+    // Signal-to-noise amplifier pairs: [[signal_factor, noise_factor], ...].
+    // Example: [[1.0, 0.0], [10.0, 0.0]]
+    "signal_noise_amplifiers": [],
+
+    // Depth grid step size [meters].
+    "depth_step": 0.0,
+
+    // Object size grid step size [meters].
+    "obj_size_step": 0.0,
+
+    // Heatmap axis limits [meters] (overrides heatmap_config.json5 defaults)
+    "size_max": 300,
+    "depth_max": 400,
+
+    // --- Optional keys below (uncomment if needed) ---
+
+    // Upper limit for object size search [meters].
+    // "obj_size_upper_limit": 400.0,
+
+    // Lower limit for object size search [meters].
+    // "obj_size_lower_limit": 1.0,
+
+    // Set true to override the angle binning for depth analysis.
+    // "tf_override_angle_bin": false,
+
+    // Custom angle binning for depth analysis (used when tf_override_angle_bin is true).
+    // "angle_bin_override": {
+    //   "nbinx": 0, "txmin": 0.0, "txmax": 0.0,
+    //   "nbiny": 0, "tymin": 0.0, "tymax": 0.0
+    // }
+  },
+
+  // ===== Checkerboard 3D (optional) =====
+  // "checkerboard_3d_params": [{
+  //   "tf_exec": false,
+  //   "name": "cb_3d_500",
+  //   "delta_density_offset": 0.0,
+  //   "delta_density": 500,
+  //   "xlen_cells": 6, "ylen_cells": 6, "zlen_cells": 4,
+  //   "xcnt": 0.0, "ycnt": 0.0, "zcnt": 0.0,
+  //   "xlen_interval_mult": 40, "ylen_interval_mult": 40, "zlen_interval_mult": 40,
+  //   "tf_snap_to_grid": true,
+  //   "region_type": "cylinder",         // "aabb" (default) or "cylinder"
+  //   "radius_x_meters": 0.0,           // Elliptic cylinder radius in X [meters]
+  //   "radius_y_meters": 0.0            // Elliptic cylinder radius in Y [meters]
+  // }],
+
+  // ===== Merge parameters =====
+  // merge_params controls voxel merging (coarsening)
+  "merge_params": {
+    "tf_exec": true,
+    "name": "merge_01",
+    "x_merge_center": 0.0,    // Merge alignment center x (m)
+    "y_merge_center": 0.0,    // Merge alignment center y (m)
+    "z_merge_center": 0.0,    // Merge alignment center z (m)
+    "x_merge_factor": 4,      // Number of voxels to combine in x
+    "y_merge_factor": 4,      // Number of voxels to combine in y
+    "z_merge_factor": 4       // Number of voxels to combine in z
+  },
+
+  // ===== Reconstruction voxel region mask =====
+  // Controls AABB and/or cylindrical region masking after merge.
+  // Center fields (x/y_aabb_cnt, x/y_cyl_cnt) are optional:
+  //   if omitted, C++ falls back to merge_params.x/y_merge_center.
+  "reconst_voxels": {
+    "tf_aabb": true,
+    // "x_aabb_cnt": 0.0,              // Falls back to merge_center if omitted
+    // "y_aabb_cnt": 0.0,
+    "x_aabb_meters": 800.0,              // Full X extent of reconstruction volume (m)
+    "y_aabb_meters": 800.0,
+    "aabb_zmin_mode": "g3vox_zmin",    // "g3vox_zmin" or "manual"
+    // "aabb_zmin_value": 0.0,         // Only when aabb_zmin_mode == "manual"
+    "aabb_zmax": 9999.0,
+    "tf_cylinder": true,
+    // "x_cyl_cnt": 0.0,              // Falls back to merge_center if omitted
+    // "y_cyl_cnt": 0.0,
+    "cylinder_radius_x_meters": 360.0,   // Cylinder X radius (m)
+    "cylinder_radius_y_meters": 360.0
+  },
+
+  // ===== swp001 parameters =====
+  "swp001": {
+    // Uniform density for initial model and prior [kg/m^3].
+    "initial_uniform_density": 2000,
+    // g2bg dens_cnt color range = initial_uniform_density ± g2bg_dens_cnt_delta [kg/m^3].
+    // Default when omitted: g2bg_dens_cnt_delta = 500.0, so dens_cnt range = initial_uniform_density ± 500.0.
+    // , "g2bg_dens_cnt_delta": 500.0
+    // , "shell_density_upper": 2000   // Optional: upper shell [kg/m³] (fallback: initial_uniform_density)
+    // , "shell_density_lower": 2000   // Optional: lower shell [kg/m³] (fallback: initial_uniform_density)
+    // , "shell_density_lateral": 2000 // Optional: lateral shell [kg/m³] (fallback: initial_uniform_density)
+
+    // Maximum baseline length [meters].
+    "BL_max": 0,
+
+    // Maximum path length through the mountain [meters].
+    "PL_max": 0,
+
+    // Voxel model elevation range [meters above sea level].
+    "g3vox_zmin": 0,
+    "g3vox_zmax": 0,
+
+    // Vertical voxel pitch [meters].
+    "z_pitch": 0,
+
+    // Merge factor for voxel coarsening (power of 2 recommended, e.g. 4, 8).
+    "merge_factor": 4,
+
+    // Center elevation for merged voxel region [meters above sea level].
+    "z_merge_center": 0.0,
+
+    // Z_CROSS_SECTION elevation range [meters above sea level].
+    // If omitted, defaults to g3vox_zmin / g3vox_zmax respectively.
+    // "zcross_min": 0.0,
+    // "zcross_max": 0.0,
+    "zcross_zstep": 40,  // Z_CROSS_SECTION step [meters] (default: z_pitch * merge_factor)
+
+    // Spatial correlation length for inversion [meters].
+    "corr_length": 0,
+
+    // Prior standard deviation of density [kg/m^3].
+    "sigma_rho": 0,
+
+    // Maximum path length shown in histograms [meters].
+    "PL_hist_max": 0,
+
+    // --- Optional: plot output range (uncomment and set if needed) ---
+
+    // Elevation range for plot output [meters above sea level].
+    // "plot_zmin": 0,
+    // "plot_zmax": 0,
+    // "plot_zstep": 0,
+
+    // X-axis (easting) range for plot output [meters in projected CRS].
+    // "plot_xmin": 0,
+    // "plot_xmax": 0,
+    // "plot_xstep": 0,
+
+    // Y-axis (northing) range for plot output [meters in projected CRS].
+    // "plot_ymin": 0,
+    // "plot_ymax": 0,
+    // "plot_ystep": 0
+  }
+}

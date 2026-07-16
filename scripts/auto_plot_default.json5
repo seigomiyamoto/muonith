@@ -1,0 +1,257 @@
+{
+  // ==========================================================================
+  // Default configuration for auto_plot.py
+  // This file uses JSON5 format (supports comments and trailing commas)
+  // ==========================================================================
+
+  // ---------------------------------------------------------------------------
+  // Execution flags: Enable/disable each plot type at top level
+  // ---------------------------------------------------------------------------
+  "hist2d_exec": true,                  // Enable/disable hist2d processing
+  "g2bg_exec": true,                    // Enable/disable g2bg processing
+  "g3vox_exec": true,                   // Enable/disable g3vox processing
+  "det_exec": false,                    // Enable/disable det processing (binary-direct
+                                        // plot_det_arrdet.py; off by default because with
+                                        // tmp/*.tmp exports present the same figures would
+                                        // be produced twice)
+
+  // ---------------------------------------------------------------------------
+  // Global exclude patterns (applies to all plot types: hist2d, g2bg, g3vox)
+  // Uses fnmatch glob syntax: * matches any characters, ? matches single char
+  // Example: ["*_debug_*", "*_test_*", "tmp_*"]
+  // ---------------------------------------------------------------------------
+  "exclude_patterns": [],
+
+  // ===========================================================================
+  // hist2d: 2D histogram plots using hist2d.py
+  // Plots angular distribution data from arrdet_*.tmp files
+  // ===========================================================================
+  "hist2d": {
+    "save_csv": true,                   // Save histogram data to CSV file
+    // -------------------------------------------------------------------------
+    // template: Default values inherited by all patterns.
+    // Each pattern can override any template value.
+    // -------------------------------------------------------------------------
+    "template": {
+      "log": false,                     // true: log scale, false: linear scale
+      "binx": "320 -1.6 1.6",           // "nbins xmin xmax" for X-axis (tan(theta_x))
+      "biny": "160 0.0 1.6",            // "nbins ymin ymax" for Y-axis (tan(theta_y))
+      "binz": "20 0 2000",              // "nbins zmin zmax" for Z-axis (color scale)
+      "dpi": 300,                       // Output image resolution (dots per inch)
+      "colormap": "jet",                // Matplotlib colormap name
+      "color_over": "black",             // Color for values > vmax
+      "color_under": "white",           // Color for values < vmin
+    },
+    // -------------------------------------------------------------------------
+    // patterns: Maps filename patterns to plotting parameters
+    // Key: glob pattern (without .tmp extension)
+    // Value: overrides for template defaults
+    // -------------------------------------------------------------------------
+    "patterns": {
+      // Signal plots (logarithmic color scale for wide dynamic range)
+      "arrdet_*_signal_*": {
+        "log": true,
+        "binz": "16 1.0E-1 1.0E+3",
+      },
+      // Density plots (linear scale, typical rock density range)
+      "arrdet_*_dens_*": {
+        "binz": "10 0.0 2000",          // Density: 0-2000 kg/m^3
+      },
+      // DL (Distance-Length product) plots
+      "arrdet_*_DL_*": {
+        "binz": "20 0.0 2000",          // DL range in meters
+      },
+      // PL (Path-Length) plots
+      "arrdet_*_PL_*": {
+        "binz": "10 0.0 1000",          // Path length: 0-1000 m
+      },
+    },
+    // -------------------------------------------------------------------------
+    // exclude_patterns: Skip files matching these patterns (hist2d only)
+    // Example: ["arrdet_g3vox_prior_*", "*_backup_*"]
+    // -------------------------------------------------------------------------
+    "exclude_patterns": [],
+  },
+
+  // ===========================================================================
+  // g2bg: Grid2D background plots using plot_g2bg.py
+  // Plots 2D grid visualization from g2bg_*.json config files
+  // ===========================================================================
+  "g2bg": {
+    "auto_detect": true,                // true: scan for g2bg_*.tmp files
+    // -------------------------------------------------------------------------
+    // exclude_patterns: Skip files matching these patterns (g2bg only)
+    // -------------------------------------------------------------------------
+    "exclude_patterns": [],
+
+    // =========================================================================
+    // template: Default settings for auto-generated g2bg JSON configs
+    // =========================================================================
+    "template": {
+      "input_dir": "tmp",
+      "input_suffix": ".tmp",
+      "output_dir": "figs",
+      "output_suffix": "",
+      "png_dpi": 300,
+      "make_pdf_per_detid": false,
+      "make_gif_per_detid": false,
+      "make_pdf_per_field": true,
+      "make_gif_per_field": true,
+      "pdf_suffix": "",
+      "pdf_dpi": 300,
+      "gif_suffix": "",
+      "gif_delay": 400,
+      "gif_loop": 0,
+      "gif_dpi": 300,
+      "exec_erace_pngs": false,
+      "plot_fields": {
+        "sig":      { "exec": true,  "logz": true,  "pallet": "gnuplot2", "color_under": "#2f4f4f", "color_over": "#e0ffff", "ngrad": 20, "vmin": 1.0E+1, "vmax": 1.0E+3, "alpha": 1.0 },
+        "noi":      { "exec": true,  "logz": true,  "pallet": "cividis", "color_under": "white", "color_over": "orange", "ngrad": 20, "vmin": 1.0E-1, "vmax": 1.0E+3, "alpha": 1.0 },
+        "signoi":   { "exec": true,  "logz": true,  "pallet": "gnuplot2", "color_under": "#2f4f4f", "color_over": "#e0ffff", "ngrad": 20, "vmin": 1.0E+1, "vmax": 1.0E+3, "alpha": 1.0 },
+        "sig_over_noi": { "exec": true,  "logz": true,  "pallet": "RdYlGn", "color_under": "#4d0000", "color_over": "cyan", "ngrad": 20, "vmin": 1.0E-1, "vmax": 1.0E+3, "alpha": 1.0 },
+        "dens_cnt": { "exec": true,  "logz": false, "pallet": "jet", "color_under": "silver", "color_over": "#4d0000", "ngrad": 20, "vmin": 500.0, "vmax": 1500.0, "alpha": 1.0 },
+        "dens_err": { "exec": true,  "logz": false, "pallet": "gnuplot2", "color_under": "silver", "color_over": "#e5ffda", "ngrad": 15, "vmin": 0.0, "vmax": 300.0, "alpha": 1.0 },
+        "eff_cnt":  { "exec": true,  "logz": false, "pallet": "viridis", "color_under": "silver", "color_over": "#4d0000", "ngrad": 20, "vmin": 0.87, "vmax": 0.99, "alpha": 1.0 },
+        "eff_err":  { "exec": true,  "logz": false, "pallet": "inferno", "color_under": "black", "color_over": "white", "ngrad": 20, "vmin": 0.0, "vmax": 0.05, "alpha": 1.0 },
+      },
+    },
+  },
+
+  // ===========================================================================
+  // g3vox: Grid3D voxel plots using plot_Grid3dVoxel.py
+  // Plots 3D voxel cross-sections from g3vox_*.tmp files
+  // ===========================================================================
+  "g3vox": {
+    "auto_detect": true,                // true: scan for g3vox_*.tmp files
+    // -------------------------------------------------------------------------
+    // exclude_patterns: Skip files matching these patterns (g3vox only)
+    // Example: ["g3vox_*_lower_*", "g3vox_*_upper_*"]
+    // -------------------------------------------------------------------------
+    "exclude_patterns": [],
+
+    // =========================================================================
+    // template: Default settings for auto-generated g3vox JSON configs
+    // Used when .tmp files are found without corresponding JSON configs
+    // =========================================================================
+    "template": {
+      // -----------------------------------------------------------------------
+      // run_params: Controls data processing and cross-section generation
+      // -----------------------------------------------------------------------
+      "run_params": {
+        "filename_in": "",              // Input .tmp file path (set automatically)
+        "tf_out_each_det": false,       // true: output separate plot for each detector
+        "n_hit_det_thres": 0,           // Min detector hits to include (0 = no threshold)
+        "cross_section": ["z"],         // Cross-section directions: "x", "y", "z" or combo
+
+        // Z cross-section range (vertical slices) [meters]
+        "zmin": 310,                    // Start Z coordinate
+        "zmax": 570,                    // End Z coordinate
+        "zstep": 20,                    // Step between slices
+
+        // X cross-section range [meters]
+        "xmin": -610,
+        "xmax": 810,
+        "xstep": 20,
+
+        // Y cross-section range [meters]
+        "ymin": -610,
+        "ymax": 810,
+        "ystep": 20,
+      },
+
+      // -----------------------------------------------------------------------
+      // render_params: Controls plot appearance and output
+      // -----------------------------------------------------------------------
+      "render_params": {
+        "output_png_prefix": "",        // Output filename prefix (set automatically)
+        "dpi": 300,                     // Image resolution (dots per inch)
+        "save_png_dir": "figs",         // Output directory for PNG files
+
+        // Output formats: "png" (always), "gif" (animated), "pdf" (multi-page)
+        // PNG is always generated as base. GIF/PDF are optional.
+        "output_formats": ["png", "gif"],  // Add "pdf" to generate PDF files
+
+        // Colormap settings
+        "colormap": "jet",              // Matplotlib colormap: jet, viridis, seismic, etc.
+        "bg_color": "silver",           // Background color for empty cells
+        "overflow_color": "maroon",     // Color for values exceeding vmax
+        "underflow_color": "navy",      // Color for values below vmin
+
+        // Grid display settings
+        "grid_color": "grey",           // Grid line color
+        "gridline_type": "dotted",      // Line style: solid, dashed, dotted
+        "gridline_width": 0.5,          // Grid line width in points
+
+        // Color scale range
+        "ngrad": 60,                    // Number of color gradations in colorbar
+        "vmin": 0.0,                    // Min value for color scale
+        "vmax": 3000,                   // Max value for color scale [kg/m^3]
+
+        // Mask settings (for invalid/masked voxels)
+        "mask_color": "white",          // Color for masked regions
+        "mask_alpha": 0.3,              // Transparency (0=transparent, 1=opaque)
+
+        // Figure layout (sizes in inches)
+        "main_width": 10,               // Main plot width
+        "cbar_width": 0.5,              // Colorbar width
+
+        // Font sizes (in points)
+        "title_fontsize": 18,           // Plot title font size
+        "xy_label_fontsize": 16,        // X/Y axis label font size
+        "xy_tick_fontsize": 14,         // X/Y axis tick label font size
+        "cbar_label_fontsize": 16,      // Colorbar label font size
+        "cbar_tick_fontsize": 14,       // Colorbar tick label font size
+
+        // Detector position markers
+        "det_pos_marker_type": "*",     // Marker symbol: *, o, s, ^, etc.
+        "det_pos_makker_size": 16,      // Marker size in points
+        "det_pos_makker_color": "black",// Marker color
+
+        // Detector name labels (displayed above markers)
+        "det_name_show": true,          // true: show detector names, false: hide
+        "det_name_fontsize": 10,        // Font size for detector names
+        "det_name_offset_y": 0.02,      // Y offset from marker (in display units, km)
+        "det_name_color": "black",      // Text color for detector names
+      },
+
+      // -----------------------------------------------------------------------
+      // gifski_params: Settings for animated GIF generation
+      // -----------------------------------------------------------------------
+      "gifski_params": {
+        "fps": 0.5,                     // Frames per second (0.5 = 2 sec/frame)
+        "quality": 100,                 // GIF quality: 0-100 (100 = best)
+      },
+    },
+  },
+
+  // ===========================================================================
+  // det: binary-direct figures using plot_det_arrdet.py
+  // Reads det/arrdet_*.bin and checkpoint_*/det/arrdet_*.bin checkpoints
+  // (searched in the working directory and under the tmp directory, where
+  // the sweep driver writes bundles like tmp/checkpoint_m4/det/) directly,
+  // no tmp/*.tmp export needed. Gated by the top-level det_exec
+  // flag (default false). hist2d/g2bg rendering parameters are taken from the
+  // same hist2d/g2bg sections above. Since checkpoint PIPELINE_VERSION 7 the
+  // group efficiencies are stored in the binary, so the eff_* figures are
+  // drawn on this path too.
+  // ===========================================================================
+  "det": {
+    "auto_detect": true,                // true: scan for arrdet_*.bin files
+    // -------------------------------------------------------------------------
+    // out_dir: Where the figures go. A relative path is anchored at the
+    // auto_plot config's folder. When unset, figures go next to the binary
+    // (<source_dir>/plot_det_arrdet). Example: "out_dir": "figs",
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // n_jobs: Figure-drawing workers inside plot_det_arrdet.py. Positive =
+    // that many, 1 = one by one, 0 = all CPU cores, negative = leave that
+    // many cores free (-2 on 32 cores -> 30 workers).
+    // -------------------------------------------------------------------------
+    "n_jobs": -2,
+    // -------------------------------------------------------------------------
+    // exclude_patterns: Skip files matching these patterns (det only)
+    // Example: ["arrdet_g2pil_*"]
+    // -------------------------------------------------------------------------
+    "exclude_patterns": [],
+  },
+}

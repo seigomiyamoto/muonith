@@ -1,0 +1,33 @@
+{
+  // Penetrating-flux table builder config for the daemonflux model (m^-2 units).
+  // Run from this directory (fluxtable_build/daemon_groom):
+  //   ../../build-release/exec/make_peneflux_dFdR.exe make_peneflux_daemon.json5 FLUX_BUILDER
+  // Full walkthrough: docs/user-guide/flux-tables/build-and-install.md
+  "LOG_FILE": {
+    "log_level": {
+      "stdout_level": "info"
+    , "stderr_level": "error"
+    , "file_level":   "trace"
+    }
+  },
+  "FLUX_BUILDER": {
+    "pathin_logR": "../../fluxtable/daemon_groom/logRangeKgm2_logGeV_hokan_70001.txt" // Groom range-energy table (git-tracked copy)
+  , "tf_xcnt_logR": false
+  , "pathin_log_dFdE": "daemonflux_ke_m2.tmp" // daemon dF/dE table, unit-corrected to m^-2
+  , "tf_xcnt_dFdE": true
+  , "tf_ycnt_dFdE": true
+  , "pathout_log_penef_R_costhz": "peneflux/daemon-costhz-kgm2-log10peneflux-allinone.g2zbin"
+  , "pathout_dFdR_R_costhz": "peneflux/daemon-g2_dFdR_R_costhz.g2zbin"
+  , "dlogE": 5.0E-3
+  , "Rmin": 5.0E+3
+  , "Rmax": 5.0E+6
+  , "dR": 1.0E+3
+  , "tf_costhz_cnt": true
+  , "tf_range_cnt": false
+  // dF/dR divergence (numerical-noise) guard: a healthy table is finite and
+  // all-negative; positive or sign-flipping values abort the build (issue 90gy73).
+  , "tf_check_dFdR_divergence": true    // enable the check after building
+  , "dFdR_divergence_threshold": 0.05   // max sign-flip ratio per costhz slice
+  , "tf_dFdR_divergence_fatal": true    // true: abort on divergence; false: warn only
+  }
+}
