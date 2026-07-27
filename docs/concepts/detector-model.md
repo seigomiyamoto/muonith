@@ -23,7 +23,7 @@ A DetectorElement represents the **minimum angular element of the path-length co
     resolve is limited by three independent factors:
 
     - **Count statistics** — finer bins collect fewer muons each, so per-bin Poisson noise
-      grows. The [automatic bin grouping](#automatic-bin-grouping) below merges bins where
+      grows. The [automatic bin grouping](bin-grouping.md) merges bins where
       the signal is sparse to recover statistical significance.
     - **Detector geometry** — the physical channel size and the separation of the detection
       planes set the hardware angular response; bins finer than this response do not add
@@ -37,9 +37,9 @@ A DetectorElement represents the **minimum angular element of the path-length co
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `unique_index` | `Uqid` | Globally unique identifier |
-| `detid` | `int` | Parent detector panel ID |
-| `id_in_this_detector` | `Inthis` | Position within the parent panel |
+| `unique_index` | `Uqid` (int) | Globally unique identifier |
+| `detid` | `Detid` (int) | Parent detector panel ID |
+| `id_in_this_detector` | `Inthis` (int) | Position within the parent panel |
 | `ray3d` | `Ray3d` | Center position and look direction |
 | `txmin`, `txmax` | `float` | Angular bounds (horizontal) |
 | `tymin`, `tymax` | `float` | Angular bounds (vertical) |
@@ -100,40 +100,11 @@ DetectorPanel
       └── one element per angular bin
 ```
 
-![Grid2dBinGroup — grouped 2D grid bins for signal statistics](../assets/images/chart_Grid2dBinGroup_concept.drawio.png)
-
-#### Automatic Bin Grouping
-
-When `auto_divide_by_zsum` is enabled, the angular bins are recursively subdivided based on signal distribution:
-
-![auto_divide_by_zsum flow](../assets/images/auto_divide_by_signal_sum.dio.png)
-
-The example below shows the effect on forward-modeled signal data (synthetic 11-detector example, detector 01). The left panel is the per-element signal field in angular (tangent) coordinates with a logarithmic color scale; the right panel is the same signal after grouping, where each cell is one Grid2dBinGroup group — coarse where the signal is sparse, fine where the signal is dense.
-
-![Omuro DEM with the 11 synthetic detectors placed around the dome](../assets/images/omuro_dem_detectors.png)
-
-*Geographic setting of the synthetic example: the Omuro DEM (5 m resolution, elevation in meters above sea level) with the 11 detectors placed around the dome. Numbers along the lines indicate each detector's horizontal distance to the summit. The two panels below show the per-element and grouped signal for detector 01 (`det_2018_B`), located on the western foot of the dome.*
-
-| Per-element signal (before grouping) | Grouped bins (after grouping) |
-|:-:|:-:|
-| ![Per-element signal field in angular coordinates](../assets/images/bingroup_signal_per_element_det01.png) | ![Adaptively grouped Grid2dBinGroup bins](../assets/images/bingroup_grouped_det01.png) |
-
-#### OneToManyUOBimap — Bin Index Mapping
-
-![OneToManyUOBimap — bidirectional one-to-many map for bin group indexing](../assets/images/chart_OneToManyUOBimap_concept.drawio.png)
-
-Grid2dBinGroup uses **OneToManyUOBimap** to maintain bidirectional mappings between grouped bins and individual bins. This data structure provides:
-
-| Direction | Lookup | Complexity |
-|-----------|--------|------------|
-| One → Many | `get_vec_Many(One)` — retrieve all individual bins belonging to a group | O(k) where k = group size |
-| Many → One | `getOne(Many)` — find which group an individual bin belongs to | O(1) |
-
-**Key constraints:**
-
-- Each `Many` value maps to exactly **one** `One` key (uniqueness enforced on insert)
-- Each `One` key can map to **multiple** `Many` values
-- `insertOrOverwrite()` allows reassignment of a `Many` value to a different `One` key
+Where the signal is sparse, neighboring bins are adaptively merged into
+groups, and a bidirectional group ↔ bin index map keeps the two layers
+consistent. The grouping algorithm (`auto_divide_by_zsum`), a worked example,
+and the index map `OneToManyUOBimap` have their own page:
+[Bin Grouping](bin-grouping.md).
 
 ### Detector Orientation
 
@@ -145,35 +116,16 @@ The detector's viewing direction is defined by its Ray3d:
 
 ### From (tx, ty) to a ray direction
 
-Each detector element observes one angular bin, identified by two bin coordinates, `tx` (horizontal) and `ty` (vertical). This section explains how a `(tx, ty)` bin becomes the element's world-frame look direction, and how that direction feeds the expected signal count.
+Each element's bin coordinates `(tx, ty)` are converted to a world-frame ray
+direction in three steps: the bin **center** is taken in `angle_unit` space,
+turned into a detector-local unit vector (slopes in Tangent mode, spherical
+angles in Degree/Radian mode), and rotated by the panel's yaw/pitch/roll.
+The resulting direction fixes the zenith angle for the flux lookup and thus
+the expected count of the element.
 
-![Detector ray geometry: world axes (Up, North, East), the detector panel, the element ray with its tx and ty angular offsets from the panel center direction, and the yaw convention (0 deg = North, 90 deg = East, clockwise from above)](../assets/images/det_ray.dio.png)
-
-**1. Angle unit.** The meaning of `tx`/`ty` depends on `angle_unit`. In the default **Tangent** mode they are slopes, `tx = tan θx` and `ty = tan θy`; in **Degree** or **Radian** mode they are the angles themselves. All three are reduced to tangents internally.
-
-**2. Bin center.** A bin's representative direction uses the bin **center**, not an edge:
-
-$$c_i = \min + \left(i + \tfrac{1}{2}\right)\,\Delta, \qquad \Delta = \frac{\max - \min}{n_{\text{bin}}}$$
-
-Because the bins are uniform in `angle_unit` space, in Tangent mode they are equal-width in slope — not in degrees.
-
-**3. Local direction.** The center `(tx, ty)` is turned into a unit vector in the detector-local frame, whose forward axis is `+y`. In Tangent mode:
-
-$$\mathbf{v}_{\text{local}} = \frac{(t_x,\; 1,\; t_y)}{\sqrt{1 + t_x^2 + t_y^2}}$$
-
-Degree and Radian modes use a spherical form instead, `v = (cos θy · sin θx, cos θy · cos θx, sin θy)`. The two forms agree only near zero angle, so the same `(tx, ty)` value does not mean the same direction across units.
-
-**4. Local → world.** The local vector is rotated into world coordinates by the detector's orientation:
-
-$$\mathbf{v}_{\text{world}} = R\,\mathbf{v}_{\text{local}}, \qquad R = R_z(-\text{yaw})\,R_y(\text{pitch})\,R_x(\text{roll})$$
-
-using the default `LOCAL` rotation type. `yaw` is negated because it is a clockwise bearing (0° = North), while the rotation matrix follows the right-hand convention.
-
-**5. From ray to signal count.** The world direction fixes the zenith cosine `cos θz`, which selects the penetrating-muon flux $F$. The expected count of one element is then
-
-$$N = F \cdot S_{\text{eff}} \cdot \Delta\Omega \cdot T \cdot \varepsilon$$
-
-where $\Delta\Omega$ is the exact four-corner solid angle of the bin (not `Δtx · Δty`), $S_{\text{eff}}$ the effective area, $T$ the exposure time, and $\varepsilon$ the optional detector efficiency. These symbols match the flux notation in [Muography](muography.md) and [Depth vs. Spatial Resolution](depth-resolution.md).
+The full derivation — including the Tangent-vs-Degree grid distortion and the
+comparison with [muonith-path-view](../auxiliary-tools/path-view.md) — has its
+own page: [From (tx, ty) to a Ray Direction](detector-angles.md).
 
 ## DetectorPanelArray
 

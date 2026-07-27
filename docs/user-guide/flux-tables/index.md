@@ -9,7 +9,7 @@ different absorber material.
     The shipped tables and this entire walkthrough assume **standard rock**
     (⟨Z/A⟩ = 0.5, density 2.65 g/cm³, mean excitation energy I = 136.4 eV) as the
     absorber composition. Density itself is *not* assumed: the pipeline works in
-    density-length R = density × path length [kg/m²], so local density enters through
+    density-length X = density × path length [kg/m²], so local density enters through
     the voxel densities. Only the *composition* per unit mass is fixed. For media whose
     composition differs substantially from standard rock (water, ice, iron, ...),
     regenerate the range table for that material (see [Range Table](range-table.md))
@@ -23,8 +23,8 @@ Two tables are produced, both as `.g2zbin` binary grids (plus `.txt` dumps):
 
 | Table | Content | Axes | Scale |
 |-------|---------|------|-------|
-| Penetrating flux F | $\log_{10} F$ [1/(m² sr s)] | cos(θ_zenith) × density-length R [kg/m²] | log10 |
-| Flux derivative dF/dR | $dF/dR$ [1/(m² sr s)/(kg/m²)] | density-length R × cos(θ_zenith) | linear (all values ≤ 0) |
+| Penetrating flux F | $\log_{10} F$ [1/(m² sr s)] | cos(θ_zenith) × density-length X [kg/m²] | log10 |
+| Flux derivative dF/dR | $dF/dR$ [1/(m² sr s)/(kg/m²)] | density-length X × cos(θ_zenith) | linear (all values ≤ 0) |
 
 ## Build pipeline
 

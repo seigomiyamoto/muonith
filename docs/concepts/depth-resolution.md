@@ -6,9 +6,9 @@ This page explains how MUONITH evaluates the **minimum detectable anomaly size a
 
 Muographic observation operates under **finite resources**. Even with an ideal detector, the cosmic-ray muon flux at a given zenith angle is fixed by nature. The total number of muons collected by a detector element is:
 
-$$N_\mu = F(\theta, R) \times S_{\text{eff}} \times \Delta\Omega \times T$$
+$$N_\mu = F(\theta, X) \times S_{\text{eff}} \times \Delta\Omega \times T$$
 
-where $F$ is the penetrating muon flux (a function of zenith angle $\theta$ and density length $R$), $S_{\text{eff}}$ is the effective detector area, $\Delta\Omega$ is the solid angle of the angular bin, and $T$ is the observation time.
+where $F$ is the penetrating muon flux (a function of zenith angle $\theta$ and density length $X$), $S_{\text{eff}}$ is the effective detector area, $\Delta\Omega$ is the solid angle of the angular bin, and $T$ is the observation time.
 
 This leads to a **fundamental tradeoff**:
 
@@ -17,7 +17,7 @@ This leads to a **fundamental tradeoff**:
 
 In addition:
 
-- **Deeper targets** require muons to traverse more rock ($R$ increases), so $F$ drops exponentially, further reducing $N_\mu$.
+- **Deeper targets** require muons to traverse more rock ($X$ increases), so $F$ drops exponentially, further reducing $N_\mu$.
 - **Detector area** and **observation time** are practically limited by cost, logistics, and site access.
 
 Before committing to an expensive field campaign, one must therefore answer:

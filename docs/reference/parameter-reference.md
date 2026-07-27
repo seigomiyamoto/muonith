@@ -275,7 +275,7 @@ The panels below show the per-element signal-to-noise ratio (`sig/noi`) for
 detector `det_2018_A` of the Omuro synthetic array (green = high SNR,
 yellow ≈ 1, orange/red = low SNR). For where `det_2018_A` and the other
 detectors sit on the dome, see the
-[Omuro detector layout](../concepts/detector-model.md#automatic-bin-grouping).
+[Omuro detector layout](../concepts/bin-grouping.md#automatic-bin-grouping).
 This comparison is the direct basis for preferring `1.0E-3` over `1.0E-2` in the
 Omuro synthetic study.
 

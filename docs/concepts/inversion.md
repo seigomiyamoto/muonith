@@ -52,7 +52,7 @@ In the MAP formulas below, $\mathbf{A} \equiv \mathbf{A}_N$.
 !!! note "Why linearize at the count level"
     Building $\mathbf{A}_N$ directly — rather than treating the path-length relation $X_i = \sum_j L_{ij}\rho_j$ as the observation equation and linearizing the flux response around it as a whole-bin operation — has two practical benefits:
 
-    1. **Bin merging is linear in $\mathbf{A}_N$.** If angular bins $\{i\}$ are merged into a single super-bin $k$ with $N'_k = \sum_i N_i$, then $A'_{N,kj} = \sum_i A_{N,ij}$ — i.e. merging is just summation, the same as for the observed counts. This is what enables the adaptive bin grouping in [Grid2dBinGroup](detector-model.md#detectorpanel). When a ridge line crosses a coarse bin, the sum is taken only over sub-bins below the ridge.
+    1. **Bin merging is linear in $\mathbf{A}_N$.** If angular bins $\{i\}$ are merged into a single super-bin $k$ with $N'_k = \sum_i N_i$, then $A'_{N,kj} = \sum_i A_{N,ij}$ — i.e. merging is just summation, the same as for the observed counts. This is what enables the adaptive bin grouping in [Grid2dBinGroup](bin-grouping.md). When a ridge line crosses a coarse bin, the sum is taken only over sub-bins below the ridge.
     2. **Higher numerical accuracy.** The muon flux varies nonlinearly with path and elevation angle, so a single linearization at the coarse-bin level degrades as bins become coarser. The $\mathbf{A}_N$ form keeps the derivative $dN_i/dX_i$ evaluated at the correct $X_{0,i}$ for each underlying small bin, then sums — preserving accuracy even for merged bins.
 
 ## MAP Estimation

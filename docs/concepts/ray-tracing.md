@@ -123,7 +123,7 @@ The path length matrix $\mathbf{L}$ (with elements $L_{ij}$ defined above) is th
 
 $$A_{N,ij} \;=\; L_{ij}\, \frac{dN_i}{dX_i}\!\left(X_{0,i}\right)$$
 
-which is Eq. (18) of [Nagahara et al. (2022)](#nagahara2022). See [3D Inversion — Observation Matrix Construction](inversion.md#observation-matrix-construction) for the full derivation, why linearization is done at the count level, and the bin-merging property used by [Grid2dBinGroup](detector-model.md#detectorpanel).
+which is Eq. (18) of [Nagahara et al. (2022)](#nagahara2022). See [3D Inversion — Observation Matrix Construction](inversion.md#observation-matrix-construction) for the full derivation, why linearization is done at the count level, and the bin-merging property used by [Grid2dBinGroup](bin-grouping.md).
 
 ## References
 

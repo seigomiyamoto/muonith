@@ -93,7 +93,10 @@ nav:
       - Muography: concepts/muography.md
       - Coordinate System: concepts/coordinate-system.md
       - Grid System: concepts/grid-system.md
-      - Detector Model: concepts/detector-model.md
+      - Detector Model:
+          - Overview: concepts/detector-model.md
+          - Bin Grouping: concepts/bin-grouping.md
+          - "From (tx, ty) to a Ray Direction": concepts/detector-angles.md
       - Ray Tracing: concepts/ray-tracing.md
       - 3D Inversion: concepts/inversion.md
       - Depth vs. Spatial Resolution: concepts/depth-resolution.md

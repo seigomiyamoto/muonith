@@ -12,7 +12,7 @@ rather than repeating the table.
 |---|---|---|---|
 | PL | Path length: geometric length of a ray through matter | m | [Coordinate System — Units](../concepts/coordinate-system.md#units) |
 | DL / density length | Density integrated along the ray path | kg/m² | [Coordinate System — Units](../concepts/coordinate-system.md#units) |
-| tx, ty | Angular bin coordinates of a detector element (horizontal, vertical) | tangent / degree / radian (per `angle_unit`) | [Detector Model — From (tx, ty) to a ray direction](../concepts/detector-model.md#from-tx-ty-to-a-ray-direction) |
+| tx, ty | Angular bin coordinates of a detector element (horizontal, vertical) | tangent / degree / radian (per `angle_unit`) | [From (tx, ty) to a Ray Direction](../concepts/detector-angles.md) |
 | uqid (`Uqid`) | Globally unique detector-element index | — | [Coordinate System — Key Types](../concepts/coordinate-system.md#key-types) |
 | uqiv (`Uqiv`) | Globally unique (linearized) voxel index | — | [Coordinate System — Key Types](../concepts/coordinate-system.md#key-types) |
 | shell / `ShellPL` | Density-independent path length through the terrain shells around the voxel grid (upper / lower / lateral) | m | [Detector Model — Shell path lengths](../concepts/detector-model.md#shell-path-lengths-shellpl) |

@@ -23,17 +23,17 @@ counting the muons arriving from different directions, one obtains a
 line of sight.
 
 $$
-D = \int \rho(l)\, dl
+X = \int \rho(l)\, dl
 $$
 
 $$
-N_\text{muon}(S, \Delta \Omega, T) = T \times\int\limits_{\Delta\Omega} F(D,d\Omega)  S(d\Omega) d\Omega
+N_\text{muon}(S, \Delta \Omega, T) = T \times\int\limits_{\Delta\Omega} F(X,d\Omega)  S(d\Omega) d\Omega
 $$
 
 where:
 
-- $D$ is the density length (integrated density along the muon path)
-- $F(D,d\Omega)$ is the penetrating muon flux as a function of density length
+- $X$ is the density length (integrated density along the muon path)
+- $F(X,d\Omega)$ is the penetrating muon flux as a function of density length
 - $S(d\Omega)$ is the effective detector area
 - $\Delta\Omega$ is the solid angle of the angular bin
 - $T$ is the exposure time

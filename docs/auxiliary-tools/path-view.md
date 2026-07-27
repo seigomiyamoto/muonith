@@ -24,6 +24,9 @@ This tool helps verify detector placement and angular coverage before running th
   <figcaption>Example output for Showa-shinzan (det_08): black lines show muon paths through air, white lines show paths through rock. The animation sweeps through elevation angles.</figcaption>
 </figure>
 
+!!! note "All beams in one frame share the same elevation angle"
+    Each frame fixes one elevation angle $\theta_{\mathrm{elev}}$ and sweeps the azimuth $\phi$, so the drawn beams lie on a cone of constant physical elevation — they are not contained in a single plane. Each beam direction is the unit vector $(v_x, v_y, v_z) = (\cos\theta_{\mathrm{elev}}\cos\phi,\ \cos\theta_{\mathrm{elev}}\sin\phi,\ \sin\theta_{\mathrm{elev}})$. This holds for every `angle_unit` mode (`deg`, `rad`, `tangent`); see [`direction_setup` — Angle Configuration](#direction_setup-angle-configuration) for the exact convention. This differs from MUONITH's `DetectorPanel` in Tangent mode, where the bin coordinates are slopes about the panel's forward axis ($t_x = v_x/v_y$, $t_y = v_z/v_y$): a row of constant $t_y$ is a tilted plane of directions, not a cone of constant elevation; see [From (tx, ty) to a Ray Direction](../concepts/detector-angles.md).
+
 ## Dependencies
 
 | Package | Purpose |
@@ -222,6 +225,36 @@ When multiple detector files are specified, each detector is processed sequentia
 | `azimuth_range` | Azimuth sweep range, e.g., `[-45, 45, 5]` |
 | `elevation_mode` | `"interval"` or `"array"` |
 | `elevation_range` | Elevation sweep range, e.g., `[45, 0, -3]` (high → low) |
+
+Each beam direction is a unit vector built from one elevation angle $\theta_{\mathrm{elev}}$ and one azimuth angle $\phi$:
+
+$$
+\begin{aligned}
+v_z &= \sin\theta_{\mathrm{elev}} \\
+v_x &= \cos\theta_{\mathrm{elev}} \cos\phi \\
+v_y &= \cos\theta_{\mathrm{elev}} \sin\phi
+\end{aligned}
+$$
+
+where $\phi$ is the internal azimuth after the `azimuth_zero` / `azimuth_center` conversions. The elevation $\theta_{\mathrm{elev}}$ is fixed while the azimuth is swept, so the beams for one elevation value lie on a cone of constant physical elevation in every `angle_unit` mode.
+
+`angle_unit` selects how the numbers in `azimuth_range` / `elevation_range` are read, for both azimuth and elevation. Below, $u$ denotes each raw number written in those ranges:
+
+| `angle_unit` | Interpretation of each value $u$ |
+|--------------|----------------------------------|
+| `deg` | angle in degrees |
+| `rad` | angle in radians |
+| `tangent` | slope: the angle is $\arctan u$. Equal steps in $u$ give unequal angular steps. |
+
+Note: when `angle_unit` is not `deg`, the `azimuth_center` offset is added as radians.
+
+Comparison with MUONITH's `DetectorPanel` (see [From (tx, ty) to a Ray Direction](../concepts/detector-angles.md)); $u$ denotes each raw number written in `azimuth_range` / `elevation_range` (see the table above):
+
+| Tool / mode | Direction from bin values | Row of constant vertical value |
+|---|---|---|
+| muonith-path-view, every `angle_unit` | spherical, $v_z = \sin\theta_{\mathrm{elev}}$ (`tangent` only converts the input, $\theta_{\mathrm{elev}} = \arctan u$) | cone of constant elevation |
+| MUONITH `DetectorPanel`, Degree / Radian | spherical, $v_z = \sin t_y$ | cone of constant elevation |
+| MUONITH `DetectorPanel`, Tangent | slopes, $t_y = v_z / v_y$ | tilted plane |
 
 #### `line_path` — Ray Path Rendering
 

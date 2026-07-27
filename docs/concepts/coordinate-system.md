@@ -55,7 +55,7 @@ MUONITH supports three angular representations, selectable per detector panel:
 
 The angular unit is configured through the detector parameter file and applies consistently to all detector elements within a panel.
 
-The detector's angular bins are addressed by two coordinates, `tx` (horizontal) and `ty` (vertical), interpreted in this unit. How a `(tx, ty)` bin is turned into a look direction is described in [From (tx, ty) to a ray direction](detector-model.md#from-tx-ty-to-a-ray-direction).
+The detector's angular bins are addressed by two coordinates, `tx` (horizontal) and `ty` (vertical), interpreted in this unit. How a `(tx, ty)` bin is turned into a look direction is described in [From (tx, ty) to a Ray Direction](detector-angles.md).
 
 ### Yaw Convention
 
@@ -81,8 +81,8 @@ MUONITH defines several index types for grid operations:
 |------|-----------|-------------|
 | `Ixiy` | `std::array<int, 2>` | 2D grid index `[ix, iy]` |
 | `Ixiyiz` | `std::array<int, 3>` | 3D grid index `[ix, iy, iz]` |
-| `Uqiv` | integer | Unique voxel index (linearized) |
-| `Uqid` | integer | Unique detector element index |
+| `Uqiv` | `int` | Unique voxel index (linearized) |
+| `Uqid` | `int` | Unique detector element index |
 
 ## Spatial Objects
 
@@ -94,7 +94,7 @@ $$\mathbf{r}(t) = \mathbf{p} + t\,\hat{\mathbf{d}}, \quad t \geq 0$$
 
 The direction vector is automatically normalized to unit length upon construction.
 
-For a detector element, the direction is built from its angular bin `(tx, ty)`; see [From (tx, ty) to a ray direction](detector-model.md#from-tx-ty-to-a-ray-direction) in the Detector Model page.
+For a detector element, the direction is built from its angular bin `(tx, ty)`; see [From (tx, ty) to a Ray Direction](detector-angles.md).
 
 ### AABB (Axis-Aligned Bounding Box)
 

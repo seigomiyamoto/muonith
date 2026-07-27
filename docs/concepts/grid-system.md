@@ -121,7 +121,7 @@ A 3D grid composed of three Grid1d axes (x, y, z):
 | Property | Description |
 |----------|-------------|
 | `Ixiyiz` | 3D index type: `std::array<int, 3>` = `[ix, iy, iz]` |
-| `Uqiv` | Unique voxel index (linearized) |
+| `Uqiv` (int) | Unique voxel index (linearized) |
 | AABB3d | Cached bounding box for intersection tests |
 
 Grid3d supports 3D ray traversal via `get_hit_voxel_index()`, also using the DDA algorithm.
