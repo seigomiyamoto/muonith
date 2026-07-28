@@ -69,6 +69,7 @@ def build_parser():
                       help='Output filename (default: auto-generated from input name)')
   parser.add_argument('--dpi', type=int, default=300, help='Output DPI')
   parser.add_argument('--title', type=str, default=None, help='Plot title (default: filename)')
+  parser.add_argument('--title-fontsize', type=int, default=18, help='Title font size (default: 18)')
 
   # Colormap settings
   parser.add_argument('--colormap', type=str, default='jet', help='Matplotlib colormap name')
@@ -434,7 +435,7 @@ def render_plot(X, Y, Z_plot, x_edges, y_edges, norm, cmap, contour_levels, args
   vert_inch = hori_inch / aspect_ratio if aspect_ratio != 0 else hori_inch
 
   # Font sizes
-  title_fontsize = 18
+  title_fontsize = getattr(args, 'title_fontsize', 18)
   label_fontsize = 16
   tick_fontsize = 14
 

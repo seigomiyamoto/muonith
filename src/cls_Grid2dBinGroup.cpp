@@ -1343,6 +1343,26 @@ bool Grid2dBinGroup::is_all_signal_noise_group_larger_than_thres(
   return true;
 }
 
+// check whether every group satisfies ixlen >= ixlen_min and iylen >= iylen_min.
+// Violating groups are reported with LOG_ERROR; the caller decides to throw
+// (this function must stay throw-free so it can run inside an OpenMP loop).
+bool Grid2dBinGroup::is_all_group_ixiylen_larger_than_min(
+  const int ixlen_min, const int iylen_min ) const
+{
+  const Detid detid = get_detid();
+  const auto set_igroup = get_set_igroup();
+  bool tf_all_larger = true;
+  for( const auto igroup : set_igroup ){
+    const auto [ixlen,iylen] = get_ixiylen(igroup);
+    if( ixlen < ixlen_min || iylen < iylen_min ){
+      LOG_ERROR(" detid={}, igroup={} has ixlen={}, iylen={} smaller than ixlen_min={}, iylen_min={}"
+        , detid, igroup, ixlen, iylen, ixlen_min, iylen_min);
+      tf_all_larger = false;
+    }
+  }
+  return tf_all_larger;
+}
+
 
 // merge algorithm
 // search around the seed group and merge bins until z_sum reaches thres or above

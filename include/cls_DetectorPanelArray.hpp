@@ -663,6 +663,14 @@ class DetectorPanelArray final {
         , prm_bingrp.tf_prefer_split_x);
     };
 
+    /// @brief Check that every group of every DetectorPanel satisfies
+    ///        ixlen >= ixlen_min and iylen >= iylen_min.
+    /// @throws std::runtime_error If any detector has a group smaller than the minimum.
+    /// @note Uses OpenMP. Violations are only recorded inside the parallel loop;
+    ///       the exception is thrown after the loop.
+    void mp_check_group_ixiylen_min_all(
+      const int ixlen_min, const int iylen_min ) const;
+
     /// @brief Copy signal_group to vec_signal_group for all DetectorPanel
     void mp_calc_vec_signal_noise_group_all( );
 

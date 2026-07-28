@@ -73,8 +73,8 @@ $det_files_block
   , "is_avail_under_thres": false // is_avail setting when below PL/DL threshold
   , "signal_under_thres": -1.0 // signal value when below threshold
   , "noise_under_thres": -1.0 // noise value when below threshold
-  , "tf_run_1st_grouping": true // Whether to perform initial bin grouping
-  , "tf_run_auto_grouping": true // Whether to perform automatic bin grouping
+  , "tf_run_1st_grouping": $tf_run_1st_grouping // Whether to perform initial bin grouping
+  , "tf_run_auto_grouping": $tf_run_auto_grouping // Whether to perform automatic bin grouping
   , "igroup_start": 0 // Starting group ID
   , "nx_div_init": 4 // Initial number of divisions (x direction)
   , "ny_div_init": 2 // Initial number of divisions (y direction)
@@ -83,9 +83,9 @@ $det_files_block
   , "iylen_min": 5 // Bins with iylen below this are not divided
   , "tf_prefer_split_x": false // Whether to split in x direction when xlen==ylen in AutoGrouping
   , "nloop_limit": 10000 // Maximum loop count
-  , "n_detector_grouping_manual": 0 // Number of detectors for manual grouping file
-  , "vec_tf_read_bin_group_list": [] // Flags for manual grouping per detector
-  , "vec_file_path_bin_group_list": [] // File paths for manual grouping lists
+  , "n_detector_grouping_manual": $n_detector_grouping_manual // Number of detectors for manual grouping (>0 enables it; read only when tf_run_1st_grouping and tf_run_auto_grouping are both false)
+  , "vec_tf_read_bin_group_list": $vec_tf_read_bin_group_list // Per-detector flags (size = number of detectors) to read a manual bin-group list
+  , "vec_file_path_bin_group_list": $vec_file_path_bin_group_list // Per-detector bin-list file paths; each line is "txlow txup tylow tyup" (panel angle_unit, default tangent)
   },
   "GRID2D_PILLAR_PARAMETERS": {
     "name": "g2pil_${z_pitch}m_${base_density_int}kgm3" // Name for GRID2D_PILLAR_PARAMETERS. Set freely.

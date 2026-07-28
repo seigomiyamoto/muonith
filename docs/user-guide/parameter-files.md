@@ -359,6 +359,97 @@ Controls angular bin grouping for signal-to-noise optimization. Bins with insuff
 }
 ```
 
+#### Manual bin grouping
+
+To specify groups yourself instead of the automatic subdivision, disable both
+grouping passes and provide one rectangle-list file per detector:
+
+```json5
+"BIN_GROUP_PARAMETERS": {
+  // ... same keys as above ...
+  "tf_run_1st_grouping": false,   // both passes must be false
+  "tf_run_auto_grouping": false,  //   to enable the manual route
+  "n_detector_grouping_manual": 2,                  // number of detectors with a manual list
+  "vec_tf_read_bin_group_list": [true, true],       // one flag per detector
+  "vec_file_path_bin_group_list": ["bin_group_list.txt", "bin_group_list.txt"] // one path per detector
+}
+```
+
+Each list file has one rectangle (= one group) per line, `xlow xup ylow yup`,
+in the panel's `angle_unit` (default: tangent). For example, four quadrants
+covering tx in [-1.6, 1.6] and ty in [0, 1.6]:
+
+```text
+-1.6 0.0 0.0 0.8
+0.0 1.6 0.0 0.8
+-1.6 0.0 0.8 1.6
+0.0 1.6 0.8 1.6
+```
+
+The rectangles must tile the panel's field of view without gaps, and two group
+rectangles must not overlap; every bin center must fall inside a rectangle.
+Violations stop the run with an error naming the offending rectangles or bin.
+
+To leave part of the field of view out of the analysis on purpose, declare it
+with the `exclude` keyword instead of simply omitting it:
+
+```text
+exclude -1.6 1.6 0.0 0.05
+-1.6 0.0 0.05 0.8
+0.0 1.6 0.05 0.8
+-1.6 0.0 0.8 1.6
+0.0 1.6 0.8 1.6
+```
+
+A declared region counts as tiled, so it does not trigger the gap check. The
+bins inside it belong to no group at all, so they appear in no group export or
+figure and contribute to no row of the inversion matrix. Omitting the same band
+*without* the keyword still stops the run — that is what separates a deliberate
+exclusion from a rectangle you forgot to write.
+
+A group rectangle overlapping a declared region is not an error: the rectangle
+is dropped whole at load time and its bins count as excluded too. Because the
+whole rectangle disappears, the removed area can be wider than the declared
+band — in the example above you could keep the two lower rectangles at
+`ylow` = 0.0, but both would then be dropped and the whole lower half would
+vanish. With a fine grid the drop removes just the touching row, so a plain
+full-grid list plus one `exclude` line is the easiest way to cut a band off
+the bottom of the field of view. Every drop is reported in the log with the
+number of dropped rectangles. Overlaps between two group rectangles still stop
+the run.
+
+Blank lines and lines starting with `#` are skipped. Any other leading token,
+`EXCLUDE` included, stops the run and names the offending line number, so a
+malformed file is never read only part-way.
+
+To verify a configuration, run the pipeline through detector construction only,
+e.g. `bash run_prg.sh true 42 4`, and check the log for
+`Loaded RectAngularBinGroup from <file> (nbin=N, nbin_exclude=M, nbin_dropped=K)`
+lines — `N` is the number of surviving group rectangles, `M` the number of
+`exclude` lines, and `K` the number of rectangles dropped for overlapping an
+excluded region (each drop is also announced as
+`dropped K group rectangle(s) overlapping M excluded region(s) ...`).
+Excluded bins are reported once per detector as
+`... bins excluded on purpose by M exclude region(s) ...`. See
+[Parameter Reference — BIN_GROUP_PARAMETERS](../reference/parameter-reference.md#bin_group_parameters)
+for the key list and file format.
+
+A ready-made example ships with the tutorial station. Adding
+`manual_bin_group_file` to a `swp001_runs` entry in `param_sites/<site>.json5`
+makes `setup_station.sh` generate that run with the manual route enabled and
+copy the named list file from `scripts/templates/` into the run directory:
+
+```bash
+bash setup_station.sh tutorial
+cd work/tutorial/manual-bin-merge-rec3d
+bash run_prg.sh true 42
+```
+
+This run uses `bin_group_list_16x8.txt` (128 rectangles: tx in [-1.6, 1.6],
+ty in [0, 1.6], 0.2 pitch) and runs through 3-D reconstruction. Check the log
+for `Loaded RectAngularBinGroup from bin_group_list_16x8.txt (nbin=128)` —
+one line per detector.
+
 ### `NOISE_PARAMETERS`
 
 Models measurement noise added to the expected muon counts before inversion. Noise

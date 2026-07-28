@@ -60,11 +60,71 @@ def load_data(file_name):
 
   return meta, data
 
+# Fields whose stored value is still the placeholder written when the group
+# vectors are created carry no information: the placeholder falls outside every
+# color range, so the figure comes out as one flat out-of-range color, or (for
+# a log color axis whose color_under is the background) as an empty frame. Each
+# entry maps a plotted field to the column(s) it is built from and the
+# placeholder those columns hold before the value is computed
+# (include/cls_Grid2dBinGroup.hpp:47-63). A field derived from columns that are
+# all placeholders is listed with those columns, not with itself.
+UNCOMPUTED_MARKER = {
+  "sig":              (["sig"], 0.0),
+  "noi":              (["noi"], 0.0),
+  "signoi":           (["sig", "noi"], 0.0),
+  "dens_low":         (["dens_low"], 0.0),
+  "dens_cnt":         (["dens_cnt"], 0.0),
+  "dens_upp":         (["dens_upp"], 0.0),
+  "dens_err":         (["dens_low", "dens_upp"], 0.0),
+  "dens_cnt_diff":    (["dens_cnt"], 0.0),
+  "delta_nmuon_low":  (["delta_nmuon_low"], 0.0),
+  "delta_nmuon_cnt":  (["delta_nmuon_cnt"], 0.0),
+  "delta_nmuon_upp":  (["delta_nmuon_upp"], 0.0),
+  "volume":           (["volume"], 0.0),
+  "eff_low":          (["eff_low"], -1.0),
+  "eff_cnt":          (["eff_cnt"], -1.0),
+  "eff_upp":          (["eff_upp"], -1.0),
+  "eff_err":          (["eff_low", "eff_upp"], -1.0),
+}
+
+def find_uncomputed_reason(field, data):
+  """
+  Function that reports why a field cannot be plotted yet, or None when it can.
+
+  The returned string is a complete phrase ready to be logged. Only the
+  available groups (is_avail == 1) are inspected, because the drawing loop
+  skips the others anyway. When every available group still holds the
+  placeholder in every source column, the field was never computed.
+  """
+  if "is_avail" not in data.columns:
+    return None
+  avail = data[data["is_avail"] == 1]
+  if avail.empty:
+    return "no group is available (is_avail == 1), so the figure would be empty"
+  # A derived field can be undefined everywhere without holding a placeholder:
+  # sig_over_noi is NaN wherever the noise is 0 (see load_data), so a run with
+  # no noise at all leaves every cell unpaintable.
+  if field in avail.columns and not np.isfinite(avail[field]).any():
+    return f"{field} is undefined in every available group (no finite value)"
+  entry = UNCOMPUTED_MARKER.get(field)
+  if entry is None:
+    return None
+  columns, marker = entry
+  if any(c not in avail.columns for c in columns):
+    return None
+  if all((avail[c] == marker).all() for c in columns):
+    return (f"{field} is not computed ({'/'.join(columns)} still {marker} "
+            f"in every available group)")
+  return None
+
 def plot_field(field, output_prefix, str_det_id, params, meta, data, png_dpi
             , output_dir, datafile, data0=None, rect_line_width=0.2, rect_edge_color="black"
             , bg_color="white", grid_color="grey", gridline_type="dotted", gridline_width=1.0):
   """
   Function that generates a plot for a single field.
+
+  Returns True when a PNG was written, False when nothing was drawn (missing
+  parameters, or the field is not computed yet).
   """
   n_grad  = params.get("ngrad")
   vmin_in = params.get("vmin")
@@ -73,7 +133,17 @@ def plot_field(field, output_prefix, str_det_id, params, meta, data, png_dpi
 
   if n_grad is None or vmin_in is None or vmax_in is None or alpha_in is None:
     print(f"Error: Field '{field}' is missing required parameters.")
-    return
+    return False
+
+  output_file_name = os.path.join(output_dir, f'{output_prefix}det{str_det_id}_{field}.png')
+
+  # A field whose value was never computed would be drawn as one flat
+  # out-of-range color; write no file at all and leave a single log line.
+  uncomputed_reason = find_uncomputed_reason(field, data)
+  if uncomputed_reason is not None:
+    print(f"[SKIP] {os.path.basename(output_file_name)}: "
+          f"{uncomputed_reason}; no figure written.")
+    return False
 
   xmin = meta["xmin"]
   xmax = meta["xmax"]
@@ -140,7 +210,7 @@ def plot_field(field, output_prefix, str_det_id, params, meta, data, png_dpi
     elif field == "dens_cnt_diff":
       if data0 is None:
         print("Warning: 'dens_cnt_diff' requested but no datafile0 provided.")
-        return
+        return False
       try:
         row0 = data0.iloc[index]
       except IndexError:
@@ -212,7 +282,6 @@ def plot_field(field, output_prefix, str_det_id, params, meta, data, png_dpi
   label_str = f"{datafile} ({timestamp_str})"
   ax.text(0.5, 1.02, label_str, transform=ax.transAxes, fontsize=12, ha='center', va='bottom')
 
-  output_file_name = os.path.join(output_dir, f'{output_prefix}det{str_det_id}_{field}.png')
   plt.savefig(output_file_name, dpi=png_dpi)
   plt.close(fig)
   print(f"Saved {output_file_name}")
@@ -220,6 +289,8 @@ def plot_field(field, output_prefix, str_det_id, params, meta, data, png_dpi
   # If dump_txt is True, dump the field values to a TXT file
   if params.get("dump_txt", False):
     dump_field_values(data, field, str_det_id, output_dir, output_prefix)
+
+  return True
 
 def extract_det_number(basename):
   """

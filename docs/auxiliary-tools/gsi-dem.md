@@ -1,7 +1,7 @@
 # muonith-gsi-dem
 
 !!! note "External repository"
-    muonith-gsi-dem is maintained in a separate repository (developed as `plotGsiZipDEM`, currently private). This page documents its stable interface for use with MUONITH. To obtain the tool, contact the maintainers.
+    muonith-gsi-dem is maintained in a separate repository. This page documents its stable interface for use with MUONITH. To obtain the tool, contact the maintainers.
 
 ## Overview
 

@@ -108,7 +108,7 @@ per-depth/sweep subdirectories (e.g. `depth001/`, `swp001/`), and ready-to-use
 `auto_plot.json5` configurations.
 
 ```bash
-python3 scripts/init_work_site.py param_sites/<station>.json5 --run
+python3 scripts/init_work_site.py param_sites/<station>.json5 --make-detparams
 ```
 
 Typical use is to bootstrap a new station (e.g. `tarumae-dome`, `tarumae-mid01`)

@@ -2208,47 +2208,85 @@ int DetectorPanel::assign_1st_igroup(
 // Parallelized example of grouping_by_bin_list.
 void DetectorPanel::grouping_by_bin_list(const std::filesystem::path &path_in)
 {
-  // 1) Allocate memory.
-  g2bg_.init_vec_vec();
+  // NOTE: g2bg_.init_vec_vec() must NOT be called here. The caller
+  // (DetectorPanelArray::create/create_sprs) has already copied the per-element
+  // signal/noise/is_avail into g2bg_; re-initializing would zero the signal and
+  // set every bin is_avail=false, dropping all groups. Same precondition as
+  // assign_1st_igroup() on the automatic route.
 
-  // 2) Set name based on filename.
+  // 1) Set name based on filename.
   const std::string basename = path_in.stem().string();
   g2bg_.set_name("g2bg_" + basename);
 
-  // 3) Load RectAngularBinGroup and get bin info.
+  // 2) Load RectAngularBinGroup and get bin info.
   const RectAngularBinGroup rect_bin_group(path_in);
   rect_bin_group.check_no_overlap();
   rect_bin_group.check_no_void();
 
-  // 4) Prepare a vector to store results temporarily.
+  // 3) Prepare a vector to store results temporarily.
   //    Store nbinx * nbiny entries of ((ix, iy), igroup).
   const int nbinx = get_nbinx();
   const int nbiny = get_nbiny();
   std::vector<std::pair<Ixiy, Igroup>> vec_tmpResult;
   vec_tmpResult.resize(nbinx * nbiny);
 
-  // 5) Compute (ix, iy) -> igroup in parallel and store in vec_tmpResult.
+  // Bins inside a declared excluded region keep excluded_index and are never
+  // registered in the bin->group bimap, so they belong to no group at all.
+
+  // 4) Compute (ix, iy) -> igroup in parallel and store in vec_tmpResult.
   //    (Do not insert into the map yet.)
-  #pragma omp parallel for collapse(2) schedule(static)
+  int n_no_index = 0; // bins not covered by any rectangle
+  int n_excluded = 0; // bins inside a declared excluded region
+  #pragma omp parallel for collapse(2) schedule(static) reduction(+:n_no_index) reduction(+:n_excluded)
   for (int iy = 0; iy < nbiny; ++iy) {
     for (int ix = 0; ix < nbinx; ++ix) {
       const int idx = iy * nbinx + ix;
       const DetectorElement& ele = getDetectorElement(ix, iy);
       const double tx = ele.get_tx();
       const double ty = ele.get_ty();
-      const Igroup igroup = rect_bin_group.get_index(tx, ty);
+      Igroup igroup = rect_bin_group.get_index(tx, ty);
+      if (igroup == RectAngularBinGroup::no_index) n_no_index++;
+      else if (igroup == RectAngularBinGroup::excluded_index) n_excluded++;
 
       vec_tmpResult.at(idx) = std::make_pair(std::array<int, 2>{ix, iy}, igroup);
     }
   }
 
-  // 6) Insert into the map on a single thread.
+  // Exceptions must not escape the OpenMP loop, so uncovered bins are
+  // counted above and rejected here with the first offending bin.
+  if (n_no_index > 0) {
+    for (const auto &entry : vec_tmpResult) {
+      if (entry.second != RectAngularBinGroup::no_index) continue;
+      const int ix = entry.first.at(0);
+      const int iy = entry.first.at(1);
+      const DetectorElement& ele = getDetectorElement(ix, iy);
+      THROW_ERROR(
+        "DetectorPanel::grouping_by_bin_list: {} bins are not covered by any rectangle in {}. First: ix={}, iy={}, tx={}, ty={}"
+        , n_no_index, path_in.string(), ix, iy, ele.get_tx(), ele.get_ty());
+    }
+  }
+
+  // 5) Insert into the map on a single thread.
   //    (Avoids locking overhead.)
   for (const auto &entry : vec_tmpResult) {
     const auto ixiy   = entry.first;
     const int igroup = entry.second;
+    // Excluded bins get no group; skipping keeps the registered group ids a
+    // dense 0..nbin-1 range (some aggregation code indexes arrays by igroup).
+    if (igroup == RectAngularBinGroup::excluded_index) continue;
     g2bg_.insert_map(igroup, ixiy);
   }
+
+  // 5b) Excluded bins were left unregistered above, so they belong to no
+  //     group, get no uqig_avail, and never appear in exports or figures.
+  if (n_excluded > 0) {
+    LOG_INFO("DetectorPanel::grouping_by_bin_list: {} bins excluded on purpose by {} exclude region(s) in {}. No group is created for them."
+      , n_excluded, rect_bin_group.get_nbin_exclude(), path_in.string());
+  }
+
+  // 6) Mark grouping as done so later check_done_grouping() passes,
+  //    mirroring auto_divide_by_signal_noise_group_all().
+  g2bg_.set_done_grouping(true);
 }
 
 // save vec_vec_DetectorElement to std::ofstream &ofs

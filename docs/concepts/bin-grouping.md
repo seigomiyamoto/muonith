@@ -13,9 +13,9 @@ The panel structure holding this grid is described in
 
 ## Automatic Bin Grouping
 
-When `auto_divide_by_zsum` is enabled, the angular bins are recursively subdivided based on signal distribution:
+When `tf_run_auto_grouping` is enabled, the angular bins are recursively subdivided based on signal distribution:
 
-![auto_divide_by_zsum flow](../assets/images/auto_divide_by_signal_sum.dio.png)
+![Automatic bin grouping flow](../assets/images/auto_divide_by_signal_sum.dio.png)
 
 The example below shows the effect on forward-modeled signal data (synthetic 11-detector example, detector 01). The left panel is the per-element signal field in angular (tangent) coordinates with a logarithmic color scale; the right panel is the same signal after grouping, where each cell is one Grid2dBinGroup group — coarse where the signal is sparse, fine where the signal is dense.
 
@@ -26,6 +26,25 @@ The example below shows the effect on forward-modeled signal data (synthetic 11-
 | Per-element signal (before grouping) | Grouped bins (after grouping) |
 |:-:|:-:|
 | ![Per-element signal field in angular coordinates](../assets/images/bingroup_signal_per_element_det01.png) | ![Adaptively grouped Grid2dBinGroup bins](../assets/images/bingroup_grouped_det01.png) |
+
+## Manual Bin Grouping
+
+Instead of the automatic subdivision, groups can be specified explicitly with
+rectangle-list files. This route is active only when both `tf_run_1st_grouping`
+and `tf_run_auto_grouping` are `false` and `n_detector_grouping_manual > 0` in
+`BIN_GROUP_PARAMETERS` (see
+[Parameter Reference — BIN_GROUP_PARAMETERS](../reference/parameter-reference.md)).
+
+Each detector reads a plain-text file listing one rectangle per line:
+
+```text
+xlow xup ylow yup
+```
+
+- Values are angular coordinates in the panel's `angle_unit` (default: tangent, dimensionless).
+- Each rectangle becomes one group; membership uses half-open intervals (`min <= t < max`).
+- The rectangles must tile the field of view: any overlap, any gap between
+  rectangles, or any bin center left uncovered raises an error at load time.
 
 ## OneToManyUOBimap — Bin Index Mapping
 

@@ -1106,6 +1106,12 @@ class Grid2dBinGroup : public Grid2d {
     bool is_all_signal_noise_group_larger_than_thres(
       const double signal_noise_thres ) const;
 
+    /// @brief check whether every group satisfies ixlen >= ixlen_min and iylen >= iylen_min.
+    /// @details Violating groups are reported with LOG_ERROR and false is returned.
+    ///          Does not throw, so it is safe to call inside an OpenMP parallel loop.
+    bool is_all_group_ixiylen_larger_than_min(
+      const int ixlen_min, const int iylen_min ) const;
+
     ///@} ------------------------------------------------------------------
 
     //==================================================================

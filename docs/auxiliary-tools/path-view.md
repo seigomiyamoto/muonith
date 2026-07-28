@@ -1,7 +1,7 @@
 # muonith-path-view
 
 !!! note "External repository"
-    muonith-path-view is maintained in a separate repository (developed as `pypathviewer`, currently private). This page documents its stable interface for use with MUONITH.
+    muonith-path-view is maintained in a separate repository. This page documents its stable interface for use with MUONITH.
 
 ## Overview
 

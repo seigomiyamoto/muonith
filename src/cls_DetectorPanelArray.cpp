@@ -202,11 +202,28 @@ DetectorPanelArray DetectorPanelArray::create(
   }
 
   if( prm_arrdet_cub.tf_run_auto_grouping == false ){
-    LOG_INFO("(g2pil) tf_run_auto_grouping == false. So auto grouping is executed.");
+    LOG_INFO("(g2pil) tf_run_auto_grouping == false. So auto grouping is not executed.");
+
+    if( prm_arrdet_cub.prm_bingroup.n_detector_grouping_manual > 0 ){
+      // Manual grouping from user-supplied bin-list files (tx/ty rectangles).
+      t_step = time_now;
+      arrdet_g2pil.mp_grouping_by_bin_list_all(prm_arrdet_cub.prm_bingroup);
+      t_step_end = time_now;
+      myapp::cast_time_msec(spdlog::level::info,"[g2pil] mp_grouping_by_bin_list_all",t_step,t_step_end);
+    }
 
     // Call build_index_container().
     if ( !(prm_arrdet_cub.tf_load_arrdet_g2pil && tf_file_found) ) {
       arrdet_g2pil.build_index_container(); // Build dic_
+    }
+
+    if( prm_arrdet_cub.prm_bingroup.n_detector_grouping_manual > 0 ){
+      LOG_INFO("Allocate memory for vec_signal/noise_poi_group in each Group of arrdet_g2pil.");
+      arrdet_g2pil.mp_allocate_vec_value_group_all();
+      LOG_INFO("Copy each signal_group value of the generated BinGroup to vec_signal_group.");
+      arrdet_g2pil.mp_calc_vec_signal_noise_group_all();
+      LOG_INFO("Set group efficiency (simple mean of element efficiencies) of arrdet_g2pil.");
+      arrdet_g2pil.calc_set_eff_group();
     }
 
     SLEEP_MSEC(500);
@@ -245,6 +262,10 @@ DetectorPanelArray DetectorPanelArray::create(
     t_step_end = time_now;
     myapp::cast_time_msec(spdlog::level::info,"[g2pil] calc_set_eff_group",t_step,t_step_end);
   }
+
+  // Check that no group is smaller than ixlen_min x iylen_min (covers all grouping routes).
+  arrdet_g2pil.mp_check_group_ixiylen_min_all(
+    prm_arrdet_cub.prm_bingroup.ixlen_min, prm_arrdet_cub.prm_bingroup.iylen_min );
 
   // save arrdet_g2pil to binary file if prm_arrdet_cub.tf_save_arrdet_g2pil==true
   if( prm_arrdet_cub.tf_save_arrdet_g2pil == true ){
@@ -421,7 +442,11 @@ std::tuple<DetectorPanelArray, std::vector<SpMatf>>
     , prm_arrdet_vox.prm_bingroup.signal_noise_group_trig );
   }
   if( prm_arrdet_vox.tf_run_auto_grouping == false ){
-    LOG_INFO("(g3vox) tf_run_auto_grouping == false. So auto grouping is executed.");
+    LOG_INFO("(g3vox) tf_run_auto_grouping == false. So auto grouping is not executed.");
+    if( prm_arrdet_vox.prm_bingroup.n_detector_grouping_manual > 0 ){
+      // Manual grouping from user-supplied bin-list files (tx/ty rectangles).
+      arrdet_g3vox.mp_grouping_by_bin_list_all(prm_arrdet_vox.prm_bingroup);
+    }
     SLEEP_MSEC(500);
   }else{
     // tf_run_1st_grouping && tf_run_auto_grouping == true
@@ -663,7 +688,11 @@ std::tuple<DetectorPanelArray, std::vector<SpMatf>, Eigen::VectorXf>
       , prm_arrdet_vox.prm_bingroup.signal_noise_group_trig );
     }
     if( prm_arrdet_vox.tf_run_auto_grouping == false ){
-      LOG_INFO("(g3vox) tf_run_auto_grouping == false. So auto grouping is executed.");
+      LOG_INFO("(g3vox) tf_run_auto_grouping == false. So auto grouping is not executed.");
+      if( prm_arrdet_vox.prm_bingroup.n_detector_grouping_manual > 0 ){
+        // Manual grouping from user-supplied bin-list files (tx/ty rectangles).
+        arrdet_g3vox.mp_grouping_by_bin_list_all(prm_arrdet_vox.prm_bingroup);
+      }
       SLEEP_MSEC(500);
     }else{
       // tf_run_1st_grouping && tf_run_auto_grouping == true
@@ -672,6 +701,9 @@ std::tuple<DetectorPanelArray, std::vector<SpMatf>, Eigen::VectorXf>
       arrdet_g3vox.mp_auto_grouping_by_signal_noise_group_alldet(prm_arrdet_vox.prm_bingroup);
 
     }
+    // Check that no group is smaller than ixlen_min x iylen_min (covers all grouping routes).
+    arrdet_g3vox.mp_check_group_ixiylen_min_all(
+      prm_arrdet_vox.prm_bingroup.ixlen_min, prm_arrdet_vox.prm_bingroup.iylen_min );
     LOG_INFO(" Build dic_ of arrdet_g3vox.");
     arrdet_g3vox.build_index_container(); // Build dic_
 
@@ -1964,14 +1996,29 @@ void DetectorPanelArray::mp_grouping_by_bin_list_all(
     LOG_WARN(
       "tf_auto_grouping_done is true, do nothing.");
     SLEEP_MSEC(500);
+    return;
   }
 
   LOG_INFO("");
   LOG_INFO("Execute DetectorPanel::grouping_by_bin_list for all DetectorPanels");
   const int n_det = get_n_det();
 
-  LOG_DEBUG(" dic_.initialize before grouping_by_bin_list_all");
-  dic_.initialize(); // clear all uqid, uqig, group info before grouping
+  // NOTE: dic_ must NOT be re-initialized here. The uqid index built at panel
+  // construction is required by the subsequent build_index_container() call.
+  if( static_cast<int>(prm_bingrp.vec_tf_read_bin_group_list.size()) != n_det )
+    THROW_ERROR(
+      "DetectorPanelArray::mp_grouping_by_bin_list_all: vec_tf_read_bin_group_list.size()={} != n_det={}"
+      , prm_bingrp.vec_tf_read_bin_group_list.size(), n_det);
+  if( static_cast<int>(prm_bingrp.vec_file_path_bin_group_list.size()) != n_det )
+    THROW_ERROR(
+      "DetectorPanelArray::mp_grouping_by_bin_list_all: vec_file_path_bin_group_list.size()={} != n_det={}"
+      , prm_bingrp.vec_file_path_bin_group_list.size(), n_det);
+  int n_manual = 0; // number of detectors with a manual bin-group list
+  for(Detid detid=0;detid<n_det;detid++)
+    if( prm_bingrp.vec_tf_read_bin_group_list.at(detid) ) n_manual++;
+  if( n_manual != prm_bingrp.n_detector_grouping_manual )
+    LOG_WARN("n_detector_grouping_manual={} != number of true flags={}"
+      , prm_bingrp.n_detector_grouping_manual, n_manual);
 
   #pragma omp parallel for
   for(Detid detid=0;detid<n_det;detid++){
@@ -2021,6 +2068,30 @@ void DetectorPanelArray::mp_auto_grouping_by_signal_noise_group_alldet(
   // set tf_auto_grouping_done to true
   set(FlgProg::tf_auto_grouping, true);
 
+}
+
+// Check that every group of every DetectorPanel satisfies ixlen >= ixlen_min
+// and iylen >= iylen_min, regardless of which grouping route built the groups.
+void DetectorPanelArray::mp_check_group_ixiylen_min_all(
+  const int ixlen_min, const int iylen_min ) const
+{
+  LOG_INFO("");
+  LOG_INFO("Check that no group is smaller than ixlen_min={} x iylen_min={} for all DetectorPanels"
+    , ixlen_min, iylen_min);
+  const int n_det = get_n_det();
+  int n_det_violate = 0;
+  #pragma omp parallel for reduction(+:n_det_violate)
+  for(Detid detid=0;detid<n_det;detid++){
+    const DetectorPanel& panel = getDetectorPanel(detid);
+    // record violations only; throwing out of an OpenMP loop is not allowed
+    if( ! panel.get_g2bg().is_all_group_ixiylen_larger_than_min(ixlen_min,iylen_min) )
+      n_det_violate++;
+  }
+  if( n_det_violate > 0 )
+    THROW_ERROR(
+      "DetectorPanelArray::mp_check_group_ixiylen_min_all: {} detector(s) have group(s) "
+      "smaller than ixlen_min={} x iylen_min={}. See LOG_ERROR lines above."
+      , n_det_violate, ixlen_min, iylen_min);
 }
 
 /// @brief Execute mp_calc_set_proj_dens_grouped for all DetectorPanels

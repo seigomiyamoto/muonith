@@ -210,7 +210,7 @@ ships with the repository. Run them from the repository root:
 
 ```bash
 # Generate the tutorial working directory (see the Quickstart for details)
-bash setup_station.sh tutorial --run
+bash setup_station.sh tutorial
 
 # Run the depth-vs-resolution sweep
 cd work/tutorial/depth-reso/

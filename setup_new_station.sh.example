@@ -36,7 +36,7 @@ fi
 
 # Step 3: Generate work station skeleton + run pipeline
 echo "=== Generating work station ==="
-python3 "$SCRIPT_DIR/scripts/init_work_site.py" --verbose --run "$STATION_JSON5"
+python3 "$SCRIPT_DIR/scripts/init_work_site.py" --verbose --make-detparams "$STATION_JSON5"
 
 echo "=== Done ==="
 echo "Work station: $SCRIPT_DIR/work/$STATION_NAME/"

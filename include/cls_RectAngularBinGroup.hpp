@@ -12,11 +12,22 @@
 /// Space-separated 4-column text file:
 ///   xlow xup ylow yup
 /// Each line defines one rectangular bin.
+/// A line starting with the keyword "exclude" declares a region that is
+/// deliberately left out of the analysis:
+///   exclude xlow xup ylow yup
+/// A group-bin rectangle overlapping an excluded region is dropped whole at
+/// load time (with a log notice) instead of stopping the run, so the removed
+/// area can be wider than the declared exclusion.
+/// Excluded regions may overlap each other: overlapping declarations mean the
+/// union (OR) of the regions, and are rebuilt at load time into disjoint
+/// rectangles covering the same union.
+/// Blank lines and lines starting with '#' are skipped. Any other leading
+/// token stops the run; the file is never truncated silently.
 ///
 /// ## Coordinate System
 /// - x: azimuthal angle (or first angular axis)
 /// - y: polar angle (or second angular axis)
-/// - Units depend on the input file; typically radians or degrees.
+/// - Units must match the detector panel's angle_unit (default: Tangent, dimensionless).
 ///
 /// ## Thread Safety
 /// - Thread-safe for read operations (const methods).
@@ -41,8 +52,12 @@
 /// - Validate bin geometry (no overlap, complete tessellation).
 ///
 /// ## Invariants
-/// - The bounding box (inherited AABB2d) encloses all contained bins.
+/// - The bounding box (inherited AABB2d) encloses all contained bins,
+///   both the group bins and the excluded regions.
 /// - Each bin is an AABB2d with non-negative width and height.
+/// - Group bins and excluded regions never overlap each other after loading:
+///   a group bin overlapping an excluded region is moved to the dropped list
+///   by the file constructor.
 ///
 /// ## Usage Example
 /// @code
@@ -68,6 +83,20 @@ private:
   /// @brief Collection of rectangular bins
   std::vector<AABB2d> vec_rect_ = {};
 
+  /// @brief Collection of regions deliberately excluded from the analysis
+  /// @details Filled from lines beginning with exclude_keyword. Bins whose
+  ///          center falls in one of these regions are reported as
+  ///          excluded_index by get_index() instead of no_index.
+  std::vector<AABB2d> vec_exclude_ = {};
+
+  /// @brief Group rectangles dropped for overlapping an excluded region
+  /// @details Filled by the file constructor: a group rectangle overlapping
+  ///          any entry of vec_exclude_ is moved here instead of stopping the
+  ///          run. Points inside are reported as excluded_index by
+  ///          get_index(), and the area outside the excluded regions counts
+  ///          as tiled in is_tessellated().
+  std::vector<AABB2d> vec_dropped_ = {};
+
 public:
   //======================================================================
   /// @name Constructors and Destructor
@@ -82,8 +111,11 @@ public:
 
   /// @brief Construct from a text file
   /// @param[in] path_in Path to the bin definition file.
-  /// @throws std::runtime_error If the file cannot be opened.
-  /// @note File format: space-separated columns (xlow xup ylow yup) per line.
+  /// @throws std::runtime_error If the file cannot be opened, or if any line
+  ///         is neither blank, a '#' comment, four numbers, nor
+  ///         exclude_keyword followed by four numbers.
+  /// @note File format: space-separated columns (xlow xup ylow yup) per line,
+  ///       optionally preceded by exclude_keyword to declare an excluded region.
   RectAngularBinGroup(const std::filesystem::path& path_in);
 
   /// @brief Destructor
@@ -102,7 +134,8 @@ public:
   RectAngularBinGroup& operator=(RectAngularBinGroup&& other) noexcept = default;
 
   /// @brief Inequality operator
-  /// @details Compares base AABB2d and vec_rect_. The name_ member is not compared.
+  /// @details Compares base AABB2d, vec_rect_, vec_exclude_, and vec_dropped_.
+  ///          The name_ member is not compared.
   /// @param[in] other The other RectAngularBinGroup to compare with.
   /// @return true if not equal, false otherwise.
   bool operator!=(const RectAngularBinGroup& other) const;
@@ -132,14 +165,42 @@ public:
     return vec_rect_.at(index_in);
   }
 
+  /// @brief Get the number of excluded regions
+  /// @return Number of regions declared with exclude_keyword.
+  int get_nbin_exclude() const { return static_cast<int>(vec_exclude_.size()); }
+
+  /// @brief Get immutable reference to an excluded region by index
+  /// @param[in] index_in Zero-based index of the excluded region.
+  /// @return Const reference to the AABB2d region.
+  /// @throws std::out_of_range If index_in is out of bounds.
+  const AABB2d& get_rect_exclude(int index_in) const {
+    return vec_exclude_.at(index_in);
+  }
+
+  /// @brief Get the number of dropped group rectangles
+  /// @return Number of group rectangles dropped for overlapping an excluded region.
+  int get_nbin_dropped() const { return static_cast<int>(vec_dropped_.size()); }
+
   /// @brief Sentinel value indicating no bin found
   static constexpr int no_index = -1;
+
+  /// @brief Sentinel value indicating the point lies in a declared excluded region
+  /// @details Distinct from no_index so that a deliberate exclusion can be told
+  ///          apart from a gap left by a mistake in the bin-list file.
+  static constexpr int excluded_index = -2;
+
+  /// @brief Leading token that declares an excluded region in the bin-list file
+  /// @note Matched exactly; "EXCLUDE" and other spellings are rejected.
+  static constexpr const char* exclude_keyword = "exclude";
 
   /// @brief Find the bin index containing a given point
   /// @param[in] x The x-coordinate (first angular axis).
   /// @param[in] y The y-coordinate (second angular axis).
-  /// @return Index of the bin containing (x, y), or no_index if not found.
-  /// @note Complexity: O(n) where n = get_nbin().
+  /// @return Index of the bin containing (x, y), excluded_index if the point
+  ///         lies in a declared excluded region or in a dropped rectangle,
+  ///         or no_index if neither.
+  /// @note Complexity: O(n + m + k) where n = get_nbin(), m = get_nbin_exclude(),
+  ///       k = get_nbin_dropped().
   int get_index(double x, double y) const;
 
   /// @brief Get minimum x-coordinate of the bounding box
@@ -199,14 +260,26 @@ public:
   ///@{
 
   /// @brief Check that no bins overlap
-  /// @throws std::runtime_error If any two bins overlap.
-  /// @note Complexity: O(n^2) where n = get_nbin().
+  /// @details Group bins, excluded regions, and dropped rectangles are checked
+  ///          together. The only overlap tolerated is a dropped rectangle
+  ///          against an excluded region: that overlap is the reason the
+  ///          rectangle was dropped. Every other pair is rejected.
+  /// @throws std::runtime_error If any two rectangles overlap (except the
+  ///         tolerated dropped-vs-excluded pair).
+  /// @note Complexity: O((n+m+k)^2) where n = get_nbin(), m = get_nbin_exclude(),
+  ///       k = get_nbin_dropped().
   void check_no_overlap() const;
 
   /// @brief Check if bins completely tessellate the bounding box
-  /// @return true if bins perfectly tile the bounding box without gaps.
+  /// @details Excluded regions count towards the tiled area, so a file that
+  ///          declares the uncovered band with exclude_keyword still passes.
+  ///          A dropped rectangle contributes only the part of its area that
+  ///          lies outside the excluded regions, so the overlap is not counted
+  ///          twice.
+  /// @return true if bins, excluded regions, and dropped rectangles perfectly
+  ///         tile the bounding box.
   /// @throws std::runtime_error If vec_rect_ is empty or dimensions are invalid.
-  /// @note Complexity: O(n^2) due to overlap check.
+  /// @note Complexity: O((n+m+k)^2) due to overlap check.
   bool is_tessellated() const;
 
   /// @brief Verify bins completely tile the bounding box (throws if not)

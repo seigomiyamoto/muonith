@@ -8,7 +8,7 @@ muonith analysis pipeline.
 Usage:
   # New style: config in param_sites/, data in data/, output to work/
   python3 scripts/init_work_site.py param_sites/tarumae_base.json5
-  python3 scripts/init_work_site.py param_sites/tarumae_base.json5 --run --verbose
+  python3 scripts/init_work_site.py param_sites/tarumae_base.json5 --make-detparams --verbose
 
   # Legacy style: config inside work dir (backward compatible)
   python3 scripts/init_work_site.py work/mysite/site.json5
@@ -1509,6 +1509,25 @@ def generate_swp001(work_dir: Path, cfg: dict, n_detectors: int, dry_run: bool, 
   flux_proport_ratio_poisson = rec.get("flux_proport_ratio_poisson", "0.0")
   sot_proport_noise_ratio_floor = rec.get("SOT_proport_noise_ratio_floor", "0.0")
   sot_proport_noise_ratio_poisson = rec.get("SOT_proport_noise_ratio_poisson", "0.0")
+  # BIN_GROUP manual route: manual_bin_group_file names a rectangle-list file
+  # under scripts/templates/; it is copied into the run dir and referenced by
+  # filename (run_prg.sh executes inside the run dir). Default (absent) keeps
+  # the automatic-grouping values so existing sites regenerate byte-identical.
+  manual_bin_group_file = rec.get("manual_bin_group_file")
+  if manual_bin_group_file:
+    tf_run_1st_grouping = "false"
+    tf_run_auto_grouping = "false"
+    n_detector_grouping_manual = str(n_detectors)
+    vec_tf_read_bin_group_list = "[" + ", ".join(["true"] * n_detectors) + "]"
+    vec_file_path_bin_group_list = (
+      "[" + ", ".join([f'"{manual_bin_group_file}"'] * n_detectors) + "]"
+    )
+  else:
+    tf_run_1st_grouping = "true"
+    tf_run_auto_grouping = "true"
+    n_detector_grouping_manual = "0"
+    vec_tf_read_bin_group_list = "[]"
+    vec_file_path_bin_group_list = "[]"
 
   content = TPL_PRM_MUONITH.substitute(
     work_dir_name=work_dir.name,
@@ -1554,9 +1573,20 @@ def generate_swp001(work_dir: Path, cfg: dict, n_detectors: int, dry_run: bool, 
     flux_proport_ratio_poisson=flux_proport_ratio_poisson,
     SOT_proport_noise_ratio_floor=sot_proport_noise_ratio_floor,
     SOT_proport_noise_ratio_poisson=sot_proport_noise_ratio_poisson,
+    tf_run_1st_grouping=tf_run_1st_grouping,
+    tf_run_auto_grouping=tf_run_auto_grouping,
+    n_detector_grouping_manual=n_detector_grouping_manual,
+    vec_tf_read_bin_group_list=vec_tf_read_bin_group_list,
+    vec_file_path_bin_group_list=vec_file_path_bin_group_list,
     shell_density_lines=_build_shell_density_lines(rec, base_density_int),
   )
   _write_file(work_dir / swp_work_subdir / "prm_muonith.json5", content, dry_run, force)
+  if manual_bin_group_file:
+    _copy_file(
+      _TEMPLATE_DIR / manual_bin_group_file,
+      work_dir / swp_work_subdir / manual_bin_group_file,
+      dry_run, force,
+    )
 
   # 3) auto_plot.json5
   # Angle-axis frame follows the runcards this run actually references
@@ -1602,7 +1632,7 @@ def generate_swp001(work_dir: Path, cfg: dict, n_detectors: int, dry_run: bool, 
 
 
 # ---------------------------------------------------------------------------
-# Pipeline execution (--run)
+# Pipeline execution (--make-detparams)
 # ---------------------------------------------------------------------------
 
 def run_pipeline(work_dir: Path, cfg: dict) -> None:
@@ -1653,8 +1683,9 @@ def main():
     description="Generate a volcano analysis work site from site.json5",
   )
   parser.add_argument("site_json5", help="Path to site.json5")
-  parser.add_argument("--run", action="store_true",
-                      help="Execute KML->CSV->det_XX.json5 pipeline")
+  parser.add_argument("--make-detparams", action="store_true",
+                      help="Build detector runcards (KML/GeoJSON -> CSV -> det_XX.json5); "
+                           "the analysis itself is started later by run_prg.sh")
   parser.add_argument("--dry-run", action="store_true",
                       help="Show what would be created without writing")
   parser.add_argument("--force", action="store_true",
@@ -1869,7 +1900,7 @@ def main():
     generate_swp001(work_dir, run_cfg, n_detectors, dry_run, force)
 
   # Optionally run the pipeline (KML -> CSV -> det.json5)
-  if args.run:
+  if args.make_detparams:
     if skip_dp:
       log.info(
         "skip_detparams=true: skipping pipeline (KML/CSV/det conversion bypassed)"

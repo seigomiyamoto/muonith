@@ -94,6 +94,10 @@ ELE_DTYPE = np.dtype({
 })
 ELE_FIXED_BYTES = 216
 
+# DetectorElement::proj_density before it is computed
+# (include/cls_DetectorElement.hpp:173-174 invalid_proj_dens).
+INVALID_PROJ_DENS = -1.0
+
 
 class Reader:
   """Sequential little-endian reader mirroring src/ns_io_binary.cpp helpers."""
@@ -239,10 +243,8 @@ def read_prm_bingrp(r):  # src/cls_Grid2dBinGroupParameters.cpp:201 — advance 
   r.i32(); r.i32()           # nloop_limit, n_detector_grouping_manual
   r.vec_bool()               # vec_tf_read_bin_group_list
   n_path = r.u64()           # vec_file_path_bin_group_list count
-  if n_path != 0:
-    raise ValueError(
-      "vec_file_path_bin_group_list has %d entries; std::vector<fs::path> is "
-      "serialized as raw non-portable bytes and cannot be parsed here." % n_path)
+  for _ in range(n_path):    # each path saved via io_binary::write_path (u64 length + bytes)
+    r.string()
 
 
 def read_panel(r):  # src/cls_DetectorPanel.cpp:2228
@@ -380,6 +382,9 @@ def render_with_hist2d(out_dir, arr_name, panel, field, template, patterns):
   arrays, so the PNG is identical to the auto_plot.py output for the same
   data. The pattern merge is the same as auto_plot.collect (template +
   first matching pattern).
+
+  Returns the written PNG path, or None when the field is not computed yet and
+  no file was written.
   """
   import matplotlib
   matplotlib.use("Agg")
@@ -408,13 +413,14 @@ def render_with_hist2d(out_dir, arr_name, panel, field, template, patterns):
     "--color-under", merged.get("color_under", "white"),
     # hist2d always prefixes "figs/"; "../" lands the PNG in out_dir.
     "--output", "../" + out_name,
+    "--title-fontsize", "14",
     "--no-csv",
   ]
   if use_log:
     argv.append("--log")
   args = h2.build_parser().parse_args(argv)
   h2.resolve_bins(args)
-  args.title = src_name
+  args.title = src_name.replace(".tmp", "") + " (binary direct)"
 
   # In-memory (tx, ty, value) triplets instead of load_data(file).
   ele = panel["ele"]
@@ -422,7 +428,17 @@ def render_with_hist2d(out_dir, arr_name, panel, field, template, patterns):
               + np.asarray(ele["txmax"], np.float64))
   ty = 0.5 * (np.asarray(ele["tymin"], np.float64)
               + np.asarray(ele["tymax"], np.float64))
-  data = np.column_stack([tx, ty, TXTY_FIELDS[field](ele)])
+  values = TXTY_FIELDS[field](ele)
+
+  # proj_density stays at invalid_proj_dens (-1.0) until it is computed
+  # (include/cls_DetectorElement.hpp:173-174); such a figure is one flat
+  # out-of-range color, so write no file at all and leave a single log line.
+  if field == "dens" and np.all(values == INVALID_PROJ_DENS):
+    print("  [SKIP] %s: dens is not computed (proj_density still %s in every "
+          "element); no figure written." % (out_name, INVALID_PROJ_DENS))
+    return None
+
+  data = np.column_stack([tx, ty, values])
 
   # histogram mode of hist2d.main(), unchanged.
   H, xedges, yedges = h2.compute_histogram(data, args)
@@ -526,15 +542,16 @@ def render_g2bg(out_dir, arr_name, panel, config):
     print("  det%02d: no g2bg groups; skipped" % panel["detid"])
     return 0
   str_det_id = "%02d" % panel["detid"]
-  output_prefix = "fig_%s_" % arr_name
+  output_prefix = "g2bg_%s_" % arr_name
   datafile = "%s_det%s (binary direct)" % (arr_name, str_det_id)
   n = 0
   for field, params in plot_fields.items():
     if not params.get("exec", True):
       continue
-    g2.plot_field(field, output_prefix, str_det_id, params, header, data,
-                  png_dpi, str(out_dir), datafile)
-    n += 1
+    # plot_field returns False when it wrote nothing (field not computed yet).
+    if g2.plot_field(field, output_prefix, str_det_id, params, header, data,
+                     png_dpi, str(out_dir), datafile):
+      n += 1
   return n
 
 

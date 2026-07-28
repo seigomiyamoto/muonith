@@ -115,6 +115,17 @@
       "end_stage": 7,
       "module8_mode": "none",
     },
+    {
+      "name": "manual-bin-merge",
+      // Manual bin-group example: 16x8 = 128 rectangles (tx -1.6..1.6,
+      // ty 0.0..1.6, 0.2 pitch). The list file is copied from
+      // scripts/templates/ into the run dir; see docs/user-guide/parameter-files.md.
+      "work_subdir": "manual-bin-merge-rec3d",
+      "manual_bin_group_file": "bin_group_list_16x8.txt",
+      "tf_prior_error": false,
+      "end_stage": 7,
+      "module8_mode": "none",
+    },
   ],
 
   // ===== depth_sweep (detection-limit heatmap; depth x object-size) =====

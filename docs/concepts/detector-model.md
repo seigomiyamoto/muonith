@@ -102,7 +102,7 @@ DetectorPanel
 
 Where the signal is sparse, neighboring bins are adaptively merged into
 groups, and a bidirectional group ↔ bin index map keeps the two layers
-consistent. The grouping algorithm (`auto_divide_by_zsum`), a worked example,
+consistent. The grouping algorithm (`tf_run_auto_grouping`), a worked example,
 and the index map `OneToManyUOBimap` have their own page:
 [Bin Grouping](bin-grouping.md).
 

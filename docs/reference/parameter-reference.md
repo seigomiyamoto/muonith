@@ -244,6 +244,38 @@ Both sections have identical format.
 | `iylen_min` | int | — | — | Min group height (bins) |
 | `tf_prefer_split_x` | bool | `false` | — | Prefer horizontal splits |
 | `nloop_limit` | int | `10000` | — | Max subdivision iterations |
+| `n_detector_grouping_manual` | int | `0` | — | Number of detectors using manual bin-group lists (`> 0` enables the manual route; read only when `tf_run_1st_grouping` and `tf_run_auto_grouping` are both `false`) |
+| `vec_tf_read_bin_group_list` | array of bool | `[]` | — | Per-detector flags (size = number of detectors) to read a manual bin-group list |
+| `vec_file_path_bin_group_list` | array of string | `[]` | — | Per-detector paths to bin-group list files (size = number of detectors) |
+
+### Manual bin-group list file
+
+Each file referenced by `vec_file_path_bin_group_list` is a plain-text file with
+one rectangle (= one group) per line, four space-separated columns:
+
+```text
+xlow xup ylow yup
+```
+
+Values are angular coordinates in the panel's `angle_unit` (default: tangent,
+dimensionless). Membership uses half-open intervals (`min <= t < max`). The
+rectangles must tile the panel's field of view — overlaps between group
+rectangles, gaps, and uncovered bin centers are rejected with an error.
+
+To leave a region out of the analysis on purpose, prefix its rectangle with the
+keyword `exclude`:
+
+```text
+exclude xlow xup ylow yup
+```
+
+An excluded region counts as tiled, and its bins belong to no group — they
+appear in no export, figure, or matrix row. A group rectangle overlapping an
+excluded region is dropped whole at load time (logged), so the removed area
+can be wider than the declared band. A gap *without* the keyword is still an
+error. Blank lines and `#` comments are skipped; any other leading token
+(e.g. `EXCLUDE`) stops the run with its line number. See
+[Bin Grouping — Manual Bin Grouping](../concepts/bin-grouping.md#manual-bin-grouping).
 
 ## `NOISE_PARAMETERS`
 

@@ -152,13 +152,18 @@ void Grid2dBinGroup::Parameters::assign_parameters(const nlohmann::json& js, con
   key = TOSTRING( ixlen_min );
   if(js.contains(section_name) && js.at(section_name).contains(key))
     ixlen_min = js.at(section_name).at(key).get<int>();
-  assert( ixlen_min >= 1 );
+  // THROW instead of assert: assert vanishes in NDEBUG release builds
+  if( ixlen_min < 1 )
+    THROW_ERROR("Grid2dBinGroup::Parameters::assign_parameters: "
+      "ixlen_min must be >= 1. ixlen_min={}", ixlen_min);
 
   // iylen_min
   key = TOSTRING( iylen_min );
   if(js.contains(section_name) && js.at(section_name).contains(key))
     iylen_min = js.at(section_name).at(key).get<int>();
-  assert( iylen_min >= 1 );
+  if( iylen_min < 1 )
+    THROW_ERROR("Grid2dBinGroup::Parameters::assign_parameters: "
+      "iylen_min must be >= 1. iylen_min={}", iylen_min);
 
   // tf_prefer_split_x
   key = TOSTRING( tf_prefer_split_x );
@@ -194,6 +199,14 @@ void Grid2dBinGroup::Parameters::assign_parameters(const nlohmann::json& js, con
           vec_file_path_bin_group_list.push_back(std::filesystem::path(str));
       }
     }
+    else{
+      // All three grouping routes disabled is not a supported configuration:
+      // ungrouped data keeps one row per detector element and the inversion
+      // scale explodes. Reject at parameter load, before any computation.
+      THROW_ERROR("Grid2dBinGroup::Parameters::assign_parameters: "
+        "all grouping is disabled (tf_run_1st_grouping=false, tf_run_auto_grouping=false, "
+        "n_detector_grouping_manual=0). Enable at least one grouping route.");
+    }
   }
   LOG_INFO("...OK");
 }
@@ -221,7 +234,9 @@ void Grid2dBinGroup::Parameters::save( std::ofstream& ofs ) const
   io_binary::write_binary( ofs, nloop_limit ); // save nloop_limit
   io_binary::write_binary( ofs, n_detector_grouping_manual ); // save n_detector_grouping_manual
   io_binary::write_vec_bool( ofs, vec_tf_read_bin_group_list ); // save vec_tf_read_bin_group_list
-  io_binary::write_vec( ofs, vec_file_path_bin_group_list ); // save vec_file_path_bin_group_list
+  io_binary::write_binary( ofs, vec_file_path_bin_group_list.size() ); // save vec_file_path_bin_group_list size
+  for(const auto &path : vec_file_path_bin_group_list)
+    io_binary::write_path( ofs, path ); // save each path as a string (raw path bytes are not portable)
   if( ofs.fail() ) THROW_ERROR("Grid2dBinGroup::Parameters::save: Output stream failed.");
 }
 
@@ -248,6 +263,9 @@ void Grid2dBinGroup::Parameters::load( std::ifstream& ifs )
   nloop_limit = io_binary::read_binary<int>( ifs ); // load nloop_limit
   n_detector_grouping_manual = io_binary::read_binary<int>( ifs ); // load n_detector_grouping_manual
   vec_tf_read_bin_group_list = io_binary::read_vec_bool( ifs ); // load vec_tf_read_bin_group_list
-  vec_file_path_bin_group_list = io_binary::read_vec<std::filesystem::path>( ifs ); // load vec_file_path_bin_group_list
+  const size_t n_path_bin_group = io_binary::read_binary<size_t>( ifs ); // load vec_file_path_bin_group_list size
+  vec_file_path_bin_group_list.clear();
+  for(size_t i=0;i<n_path_bin_group;i++)
+    vec_file_path_bin_group_list.push_back( io_binary::read_path( ifs ) ); // load each path
   if( ifs.fail() ) THROW_ERROR("Grid2dBinGroup::Parameters::load: Input stream failed.");
 }

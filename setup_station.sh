@@ -3,30 +3,34 @@
 # Set up a volcano analysis work site
 #
 # Usage:
-#   bash setup_station.sh <station_name> [--run] [--force] [--clean]
+#   bash setup_station.sh <station_name> [--make-detparams] [--force] [--clean]
 #   bash setup_station.sh <station_name> [--skip-env-check]
 #
+# --make-detparams builds the detector runcards (det_XX.json5) from the
+# KML/GeoJSON detector positions. It does not start the analysis; that is
+# done later by run_prg.sh inside work/<station_name>/.
+#
 # Examples:
-#   bash setup_station.sh tutorial --run            # license-free synthetic tutorial (start here)
+#   bash setup_station.sh tutorial                  # license-free synthetic tutorial (start here)
 #   bash setup_station.sh tarumae_base              # skeleton only
-#   bash setup_station.sh tarumae_base --run        # skeleton + pipeline
-#   bash setup_station.sh meakan --run --force      # regenerate everything
-#   bash setup_station.sh omuro --run               # first-time setup with checks
-#   bash setup_station.sh omuro --run --skip-env-check  # skip apt/venv checks
+#   bash setup_station.sh tarumae_base --make-detparams  # skeleton + detector runcards
+#   bash setup_station.sh meakan --make-detparams --force  # regenerate everything
+#   bash setup_station.sh omuro --make-detparams    # first-time setup with checks
+#   bash setup_station.sh omuro --make-detparams --skip-env-check  # skip apt/venv checks
 #
 # Prerequisites (checked automatically unless --skip-env-check):
 #   /usr/bin/time    -- apt install -y time
 #   python3          -- apt install -y python3 python3-venv
 #   .venv/           -- created automatically if absent
 #   param_sites/<station_name>.json5  -- copied from template if absent
-#   data/<station_name>/              -- created if absent; DEM (+KML) required for --run
+#   data/<station_name>/              -- created if absent; DEM (+KML) required for --make-detparams
 #
 # For a brand new site:
 #   1. bash setup_station.sh <name>          # auto-copies template; follow instructions
 #   2. Edit param_sites/<name>.json5
 #   3. Copy DEM (.g2zbin) and KML/GeoJSON into data/<name>/
 #      (KML/GeoJSON not required if "skip_detparams": true in the json5)
-#   4. bash setup_station.sh <name> --run
+#   4. bash setup_station.sh <name> --make-detparams
 # ============================================================
 set -euo pipefail
 
@@ -34,7 +38,7 @@ set -euo pipefail
 # Argument parsing
 # ---------------------------------------------------------------------------
 if [ $# -lt 1 ]; then
-  echo "Usage: bash setup_station.sh <station_name> [--run] [--force] [--clean] [--skip-env-check]"
+  echo "Usage: bash setup_station.sh <station_name> [--make-detparams] [--force] [--clean] [--skip-env-check]"
   echo ""
   echo "Available stations:"
   for f in param_sites/*.json5; do
@@ -167,7 +171,7 @@ if [ ! -f "$STATION_JSON5" ]; then
   echo "    detector_input     -- relative path to .kml or .geojson (omit if skip_detparams)"
   echo ""
   echo "  Then re-run:"
-  echo "    bash setup_station.sh $STATION_NAME --run"
+  echo "    bash setup_station.sh $STATION_NAME --make-detparams"
   echo ""
   exit 0
 fi
@@ -209,10 +213,10 @@ if [ "$DATA_DIR_NAME" != "$STATION_NAME" ]; then
   info "data_source=$DATA_DIR_NAME (shared with other stations)"
 fi
 
-# Check DEM and detector input exist when --run is requested
+# Check DEM and detector input exist when --make-detparams is requested
 RUN_REQUESTED=0
 for arg in "${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}"; do
-  [ "$arg" = "--run" ] && RUN_REQUESTED=1
+  [ "$arg" = "--make-detparams" ] && RUN_REQUESTED=1
 done
 
 if [ "$RUN_REQUESTED" -eq 1 ]; then
@@ -257,7 +261,7 @@ if [ "$RUN_REQUESTED" -eq 1 ]; then
     fi
     echo ""
     echo "  After copying, re-run:"
-    echo "    bash setup_station.sh $STATION_NAME --run"
+    echo "    bash setup_station.sh $STATION_NAME --make-detparams"
     echo ""
     exit 1
   fi

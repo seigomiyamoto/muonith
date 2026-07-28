@@ -136,7 +136,7 @@ Once you have the CSV (from either route), the remaining steps are the same:
 3. **Run the station setup**:
 
     ```bash
-    bash setup_station.sh <station> --run
+    bash setup_station.sh <station> --make-detparams
     ```
 
 See [Scripts](../reference/scripts.md#mk_detjson5_from_templatepy) and
