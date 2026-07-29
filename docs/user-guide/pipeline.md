@@ -11,6 +11,8 @@ Module 1  →  Module 2  →  Module 3  →  Module 4  →  Module 5  →  Modul
                           (DEM→Voxel)  (Ray Trace)              (dN/dD)      Reconst.)    & Output
 ```
 
+![muonith.exe — files read and written at each stage](../assets/images/chart_muonith_file_lanes.dio.png)
+
 ## Module I/O Summary
 
 | Module | Name | Key Outputs | Checkpoint |

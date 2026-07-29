@@ -34,7 +34,7 @@ Consider a mountain with uniform background density $\rho_0$ and a single anomal
 
 The density length for a ray passing through the anomaly differs from the background by:
 
-$$\Delta R \approx \Delta\rho \times l$$
+$$\Delta X \approx \Delta\rho \times l$$
 
 This changes the expected muon count. The question is whether this change is **statistically significant** given Poisson counting noise.
 
@@ -94,13 +94,15 @@ This calculation (`geom_util::calc_cylinder_radius_from_horizontal_angle_size`) 
 
 ## Computation Modes
 
+![depth_reso.exe — the two computation modes and the z-test that follows them](../assets/images/chart_depth_reso_flow.dio.png)
+
 ### DDL Mode (Fast Approximation)
 
 ![Delta Density-Length Approximation — side cross-section view](../assets/images/depth_reso_DDL_mode.dio.png)
 
 The **Delta Density-Length Approximation** (DDL, also called "Baumkuchen") approximates the density length perturbation as:
 
-$$\Delta R \approx \Delta\rho \times l$$
+$$\Delta X \approx \Delta\rho \times l$$
 
 where $l$ is the anomaly diameter. This avoids explicit ray-cylinder intersection calculations, making it much faster.
 
