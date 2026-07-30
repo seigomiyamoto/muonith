@@ -114,6 +114,18 @@ MUONITH is developed alongside two standalone companion tools:
 Each tool also runs on its own; the bundled `tutorial` example needs neither of
 them.
 
+## Citation
+
+If you use MUONITH in academic work, please cite the software. Archived releases
+are deposited on Zenodo:
+
+[![DOI](https://zenodo.org/badge/1302348299.svg)](https://doi.org/10.5281/zenodo.21694789)
+
+The DOI above always resolves to the latest release. To cite the exact version
+you used, take the version-specific DOI from that Zenodo record; for v1.0.0 it is
+[10.5281/zenodo.21694790](https://doi.org/10.5281/zenodo.21694790). Machine-readable
+metadata is in [CITATION.cff](CITATION.cff).
+
 ## License
 
 MUONITH source code and project-authored documentation are licensed under the
@@ -122,6 +134,3 @@ MUONITH source code and project-authored documentation are licensed under the
 Third-party libraries, flux tables, terrain data, detector example data, and
 figures may be governed by separate licenses or attribution requirements. See
 [NOTICE](NOTICE) and [LICENSES/](LICENSES/) for details.
-
-If you use MUONITH in academic work, please cite the software using
-[CITATION.cff](CITATION.cff).
