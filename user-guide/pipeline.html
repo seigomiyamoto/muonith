@@ -1,0 +1,2554 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/user-guide/pipeline.html">
+      
+      
+        <link rel="prev" href="parameter-files.html">
+      
+      
+        <link rel="next" href="input-data.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pipeline - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pipeline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pipeline.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-io-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module I/O Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Descriptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Module Descriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialization-module-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialization (Module 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-parameters-module-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Parameters (Module 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-geometry-module-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Geometry (Module 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-path-lengths-module-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace Path Lengths (Module 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-prior-module-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compute Prior (Module 5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-observation-matrix-module-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Observation Matrix (Module 6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert-density-module-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invert Density (Module 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-errors-and-output-module-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyze Errors and Output (Module 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Execution Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running the Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-and-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint and Resume
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Sweep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-io-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module I/O Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Descriptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Module Descriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialization-module-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialization (Module 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-parameters-module-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Parameters (Module 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-geometry-module-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Geometry (Module 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-path-lengths-module-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace Path Lengths (Module 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-prior-module-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compute Prior (Module 5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-observation-matrix-module-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Observation Matrix (Module 6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invert-density-module-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invert Density (Module 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-errors-and-output-module-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyze Errors and Output (Module 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Execution Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running the Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-and-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint and Resume
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Sweep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">¶</a></h1>
+<p>MUONITH processes muon tomography data through an 8-module pipeline. Each module performs a distinct step, and the pipeline supports checkpoint/resume so that expensive computations are not repeated unnecessarily.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>Module 1  →  Module 2  →  Module 3  →  Module 4  →  Module 5  →  Module 6  →  Module 7  →  Module 8
+  Init        Params      Geometry     Path Len     Prior        Matrix      Inversion     Error
+              Loading     Build        Trace        (DL/Count)   Build       (Density      Analysis
+                          (DEM→Voxel)  (Ray Trace)              (dN/dD)      Reconst.)    &amp; Output
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_muonith_file_lanes.dio.png" data-desc-position="bottom"><img alt="muonith.exe — files read and written at each stage" src="../assets/images/chart_muonith_file_lanes.dio.png"></a></p>
+<h2 id="module-io-summary">Module I/O Summary<a class="headerlink" href="#module-io-summary" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Name</th>
+<th>Key Outputs</th>
+<th>Checkpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Initialization</td>
+<td>Logger, OpenMP config, random seed</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Load Parameters</td>
+<td><code>app_params</code> (detector, grid, flux, inversion settings)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Build Geometry</td>
+<td><code>g2pil_naive</code>, <code>g3vox_input</code>, <code>g3vox_merged_input</code>, shell grids</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Trace Path Lengths</td>
+<td><code>arrdet_g2pil_naive</code>, <code>arrdet_g3vox_input</code>, <code>vec_spmat_PL</code>, <code>shell_pl</code></td>
+<td><code>tf_save/load_arrdet_g2pil</code>, <code>tf_save/load_arrdet_g3vox</code>, <code>checkpoint_trace_path_lengths</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Compute Prior</td>
+<td><code>prior_info_all</code> (<code>DL_prior</code>, expected counts per density scenario)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Build Observation Matrix</td>
+<td><code>mat_dNdD_grouped</code> (lower/center/upper)</td>
+<td><code>tf_save/load_bin_obs_mat_dNdD</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Invert Density</td>
+<td>Reconstructed density, posterior covariance, cross-sections</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Analyze Errors</td>
+<td>Statistical / prior / leave-one-out / combined error cross-sections</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="module-descriptions">Module Descriptions<a class="headerlink" href="#module-descriptions" title="Permanent link">¶</a></h2>
+<h3 id="initialization-module-1">Initialization (Module 1)<a class="headerlink" href="#initialization-module-1" title="Permanent link">¶</a></h3>
+<ul>
+<li>Load and validate JSON5 configuration file</li>
+<li>Setup logging (spdlog: stdout, stderr, file)</li>
+<li>Initialize random seed (priority: CLI argument &gt; JSON5 &gt; default 42)</li>
+<li>Configure OpenMP thread count</li>
+</ul>
+<h3 id="load-parameters-module-2">Load Parameters (Module 2)<a class="headerlink" href="#load-parameters-module-2" title="Permanent link">¶</a></h3>
+<p>Parse JSON5 into structured parameter objects:</p>
+<ul>
+<li>Detector panel configurations</li>
+<li>Grid2dPillar parameters (DEM settings)</li>
+<li>Grid3dVoxel parameters (3D grid extent)</li>
+<li>Path length calculation settings</li>
+<li>Flux table paths</li>
+<li>Inversion parameters</li>
+</ul>
+<h3 id="build-geometry-module-3">Build Geometry (Module 3)<a class="headerlink" href="#build-geometry-module-3" title="Permanent link">¶</a></h3>
+<p>Construct the spatial grids from terrain data.</p>
+<div class="highlight"><pre><span></span><code>DEM file (.g2zbin)
+    ↓
+Grid2dPillar (2D terrain grid)
+    ↓
+Grid3dVoxel (3D voxel grid)
+    ↓
+Merge voxels (optional resolution reduction)
+    ↓
+Shell regions (terrain above/below voxel grid)
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/dem_operator_make_shell.dio.png" data-desc-position="bottom"><img alt="Shell region creation from DEM" src="../assets/images/dem_operator_make_shell.dio.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_ns_dem_operator_concept.drawio.png" data-desc-position="bottom"><img alt="dem_operator — shell creation concept and average density calculation" src="../assets/images/chart_ns_dem_operator_concept.drawio.png"></a></p>
+<p><strong>Inputs</strong>: DEM file path, grid parameters</p>
+<p><strong>Outputs</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>g2pil_naive</code></td>
+<td>2D terrain grid from DEM</td>
+</tr>
+<tr>
+<td><code>g3vox_input</code></td>
+<td>3D voxel grid with initial density</td>
+</tr>
+<tr>
+<td><code>g3vox_merged_input</code></td>
+<td>Merged voxel grid (lower resolution)</td>
+</tr>
+<tr>
+<td><code>g2pil_shell_upper</code></td>
+<td>Terrain above the voxel grid</td>
+</tr>
+<tr>
+<td><code>g2pil_shell_lower</code></td>
+<td>Terrain below the voxel grid</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>tf_build_g3vox = false</code>, the pipeline stops here and outputs 2D cross-sections only.</p>
+<h3 id="trace-path-lengths-module-4">Trace Path Lengths (Module 4)<a class="headerlink" href="#trace-path-lengths-module-4" title="Permanent link">¶</a></h3>
+<p>Construct the detector array and compute path lengths through the geometry.</p>
+<div class="highlight"><pre><span></span><code>DetectorPanelArray (from detector JSON5 files)
+    ↓
+Ray trace through Grid2dPillar → PL, DL per element
+    ↓
+Ray trace through Grid3dVoxel → sparse path-length matrices
+    ↓
+Compute signal/noise statistics from flux tables
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_arrdet_g2pil_create.dio.png" data-desc-position="bottom"><img alt="arrdet_g2pil creation flow" src="../assets/images/chart_arrdet_g2pil_create.dio.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_arrdet_g3vox_merged_vec_mat_PL2_create.dio.png" data-desc-position="bottom"><img alt="arrdet_g3vox and path-length matrix creation" src="../assets/images/chart_arrdet_g3vox_merged_vec_mat_PL2_create.dio.png"></a></p>
+<p><strong>Inputs</strong>: Detector parameters, geometry (Build Geometry, Module 3), flux tables</p>
+<p><strong>Outputs</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arrdet_g2pil_naive</code></td>
+<td>Detector array linked to 2D terrain</td>
+</tr>
+<tr>
+<td><code>arrdet_g3vox_input</code></td>
+<td>Detector array linked to 3D voxels</td>
+</tr>
+<tr>
+<td><code>vec_spmat_PL</code></td>
+<td>Sparse path-length matrices (one per detector)</td>
+</tr>
+<tr>
+<td><code>shell_pl</code></td>
+<td>Density-independent shell path lengths (<code>upper</code>, <code>lower</code>, <code>lateral</code>), flat <code>VectorXf</code> per component</td>
+</tr>
+</tbody>
+</table>
+<p>Trace Path Lengths (Module 4) is purely <strong>density-independent</strong> — it computes geometric path lengths only. Density-dependent prior quantities (<code>DL_prior</code>, expected counts, shell contributions) are built in Compute Prior (Module 5).</p>
+<p>This module is typically the most time-consuming step due to ray tracing through the 3D voxel grid. Several save/load knobs can avoid recomputation:</p>
+<ul>
+<li><code>tf_save_arrdet_g3vox</code> / <code>tf_load_arrdet_g3vox</code> — per-detector path-length artifacts</li>
+<li><code>--end-stage 4</code> followed by <code>--resume &lt;checkpoint_dir&gt;</code> — stops after Trace Path Lengths (Module 4) and writes a <code>checkpoint_trace_path_lengths</code> bundle that later runs reuse to skip Modules 1–4 entirely (raytrace is detected as already completed and skipped)</li>
+</ul>
+<h3 id="compute-prior-module-5">Compute Prior (Module 5)<a class="headerlink" href="#compute-prior-module-5" title="Permanent link">¶</a></h3>
+<p>Combine the density-independent Trace Path Lengths (Module 4) outputs with prior density assumptions to produce the prior muon-count prediction.</p>
+<p><strong>Inputs</strong>:</p>
+<ul>
+<li>Sparse path-length matrices <code>vec_spmat_PL</code></li>
+<li>Shell path lengths <code>shell_pl</code> (upper / lower / lateral)</li>
+<li>Flux tables, detector array</li>
+<li><code>density_quad = [prior, shell_upper, shell_lower, shell_lateral]</code> — per-shell prior densities from <code>NAGAINV_PARAMETERS</code> (falls back to <code>uniform_prior_density</code> when shell-specific values are omitted)</li>
+</ul>
+<p><strong>Outputs</strong>: Prior density-length (<code>DL_prior</code>), prior expected counts per density scenario (<code>prior_info_all</code>).</p>
+<h3 id="build-observation-matrix-module-6">Build Observation Matrix (Module 6)<a class="headerlink" href="#build-observation-matrix-module-6" title="Permanent link">¶</a></h3>
+<p>Convert path-length matrices into muon count sensitivity matrices by linearizing the nonlinear flux response <span class="arithmatex">\(N_i = g_i(X_i)\)</span> around the prior density length <span class="arithmatex">\(X_{0,i}\)</span> — i.e. Eq. (18) of <a href="../concepts/ray-tracing.html#nagahara2022">Nagahara et al. (2022)</a>:</p>
+<div class="arithmatex">\[A_{ij} \;=\; \frac{\partial N_i}{\partial \rho_j} \;=\; L_{ij}\, \frac{dN_i}{dX_i}\!\left(X_{0,i}\right)\]</div>
+<p>where <span class="arithmatex">\(L_{ij}\)</span> is the geometric path length of ray <span class="arithmatex">\(i\)</span> through voxel <span class="arithmatex">\(j\)</span> (from Trace Path Lengths, Module 4) and <span class="arithmatex">\(dN_i/dX_i\)</span> is the muon-count derivative with respect to density length, evaluated at <span class="arithmatex">\(X_{0,i}\)</span> via the flux table (weighted by <span class="arithmatex">\(dF/dR\)</span>, <span class="arithmatex">\(\cos\theta_z\)</span>, detector area, solid angle, and exposure time). See <a href="../concepts/ray-tracing.html#from-path-length-to-observation-equation">Ray Tracing — From Path Length to Observation Equation</a> for the full derivation.</p>
+<p><strong>Inputs</strong>: Sparse path-length matrices, flux tables, detector array</p>
+<p><strong>Outputs</strong>: Observation matrices <code>mat_dNdD_grouped</code> (one each for lower/center/upper prior)</p>
+<h3 id="invert-density-module-7">Invert Density (Module 7)<a class="headerlink" href="#invert-density-module-7" title="Permanent link">¶</a></h3>
+<p>Perform MAP-based density reconstruction.</p>
+<div class="arithmatex">\[\mathbf{C}_{\rho'} = \left(\mathbf{A}^T \mathbf{C}_N^{-1} \mathbf{A} + \mathbf{C}_\rho^{-1}\right)^{-1}\]</div>
+<div class="arithmatex">\[\delta\vec{\rho} = \mathbf{C}_{\rho'} \, \mathbf{A}^T \mathbf{C}_N^{-1} \left(\vec{N}_{\text{obs}} - \vec{N}_0\right)\]</div>
+<p><strong>Inputs</strong>: Observation matrix, observed/prior muon counts, regularization parameters</p>
+<p><strong>Outputs</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reconstructed density</td>
+<td><span class="arithmatex">\(\vec{\rho}' = \vec{\rho}_0 + \delta\vec{\rho}\)</span></td>
+</tr>
+<tr>
+<td>Posterior uncertainty</td>
+<td><span class="arithmatex">\(\sqrt{\text{diag}(\mathbf{C}_{\rho'})}\)</span></td>
+</tr>
+<tr>
+<td>Delta prior</td>
+<td><span class="arithmatex">\(\vec{\rho}' - \vec{\rho}_0\)</span></td>
+</tr>
+<tr>
+<td>Cross-section files</td>
+<td>2D density maps at specified z-elevations</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple inversion configurations (different <code>sigma_rho</code>, <code>corr_length</code>, etc.) can be defined in the <code>NAGAINV_PARAMETERS</code> array and executed sequentially.</p>
+<p>See <a href="../concepts/inversion.html">3D Inversion</a> for the mathematical details.</p>
+<h3 id="analyze-errors-and-output-module-8">Analyze Errors and Output (Module 8)<a class="headerlink" href="#analyze-errors-and-output-module-8" title="Permanent link">¶</a></h3>
+<p>Perform systematic error analysis and generate final outputs.</p>
+<ol>
+<li><strong>Leave-one-out analysis</strong>: Re-run inversion with each detector systematically removed to assess detector contribution sensitivity</li>
+<li><strong>Error components</strong>: Statistical error, prior error (lower/center/upper bounds), leave-one-out sensitivity</li>
+<li><strong>Combined error</strong>: Root-sum-square of all error sources</li>
+<li><strong>Output</strong>: Cross-section files for all error components</li>
+</ol>
+<h2 id="execution-control">Execution Control<a class="headerlink" href="#execution-control" title="Permanent link">¶</a></h2>
+<h3 id="running-the-pipeline">Running the Pipeline<a class="headerlink" href="#running-the-pipeline" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run all modules (1 through 8, single run)</span>
+muonith.exe<span class="w"> </span>-j<span class="w"> </span>prm_muonith.json5
+
+<span class="c1"># Run parameter sweep (set tf_exec=true in NAGAINV_PARAM_SWEEP section)</span>
+muonith.exe<span class="w"> </span>-j<span class="w"> </span>prm_muonith.json5
+</code></pre></div>
+<p>To stop the pipeline at a specific module, use <code>end_stage</code> in the JSON5 config
+or the <code>--end-stage</code> CLI flag (CLI takes precedence):</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// In the top-level section of prm_muonith.json5</span>
+<span class="c1">// Valid values: 3, 4, 5, 6, 7, 8 (default: 8 = all modules)</span>
+<span class="s">"end_stage"</span><span class="p">:</span><span class="w"> </span><span class="mf">6</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Or via CLI flag</span>
+muonith.exe<span class="w"> </span>-j<span class="w"> </span>prm_muonith.json5<span class="w"> </span>--end-stage<span class="w"> </span><span class="m">6</span>
+</code></pre></div>
+<h3 id="checkpoint-and-resume">Checkpoint and Resume<a class="headerlink" href="#checkpoint-and-resume" title="Permanent link">¶</a></h3>
+<p>Intermediate results (detector arrays, path-length matrices, observation matrices) can be saved to binary files via <code>tf_save_*</code> flags in <code>PATH_LENGTH_PARAMETERS</code>. On subsequent runs, these can be loaded via <code>tf_load_*</code> flags to skip expensive computations.</p>
+<p>A coarser checkpoint is also available at the Trace Path Lengths (Module 4) boundary: running with <code>--end-stage 4</code> writes a <code>checkpoint_trace_path_lengths</code> bundle (detector arrays, <code>vec_spmat_PL</code>, <code>shell_pl</code>, and a copy of the JSON5 configuration as <code>app_params.json</code>). A later run can start from that bundle with:</p>
+<div class="highlight"><pre><span></span><code>muonith.exe<span class="w"> </span>-j<span class="w"> </span>prm_muonith.json5<span class="w"> </span>--resume<span class="w"> </span>path/to/checkpoint_trace_path_lengths
+</code></pre></div>
+<p>When a valid <code>checkpoint_trace_path_lengths</code> is passed, the sweep driver detects "raytrace already completed" and skips Modules 1–4 entirely, resuming from Compute Prior (Module 5) onward.</p>
+<p>During a parameter sweep the driver also writes finer-grained checkpoints automatically: <code>checkpoint_build_geometry</code> (saved after Modules 1–3) and per-sweep-point <code>checkpoint_build_observation_matrix_p{prior}_u{upper}_l{lower}_lat{lateral}</code> bundles, named by the four shell-density indices. These let later sweep points reuse the Module 5/6 prior when they share the same shell-density combination.</p>
+<p>This is particularly useful when:</p>
+<ul>
+<li>Changing only inversion parameters (Invert Density, Module 7) — geometry and path lengths don't need recomputation</li>
+<li>Running parameter sweeps across <code>sigma_rho</code> and <code>corr_length</code> values</li>
+<li>Switching between different <code>uniform_prior_density</code> / shell-density combinations (Compute Prior, Module 5, onward is cheap)</li>
+</ul>
+<h2 id="parameter-sweep">Parameter Sweep<a class="headerlink" href="#parameter-sweep" title="Permanent link">¶</a></h2>
+<p>For systematic exploration of inversion parameters, use the <code>NAGAINV_PARAM_SWEEP</code> section:</p>
+<div class="highlight"><pre><span></span><code><span class="s">"NAGAINV_PARAM_SWEEP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"base_index"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"vec_sigma_rho"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">],</span>
+<span class="w">  </span><span class="nv">"vec_corr_length"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">70</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">],</span>
+<span class="w">  </span><span class="c1">// Each element: scalar (all shells equal) or [prior, upper, lower, lateral].</span>
+<span class="w">  </span><span class="c1">// Scalar and Quad can be mixed in the same array.</span>
+<span class="w">  </span><span class="nv">"vec_uniform_prior_density"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1500</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">2000</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">2500</span><span class="p">,</span><span class="w"> </span><span class="mf">1800</span><span class="p">]],</span>
+<span class="w">  </span><span class="nv">"link_diag_to_sigma"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">             </span><span class="c1">// true = sigma_rho_diag follows sigma_rho</span>
+<span class="w">  </span><span class="c1">// "vec_sigma_rho_diag": [200, 300],    // Required when link_diag_to_sigma=false</span>
+<span class="w">  </span><span class="nv">"module8_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"none"</span><span class="p">,</span><span class="w">                 </span><span class="c1">// "none" | "all" | "last" | "selected"</span>
+<span class="w">  </span><span class="nv">"module8_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">                   </span><span class="c1">// Sweep indices for module8_mode="selected"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This generates all combinations of the specified parameter values and runs Invert Density (Module 7) for each combination. Analyze Errors (Module 8) execution is controlled by <code>module8_mode</code>.</p>
+<h2 id="dependency-graph">Dependency Graph<a class="headerlink" href="#dependency-graph" title="Permanent link">¶</a></h2>
+<p>The following table shows which modules must be re-executed when a parameter changes:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter changed</th>
+<th>Re-run from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detector position/orientation</td>
+<td>Trace Path Lengths (Module 4)</td>
+</tr>
+<tr>
+<td>DEM file / grid extent</td>
+<td>Build Geometry (Module 3)</td>
+</tr>
+<tr>
+<td>Voxel resolution (merge)</td>
+<td>Build Geometry (Module 3)</td>
+</tr>
+<tr>
+<td><code>sigma_rho</code>, <code>corr_length</code></td>
+<td>Invert Density (Module 7) only</td>
+</tr>
+<tr>
+<td><code>uniform_prior_density</code></td>
+<td>Compute Prior (Module 5)</td>
+</tr>
+<tr>
+<td>Flux table</td>
+<td>Compute Prior (Module 5)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

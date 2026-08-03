@@ -1,0 +1,2932 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/reference/scripts.html">
+      
+      
+        <link rel="prev" href="cli.html">
+      
+      
+        <link rel="next" href="parameter-reference.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Scripts - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#utility-scripts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scripts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="scripts.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g2zbin_iopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        g2zbin_io.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geospatial-detector-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geospatial &amp; Detector Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geospatial &amp; Detector Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kml_to_csvpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        kml_to_csv.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson_to_csvpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geojson_to_csv.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mk_detjson5_from_templatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mk_detjson5_from_template.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init_work_sitepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init_work_site.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto_plotpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auto_plot.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_grid3dvoxelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_Grid3dVoxel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hist2dpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hist2d.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_detection_limit_heatmappy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_detection_limit_heatmap.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_dempy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_dem.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_dem_with_detectorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_dem_with_detectors.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_g2bgpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_g2bg.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_det_arrdetpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_det_arrdet.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspection-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspection &amp; Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspection &amp; Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo_recon_nnlspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        demo_recon_nnls.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-data-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Data Generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Data Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make_primitive_dempy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        make_primitive_dem.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g2zbin_iopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        g2zbin_io.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geospatial-detector-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geospatial &amp; Detector Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geospatial &amp; Detector Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kml_to_csvpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        kml_to_csv.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geojson_to_csvpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geojson_to_csv.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mk_detjson5_from_templatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mk_detjson5_from_template.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init_work_sitepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        init_work_site.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto_plotpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auto_plot.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_grid3dvoxelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_Grid3dVoxel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hist2dpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hist2d.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_detection_limit_heatmappy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_detection_limit_heatmap.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_dempy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_dem.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_dem_with_detectorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_dem_with_detectors.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_g2bgpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_g2bg.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_det_arrdetpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_det_arrdet.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspection-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspection &amp; Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspection &amp; Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo_recon_nnlspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        demo_recon_nnls.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-data-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Data Generation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Data Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make_primitive_dempy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        make_primitive_dem.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="utility-scripts">Utility Scripts<a class="headerlink" href="#utility-scripts" title="Permanent link">¶</a></h1>
+<p>The <code>scripts/</code> directory contains Python utility scripts for data conversion, visualization, parameter management, and inspection. All scripts require <strong>Python 3</strong> and accept <code>--help</code> for full option details. Dependencies (numpy, matplotlib, pandas, scipy, pyproj, rasterio, json5, etc.) are installed with <code>uv sync</code> from <code>pyproject.toml</code> + <code>uv.lock</code> at the repository root (see <a href="../getting-started/installation.html#python-packages-optional">Installation</a>).</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>g2zbin_io.py</code></td>
+<td>Library module for reading/writing g2zbin files</td>
+</tr>
+<tr>
+<td><code>kml_to_csv.py</code></td>
+<td>Extract KML placemarks to CSV/Markdown with elevation lookup</td>
+</tr>
+<tr>
+<td><code>geojson_to_csv.py</code></td>
+<td>Convert GeoJSON points to CSV/Markdown analysis table</td>
+</tr>
+<tr>
+<td><code>mk_detjson5_from_template.py</code></td>
+<td>Generate per-detector JSON5 files from a CSV and template</td>
+</tr>
+<tr>
+<td><code>auto_plot.py</code></td>
+<td>Auto-detect output files and run appropriate plotting scripts</td>
+</tr>
+<tr>
+<td><code>plot_Grid3dVoxel.py</code></td>
+<td>Render 3D voxel cross-section plots with GIF/PDF output</td>
+</tr>
+<tr>
+<td><code>plot_detection_limit_heatmap.py</code></td>
+<td>Plot detection limit heatmaps (p-value vs. size and depth)</td>
+</tr>
+<tr>
+<td><code>hist2d.py</code></td>
+<td>Unified 2D histogram / grid plotter</td>
+</tr>
+<tr>
+<td><code>plot_dem.py</code></td>
+<td>Visualize g2zbin DEM as a 2D heatmap</td>
+</tr>
+<tr>
+<td><code>plot_dem_with_detectors.py</code></td>
+<td>Plot DEM with detector positions overlay</td>
+</tr>
+<tr>
+<td><code>plot_g2bg.py</code></td>
+<td>Plot Grid2d background fields per detector</td>
+</tr>
+<tr>
+<td><code>plot_det_arrdet.py</code></td>
+<td>Plot txty/g2bg figures straight from <code>det/arrdet_*.bin</code> binary checkpoints</td>
+</tr>
+<tr>
+<td><code>make_primitive_dem.py</code></td>
+<td>Generate a primitive-solid DEM (cylinder/square_prism/cone/square_pyramid/gaussian) as g2zbin (in <code>param_sites/tutorial/</code>)</td>
+</tr>
+<tr>
+<td><code>init_work_site.py</code></td>
+<td>Scaffold a new per-site working directory from KML/CSV inputs and JSON5 templates</td>
+</tr>
+</tbody>
+</table>
+<p>A small number of shell helpers also live at the repository root:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setup_station.sh</code></td>
+<td>Station setup wrapper. Auto-checks <code>/usr/bin/time</code>, <code>python3</code>, <code>taskset</code>; sets up <code>.venv/</code> via <code>uv sync</code> from <code>pyproject.toml</code> + <code>uv.lock</code> (falls back to venv+pip when <code>uv</code> is absent); auto-copies <code>param_sites/template.json5</code> for new stations; respects <code>data_source</code> for shared data dirs; relaxes KML requirement when <code>skip_detparams: true</code>. Pass <code>--skip-env-check</code> to bypass Phase 0 / 0-5 environment checks.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="data-conversion">Data Conversion<a class="headerlink" href="#data-conversion" title="Permanent link">¶</a></h2>
+<h3 id="g2zbin_iopy">g2zbin_io.py<a class="headerlink" href="#g2zbin_iopy" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Library Module</p>
+<p>This is a Python library module, not a standalone script. Import it in other scripts with <code>from g2zbin_io import read_g2zbin, write_g2zbin</code>.</p>
+</div>
+<p>Provides <code>read_g2zbin()</code> and <code>write_g2zbin()</code> functions for the g2zbin binary format. The format stores Grid2d metadata (axis names, bin counts, min/max, interval) in a compact header followed by a flat z-value array. Used internally by <code>plot_dem.py</code>, <code>kml_to_csv.py</code>, and other grid-processing scripts.</p>
+<hr>
+<h2 id="geospatial-detector-setup">Geospatial &amp; Detector Setup<a class="headerlink" href="#geospatial-detector-setup" title="Permanent link">¶</a></h2>
+<h3 id="kml_to_csvpy">kml_to_csv.py<a class="headerlink" href="#kml_to_csvpy" title="Permanent link">¶</a></h3>
+<p>Extract point placemarks from a KML file and produce a CSV and Markdown analysis table with projected coordinates, distances, and azimuths.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/kml_to_csv.py<span class="w"> </span>--kml_in<span class="w"> </span>input.kml<span class="w"> </span>--EPSG<span class="w"> </span><span class="m">6676</span><span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>Supports elevation lookup from the GSI (Geospatial Information Authority of Japan) API, GeoTIFF DEM, or g2zbin DEM. Automatically identifies a reference point (vent/summit) using configurable keywords and computes relative geometry for each detector candidate.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--kml_in</code></td>
+<td>Input KML file (required)</td>
+</tr>
+<tr>
+<td><code>--EPSG</code></td>
+<td>Output EPSG code (required)</td>
+</tr>
+<tr>
+<td><code>--fill_elevation_from_gsi</code></td>
+<td>Fetch elevations from the GSI API</td>
+</tr>
+<tr>
+<td><code>--dem</code></td>
+<td>Path to DEM file (<code>.tif</code> or <code>.g2zbin</code>); GSI API used as fallback</td>
+</tr>
+<tr>
+<td><code>--throttle_sec</code></td>
+<td>API call interval in seconds (default: 0.5)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/kml_to_csv.py<span class="w"> </span>--kml_in<span class="w"> </span>asama.kml<span class="w"> </span>--EPSG<span class="w"> </span><span class="m">6676</span><span class="w"> </span>--dem<span class="w"> </span>dem.g2zbin<span class="w"> </span>--verbose
+</code></pre></div>
+<h3 id="geojson_to_csvpy">geojson_to_csv.py<a class="headerlink" href="#geojson_to_csvpy" title="Permanent link">¶</a></h3>
+<p>Convert GeoJSON point features to the same CSV/Markdown analysis table format as <code>kml_to_csv.py</code>.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/geojson_to_csv.py<span class="w"> </span>--geojson_in<span class="w"> </span>input.geojson<span class="w"> </span>--EPSG<span class="w"> </span><span class="m">6680</span><span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>Accepts GeoJSON FeatureCollection files exported from GSI Maps or other GIS tools. Shares the elevation-fill logic with <code>kml_to_csv.py</code>, supporting <code>--fill_elevation_from_gsi</code>, <code>--dem_tif</code>, and <code>--dem_only</code> modes.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/geojson_to_csv.py<span class="w"> </span>--geojson_in<span class="w"> </span>tokachi.geojson<span class="w"> </span>--EPSG<span class="w"> </span><span class="m">6680</span><span class="w"> </span>--dem_only<span class="w"> </span>--dem_tif<span class="w"> </span>dem.tif
+</code></pre></div>
+<h3 id="mk_detjson5_from_templatepy">mk_detjson5_from_template.py<a class="headerlink" href="#mk_detjson5_from_templatepy" title="Permanent link">¶</a></h3>
+<p>Generate per-detector JSON5 parameter files from a template and a CSV table.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/mk_detjson5_from_template.py<span class="w"> </span>--template<span class="w"> </span>template-det.json5<span class="w"> </span>--csv<span class="w"> </span>table.csv
+</code></pre></div>
+<p>Reads a CSV produced by <code>kml_to_csv.py</code> and fills in x, y, z, and yaw_deg values for each detector row while preserving comments in the JSON5 template. Column detection is automatic (handles various EPSG label formats) but can be overridden with <code>--xcol</code>/<code>--ycol</code>. Rows with missing numeric values are safely skipped.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--template</code></td>
+<td>Path to template JSON5 file (required)</td>
+</tr>
+<tr>
+<td><code>--csv</code></td>
+<td>Input CSV file (required)</td>
+</tr>
+<tr>
+<td><code>--z_pos_offset</code></td>
+<td>Add an elevation offset to all z values</td>
+</tr>
+<tr>
+<td><code>--epsg</code></td>
+<td>Prefer columns matching this EPSG code</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/mk_detjson5_from_template.py<span class="w"> </span>--template<span class="w"> </span>template-det.json5<span class="w"> </span>--csv<span class="w"> </span>asama_table_epsg6676.csv<span class="w"> </span>--z_pos_offset<span class="w"> </span><span class="m">10</span>.5
+</code></pre></div>
+<h3 id="init_work_sitepy">init_work_site.py<a class="headerlink" href="#init_work_sitepy" title="Permanent link">¶</a></h3>
+<p>Scaffold a new per-site working directory from a station JSON5 (under
+<code>param_sites/</code>) that points at a KML/GeoJSON for detector placement and a
+DEM for terrain. Produces a site directory containing <code>prm_muonith.json5</code>,
+per-depth/sweep subdirectories (e.g. <code>depth001/</code>, <code>swp001/</code>), and ready-to-use
+<code>auto_plot.json5</code> configurations.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/init_work_site.py<span class="w"> </span>param_sites/&lt;station&gt;.json5<span class="w"> </span>--make-detparams
+</code></pre></div>
+<p>Typical use is to bootstrap a new station (e.g. <code>tarumae-dome</code>, <code>tarumae-mid01</code>)
+without hand-editing the full JSON5 tree. Reconstruction volume fields are
+written in <strong>meters</strong> (<code>x_aabb_meters</code>, <code>cylinder_radius_x_meters</code>, …)
+matching the current <code>GRID3D_VOXEL_PARAMETERS.reconst_voxels</code> schema.</p>
+<p><strong>Custom CRS stations (<code>skip_detparams</code>)</strong>: For stations whose DEM and
+detector positions use a non-EPSG custom orthogonal coordinate system,
+set <code>"skip_detparams": true</code> in the station JSON5. The KML/CSV/det
+conversion pipeline is then bypassed, and the existing
+<code>work/&lt;station&gt;/detparams/&lt;label&gt;/runcard_det_*.json5</code> files are reused
+as-is. Required keys are relaxed (<code>epsg</code>, <code>detector_input</code>, <code>detector_spec</code>
+become optional). The <code>detector_spec.label</code> field can be supplied as a
+hint to pin which existing label directory to use when multiple are present.</p>
+<hr>
+<h2 id="visualization">Visualization<a class="headerlink" href="#visualization" title="Permanent link">¶</a></h2>
+<h3 id="auto_plotpy">auto_plot.py<a class="headerlink" href="#auto_plotpy" title="Permanent link">¶</a></h3>
+<p>Automatically detect output files and orchestrate the appropriate plotting scripts.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/auto_plot.py<span class="w"> </span><span class="o">[</span>--config<span class="w"> </span>config.json5<span class="o">]</span><span class="w"> </span><span class="o">[</span>--dry-run<span class="o">]</span><span class="w"> </span><span class="o">[</span>--exclude<span class="w"> </span>PATTERN<span class="o">]</span>
+</code></pre></div>
+<p>Scans the <code>tmp/</code> directory (and sweep subdirectories) for <code>.tmp</code> files, then dispatches hist2d, g3vox cross-section, and g2bg plotting tasks. hist2d tasks run in parallel; g3vox, g2bg, and det tasks run sequentially. Configuration is read from <code>auto_plot_default.json5</code> and can be overridden with a user config file.</p>
+<p>A fourth task family, <strong>det</strong>, is disabled by default: when the config sets <code>det_exec: true</code>, <code>auto_plot.py</code> also scans <code>det/arrdet_*.bin</code> and <code>checkpoint_*/det/arrdet_*.bin</code> — both directly in the working directory and under the tmp directory (the sweep driver writes its checkpoint bundles there, e.g. <code>tmp/checkpoint_m4/det/</code>) — and dispatches <a href="#plot_det_arrdetpy"><code>plot_det_arrdet.py</code></a> for each binary. This produces the standard txty/g2bg figures directly from binary checkpoints, without needing the <code>tmp/*.tmp</code> text exports. Keep <code>det_exec</code> off when the text exports are present — the same figures would be produced twice. The swp001 template (<code>scripts/templates/swp001_auto_plot.json5.tpl</code>) sets <code>det_exec: true</code>, because the swp001 <code>prm_muonith.json5</code> it is generated with disables the text exports (<code>tf_out_txty_ascii</code> / <code>tf_out_g2bg_ascii</code> false). The <code>det</code> section's <code>out_dir</code> / <code>n_jobs</code> keys control the output directory and the drawing parallelism (see <a href="#plot_det_arrdetpy"><code>plot_det_arrdet.py</code></a>); the swp001 template sets <code>out_dir: "figs"</code>, <code>n_jobs: -2</code>, and excludes <code>arrdet_g2pil_*</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code>, <code>-c</code></td>
+<td>Custom JSON5/JSON config to override defaults</td>
+</tr>
+<tr>
+<td><code>--dry-run</code>, <code>-n</code></td>
+<td>Print commands without executing</td>
+</tr>
+<tr>
+<td><code>--skip-hist2d</code></td>
+<td>Skip hist2d plots</td>
+</tr>
+<tr>
+<td><code>--skip-g3vox</code></td>
+<td>Skip g3vox plots</td>
+</tr>
+<tr>
+<td><code>--skip-g2bg</code></td>
+<td>Skip g2bg plots</td>
+</tr>
+<tr>
+<td><code>--skip-det</code></td>
+<td>Skip det plots (binary-direct <code>plot_det_arrdet.py</code> tasks)</td>
+</tr>
+<tr>
+<td><code>--exclude</code>, <code>-e</code></td>
+<td>Exclude files matching glob pattern (repeatable)</td>
+</tr>
+<tr>
+<td><code>--delete-png</code></td>
+<td>Delete intermediate PNG files after GIF/PDF creation</td>
+</tr>
+<tr>
+<td><code>--tmp-dir</code></td>
+<td>Directory containing <code>.tmp</code> files (default: <code>tmp</code>)</td>
+</tr>
+<tr>
+<td><code>--error-log</code></td>
+<td>File for error logs (default: <code>error_auto_plot-tmp.log</code>; empty string disables)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/auto_plot.py<span class="w"> </span>--dry-run<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">"arrdet_g3vox_prior_*"</span>
+</code></pre></div>
+<h3 id="plot_grid3dvoxelpy">plot_Grid3dVoxel.py<a class="headerlink" href="#plot_grid3dvoxelpy" title="Permanent link">¶</a></h3>
+<p>Render 3D voxel data as cross-section heatmap slices with animated GIF and PDF output.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_Grid3dVoxel.py<span class="w"> </span>--config<span class="o">=</span>config.json<span class="w"> </span><span class="o">[</span>--use-data-bins<span class="o">]</span>
+</code></pre></div>
+<p>Reads <code>g3vox_*_zcross_all.tmp</code> (text) or <code>g3vox_*_zcross_all.tmpbin</code> (binary) files and produces per-slice PNG images along the specified cross-section axis (x, y, or z). Supports detector position markers, multiple cross-sections, and configurable color scales. Uses multiprocessing for parallel slice rendering.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code></td>
+<td>Path to JSON configuration file</td>
+</tr>
+<tr>
+<td><code>--use-header-bins</code></td>
+<td>Use bin parameters from the input file header</td>
+</tr>
+<tr>
+<td><code>--use-data-bins</code></td>
+<td>Compute bin edges from actual data coordinates</td>
+</tr>
+<tr>
+<td><code>--delete-png</code></td>
+<td>Remove intermediate PNG files after GIF/PDF creation</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_Grid3dVoxel.py<span class="w"> </span>--config<span class="o">=</span>plot_g3vox.json<span class="w"> </span>--use-data-bins
+</code></pre></div>
+<h3 id="hist2dpy">hist2d.py<a class="headerlink" href="#hist2dpy" title="Permanent link">¶</a></h3>
+<p>Unified 2D histogram and grid plotter with two modes: histogram (bin scatter data) and grid (reshape pre-gridded data).</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/hist2d.py<span class="w"> </span>input.tmp<span class="w"> </span><span class="o">[</span>--mode<span class="w"> </span>histogram<span class="p">|</span>grid<span class="o">]</span><span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>Reads whitespace-separated (x, y, z) data and produces a color-mapped PNG. Supports log scale, contour lines, mask overlays, and CSV export. Typically invoked by <code>auto_plot.py</code> rather than directly.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--mode</code></td>
+<td><code>histogram</code> (default) or <code>grid</code></td>
+</tr>
+<tr>
+<td><code>--nbinx</code>, <code>--xmin</code>, <code>--xmax</code></td>
+<td>X-axis binning</td>
+</tr>
+<tr>
+<td><code>--ngrad</code>, <code>--vmin</code>, <code>--vmax</code></td>
+<td>Color scale range</td>
+</tr>
+<tr>
+<td><code>--log</code></td>
+<td>Use logarithmic color scale</td>
+</tr>
+<tr>
+<td><code>--colormap</code></td>
+<td>Matplotlib colormap name (default: jet)</td>
+</tr>
+<tr>
+<td><code>--contour</code></td>
+<td>Draw contour lines</td>
+</tr>
+<tr>
+<td><code>--no-csv</code></td>
+<td>Disable CSV output</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/hist2d.py<span class="w"> </span>tmp/hist_data.tmp<span class="w"> </span>--nbinx<span class="w"> </span><span class="m">320</span><span class="w"> </span>--xmin<span class="w"> </span>-1.6<span class="w"> </span>--xmax<span class="w"> </span><span class="m">1</span>.6<span class="w"> </span>--log
+</code></pre></div>
+<h3 id="plot_detection_limit_heatmappy">plot_detection_limit_heatmap.py<a class="headerlink" href="#plot_detection_limit_heatmappy" title="Permanent link">¶</a></h3>
+<p>Create detection limit heatmaps showing log10(p-value) as a function of anomaly size and depth for each delta-density value.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_detection_limit_heatmap.py<span class="w"> </span>--main_config<span class="w"> </span>prm_reso.json5<span class="w"> </span><span class="o">[</span>--plot_config<span class="w"> </span>heatmap.json5<span class="o">]</span><span class="w"> </span><span class="o">[</span>--outdir<span class="w"> </span>figs<span class="o">]</span>
+</code></pre></div>
+<p>Reads significance CSV files produced by the depth-resolution sweep and generates separate heatmap figures per delta-density. Supports configurable contour lines, a secondary elevation axis, size-bar indicators, and optional animated GIF output.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_detection_limit_heatmap.py<span class="w"> </span>--main_config<span class="w"> </span>prm_reso.json5<span class="w"> </span>--plot_config<span class="w"> </span>heatmap_config.json5<span class="w"> </span>--surface_elevation<span class="w"> </span>auto
+</code></pre></div>
+<h3 id="plot_dempy">plot_dem.py<a class="headerlink" href="#plot_dempy" title="Permanent link">¶</a></h3>
+<p>Visualize g2zbin DEM files as 2D heatmaps with optional contour lines.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_dem.py<span class="w"> </span>--input<span class="w"> </span>dem.g2zbin<span class="w"> </span><span class="o">[</span>--contour<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cint<span class="w"> </span><span class="m">10</span><span class="o">]</span>
+</code></pre></div>
+<p>Supports color range control, contour line intervals, optional 90-degree rotation, and configurable colormaps. Saves output as PNG alongside the input file.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--input</code></td>
+<td>Input <code>.g2zbin</code> file (required)</td>
+</tr>
+<tr>
+<td><code>--zmin</code>, <code>--zmax</code></td>
+<td>Color scale range</td>
+</tr>
+<tr>
+<td><code>--contour</code></td>
+<td>Draw contour lines</td>
+</tr>
+<tr>
+<td><code>--cint</code></td>
+<td>Contour interval (default: 10)</td>
+</tr>
+<tr>
+<td><code>--cmap</code></td>
+<td>Matplotlib colormap (default: terrain)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_dem.py<span class="w"> </span>--input<span class="w"> </span>dem.g2zbin<span class="w"> </span>--contour<span class="w"> </span>--cint<span class="w"> </span><span class="m">50</span><span class="w"> </span>--cmap<span class="w"> </span>terrain
+</code></pre></div>
+<h3 id="plot_dem_with_detectorspy">plot_dem_with_detectors.py<a class="headerlink" href="#plot_dem_with_detectorspy" title="Permanent link">¶</a></h3>
+<p>Plot a DEM together with detector positions loaded from a CSV file or JSON5 configuration.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_dem_with_detectors.py<span class="w"> </span>--config<span class="w"> </span>prm.json5<span class="w"> </span><span class="o">[</span>--csv<span class="w"> </span>det_table.csv<span class="o">]</span>
+</code></pre></div>
+<p>Overlays detector markers, a reference-point star, and optional distance labels on top of a DEM heatmap with contours. Accepts DEM in g2zbin or GeoTIFF format. Coordinates can be displayed in meters or kilometers.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--config</code></td>
+<td>JSON5 config (extracts DEM path, detectors, target coordinates)</td>
+</tr>
+<tr>
+<td><code>--csv</code></td>
+<td>CSV with detector coordinates (from <code>kml_to_csv.py</code>)</td>
+</tr>
+<tr>
+<td><code>--dem</code></td>
+<td>Path to DEM file (overrides config)</td>
+</tr>
+<tr>
+<td><code>--show_dist</code></td>
+<td>Show detector-to-target distance labels</td>
+</tr>
+<tr>
+<td><code>--xyunit</code></td>
+<td>Axis unit: <code>m</code> or <code>km</code> (default: m)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_dem_with_detectors.py<span class="w"> </span>--config<span class="w"> </span>prm.json5<span class="w"> </span>--contour<span class="w"> </span>--cint<span class="w"> </span><span class="m">50</span><span class="w"> </span>--xyunit<span class="w"> </span>km
+</code></pre></div>
+<h3 id="plot_g2bgpy">plot_g2bg.py<a class="headerlink" href="#plot_g2bgpy" title="Permanent link">¶</a></h3>
+<p>Plot Grid2d background fields (signal, noise, density estimates, efficiency) per detector.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_g2bg.py<span class="w"> </span>--jsonfile<span class="o">=</span>config.json
+</code></pre></div>
+<p>Reads <code>g2bg_*_det*.tmp</code> files and generates PNG images for each configured field and detector. Supports reference-data differencing, virtual fields (e.g., S/N ratio differences), log scale, and parallel processing. Produces per-detector and per-field PDF/GIF aggregations.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_g2bg.py<span class="w"> </span>--jsonfile<span class="o">=</span>plot_g2bg.json
+</code></pre></div>
+<h3 id="plot_det_arrdetpy">plot_det_arrdet.py<a class="headerlink" href="#plot_det_arrdetpy" title="Permanent link">¶</a></h3>
+<p>Plot per-element quantities straight from <code>det/arrdet_*.bin</code> binary checkpoints (binary-direct, no intermediate text file).</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_det_arrdet.py<span class="w"> </span>&lt;arrdet.bin<span class="w"> </span><span class="p">|</span><span class="w"> </span>checkpoint_dir<span class="w"> </span><span class="p">|</span><span class="w"> </span>det_dir&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--field<span class="w"> </span>PL,dens,signal<span class="o">]</span><span class="w"> </span><span class="o">[</span>--det<span class="w"> </span><span class="m">0</span>,1,2<span class="o">]</span><span class="w"> </span><span class="o">[</span>--out<span class="w"> </span>DIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--jobs<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--plot-config<span class="w"> </span>auto_plot.json5<span class="o">]</span><span class="w"> </span><span class="o">[</span>--check-mat<span class="w"> </span>&lt;mat_dir&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--list-fields<span class="o">]</span>
+</code></pre></div>
+<p>Reads a serialized <code>DetectorPanelArray</code> checkpoint (<code>det/arrdet_g3vox_input.bin</code> or <code>det/arrdet_g2pil_naive.bin</code>, ~160 MB each) field by field, then reproduces the standard txty (hist2d) and g2bg figures with the rendering parameters from the same <code>auto_plot.json5</code> the normal flow uses, so the output naming and style match the established figures. Useful when only binary checkpoints are available — for example a <code>--end-stage 4</code> bundle, or runs where the <code>tmp/*.tmp</code> text exports were disabled or predate the <code>mat/</code> element-table export.</p>
+<p>Also invoked automatically by <a href="#auto_plotpy"><code>auto_plot.py</code></a> as the <strong>det</strong> task family when the config sets <code>det_exec: true</code> (default: false). Figures are written to the <code>det.out_dir</code> of the auto_plot config (relative paths are anchored at the config's folder; the swp001 template sets <code>"figs"</code>), else to <code>plot_det_arrdet/</code> next to the binary; <code>--out</code> overrides both. Drawing runs in parallel: <code>--jobs</code> (else <code>det.n_jobs</code>, default -2) sets the number of workers — positive = that many, 1 = one by one, 0 = all CPU cores, negative = leave that many cores free.</p>
+<p>Limitations: checkpoints older than <code>PIPELINE_VERSION</code> 7 are rejected with a clear error (v7 added the group efficiencies to the binary, so the <code>eff_*</code> figures are drawn on this path too) — regenerate them with the current code. For very large checkpoints the binary read can be slow — run the script manually if the <code>auto_plot.py</code> per-task time limit (600 s for det tasks) is exceeded.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--field</code></td>
+<td>Comma-separated txty fields to plot (default: <code>PL,dens,signal</code>; see <code>--list-fields</code>)</td>
+</tr>
+<tr>
+<td><code>--det</code></td>
+<td>Comma-separated detector IDs to keep (default: all)</td>
+</tr>
+<tr>
+<td><code>--out</code></td>
+<td>Output directory (default: <code>det.out_dir</code> from the auto_plot config, else <code>&lt;source_dir&gt;/plot_det_arrdet</code>)</td>
+</tr>
+<tr>
+<td><code>--jobs</code></td>
+<td>Figure-drawing workers (default: <code>det.n_jobs</code> from the auto_plot config, else -2 = leave 2 CPU cores free)</td>
+</tr>
+<tr>
+<td><code>--plot-config</code></td>
+<td><code>auto_plot.json5</code> for rendering parameters (default: nearest one above the binary, else <code>auto_plot_default.json5</code>)</td>
+</tr>
+<tr>
+<td><code>--check-mat</code></td>
+<td>Validate the binary read against the <code>mat/</code> element table row for row</td>
+</tr>
+<tr>
+<td><code>--g2bg</code> / <code>--no-g2bg</code></td>
+<td>Force g2bg group figures on/off (default follows the config <code>g2bg_exec</code> switch)</td>
+</tr>
+<tr>
+<td><code>--no-hist2d</code></td>
+<td>Never draw the per-element txty (hist2d) figures</td>
+</tr>
+<tr>
+<td><code>--list-fields</code></td>
+<td>Print the plottable field names and exit</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/plot_det_arrdet.py<span class="w"> </span>checkpoint_trace_path_lengths<span class="w"> </span>--check-mat<span class="w"> </span>run_output/mat
+</code></pre></div>
+<hr>
+<h2 id="inspection-comparison">Inspection &amp; Comparison<a class="headerlink" href="#inspection-comparison" title="Permanent link">¶</a></h2>
+<h3 id="demo_recon_nnlspy">demo_recon_nnls.py<a class="headerlink" href="#demo_recon_nnlspy" title="Permanent link">¶</a></h3>
+<p>Standalone density reconstruction driven only by the exported <code>mat/manifest.json</code>, with no dependency on the C++ code.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/demo_recon_nnls.py<span class="w"> </span>&lt;mat_dir&gt;<span class="w"> </span><span class="o">[</span>--out<span class="w"> </span>DIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--lams<span class="w"> </span><span class="m">0</span>.01,0.1,1.0<span class="o">]</span>
+</code></pre></div>
+<p>Loads <code>mat/manifest.json</code>, sanity-checks every <code>.bin</code> it lists, builds a synthetic ground truth (uniform background with one low-density block), synthesizes observed counts from the central observation matrix, and solves non-negative regularized least squares over each <code>--lams</code> weight, keeping the best by relative error. Writes a slice PNG and a z-scan GIF to <code>--out</code> (default <code>&lt;mat_dir&gt;/../demo_recon_nnls</code>). Requires NumPy, SciPy, and Matplotlib. See <a href="../user-guide/external-reconstruction.html">External Reconstruction</a> for the <code>mat/</code> layout.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/demo_recon_nnls.py<span class="w"> </span>path/to/run_output/mat
+</code></pre></div>
+<hr>
+<h2 id="test-data-generation">Test Data Generation<a class="headerlink" href="#test-data-generation" title="Permanent link">¶</a></h2>
+<h3 id="make_primitive_dempy">make_primitive_dem.py<a class="headerlink" href="#make_primitive_dempy" title="Permanent link">¶</a></h3>
+<p>Generate a simple primitive-solid DEM (single-valued height field) and write it as a g2zbin binary file. Lives in <code>param_sites/tutorial/</code>. Supersedes the former <code>mk_gaussian_g2zbin.py</code> (the Gaussian surface is now the <code>gaussian</code> shape). The generated <code>.g2zbin</code> binaries are not committed to the repository; users regenerate them locally for tutorials.</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>param_sites/tutorial/make_primitive_dem.py<span class="w"> </span>--shape<span class="w"> </span>cone<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--x_min<span class="w"> </span>-500<span class="w"> </span>--x_max<span class="w"> </span><span class="m">500</span><span class="w"> </span>--y_min<span class="w"> </span>-500<span class="w"> </span>--y_max<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--x_interval<span class="w"> </span><span class="m">5</span><span class="w"> </span>--y_interval<span class="w"> </span><span class="m">5</span><span class="w"> </span>--radius<span class="w"> </span><span class="m">200</span><span class="w"> </span>--height<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--outbin<span class="w"> </span>param_sites/tutorial/eg_cone-5m.g2zbin
+</code></pre></div>
+<p>Supported shapes (<code>--shape</code>): <code>cylinder</code>, <code>square_prism</code>, <code>cone</code>, <code>square_pyramid</code>, <code>gaussian</code>. Each computes a uniform grid and writes the height field in g2zbin format.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--shape</code></td>
+<td>One of cylinder / square_prism / cone / square_pyramid / gaussian (required)</td>
+</tr>
+<tr>
+<td><code>--x_min</code>, <code>--x_max</code></td>
+<td>X-axis range</td>
+</tr>
+<tr>
+<td><code>--y_min</code>, <code>--y_max</code></td>
+<td>Y-axis range</td>
+</tr>
+<tr>
+<td><code>--x_interval</code>, <code>--y_interval</code></td>
+<td>Grid spacing</td>
+</tr>
+<tr>
+<td><code>--xcnt</code>, <code>--ycnt</code></td>
+<td>Shape center (default 0, 0)</td>
+</tr>
+<tr>
+<td><code>--base</code></td>
+<td>Base plane elevation (default 0)</td>
+</tr>
+<tr>
+<td><code>--height</code></td>
+<td>Peak height above base (default 300)</td>
+</tr>
+<tr>
+<td><code>--radius</code></td>
+<td>Radius for cylinder / cone (default 200)</td>
+</tr>
+<tr>
+<td><code>--half_width</code></td>
+<td>Half-width for square_prism / square_pyramid (default 200)</td>
+</tr>
+<tr>
+<td><code>--sigma_x</code>, <code>--sigma_y</code></td>
+<td>Gaussian widths (sigma_y defaults to sigma_x)</td>
+</tr>
+<tr>
+<td><code>--outbin</code></td>
+<td>Output g2zbin file path (default: <code>eg_&lt;shape&gt;-&lt;dx&gt;m.g2zbin</code>)</td>
+</tr>
+<tr>
+<td><code>--float64</code></td>
+<td>Store z as float64 instead of float32 (default: float32)</td>
+</tr>
+</tbody>
+</table>
+<p>For a full worked example that generates a primitive DEM, adds an internal density
+anomaly, and runs the inversion end to end, see
+<a href="../user-guide/synthetic-dem-examples.html">Synthetic DEM Examples</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

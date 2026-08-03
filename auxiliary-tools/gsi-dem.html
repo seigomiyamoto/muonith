@@ -1,0 +1,2619 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/auxiliary-tools/gsi-dem.html">
+      
+      
+        <link rel="prev" href="../user-guide/external-reconstruction.html">
+      
+      
+        <link rel="next" href="path-view.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>GSI DEM - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#muonith-gsi-dem" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GSI DEM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="gsi-dem.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-gsi-dem-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtaining GSI DEM Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-json5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (JSON5)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (JSON5)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-xy_epsg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing XY_EPSG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut_params-sub-region-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cut_params — Sub-Region Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough-satsuma-iwojima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough: Satsuma-Iwojima
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utility-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utility Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-filling-gsi-tile-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap Filling (GSI Tile API)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gap Filling (GSI Tile API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standalone-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standalone usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-gsi-dem-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtaining GSI DEM Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-json5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration (JSON5)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration (JSON5)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-xy_epsg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing XY_EPSG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cut_params-sub-region-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cut_params — Sub-Region Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough-satsuma-iwojima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough: Satsuma-Iwojima
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utility-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utility Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-filling-gsi-tile-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap Filling (GSI Tile API)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gap Filling (GSI Tile API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standalone-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standalone usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="muonith-gsi-dem">muonith-gsi-dem<a class="headerlink" href="#muonith-gsi-dem" title="Permanent link">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">External repository</p>
+<p>muonith-gsi-dem is maintained in a separate repository. This page documents its stable interface for use with MUONITH. To obtain the tool, contact the maintainers.</p>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>muonith-gsi-dem converts DEM (Digital Elevation Model) data from the Geospatial Information Authority of Japan (GSI) into formats usable by MUONITH. It processes ZIP archives of GSI's Fundamental Geospatial Data (基盤地図情報 数値標高モデル) and produces:</p>
+<ul>
+<li><strong><code>.g2zbin</code></strong> — Compact uniform-grid binary (direct input to MUONITH)</li>
+<li><strong>GeoTIFF</strong> — Georeferenced raster (for GIS tools and muonith-path-view)</li>
+<li><strong>PNG</strong> — Colored elevation maps with contour lines</li>
+</ul>
+<div class="highlight"><pre><span></span><code>GSI ZIP archives ──→ convertZipDEM.py ──→ g2zbin (→ MUONITH)
+                                   ──→ GeoTIFF (→ GIS / muonith-path-view)
+                                   ──→ PNG (→ visual inspection)
+</code></pre></div>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.x</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>numpy</td>
+<td>Array computation</td>
+</tr>
+<tr>
+<td>GDAL (<code>osgeo.gdal</code>, <code>osgeo.osr</code>)</td>
+<td>GeoTIFF I/O and CRS transformation</td>
+</tr>
+<tr>
+<td>pyproj</td>
+<td>Coordinate reference system conversion</td>
+</tr>
+<tr>
+<td>matplotlib</td>
+<td>PNG rendering (colormap, contour lines)</td>
+</tr>
+<tr>
+<td>json5 (optional)</td>
+<td>JSON5 config parser (falls back to standard <code>json</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>The recommended way to install these is the setup script shipped with the tool,
+which creates <code>.venv/</code> and pins the GDAL Python bindings to the system GDAL:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>setup-venv.sh
+</code></pre></div>
+<p>It requires <code>uv</code> and the system libgdal development headers, i.e. <code>gdal-config</code>
+on <code>PATH</code> (Debian/Ubuntu: <code>sudo apt install libgdal-dev</code>). The script stops with
+an error message if <code>gdal-config</code> is missing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you instead manage the environment with <code>uv</code>, note that numpy, pyproj,
+matplotlib and json5 come from <code>uv sync</code> (<code>pyproject.toml</code>), while GDAL does
+not: its Python package must match the system libgdal, so install it on top
+of the synced <code>.venv</code> with <code>uv pip install GDAL</code>. A later plain <code>uv sync</code>
+removes GDAL again; re-run that command, or use <code>uv sync --inexact</code> to keep
+manually added packages.</p>
+</div>
+<h2 id="obtaining-gsi-dem-data">Obtaining GSI DEM Data<a class="headerlink" href="#obtaining-gsi-dem-data" title="Permanent link">¶</a></h2>
+<ol>
+<li>Visit the GSI download service: <a href="https://service.gsi.go.jp/kiban/app/map/?search=dem">https://service.gsi.go.jp/kiban/app/map/?search=dem</a></li>
+<li>Select <strong>数値標高モデル</strong> (Digital Elevation Model)</li>
+<li>Choose mesh resolution:<ul>
+<li><strong>DEM5A</strong> — 5 m mesh (high resolution, limited coverage)</li>
+<li><strong>DEM10</strong> — 10 m mesh (nationwide coverage)</li>
+</ul>
+</li>
+<li>Download <strong>every ZIP whose mesh tile overlaps your area of interest</strong>. GSI
+   distributes DEM data per secondary mesh tile (about 10 km x 10 km), and the
+   tile code is embedded in the ZIP file name (<code>FG-GML-&lt;mesh&gt;-DEM5A-&lt;date&gt;.zip</code>).
+   Zoom to your target area on the map and the service shows which tiles cover
+   it. Examples:<ul>
+<li>Satsuma-Iwojima: a single tile, mesh 4630-12 —
+  <code>FG-GML-463012-DEM5A-20250620.zip</code> (the trailing date differs per release)</li>
+<li>Mount Asama: nine tiles, mesh 5438-43 ... 5438-65</li>
+</ul>
+</li>
+</ol>
+<p>List the downloaded files in <code>zip_files</code> of the JSON5 configuration; the
+pipeline merges all tiles into one grid.</p>
+<p>Before running, open the JSON5 file and check that each name in <code>zip_files</code>
+matches the ZIP you actually downloaded: GSI appends a release date to the file
+name (<code>FG-GML-&lt;mesh&gt;-DEM5A-&lt;date&gt;.zip</code>), so a fresh download differs from the
+bundled example and must be rewritten to match, otherwise the conversion stops
+at the first step.</p>
+<p>For regions outside Japan, obtain DEM data from other sources (e.g., SRTM, ALOS, national surveys) and convert it to GeoTIFF. The muonith-gsi-dem README documents how to convert that GeoTIFF to <code>.g2zbin</code> and how to inspect a cropped area.</p>
+<h2 id="configuration-json5">Configuration (JSON5)<a class="headerlink" href="#configuration-json5" title="Permanent link">¶</a></h2>
+<p>Configuration files are stored in the <code>params/</code> directory. Below is the bundled
+example <code>params/showa.json5</code> for the
+<a href="https://en.wikipedia.org/wiki/Sh%C5%8Dwa-shinzan">Showa-shinzan</a> area:</p>
+<details class="example">
+<summary>params/showa.json5 (click to expand)</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nv">"project_name"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Output goes to projects/showa/</span>
+<span class="w">  </span><span class="nv">"zip_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                           </span><span class="c1">// All GSI DEM ZIPs covering the area (two tiles)</span>
+<span class="w">    </span><span class="s">"../../dem/showa/FG-GML-634066-DEM5A-20250620.zip"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"../../dem/showa/FG-GML-634067-DEM5A-20250620.zip"</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nv">"xy_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">"meters"</span><span class="p">,</span><span class="w"> </span><span class="s">"DMS"</span><span class="w"> </span><span class="p">],</span><span class="w">         </span><span class="c1">// Axis units; one PNG is rendered per unit</span>
+<span class="w">  </span><span class="nv">"cmap"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span><span class="w">                      </span><span class="c1">// Matplotlib colormap</span>
+<span class="w">  </span><span class="nv">"XY_EPSG"</span><span class="p">:</span><span class="w"> </span><span class="mf">6679</span><span class="p">,</span><span class="w">                         </span><span class="c1">// JGD2011 zone XI (southern Hokkaido)</span>
+
+<span class="w">  </span><span class="nv">"tf_save_png"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Save colored PNG maps</span>
+<span class="w">  </span><span class="nv">"png_basename"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span><span class="w">                </span><span class="c1">// fig/fig_showa_&lt;unit&gt;.png</span>
+<span class="w">  </span><span class="nv">"tf_save_g2zbin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Save g2zbin (MUONITH input)</span>
+<span class="w">  </span><span class="nv">"g2zbin_basename"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span><span class="w">             </span><span class="c1">// g2zbin/showa.g2zbin</span>
+<span class="w">  </span><span class="nv">"tf_save_geotiff"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Save GeoTIFF raster</span>
+<span class="w">  </span><span class="nv">"geotiff_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span><span class="w">             </span><span class="c1">// geotiff/showa.tif</span>
+
+<span class="w">  </span><span class="nv">"cont_pitch"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">                      </span><span class="c1">// Contour interval [m]</span>
+
+<span class="w">  </span><span class="nv">"cut_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// Sub-region extraction (2x2 km around Showa-shinzan)</span>
+<span class="w">    </span><span class="nv">"zmin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                            </span><span class="c1">// Colorbar minimum [m]</span>
+<span class="w">    </span><span class="nv">"zmax"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w">                          </span><span class="c1">// Colorbar maximum [m]</span>
+<span class="w">    </span><span class="nv">"cmap"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Matplotlib colormap for the cut PNGs</span>
+<span class="w">    </span><span class="nv">"xy_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">"km"</span><span class="p">],</span><span class="w">                    </span><span class="c1">// Axis units; one PNG is rendered per unit</span>
+<span class="w">    </span><span class="nv">"XY_EPSG"</span><span class="p">:</span><span class="w"> </span><span class="mf">6679</span><span class="p">,</span><span class="w">                       </span><span class="c1">// CRS of the cut outputs</span>
+
+<span class="w">    </span><span class="nv">"tf_save_png"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Save colored PNG maps of the cut</span>
+<span class="w">    </span><span class="nv">"png_basename"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"showa_2x2km"</span><span class="p">,</span><span class="w">        </span><span class="c1">// fig/fig_showa_2x2km_km.png</span>
+<span class="w">    </span><span class="nv">"tf_save_g2zbin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">               </span><span class="c1">// Save g2zbin of the cut (MUONITH input)</span>
+<span class="w">    </span><span class="nv">"g2zbin_basename"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"showa_2x2km"</span><span class="p">,</span><span class="w">     </span><span class="c1">// g2zbin/showa_2x2km.g2zbin</span>
+<span class="w">    </span><span class="nv">"tf_save_geotiff"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">               </span><span class="c1">// Save GeoTIFF of the cut</span>
+<span class="w">    </span><span class="nv">"geotiff_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa_2x2km"</span><span class="p">,</span><span class="w">     </span><span class="c1">// geotiff/showa_2x2km_cut.tif</span>
+
+<span class="w">    </span><span class="nv">"xy_center_unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"degrees"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Unit of xcnt/ycnt: "degrees" or "meters"</span>
+<span class="w">    </span><span class="nv">"xcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">140.866702</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Center longitude</span>
+<span class="w">    </span><span class="nv">"ycnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.542692</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Center latitude</span>
+<span class="w">    </span><span class="nv">"xy_unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"meters"</span><span class="p">,</span><span class="w">                  </span><span class="c1">// Unit of xsize/ysize</span>
+<span class="w">    </span><span class="c1">// xcnt - xsize &lt;= x &lt;= xcnt + xsize, same for y</span>
+<span class="w">    </span><span class="nv">"xsize"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w">                        </span><span class="c1">// Half-width [m] -&gt; 2x2 km area</span>
+<span class="w">    </span><span class="nv">"ysize"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w">                        </span><span class="c1">// Half-height [m]</span>
+
+<span class="w">    </span><span class="nv">"cont_pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w">                      </span><span class="c1">// Contour interval [m]</span>
+<span class="w">    </span><span class="nv">"contour_text"</span><span class="p">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Contour label interval [m]</span>
+
+<span class="w">    </span><span class="nv">"font_scale_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Label font auto-scaling lower bound</span>
+<span class="w">    </span><span class="nv">"font_scale_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Label font auto-scaling upper bound</span>
+<span class="w">    </span><span class="nv">"min_side_px"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="w">                    </span><span class="c1">// Minimum pixel count of the shorter PNG side</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="other-parameters">Other Parameters<a class="headerlink" href="#other-parameters" title="Permanent link">¶</a></h3>
+<p>Every key is explained by the inline comments in the examples above (and in
+the Walkthrough's <code>params/iwojima.json5</code>). A few optional keys do not appear
+in the examples:</p>
+<ul>
+<li><code>zmin</code> / <code>zmax</code> — colorbar range; when omitted, the 2nd–98th percentile of
+  the elevation data is used.</li>
+<li><code>shade</code> (default <code>true</code>) / <code>shade_alpha</code> (default <code>0.2</code>) — hillshade overlay
+  on the elevation colormap and its opacity (0.0–1.0).</li>
+<li><code>XY_EPSG</code> defaults to 4612 when omitted.</li>
+<li><code>g2zbin_float64</code> (default <code>false</code>) — store g2zbin as float64 instead of
+  float32.</li>
+<li><code>tf_gapfill</code> (default <code>false</code>) — fill NoData gaps using the GSI elevation
+  tile API (see <a href="#gap-filling-gsi-tile-api">Gap Filling</a>).</li>
+</ul>
+<h3 id="choosing-xy_epsg">Choosing <code>XY_EPSG</code><a class="headerlink" href="#choosing-xy_epsg" title="Permanent link">¶</a></h3>
+<p>For metric output, use the JGD2011 Japan Plane Rectangular Coordinate System
+zone that covers your area: zones I–XIX correspond to EPSG codes 6669–6687.
+Look up the zone for your prefecture on the GSI reference page
+<a href="https://www.gsi.go.jp/sokuchikijun/jpc.html">https://www.gsi.go.jp/sokuchikijun/jpc.html</a>. Examples used in this project:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Zone</th>
+<th><code>XY_EPSG</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Satsuma-Iwojima (Kagoshima)</td>
+<td>II</td>
+<td>6670</td>
+</tr>
+<tr>
+<td>Showa-shinzan (southern Hokkaido)</td>
+<td>XI</td>
+<td>6679</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cut_params-sub-region-extraction"><code>cut_params</code> — Sub-Region Extraction<a class="headerlink" href="#cut_params-sub-region-extraction" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xcnt</code>, <code>ycnt</code></td>
+<td>Center coordinates of the cut region</td>
+</tr>
+<tr>
+<td><code>xy_center_unit</code></td>
+<td>Unit of center coordinates: <code>"degrees"</code>, <code>"meters"</code>, or <code>"DMS"</code></td>
+</tr>
+<tr>
+<td><code>xsize</code>, <code>ysize</code></td>
+<td>Half-width of the cut region</td>
+</tr>
+<tr>
+<td><code>xy_unit</code></td>
+<td>Unit of size values: <code>"degrees"</code> or <code>"meters"</code></td>
+</tr>
+</tbody>
+</table>
+<p>The cut region extends from <code>(xcnt - xsize)</code> to <code>(xcnt + xsize)</code> in both axes.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/convertZipDEM.py<span class="w"> </span>--prm_json<span class="w"> </span>params/showa.json5
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--prm_json</code></td>
+<td>Yes</td>
+<td>Path to JSON5 configuration file</td>
+</tr>
+<tr>
+<td><code>--zmin</code></td>
+<td>No</td>
+<td>Override colorbar minimum (overrides config and auto)</td>
+</tr>
+<tr>
+<td><code>--zmax</code></td>
+<td>No</td>
+<td>Override colorbar maximum (overrides config and auto)</td>
+</tr>
+</tbody>
+</table>
+<p>A shell script is often used for convenience:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">project_dir_name</span><span class="o">=</span><span class="s2">"showa"</span>
+<span class="nv">jsonfile</span><span class="o">=</span><span class="s2">"showa.json5"</span>
+<span class="nv">repo_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">dir_name</span><span class="o">=</span><span class="s2">"projects/</span><span class="si">${</span><span class="nv">project_dir_name</span><span class="si">}</span><span class="s2">"</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">dir_name</span><span class="si">}</span>
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">dir_name</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span>
+python3<span class="w"> </span>../../scripts/convertZipDEM.py<span class="w"> </span>--prm_json<span class="w"> </span>../../params/<span class="si">${</span><span class="nv">jsonfile</span><span class="si">}</span>
+</code></pre></div>
+<h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">¶</a></h2>
+<p>Output is written to <code>projects/&lt;project_name&gt;/</code>:</p>
+<div class="highlight"><pre><span></span><code>projects/showa/
+├── geotiff/
+│   ├── showa.tif                    # Full-area GeoTIFF
+│   └── showa_2x2km_cut.tif          # Cut-region GeoTIFF
+├── fig/
+│   ├── fig_showa_meters.png         # Full-area map (meters)
+│   ├── fig_showa_DMS.png            # Full-area map (DMS)
+│   └── fig_showa_2x2km_km.png       # Cut-region map (km)
+└── g2zbin/
+    ├── showa.g2zbin                 # Full-area binary
+    └── showa_2x2km.g2zbin           # Cut-region binary (→ MUONITH)
+</code></pre></div>
+<p>The <code>.g2zbin</code> format is a little-endian binary file. See <a href="../user-guide/input-data.html#dem-digital-elevation-model">Input Data — DEM</a> for the format specification.</p>
+<h2 id="walkthrough-satsuma-iwojima">Walkthrough: Satsuma-Iwojima<a class="headerlink" href="#walkthrough-satsuma-iwojima" title="Permanent link">¶</a></h2>
+<p>This walkthrough converts a GSI ZIP archive into <code>.g2zbin</code> and GeoTIFF files
+for <a href="https://en.wikipedia.org/wiki/Satsuma_I%C5%8Dj%C4%ABma">Satsuma-Iwojima</a>
+(a volcanic island in Kagoshima Prefecture; identifier <code>iwojima</code> in the
+repository — not the Ogasawara Iwo Jima). The whole island fits in a single
+mesh tile, so one ZIP is enough. The configuration <code>params/iwojima.json5</code> and
+the runner <code>iwojima.sh</code> are bundled with muonith-gsi-dem.</p>
+<ol>
+<li><strong>Download the ZIP.</strong> From the GSI download service (see
+   <a href="#obtaining-gsi-dem-data">Obtaining GSI DEM Data</a>), download the DEM5A
+   archive for mesh 4630-12, which covers the whole island:
+   <code>FG-GML-463012-DEM5A-20250620.zip</code> (the trailing date differs per release).
+   Place it under <code>dem/iwojima/</code>.</li>
+<li>
+<p><strong>Check the configuration.</strong> <code>params/iwojima.json5</code> lists the ZIP in
+   <code>zip_files</code>, sets <code>XY_EPSG: 6670</code> (Plane Rectangular CS zone II), and cuts a
+   3 km x 3 km region around the summit (<code>cut_params</code>, center
+   130.3087735 E / 30.792022 N).</p>
+<details class="example">
+<summary>params/iwojima.json5 (click to expand)</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nv">"project_name"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima"</span><span class="p">,</span><span class="w">               </span><span class="c1">// Output goes to projects/iwojima/</span>
+<span class="w">  </span><span class="nv">"zip_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                           </span><span class="c1">// All GSI DEM ZIPs covering the area (one tile)</span>
+<span class="w">    </span><span class="s">"../../dem/iwojima/FG-GML-463012-DEM5A-20250620.zip"</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nv">"xy_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">"meters"</span><span class="p">,</span><span class="w"> </span><span class="s">"km"</span><span class="p">,</span><span class="w"> </span><span class="s">"DMS"</span><span class="w"> </span><span class="p">],</span><span class="w">   </span><span class="c1">// Axis units; one PNG is rendered per unit</span>
+<span class="w">  </span><span class="nv">"cmap"</span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Matplotlib colormap</span>
+<span class="w">  </span><span class="nv">"XY_EPSG"</span><span class="p">:</span><span class="w"> </span><span class="mf">6670</span><span class="p">,</span><span class="w">                         </span><span class="c1">// JGD2011 zone II (Kagoshima)</span>
+
+<span class="w">  </span><span class="nv">"tf_save_png"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Save colored PNG maps</span>
+<span class="w">  </span><span class="nv">"png_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima"</span><span class="p">,</span><span class="w">               </span><span class="c1">// fig/fig_iwojima_&lt;unit&gt;.png</span>
+<span class="w">  </span><span class="nv">"tf_save_g2zbin"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                  </span><span class="c1">// Save g2zbin (MUONITH input)</span>
+<span class="w">  </span><span class="nv">"g2zbin_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima"</span><span class="p">,</span><span class="w">            </span><span class="c1">// g2zbin/iwojima.g2zbin</span>
+<span class="w">  </span><span class="nv">"tf_save_geotiff"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Save GeoTIFF raster</span>
+<span class="w">  </span><span class="nv">"geotiff_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima"</span><span class="p">,</span><span class="w">           </span><span class="c1">// geotiff/iwojima.tif</span>
+
+<span class="w">  </span><span class="nv">"cont_pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w">                        </span><span class="c1">// Contour interval [m]</span>
+<span class="w">  </span><span class="nv">"dpi"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">                              </span><span class="c1">// Output PNG resolution</span>
+<span class="w">  </span><span class="nv">"min_side_px"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Minimum pixel count of the shorter PNG side</span>
+<span class="w">  </span><span class="nv">"font_scale_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Label font auto-scaling lower bound</span>
+<span class="w">  </span><span class="nv">"font_scale_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Label font auto-scaling upper bound</span>
+
+<span class="w">  </span><span class="nv">"cut_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// Sub-region extraction (3x3 km around the summit)</span>
+<span class="w">    </span><span class="nv">"cmap"</span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Matplotlib colormap for the cut PNGs</span>
+<span class="w">    </span><span class="nv">"xy_units"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s">"meters"</span><span class="p">,</span><span class="w"> </span><span class="s">"km"</span><span class="p">,</span><span class="w"> </span><span class="s">"DMS"</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="c1">// Axis units; one PNG is rendered per unit</span>
+<span class="w">    </span><span class="nv">"XY_EPSG"</span><span class="p">:</span><span class="w"> </span><span class="mf">6670</span><span class="p">,</span><span class="w">                       </span><span class="c1">// CRS of the cut outputs</span>
+
+<span class="w">    </span><span class="nv">"tf_save_png"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Save colored PNG maps of the cut</span>
+<span class="w">    </span><span class="nv">"png_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima_3x3km"</span><span class="p">,</span><span class="w">       </span><span class="c1">// fig/fig_iwojima_3x3km_&lt;unit&gt;.png</span>
+<span class="w">    </span><span class="nv">"tf_save_g2zbin"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                </span><span class="c1">// Save g2zbin of the cut (MUONITH input)</span>
+<span class="w">    </span><span class="nv">"g2zbin_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima_3x3km"</span><span class="p">,</span><span class="w">    </span><span class="c1">// g2zbin/iwojima_3x3km.g2zbin</span>
+<span class="w">    </span><span class="nv">"tf_save_geotiff"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">               </span><span class="c1">// Save GeoTIFF of the cut</span>
+<span class="w">    </span><span class="nv">"geotiff_basename"</span><span class="p">:</span><span class="w"> </span><span class="s">"iwojima_3x3km"</span><span class="p">,</span><span class="w">   </span><span class="c1">// geotiff/iwojima_3x3km_cut.tif</span>
+
+<span class="w">    </span><span class="nv">"xy_center_unit"</span><span class="p">:</span><span class="w"> </span><span class="s">"degrees"</span><span class="p">,</span><span class="w">           </span><span class="c1">// Unit of xcnt/ycnt: "degrees" or "meters"</span>
+<span class="w">    </span><span class="nv">"xcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">130.3087735</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Center longitude (summit)</span>
+<span class="w">    </span><span class="nv">"ycnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.792022</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Center latitude (summit)</span>
+<span class="w">    </span><span class="nv">"xy_unit"</span><span class="p">:</span><span class="w"> </span><span class="s">"meters"</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Unit of xsize/ysize</span>
+<span class="w">    </span><span class="c1">// xcnt - xsize &lt;= x &lt;= xcnt + xsize, same for y</span>
+<span class="w">    </span><span class="nv">"xsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Half-width [m] → 3x3 km area</span>
+<span class="w">    </span><span class="nv">"ysize"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Half-height [m]</span>
+
+<span class="w">    </span><span class="nv">"cont_pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w">                      </span><span class="c1">// Contour interval [m]</span>
+<span class="w">    </span><span class="nv">"dpi"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">                            </span><span class="c1">// Output PNG resolution</span>
+<span class="w">    </span><span class="nv">"min_side_px"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Minimum pixel count of the shorter PNG side</span>
+<span class="w">    </span><span class="nv">"font_scale_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Label font auto-scaling lower bound</span>
+<span class="w">    </span><span class="nv">"font_scale_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="w">                  </span><span class="c1">// Label font auto-scaling upper bound</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p><strong>Run the conversion</strong> at the repository root:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>iwojima.sh
+</code></pre></div>
+</li>
+<li>
+<p><strong>Check the outputs</strong> under <code>projects/iwojima/</code>:</p>
+<div class="highlight"><pre><span></span><code>projects/iwojima/
+├── geotiff/  iwojima.tif, iwojima_3x3km_cut.tif
+├── g2zbin/   iwojima.g2zbin, iwojima_3x3km.g2zbin   (→ MUONITH)
+└── fig/      fig_iwojima_{meters,km,DMS}.png, fig_iwojima_3x3km_{...}.png
+</code></pre></div>
+</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/fig_iwojima_DMS.png" data-desc-position="bottom"><img alt="Full-area map of Satsuma-Iwojima with DMS axes" src="../assets/images/fig_iwojima_DMS.png" width="600"></a></p>
+<p><em>Full-area map with latitude/longitude axes (<code>fig_iwojima_DMS.png</code>, from <code>"DMS"</code> in <code>xy_units</code>; the raster is warped to EPSG:4326 for this view). Color: elevation in meters; black lines: 50 m contours; the gray frame is the sea. The sea has no LiDAR return and is stored as NoData — about 90% of mesh tile 4630-12 — which is expected for an island target.</em></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/fig_iwojima_3x3km_km.png" data-desc-position="bottom"><img alt="3x3 km cut with km axes" src="../assets/images/fig_iwojima_3x3km_km.png" width="600"></a></p>
+<p><em>Cut-region map with axes in kilometers (<code>fig_iwojima_3x3km_km.png</code>, from <code>"km"</code> in <code>xy_units</code>, 10 m contours), with the default hillshade overlay (<code>shade: true</code>, <code>shade_alpha: 0.2</code>).</em></p>
+<h2 id="utility-scripts">Utility Scripts<a class="headerlink" href="#utility-scripts" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Description</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>geotif2PNG_terrain.py</code></td>
+<td>Render GeoTIFF as a colored PNG with contours</td>
+<td><code>python3 scripts/geotif2PNG_terrain.py --input_tif input.tif --output_png out.png</code></td>
+</tr>
+<tr>
+<td><code>g2zbin2PNG_terrain.py</code></td>
+<td>Render g2zbin as colored PNG with contours</td>
+<td><code>python3 scripts/g2zbin2PNG_terrain.py --input_g2zbin input.g2zbin --output_png out.png --contour 50</code></td>
+</tr>
+<tr>
+<td><code>gap_fill.py</code></td>
+<td>Fill DEM NoData gaps using the GSI elevation tile API</td>
+<td><code>python3 scripts/gap_fill.py --input_tif input.tif --output_tif filled.tif</code></td>
+</tr>
+<tr>
+<td><code>fetch_dem_tiles.py</code></td>
+<td>Fetch DEM tiles from the GSI tile API</td>
+<td><code>python3 scripts/fetch_dem_tiles.py --input_tif input.tif --output_tif api.tif</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="gap-filling-gsi-tile-api">Gap Filling (GSI Tile API)<a class="headerlink" href="#gap-filling-gsi-tile-api" title="Permanent link">¶</a></h2>
+<p>GSI DEM ZIP archives occasionally contain NoData gaps. muonith-gsi-dem can fill
+these gaps automatically using the GSI elevation tile API
+(<code>cyberjapandata.gsi.go.jp</code>).</p>
+<h3 id="pipeline-integration">Pipeline integration<a class="headerlink" href="#pipeline-integration" title="Permanent link">¶</a></h3>
+<p>Set <code>"tf_gapfill": true</code> in the JSON5 configuration. The pipeline calls
+<code>gap_fill.py</code> internally after merging DEM tiles, filling NoData pixels via
+bilinear interpolation from the nearest available GSI tile data.</p>
+<h3 id="standalone-usage">Standalone usage<a class="headerlink" href="#standalone-usage" title="Permanent link">¶</a></h3>
+<p><code>gap_fill.py</code> and <code>fetch_dem_tiles.py</code> can also be used independently:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Input</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gap_fill.py</code></td>
+<td>GeoTIFF or g2zbin</td>
+<td>Fill NoData gaps in an existing DEM raster</td>
+</tr>
+<tr>
+<td><code>fetch_dem_tiles.py</code></td>
+<td>GeoTIFF, g2zbin, or JSON5</td>
+<td>Build a DEM raster entirely from the GSI tile API</td>
+</tr>
+</tbody>
+</table>
+<p>Both scripts support tile caching (<code>--cache_dir</code>) to avoid redundant HTTP
+requests and a configurable request delay (<code>--request_delay</code>) to respect
+API rate limits.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

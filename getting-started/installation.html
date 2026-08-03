@@ -1,0 +1,3154 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/getting-started/installation.html">
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="nix-setup.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Installation - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="installation.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-just-run-these-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start — just run these commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-your-build-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your build method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blaslapack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLAS/LAPACK
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenMP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doxygen-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doxygen (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-packages-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python packages (optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python packages (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install uv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-virtual-environment-and-install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a virtual environment and install packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-development-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation development (mkdocs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization-binaries-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization binaries (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-muonith" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building MUONITH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternative-build-with-docker-linux-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Build with Docker (Linux / WSL2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternative: Build with Docker (Linux / WSL2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browse-files-with-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browse files with VS Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean up
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating API documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-just-run-these-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start — just run these commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-your-build-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your build method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blaslapack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLAS/LAPACK
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenMP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doxygen-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doxygen (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-packages-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python packages (optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python packages (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install uv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-virtual-environment-and-install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a virtual environment and install packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-development-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation development (mkdocs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization-binaries-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization binaries (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-muonith" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building MUONITH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternative-build-with-docker-linux-wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: Build with Docker (Linux / WSL2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternative: Build with Docker (Linux / WSL2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build the image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browse-files-with-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browse files with VS Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean up
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating API documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h1>
+<h2 id="quick-start-just-run-these-commands">Quick start — just run these commands<a class="headerlink" href="#quick-start-just-run-these-commands" title="Permanent link">¶</a></h2>
+<p>Copy-paste the commands for your platform to go from zero to a working build.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Ubuntu 24.04</label><label for="__tabbed_1_2">WSL2 (Ubuntu 24.04)</label><label for="__tabbed_1_3">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">native</label><label for="__tabbed_2_2">Docker</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. System packages</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>ninja-build<span class="w"> </span>ccache<span class="w"> </span>pkg-config<span class="w"> </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libopenblas-openmp-dev<span class="w"> </span>liblapacke-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">time</span><span class="w"> </span>util-linux<span class="w"> </span>coreutils<span class="w"> </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>imagemagick
+
+<span class="c1"># 2. Clone and enter the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+
+<span class="c1"># 3. Build</span>
+bash<span class="w"> </span>bdebug.sh<span class="w">      </span><span class="c1"># Debug build</span>
+bash<span class="w"> </span>brelease.sh<span class="w">    </span><span class="c1"># Release build (optimized)</span>
+
+<span class="c1"># 4. Python packages for visualization (optional)</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<span class="nb">source</span><span class="w"> </span>~/.local/bin/env<span class="w">  </span><span class="c1"># or restart your shell</span>
+uv<span class="w"> </span>sync<span class="w">                  </span><span class="c1"># creates .venv from pyproject.toml + uv.lock</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Install Docker</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>git
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>Log out and back in, then:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2. Clone and build the Docker image</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>docker/Dockerfile<span class="w"> </span>-t<span class="w"> </span>muonith-test<span class="w"> </span>.
+
+<span class="c1"># 3. Verify</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>muonith-test<span class="w"> </span>bash
+<span class="c1"># Inside: ls build-debug/exec/*.exe &amp;&amp; ls build-release/exec/*.exe &amp;&amp; exit</span>
+</code></pre></div>
+<p>See <a href="#alternative-build-with-docker-linux-wsl2">Docker details</a> for
+VS Code integration and cleanup.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">native</label><label for="__tabbed_3_2">Docker</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. System packages</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>ninja-build<span class="w"> </span>ccache<span class="w"> </span>pkg-config<span class="w"> </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libopenblas-openmp-dev<span class="w"> </span>liblapacke-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">time</span><span class="w"> </span>util-linux<span class="w"> </span>coreutils<span class="w"> </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>imagemagick
+
+<span class="c1"># 2. Clone and enter the repository (use /home/, NOT /mnt/c/)</span>
+<span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+
+<span class="c1"># 3. Build</span>
+bash<span class="w"> </span>bdebug.sh<span class="w">      </span><span class="c1"># Debug build</span>
+bash<span class="w"> </span>brelease.sh<span class="w">    </span><span class="c1"># Release build (optimized)</span>
+
+<span class="c1"># 4. Python packages for visualization (optional)</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<span class="nb">source</span><span class="w"> </span>~/.local/bin/env<span class="w">  </span><span class="c1"># or restart your shell</span>
+uv<span class="w"> </span>sync<span class="w">                  </span><span class="c1"># creates .venv from pyproject.toml + uv.lock</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Store files under <code>/home/</code>, not <code>/mnt/c/</code></p>
+<p>The Windows filesystem (<code>/mnt/c/</code>) is 10–15× slower. Always work
+under the native Linux filesystem.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Install Docker</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>git
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>Restart WSL2 (<code>wsl --shutdown</code> in PowerShell), then reopen the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2. Clone and build the Docker image (use /home/, NOT /mnt/c/)</span>
+<span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>docker/Dockerfile<span class="w"> </span>-t<span class="w"> </span>muonith-test<span class="w"> </span>.
+
+<span class="c1"># 3. Verify</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>muonith-test<span class="w"> </span>bash
+<span class="c1"># Inside: ls build-debug/exec/*.exe &amp;&amp; ls build-release/exec/*.exe &amp;&amp; exit</span>
+</code></pre></div>
+<p>See <a href="#alternative-build-with-docker-linux-wsl2">Docker details</a> for
+VS Code integration and cleanup.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Nix</label><label for="__tabbed_4_2">native</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Install Nix first if you haven't — see <a href="nix-setup.html#install-nix">Nix setup guide</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Clone and enter the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+
+<span class="c1"># 2. Enter Nix dev shell (provides compiler, cmake, etc.)</span>
+nix<span class="w"> </span>develop
+
+<span class="c1"># 3. Build</span>
+bash<span class="w"> </span>bdebug.sh<span class="w">      </span><span class="c1"># Debug build</span>
+bash<span class="w"> </span>brelease.sh<span class="w">    </span><span class="c1"># Release build (optimized)</span>
+
+<span class="c1"># 4. Python packages for visualization (optional)</span>
+uv<span class="w"> </span>sync<span class="w">                  </span><span class="c1"># creates .venv from pyproject.toml + uv.lock</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Xcode CLI Tools + system packages</span>
+xcode-select<span class="w"> </span>--install
+brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>ninja<span class="w"> </span>ccache<span class="w"> </span>pkg-config<span class="w"> </span>git<span class="w"> </span>gnu-time<span class="w"> </span>libomp<span class="w"> </span>gifski<span class="w"> </span>imagemagick
+
+<span class="c1"># 2. Clone and enter the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:seigomiyamoto/muonith.git<span class="w">   </span><span class="c1"># SSH</span>
+<span class="c1"># git clone https://github.com/seigomiyamoto/muonith.git  # HTTPS</span>
+<span class="nb">cd</span><span class="w"> </span>muonith
+
+<span class="c1"># 3. Build</span>
+bash<span class="w"> </span>bdebug.sh<span class="w">      </span><span class="c1"># Debug build</span>
+bash<span class="w"> </span>brelease.sh<span class="w">    </span><span class="c1"># Release build (optimized)</span>
+
+<span class="c1"># 4. Python packages for visualization (optional)</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<span class="nb">source</span><span class="w"> </span>~/.local/bin/env<span class="w">  </span><span class="c1"># or restart your shell</span>
+<span class="c1"># Or: brew install uv</span>
+uv<span class="w"> </span>sync<span class="w">                  </span><span class="c1"># creates .venv from pyproject.toml + uv.lock</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>For detailed explanations of each dependency, read on below.</p>
+<hr>
+<p>This guide covers building MUONITH from source on the following platforms:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux (Ubuntu 22.04 / 24.04, including WSL2)</td>
+<td>Fully supported</td>
+</tr>
+<tr>
+<td>Linux (Docker)</td>
+<td>Fully supported</td>
+</tr>
+<tr>
+<td>macOS (Apple Clang + Accelerate)</td>
+<td>Fully supported</td>
+</tr>
+<tr>
+<td>macOS (Nix development environment)</td>
+<td>Fully supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="choose-your-build-method">Choose your build method<a class="headerlink" href="#choose-your-build-method" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Recommended</th>
+<th>Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux / WSL2</strong></td>
+<td><a href="#alternative-build-with-docker-linux-wsl2">Docker</a> (reproducible, no host modification)</td>
+<td>Install packages via <code>apt</code> (this page)</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td><a href="nix-setup.html">Nix</a> (isolated, reproducible environment)</td>
+<td>Install via Homebrew + Xcode CLI Tools (this page)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">macOS native build verified</p>
+<p>macOS native builds with Apple Clang 17 + Accelerate framework have been
+verified on macOS 15 Sequoia (Apple Silicon M4 Pro). All 110 build targets
+pass and runtime tests complete successfully. No Homebrew GCC or OpenBLAS
+is required.</p>
+</div>
+<p>The sections below describe the <strong>native</strong> (alternative) installation:</p>
+<ul>
+<li><strong>Linux / WSL2 users</strong> — <a href="#alternative-build-with-docker-linux-wsl2">Docker</a> is recommended
+  for reproducibility and zero host modification. The native <code>apt</code> instructions
+  below are provided for users who prefer direct installation.</li>
+<li><strong>macOS users</strong> — <a href="nix-setup.html">Nix development environment</a> is recommended.
+  It provides all dependencies in an isolated shell without installing
+  Homebrew packages globally. The native instructions below are an alternative.</li>
+</ul>
+<hr>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Purpose</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C++20 compiler</strong></td>
+<td>GCC 13+ or Apple Clang 17+</td>
+<td>See <a href="#compiler">Compiler</a> below</td>
+</tr>
+<tr>
+<td><strong>CMake</strong></td>
+<td>Build system</td>
+<td>3.22.2+</td>
+</tr>
+<tr>
+<td><strong>Ninja</strong></td>
+<td>Build generator</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>BLAS/LAPACK</strong></td>
+<td>Linear algebra</td>
+<td>Platform-dependent (see <a href="#blaslapack">below</a>)</td>
+</tr>
+<tr>
+<td><strong>OpenMP</strong></td>
+<td>Thread parallelization</td>
+<td>(included with GCC; separate on macOS)</td>
+</tr>
+<tr>
+<td><strong>ccache</strong> <em>(optional)</em></td>
+<td>Compiler cache for faster rebuilds</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Doxygen</strong> <em>(optional)</em></td>
+<td>API documentation generation</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">C++ libraries downloaded automatically</p>
+<p><strong>Eigen3</strong>, <strong>fmt</strong>, <strong>spdlog</strong>, and <strong>nlohmann/json</strong> are automatically
+downloaded and built by CMake via FetchContent. No manual installation is
+required.</p>
+</div>
+<h2 id="system-packages">System packages<a class="headerlink" href="#system-packages" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Linux / WSL2</label><label for="__tabbed_5_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ninja-build<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ccache<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>pkg-config<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">time</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>imagemagick
+</code></pre></div>
+<p><code>time</code> provides <code>/usr/bin/time -v</code> (used by station <code>run_prg.sh</code>
+scripts; the bash builtin <code>time</code> is not equivalent). <code>python3-venv</code>
+is required by <code>setup_station.sh</code> to auto-create a <code>.venv/</code> for the
+visualization stack. <code>imagemagick</code> is used by <code>auto_plot.py</code> for
+PDF figure generation. Animated-GIF output additionally needs
+<code>gifski</code>, which is not packaged in <code>apt</code> — install it separately from
+its official prebuilt static binary
+(see <a href="#visualization-binaries-optional">Visualization binaries</a> below).</p>
+<details class="tip">
+<summary>WSL2-specific tips</summary>
+<p><strong>Performance</strong>: Always store your project files under <code>/home/</code> (the
+native Linux filesystem), not <code>/mnt/c/</code> (the Windows filesystem).
+The Windows filesystem is 10–15× slower for build operations.</p>
+<p><strong>Memory</strong>: By default WSL2 uses 50 % of host RAM. If you run into
+memory issues during the build, create or edit
+<code>%USERPROFILE%\.wslconfig</code> on the Windows side:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[wsl2]</span>
+<span class="na">memory</span><span class="o">=</span><span class="s">16GB</span>
+</code></pre></div>
+<p>Then restart WSL2 with <code>wsl --shutdown</code>.</p>
+</details>
+</div>
+<div class="tabbed-block">
+<p>Install <a href="https://brew.sh/">Homebrew</a> if not already present, then:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>ninja<span class="w"> </span>ccache<span class="w"> </span>pkg-config<span class="w"> </span>git<span class="w"> </span>gnu-time<span class="w"> </span>gifski<span class="w"> </span>imagemagick
+</code></pre></div>
+<p><code>gnu-time</code> provides the <code>gtime</code> command that <code>run_prg.sh</code> uses on macOS
+to run the solver with time/memory measurement.</p>
+<p><code>gifski</code> and <code>imagemagick</code> are optional — needed only for animated-GIF
+and PDF figure generation in <code>auto_plot.py</code>. See
+<a href="#visualization-binaries-optional">Visualization binaries</a> below.</p>
+</div>
+</div>
+</div>
+<h2 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">¶</a></h2>
+<p>MUONITH requires a C++20-capable compiler. The build script <code>build.sh</code> automatically
+selects the compiler based on the environment:</p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Compiler</th>
+<th>Selection logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS (native)</td>
+<td>Homebrew GCC 14 → 13 → Apple Clang</td>
+<td>First available is used</td>
+</tr>
+<tr>
+<td>macOS (Nix shell)</td>
+<td><code>cc</code> / <code>c++</code> (Nix wrapper)</td>
+<td>Apple Clang via stdenv</td>
+</tr>
+<tr>
+<td>Linux (native)</td>
+<td><code>gcc</code> / <code>g++</code></td>
+<td>System default</td>
+</tr>
+<tr>
+<td>Linux (Nix shell)</td>
+<td><code>cc</code> / <code>c++</code> (Nix wrapper)</td>
+<td>GCC via stdenv</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Apple Clang on macOS</p>
+<p>Apple Clang 17+ (Xcode Command Line Tools) fully supports the C++20 features
+used by MUONITH. If Homebrew GCC is not installed, <code>build.sh</code> falls back to
+Apple Clang automatically. OpenMP requires <code>libomp</code> (see <a href="#openmp">OpenMP</a>).</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><input id="__tabbed_6_3" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Linux / WSL2 (Ubuntu 24.04)</label><label for="__tabbed_6_2">Linux / WSL2 (Ubuntu 22.04)</label><label for="__tabbed_6_3">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>G++ 13 is included by default with Ubuntu 24.04. No additional steps needed.</p>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>--version
+<span class="c1"># g++ (Ubuntu 13.3.0-...) 13.3.0</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:ubuntu-toolchain-r/test
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>g++-13<span class="w"> </span>gcc-13
+</code></pre></div>
+<p>Optionally set as default:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--install<span class="w"> </span>/usr/bin/gcc<span class="w"> </span>gcc<span class="w"> </span>/usr/bin/gcc-13<span class="w"> </span><span class="m">60</span>
+sudo<span class="w"> </span>update-alternatives<span class="w"> </span>--install<span class="w"> </span>/usr/bin/g++<span class="w"> </span>g++<span class="w"> </span>/usr/bin/g++-13<span class="w"> </span><span class="m">60</span>
+</code></pre></div>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>--version
+<span class="c1"># g++ (Ubuntu 13.x.x) 13.x.x</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>Apple Clang</strong> (included with Xcode Command Line Tools) is the default
+compiler on macOS. Install the tools if not already present:</p>
+<div class="highlight"><pre><span></span><code>xcode-select<span class="w"> </span>--install
+</code></pre></div>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>clang++<span class="w"> </span>--version
+<span class="c1"># Apple clang version 17.0.0 (...)</span>
+</code></pre></div>
+<p>Apple Clang 17+ fully supports the C++20 features used by MUONITH.
+OpenMP is <strong>not</strong> bundled with Apple Clang — install <code>libomp</code> separately
+(see <a href="#openmp">OpenMP</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Optional: Homebrew GCC</p>
+<p>If Homebrew GCC 14 or 13 is installed, <code>build.sh</code> will prefer it
+over Apple Clang. GCC bundles OpenMP, so no separate <code>libomp</code> is
+needed. To install: <code>brew install gcc@14</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="blaslapack">BLAS/LAPACK<a class="headerlink" href="#blaslapack" title="Permanent link">¶</a></h2>
+<p>MUONITH uses BLAS/LAPACK for matrix operations in the inversion step. The backend
+is selected automatically by CMake based on the platform:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>BLAS/LAPACK backend</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td>Apple Accelerate (default)</td>
+<td>Built into macOS, no installation needed</td>
+</tr>
+<tr>
+<td>macOS (optional)</td>
+<td>Homebrew OpenBLAS</td>
+<td>Requires <code>CMAKE_PREFIX_PATH</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>OpenBLAS + LAPACK</td>
+<td>Manual installation required</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Linux / WSL2</label><label for="__tabbed_7_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libopenblas-openmp-dev<span class="w"> </span>liblapacke-dev
+</code></pre></div>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>libopenblas
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><strong>Apple Accelerate</strong> is built into macOS — no installation is required.
+CMake automatically detects and links the Accelerate framework.</p>
+<div class="admonition note">
+<p class="admonition-title">Nix users</p>
+<p>In the Nix shell, macOS also uses Apple Accelerate (via the system
+framework). No additional Nix packages are needed for BLAS/LAPACK.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Numerical differences between backends</p>
+<p>Accelerate and OpenBLAS use different internal algorithms. This can produce
+tiny numerical differences (symmetric relative error ~10⁻⁷) in density
+reconstruction results. Both are correct — see <a href="../concepts/inversion.html#numerical-implementation">Inversion: Numerical
+Implementation</a> for details.</p>
+</div>
+<h2 id="openmp">OpenMP<a class="headerlink" href="#openmp" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Linux / WSL2</label><label for="__tabbed_8_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>OpenMP is included with GCC — no additional installation is required.</p>
+</div>
+<div class="tabbed-block">
+<p>If compiling with <strong>Apple Clang</strong> (the default), install <code>libomp</code>:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>libomp
+</code></pre></div>
+<p><code>build.sh</code> automatically detects Homebrew libomp and passes
+<code>-DOpenMP_ROOT</code> to CMake.</p>
+<p>If compiling with Homebrew GCC, OpenMP is included — no additional
+package is needed.</p>
+</div>
+</div>
+</div>
+<h2 id="doxygen-optional">Doxygen (optional)<a class="headerlink" href="#doxygen-optional" title="Permanent link">¶</a></h2>
+<p>Only needed if you want to generate API reference documentation.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Linux / WSL2</label><label for="__tabbed_9_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>doxygen<span class="w"> </span>graphviz
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>doxygen<span class="w"> </span>graphviz
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="python-packages-optional">Python packages (optional)<a class="headerlink" href="#python-packages-optional" title="Permanent link">¶</a></h2>
+<p>Python 3 is required for visualization and post-processing scripts
+(<code>auto_plot.py</code>, <code>hist2d.py</code>, <code>plot_g2bg.py</code>, etc.).
+These are <strong>not needed</strong> to build or run MUONITH itself.</p>
+<div class="admonition tip">
+<p class="admonition-title">Recommended: use <code>uv</code> for virtual environment management</p>
+<p><a href="https://docs.astral.sh/uv/"><code>uv</code></a> is a fast Python package manager
+written in Rust. It creates isolated virtual environments without
+polluting your system Python.</p>
+</div>
+<h3 id="install-uv">Install uv<a class="headerlink" href="#install-uv" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Linux / WSL2</label><label for="__tabbed_10_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div>
+<p>Or via Homebrew:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>uv
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="create-a-virtual-environment-and-install-packages">Create a virtual environment and install packages<a class="headerlink" href="#create-a-virtual-environment-and-install-packages" title="Permanent link">¶</a></h3>
+<p>The package list is maintained in <code>pyproject.toml</code> at the repository root, and
+exact versions are pinned in <code>uv.lock</code>. A single command reproduces the
+environment:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w">                  </span><span class="c1"># creates .venv from pyproject.toml + uv.lock</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">macOS</p>
+<p>Pre-built binary packages for <code>rasterio</code> and <code>pyproj</code> require macOS 14
+(Sonoma) or newer. On older macOS versions <code>uv sync</code> falls back to
+building them from source, which needs additional system libraries.</p>
+</div>
+<details class="note">
+<summary>Alternative: traditional pip (not recommended)</summary>
+<p>If you prefer not to install <code>uv</code>, you can use the system <code>pip</code>
+directly. Note that installing packages globally with <code>pip</code> is
+<a href="https://peps.python.org/pep-0668/">deprecated in recent Python versions</a>
+and may require <code>--break-system-packages</code> on Ubuntu 24.04+.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Linux / WSL2</label><label for="__tabbed_11_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>pandas<span class="w"> </span>scipy<span class="w"> </span>requests<span class="w"> </span>json5<span class="w"> </span>pyproj<span class="w"> </span>rasterio<span class="w"> </span>pillow
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>pandas<span class="w"> </span>scipy<span class="w"> </span>requests<span class="w"> </span>json5<span class="w"> </span>pyproj<span class="w"> </span>rasterio<span class="w"> </span>pillow
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="documentation-development-mkdocs">Documentation development (mkdocs)<a class="headerlink" href="#documentation-development-mkdocs" title="Permanent link">¶</a></h3>
+<p>To build or preview this documentation site locally:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>docs<span class="w">     </span><span class="c1"># adds the mkdocs toolchain to .venv</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+mkdocs<span class="w"> </span>serve<span class="w">             </span><span class="c1"># Preview at http://127.0.0.1:8001</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Additional packages for GIS tools</p>
+<p>The auxiliary tools <code>muonith-path-view</code> and <code>muonith-gsi-dem</code> require extra
+packages. See <a href="../auxiliary-tools/path-view.html">muonith-path-view</a> and
+<a href="../auxiliary-tools/gsi-dem.html">muonith-gsi-dem</a> for details.</p>
+</div>
+<h2 id="visualization-binaries-optional">Visualization binaries (optional)<a class="headerlink" href="#visualization-binaries-optional" title="Permanent link">¶</a></h2>
+<p>The post-processing visualization driver <code>auto_plot.py</code> (invoked at the end
+of <code>run_prg.sh</code>) shells out to two external binaries:</p>
+<table>
+<thead>
+<tr>
+<th>Binary</th>
+<th>Purpose</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gifski</code></td>
+<td>Combine PNG frames into animated GIFs of cross-section sweeps</td>
+<td><code>scripts/plot_Grid3dVoxel.py:638-740</code> (<code>run_gifski_cross</code>)</td>
+</tr>
+<tr>
+<td><code>convert</code> (ImageMagick)</td>
+<td>Combine PNG frames into multi-page PDFs of cross-section sweeps</td>
+<td><code>scripts/plot_Grid3dVoxel.py:727-744</code> (<code>run_convert_pdf_cross</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>The PNG figures themselves are always generated by matplotlib and do <strong>not</strong>
+require these binaries. Only the animated GIF and PDF outputs require them.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Linux / WSL2</label><label for="__tabbed_12_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><code>imagemagick</code> (the <code>convert</code> command) is available via <code>apt</code>, but
+<code>gifski</code> is <strong>not</strong> packaged in Ubuntu's <code>apt</code>. Install <code>imagemagick</code>
+from <code>apt</code>, then install <code>gifski</code> from its official prebuilt static
+Linux binary — no Rust toolchain required:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>imagemagick<span class="w"> </span>curl<span class="w"> </span>xz-utils
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/bin
+curl<span class="w"> </span>-sL<span class="w"> </span>-o<span class="w"> </span>/tmp/gifski.tar.xz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://github.com/ImageOptim/gifski/releases/download/1.34.0/gifski-1.34.0.tar.xz
+tar<span class="w"> </span>-xf<span class="w"> </span>/tmp/gifski.tar.xz<span class="w"> </span>-C<span class="w"> </span>/tmp<span class="w"> </span>linux/gifski
+install<span class="w"> </span>-m<span class="w"> </span><span class="m">755</span><span class="w"> </span>/tmp/linux/gifski<span class="w"> </span>~/.local/bin/gifski
+</code></pre></div>
+<p>The archive bundles a fully static binary (<code>linux/gifski</code>) with no
+shared-library dependencies; it runs unchanged on Ubuntu 20.04, 22.04,
+and 24.04. The download URL is version-pinned — check the
+<a href="https://github.com/ImageOptim/gifski/releases">gifski releases page</a>
+for a newer version and adjust the URL if needed. Ensure <code>~/.local/bin</code>
+is on your <code>PATH</code> (open a new shell, or
+<code>export PATH="$HOME/.local/bin:$PATH"</code>).</p>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>gifski<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gifski<span class="w"> </span>--version
+which<span class="w"> </span>convert<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>convert<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>gifski<span class="w"> </span>imagemagick
+</code></pre></div>
+<p>Verify:</p>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>gifski<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gifski<span class="w"> </span>--version
+which<span class="w"> </span>magick<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>magick<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">ImageMagick 7 on macOS</p>
+<p>Homebrew installs ImageMagick 7, which provides the <code>magick</code> command.
+A compatibility symlink for <code>convert</code> is also created by Homebrew, so
+<code>plot_Grid3dVoxel.py</code>'s direct <code>convert</code> invocation still works.</p>
+</div>
+</div>
+</div>
+</div>
+<details class="warning">
+<summary>Without these binaries</summary>
+<p><code>auto_plot.py</code> will still produce all PNG figures, but the final
+GIF/PDF combination step will fail with:</p>
+<div class="highlight"><pre><span></span><code>FileNotFoundError: [Errno 2] No such file or directory: 'gifski'
+</code></pre></div>
+<p>(and similarly for <code>convert</code>). To recover after installing the
+binaries, re-run only the visualization step from any station
+directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>work/&lt;station_name&gt;/swp001
+bash<span class="w"> </span>run_prg.sh<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="m">42</span><span class="w">   </span><span class="c1"># RUN_EXE=false skips the C++ compute step</span>
+</code></pre></div>
+</details>
+<details class="note">
+<summary>Ubuntu ImageMagick PDF policy</summary>
+<p>On some Ubuntu installations, ImageMagick's default
+<code>/etc/ImageMagick-6/policy.xml</code> blocks PDF output with:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;policy</span><span class="w"> </span><span class="na">domain=</span><span class="s">"coder"</span><span class="w"> </span><span class="na">rights=</span><span class="s">"none"</span><span class="w"> </span><span class="na">pattern=</span><span class="s">"PDF"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>If PDF generation fails with a policy error, edit that line to
+<code>rights="read|write"</code> (requires <code>sudo</code>).</p>
+</details>
+<h2 id="building-muonith">Building MUONITH<a class="headerlink" href="#building-muonith" title="Permanent link">¶</a></h2>
+<p>After installing all dependencies:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"><div class="tabbed-labels"><label for="__tabbed_13_1">Linux / WSL2</label><label for="__tabbed_13_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Debug build</span>
+bash<span class="w"> </span>bdebug.sh
+
+<span class="c1"># Release build</span>
+bash<span class="w"> </span>brelease.sh
+
+<span class="c1"># Clean debug build (removes build directory first)</span>
+bash<span class="w"> </span>ccdebug.sh
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>The build scripts fully support macOS. <code>build.sh</code> detects CPU count
+via <code>sysctl</code> and selects the appropriate compiler automatically.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Debug build</span>
+bash<span class="w"> </span>bdebug.sh
+
+<span class="c1"># Release build</span>
+bash<span class="w"> </span>brelease.sh
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Verified on</p>
+<p>macOS 15 Sequoia, Apple Silicon (M4 Pro), Apple Clang 17 + Accelerate.
+All 110 build targets pass. See also the
+<a href="nix-setup.html">Nix development environment</a> as an alternative
+isolated setup.</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="alternative-build-with-docker-linux-wsl2">Alternative: Build with Docker (Linux / WSL2)<a class="headerlink" href="#alternative-build-with-docker-linux-wsl2" title="Permanent link">¶</a></h2>
+<p>Instead of installing all dependencies on your host, you can use Docker to
+build MUONITH in an isolated Ubuntu container. This is useful for:</p>
+<ul>
+<li><strong>Quick verification</strong> — test that the build works without modifying your system</li>
+<li><strong>Reproducibility</strong> — identical environment regardless of host configuration</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">macOS Docker builds not supported</p>
+<p>Docker on macOS (Apple Silicon) requires Rosetta 2 emulation for the
+<code>linux/amd64</code> image, and ARM-native builds have unresolved OpenBLAS
+version compatibility issues. macOS users should use the
+<a href="#building-muonith">native build</a> or
+<a href="nix-setup.html">Nix development environment</a> instead.</p>
+</div>
+<h3 id="install-docker">Install Docker<a class="headerlink" href="#install-docker" title="Permanent link">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Docker address pools may conflict with your LAN or VPN</p>
+<p>In some environments, Docker's default private address pools
+(for example <code>172.17.0.0/16</code>) may overlap with your LAN or VPN routes
+and cause connectivity issues.</p>
+<p>If you encounter routing failures after starting Docker, reconfigure
+Docker to use a non-overlapping subnet:</p>
+<ul>
+<li><strong>Linux-native Docker</strong> — edit <code>/etc/docker/daemon.json</code> and set
+  <code>bip</code> (default bridge) or <code>default-address-pools</code> (all auto-created
+  networks).</li>
+<li><strong>Docker Desktop (Windows / WSL2)</strong> — open
+  <em>Settings → Docker Engine</em> and add the same keys to the JSON config.</li>
+</ul>
+<p>Example (<code>daemon.json</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"default-address-pools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.200.0/24"</span><span class="p">,</span><span class="w"> </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Choose an address range that does not overlap with any subnet on your
+LAN or VPN.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio"><input id="__tabbed_14_2" name="__tabbed_14" type="radio"><div class="tabbed-labels"><label for="__tabbed_14_1">Linux-native</label><label for="__tabbed_14_2">WSL2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>Log out and back in for the group change to take effect.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>Restart WSL2 for the group change to take effect:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># In Windows PowerShell</span>
+<span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span>
+</code></pre></div>
+<p>Then reopen your WSL2 terminal.</p>
+</div>
+</div>
+</div>
+<h3 id="build-the-image">Build the image<a class="headerlink" href="#build-the-image" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/prg/muonith
+docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>docker/Dockerfile<span class="w"> </span>-t<span class="w"> </span>muonith-test<span class="w"> </span>.
+
+<span class="c1"># Ubuntu 22.04 variant (default is 24.04):</span>
+<span class="c1"># docker build -f docker/Dockerfile --build-arg UBUNTU_VERSION=22.04 -t muonith-test .</span>
+</code></pre></div>
+<p>First build takes 20–30 minutes (FetchContent downloads + compilation).
+Subsequent builds use Docker layer cache and are much faster.</p>
+<h3 id="verify-the-build">Verify the build<a class="headerlink" href="#verify-the-build" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enter the container interactively</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>muonith-test<span class="w"> </span>bash
+</code></pre></div>
+<p>Inside the container:</p>
+<div class="highlight"><pre><span></span><code>/workspace# ls build-debug/exec/*.exe
+/workspace# ls build-release/exec/*.exe
+/workspace# exit
+</code></pre></div>
+<h3 id="browse-files-with-vs-code">Browse files with VS Code<a class="headerlink" href="#browse-files-with-vs-code" title="Permanent link">¶</a></h3>
+<p>You can attach VS Code to the running container for a full IDE experience:</p>
+<ol>
+<li>Install the <strong>Dev Containers</strong> extension (<code>ms-vscode-remote.remote-containers</code>)</li>
+<li>Start the container in the background:
+   <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>muonith<span class="w"> </span>muonith-test<span class="w"> </span>bash
+</code></pre></div></li>
+<li>In VS Code: <code>Ctrl+Shift+P</code> → <strong>Dev Containers: Attach to Running Container</strong> → select <code>muonith</code></li>
+<li>Open folder <code>/workspace</code> — you can browse source code and build output</li>
+</ol>
+<p>When finished:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>muonith
+docker<span class="w"> </span>rm<span class="w"> </span>muonith
+</code></pre></div>
+<h3 id="clean-up">Clean up<a class="headerlink" href="#clean-up" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove the image</span>
+docker<span class="w"> </span>rmi<span class="w"> </span>muonith-test
+
+<span class="c1"># Remove stopped containers</span>
+docker<span class="w"> </span>container<span class="w"> </span>prune
+
+<span class="c1"># Remove unused images</span>
+docker<span class="w"> </span>image<span class="w"> </span>prune
+</code></pre></div>
+<h2 id="generating-api-documentation">Generating API documentation<a class="headerlink" href="#generating-api-documentation" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>rebuild-api-docs.sh
+</code></pre></div>
+<p>HTML output is generated in <code>apidocs/html/</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

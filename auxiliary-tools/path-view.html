@@ -1,0 +1,3264 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/auxiliary-tools/path-view.html">
+      
+      
+        <link rel="prev" href="gsi-dem.html">
+      
+      
+        <link rel="next" href="../reference/glossary.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Path Viewer - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#muonith-path-view" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Path Viewer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="path-view.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-bundled-tutorial-no-geotiff-to-prepare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the bundled tutorial (no GeoTIFF to prepare)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-your-own-dem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use your own DEM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-level-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-Level Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_path-inputoutput-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_path — Input/Output Paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-display-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rendering — Display Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector_setup-detector-and-path-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detector_setup — Detector and Path Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="detector_setup — Detector and Path Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epsg_system-coordinate-reference-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        epsg_system — Coordinate Reference System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#det_info_files-external-detector-files-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        det_info_files — External Detector Files (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direction_setup-angle-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        direction_setup — Angle Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line_path-ray-path-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        line_path — Ray Path Rendering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charactor_setting-typography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        charactor_setting — Typography
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dem-input-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DEM Input Formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplementary-tool-azimuthpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplementary Tool: azimuth.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagemagick-policy-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ImageMagick Policy Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Out of Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-bundled-tutorial-no-geotiff-to-prepare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the bundled tutorial (no GeoTIFF to prepare)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-your-own-dem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use your own DEM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-level-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-Level Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_path-inputoutput-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_path — Input/Output Paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-display-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rendering — Display Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector_setup-detector-and-path-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detector_setup — Detector and Path Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="detector_setup — Detector and Path Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epsg_system-coordinate-reference-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        epsg_system — Coordinate Reference System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#det_info_files-external-detector-files-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        det_info_files — External Detector Files (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direction_setup-angle-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        direction_setup — Angle Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line_path-ray-path-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        line_path — Ray Path Rendering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charactor_setting-typography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        charactor_setting — Typography
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dem-input-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DEM Input Formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplementary-tool-azimuthpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplementary Tool: azimuth.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagemagick-policy-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ImageMagick Policy Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Out of Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="muonith-path-view">muonith-path-view<a class="headerlink" href="#muonith-path-view" title="Permanent link">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">External repository</p>
+<p>muonith-path-view is maintained in a separate repository. This page documents its stable interface for use with MUONITH.</p>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>muonith-path-view visualizes muon paths through terrain using DEM (Digital Elevation Model) data. For each elevation angle, it draws ray paths from a detector position, color-coding <strong>air</strong> (above ground) and <strong>rock</strong> (below ground) segments on a topographic map. The output is a set of PNG images assembled into a GIF animation and a multi-page PDF.</p>
+<p>This tool helps verify detector placement and angular coverage before running the MUONITH pipeline.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/showa_rec001_detectors.png" data-desc-position="bottom"><img alt="Showa-shinzan DEM with 13 detector positions" src="../assets/images/showa_rec001_detectors.png" width="600"></a>
+<br>
+<figcaption><a href="https://en.wikipedia.org/wiki/Sh%C5%8Dwa-shinzan">Showa-shinzan</a> DEM with 13 detector positions.</figcaption>
+</figure>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/showa_det00_path.gif" data-desc-position="bottom"><img alt="Muon ray paths through Showa-shinzan" src="../assets/images/showa_det00_path.gif" width="600"></a>
+<br>
+<figcaption>Example output for Showa-shinzan (det_00): black lines show muon paths through air, white lines show paths through rock. The animation sweeps through elevation angles.</figcaption>
+</figure>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/showa_det08_path.gif" data-desc-position="bottom"><img alt="Muon ray paths through Showa-shinzan" src="../assets/images/showa_det08_path.gif" width="600"></a>
+<br>
+<figcaption>Example output for Showa-shinzan (det_08): black lines show muon paths through air, white lines show paths through rock. The animation sweeps through elevation angles.</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">All beams in one frame share the same elevation angle</p>
+<p>Each frame fixes one elevation angle <span class="arithmatex">\(\theta_{\mathrm{elev}}\)</span> and sweeps the azimuth <span class="arithmatex">\(\phi\)</span>, so the drawn beams lie on a cone of constant physical elevation — they are not contained in a single plane. Each beam direction is the unit vector <span class="arithmatex">\((v_x, v_y, v_z) = (\cos\theta_{\mathrm{elev}}\cos\phi,\ \cos\theta_{\mathrm{elev}}\sin\phi,\ \sin\theta_{\mathrm{elev}})\)</span>. This holds for every <code>angle_unit</code> mode (<code>deg</code>, <code>rad</code>, <code>tangent</code>); see <a href="#direction_setup-angle-configuration"><code>direction_setup</code> — Angle Configuration</a> for the exact convention. This differs from MUONITH's <code>DetectorPanel</code> in Tangent mode, where the bin coordinates are slopes about the panel's forward axis (<span class="arithmatex">\(t_x = v_x/v_y\)</span>, <span class="arithmatex">\(t_y = v_z/v_y\)</span>): a row of constant <span class="arithmatex">\(t_y\)</span> is a tilted plane of directions, not a cone of constant elevation; see <a href="../concepts/detector-angles.html">From (tx, ty) to a Ray Direction</a>.</p>
+</div>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python ≥ 3.10</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>numpy</td>
+<td>Array computation</td>
+</tr>
+<tr>
+<td>matplotlib</td>
+<td>Map rendering (pcolormesh, contour, hillshade)</td>
+</tr>
+<tr>
+<td>pyproj</td>
+<td>CRS transformation</td>
+</tr>
+<tr>
+<td>json5</td>
+<td>JSON5 config parser</td>
+</tr>
+<tr>
+<td>rasterio</td>
+<td>GeoTIFF reading</td>
+</tr>
+<tr>
+<td>scipy</td>
+<td><code>RegularGridInterpolator</code> for DEM queries (a slow fallback is used if absent)</td>
+</tr>
+<tr>
+<td>ImageMagick</td>
+<td><code>convert</code> command for PDF/GIF generation</td>
+</tr>
+</tbody>
+</table>
+<p>The Python packages are declared in <code>pyproject.toml</code> and pinned in <code>uv.lock</code>. ImageMagick is a system package and is not covered by either.</p>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>muonith-path-view
+
+<span class="c1"># Create .venv and install the pinned dependencies</span>
+uv<span class="w"> </span>sync
+
+<span class="c1"># ImageMagick</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>imagemagick<span class="w">    </span><span class="c1"># Ubuntu/Debian</span>
+brew<span class="w"> </span>install<span class="w"> </span>imagemagick<span class="w">         </span><span class="c1"># macOS (Homebrew)</span>
+</code></pre></div>
+<p><code>uv sync</code> creates <code>.venv/</code> in the repository root. The bundled <code>.envrc</code> puts <code>.venv/bin</code> on the PATH, so with <a href="https://direnv.net/">direnv</a> installed (<code>direnv allow</code> on first entry) every <code>python3</code> call in the repository uses that environment. Without direnv, either activate it (<code>source .venv/bin/activate</code>) or prefix commands with <code>uv run</code>:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>python3<span class="w"> </span>scripts/mp_pypathviewer_pdf.py<span class="w"> </span>params/tutorial.json5
+</code></pre></div>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">¶</a></h2>
+<h3 id="run-the-bundled-tutorial-no-geotiff-to-prepare">Run the bundled tutorial (no GeoTIFF to prepare)<a class="headerlink" href="#run-the-bundled-tutorial-no-geotiff-to-prepare" title="Permanent link">¶</a></h3>
+<p>muonith-path-view ships a self-contained example under <code>examples/tutorial/</code>: a synthetic DEM (<code>tutorial-5m.g2zbin</code>, and the identical grid as <code>tutorial-5m.tif</code>) together with 11 detector parameter files under <code>examples/tutorial/detparams/</code>. Nothing has to be downloaded or converted, so a fresh clone runs as-is:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>muonith-path-view
+python3<span class="w"> </span>scripts/mp_pypathviewer_pdf.py<span class="w"> </span>params/tutorial.json5
+</code></pre></div>
+<p>Eleven detectors × 16 elevation angles are rendered (about one minute with <code>num_threads: 8</code>). The PNGs land in <code>projects/tutorial/&lt;det_name&gt;/</code> as <code>fig_elev00.0.png</code> … <code>fig_elev45.0.png</code>, and the per-detector animations and documents are collected in <code>projects/tutorial/gif/</code> and <code>projects/tutorial/pdf/</code>.</p>
+<p>Hillshade (relief shading) can be toggled on the command line. These flags override <code>rendering.shade</code> and <code>rendering.shade_alpha</code> in the config file:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/mp_pypathviewer_pdf.py<span class="w"> </span>params/tutorial.json5<span class="w"> </span>--shade<span class="w"> </span>--shade-alpha<span class="w"> </span><span class="m">0</span>.4
+python3<span class="w"> </span>scripts/mp_pypathviewer_pdf.py<span class="w"> </span>params/tutorial.json5<span class="w"> </span>--no-shade
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">The tutorial DEM is synthetic</p>
+<p>The grid is a synthetic primitive shape, not derived from any third-party map data — which is why it can be redistributed. It has no real-world location. EPSG:6677 (JGD2011 Zone 9) is simply borrowed because muonith-path-view only needs path lengths in meters, so any real projected metric CRS will do. A made-up code (e.g. 9999) is rejected.</p>
+</div>
+<p>To exercise the GeoTIFF path with the same terrain, point <code>input_dem</code> at <code>examples/tutorial/tutorial-5m.tif</code> and delete <code>input_dem_epsg</code> — a GeoTIFF embeds its own CRS. Both files read back as the same grid.</p>
+<h3 id="use-your-own-dem">Use your own DEM<a class="headerlink" href="#use-your-own-dem" title="Permanent link">¶</a></h3>
+<p>Set <code>file_path.input_dem</code> to your own file. A GeoTIFF carries its own CRS; a <code>.g2zbin</code> grid does not, so <code>file_path.input_dem_epsg</code> must be declared explicitly:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// GeoTIFF — CRS is read from the file</span>
+<span class="s">"input_dem"</span><span class="p">:</span><span class="w"> </span><span class="s">"path/to/my_dem.tif"</span><span class="err">,</span>
+
+<span class="c1">// g2zbin — CRS must be given (real projected metric CRS)</span>
+<span class="s">"input_dem"</span><span class="p">:</span><span class="w"> </span><span class="s">"path/to/my_dem.g2zbin"</span><span class="err">,</span>
+<span class="s">"input_dem_epsg"</span><span class="p">:</span><span class="w"> </span><span class="mf">6677</span><span class="err">,</span>
+</code></pre></div>
+<p>The DEM CRS must match <code>detector_setup.epsg_system.epsg_code_output</code>. Then run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/mp_pypathviewer_pdf.py<span class="w"> </span>params/my_config.json5
+</code></pre></div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
+<p>Configuration files are stored in <code>params/</code> as JSON5 (<code>.json5</code>) or JSON (<code>.json</code>). JSON5 supports comments (<code>//</code>, <code>/* */</code>) and trailing commas.</p>
+<h3 id="top-level-parameters">Top-Level Parameters<a class="headerlink" href="#top-level-parameters" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>num_threads</code></td>
+<td>—</td>
+<td>Number of parallel subprocesses for PNG generation (capped to logical cores − 1)</td>
+</tr>
+<tr>
+<td><code>skip_making_png</code></td>
+<td><code>false</code></td>
+<td>If <code>true</code>, reuse existing PNGs (skip generation)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="file_path-inputoutput-paths"><code>file_path</code> — Input/Output Paths<a class="headerlink" href="#file_path-inputoutput-paths" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input_dem</code></td>
+<td>Path to the input DEM file (GeoTIFF, <code>.g2zbin</code>, or text)</td>
+</tr>
+<tr>
+<td><code>input_dem_epsg</code></td>
+<td>EPSG code of the DEM grid. Required for <code>.g2zbin</code> (which stores no CRS); omit for GeoTIFF</td>
+</tr>
+<tr>
+<td><code>input_dem_nodata</code></td>
+<td>Value marking missing elevation in the input grid (e.g. <code>-9999.0</code>)</td>
+</tr>
+<tr>
+<td><code>output_dir</code></td>
+<td>Output directory for PNG, PDF, GIF</td>
+</tr>
+<tr>
+<td><code>sub_process_python_path</code></td>
+<td>Path to <code>sub_pathviewer.py</code></td>
+</tr>
+<tr>
+<td><code>out_pdf_header_name</code></td>
+<td>Filename prefix for PDF output</td>
+</tr>
+<tr>
+<td><code>out_gif_header_name</code></td>
+<td>Filename prefix for GIF output</td>
+</tr>
+<tr>
+<td><code>outlog</code></td>
+<td>Path to the general log file</td>
+</tr>
+<tr>
+<td><code>error_log</code></td>
+<td>Path to the error log file</td>
+</tr>
+<tr>
+<td><code>log_mode</code></td>
+<td>Log write mode: <code>"overwrite"</code>, <code>"append"</code>, or <code>"archive"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rendering-display-settings"><code>rendering</code> — Display Settings<a class="headerlink" href="#rendering-display-settings" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dpi</code></td>
+<td>Output resolution (dots per inch)</td>
+</tr>
+<tr>
+<td><code>gif_delay_msec</code></td>
+<td>Frame interval for GIF animation [ms]</td>
+</tr>
+<tr>
+<td><code>colormap</code></td>
+<td>Matplotlib colormap name (e.g., <code>"terrain"</code>)</td>
+</tr>
+<tr>
+<td><code>color_over</code> / <code>color_under</code> / <code>color_nodata</code></td>
+<td>Colors for values above max / below min / NaN</td>
+</tr>
+<tr>
+<td><code>n_grad</code></td>
+<td>Number of discrete color levels</td>
+</tr>
+<tr>
+<td><code>vmin</code>, <code>vmax</code></td>
+<td>Elevation range for colormap [m]</td>
+</tr>
+<tr>
+<td><code>shade</code></td>
+<td>Overlay hillshade (relief shading) on the elevation colors. Default <code>true</code>. Overridden by <code>--shade</code> / <code>--no-shade</code></td>
+</tr>
+<tr>
+<td><code>shade_alpha</code></td>
+<td>Hillshade opacity (0.0 = invisible, 1.0 = opaque). Default <code>0.2</code>. Overridden by <code>--shade-alpha</code></td>
+</tr>
+<tr>
+<td><code>shade_azimuth_deg</code></td>
+<td>Light direction, degrees clockwise from north. Default <code>315</code></td>
+</tr>
+<tr>
+<td><code>shade_altitude_deg</code></td>
+<td>Light height above the horizon [deg]. Default <code>45</code></td>
+</tr>
+<tr>
+<td><code>shade_vert_exag</code></td>
+<td>Vertical exaggeration applied to the elevation before shading. Default <code>1.0</code></td>
+</tr>
+<tr>
+<td><code>x_wid</code>, <code>y_wid</code></td>
+<td>Half-width of the display window [m]</td>
+</tr>
+<tr>
+<td><code>xy_unit</code></td>
+<td>Axis label unit: <code>"m"</code> or <code>"km"</code></td>
+</tr>
+<tr>
+<td><code>fit_xy_size</code></td>
+<td>If <code>true</code>, clip axis range to actual data extent</td>
+</tr>
+<tr>
+<td><code>xy_offset_center</code></td>
+<td>If <code>true</code>, shift coordinates so the center becomes (0, 0)</td>
+</tr>
+<tr>
+<td><code>grid</code></td>
+<td>Show grid lines (<code>true</code> / <code>false</code>)</td>
+</tr>
+<tr>
+<td><code>grid_color</code>, <code>grid_linewidth</code>, <code>grid_linestyle</code></td>
+<td>Grid line appearance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detector_setup-detector-and-path-settings"><code>detector_setup</code> — Detector and Path Settings<a class="headerlink" href="#detector_setup-detector-and-path-settings" title="Permanent link">¶</a></h3>
+<h4 id="epsg_system-coordinate-reference-system"><code>epsg_system</code> — Coordinate Reference System<a class="headerlink" href="#epsg_system-coordinate-reference-system" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>epsg_code_input</code></td>
+<td>EPSG code for input detector coordinates</td>
+</tr>
+<tr>
+<td><code>epsg_code_output</code></td>
+<td>EPSG code for internal processing (must be a projected/metric CRS)</td>
+</tr>
+</tbody>
+</table>
+<p>All coordinates are transformed to <code>epsg_code_output</code> for processing:</p>
+<div class="highlight"><pre><span></span><code>GeoTIFF        → CRS from file metadata     → must match epsg_code_output
+det_info_files → no CRS                     → read as epsg_code_input
+x_cnt / y_cnt  → epsg_code_center           → transformed to epsg_code_output
+</code></pre></div>
+<p>Common EPSG codes:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>CRS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4326</td>
+<td>WGS84 (latitude/longitude)</td>
+</tr>
+<tr>
+<td>6676</td>
+<td>JGD2011 Zone 8</td>
+</tr>
+<tr>
+<td>6677</td>
+<td>JGD2011 Zone 9</td>
+</tr>
+<tr>
+<td>6679</td>
+<td>JGD2011 Zone 11</td>
+</tr>
+</tbody>
+</table>
+<h4 id="det_info_files-external-detector-files-optional"><code>det_info_files</code> — External Detector Files (optional)<a class="headerlink" href="#det_info_files-external-detector-files-optional" title="Permanent link">¶</a></h4>
+<p>When specified, detector coordinates are loaded from external JSON5 files. This allows reusing the same detector parameter files used by MUONITH:</p>
+<div class="highlight"><pre><span></span><code><span class="s">"det_info_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s">"/path/to/det_00.json5"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"/path/to/det_01.json5"</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>Each external file must contain a <code>DETECTOR_PARAMETERS</code> key:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nv">"DETECTOR_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"det_00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"x"</span><span class="p">:</span><span class="w"> </span><span class="mf">50168.1</span><span class="p">,</span><span class="w">      </span><span class="c1">// → x_det</span>
+<span class="w">    </span><span class="nv">"y"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161872.5</span><span class="p">,</span><span class="w">    </span><span class="c1">// → y_det</span>
+<span class="w">    </span><span class="nv">"z"</span><span class="p">:</span><span class="w"> </span><span class="mf">208.4</span><span class="p">,</span><span class="w">        </span><span class="c1">// → z_det</span>
+<span class="w">    </span><span class="nv">"yaw_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">-22.031</span><span class="w"> </span><span class="c1">// → azimuth_center</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>When <code>det_info_files</code> is used, the merge behavior is:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x_det</code>, <code>y_det</code>, <code>z_det</code></td>
+<td>External file (<code>det_info_files</code>)</td>
+</tr>
+<tr>
+<td><code>epsg_code_input</code>, <code>epsg_code_output</code></td>
+<td>Config file (<code>epsg_system</code>)</td>
+</tr>
+<tr>
+<td><code>direction_setup</code>, <code>line_path</code></td>
+<td>Config file</td>
+</tr>
+</tbody>
+</table>
+<p>When multiple detector files are specified, each detector is processed sequentially with output in <code>&lt;output_dir&gt;/&lt;det_name&gt;/</code>.</p>
+<h4 id="direction_setup-angle-configuration"><code>direction_setup</code> — Angle Configuration<a class="headerlink" href="#direction_setup-angle-configuration" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angle_unit</code></td>
+<td>Unit for angle values: <code>"deg"</code>, <code>"rad"</code>, or <code>"tangent"</code></td>
+</tr>
+<tr>
+<td><code>azimuth_zero</code></td>
+<td>Reference direction for azimuth = 0: <code>"north"</code> or <code>"east"</code></td>
+</tr>
+<tr>
+<td><code>azimuth_center</code></td>
+<td>Azimuth offset (overridden by <code>yaw_deg</code> from <code>det_info_files</code>)</td>
+</tr>
+<tr>
+<td><code>azimuth_mode</code></td>
+<td><code>"interval"</code> for <code>[start, end, step]</code> or <code>"array"</code> for explicit list</td>
+</tr>
+<tr>
+<td><code>azimuth_range</code></td>
+<td>Azimuth sweep range, e.g., <code>[-45, 45, 5]</code></td>
+</tr>
+<tr>
+<td><code>elevation_mode</code></td>
+<td><code>"interval"</code> or <code>"array"</code></td>
+</tr>
+<tr>
+<td><code>elevation_range</code></td>
+<td>Elevation sweep range, e.g., <code>[45, 0, -3]</code> (high → low)</td>
+</tr>
+</tbody>
+</table>
+<p>Each beam direction is a unit vector built from one elevation angle <span class="arithmatex">\(\theta_{\mathrm{elev}}\)</span> and one azimuth angle <span class="arithmatex">\(\phi\)</span>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+v_z &amp;= \sin\theta_{\mathrm{elev}} \\
+v_x &amp;= \cos\theta_{\mathrm{elev}} \cos\phi \\
+v_y &amp;= \cos\theta_{\mathrm{elev}} \sin\phi
+\end{aligned}
+\]</div>
+<p>where <span class="arithmatex">\(\phi\)</span> is the internal azimuth after the <code>azimuth_zero</code> / <code>azimuth_center</code> conversions. The elevation <span class="arithmatex">\(\theta_{\mathrm{elev}}\)</span> is fixed while the azimuth is swept, so the beams for one elevation value lie on a cone of constant physical elevation in every <code>angle_unit</code> mode.</p>
+<p><code>angle_unit</code> selects how the numbers in <code>azimuth_range</code> / <code>elevation_range</code> are read, for both azimuth and elevation. Below, <span class="arithmatex">\(u\)</span> denotes each raw number written in those ranges:</p>
+<table>
+<thead>
+<tr>
+<th><code>angle_unit</code></th>
+<th>Interpretation of each value <span class="arithmatex">\(u\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deg</code></td>
+<td>angle in degrees</td>
+</tr>
+<tr>
+<td><code>rad</code></td>
+<td>angle in radians</td>
+</tr>
+<tr>
+<td><code>tangent</code></td>
+<td>slope: the angle is <span class="arithmatex">\(\arctan u\)</span>. Equal steps in <span class="arithmatex">\(u\)</span> give unequal angular steps.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: when <code>angle_unit</code> is not <code>deg</code>, the <code>azimuth_center</code> offset is added as radians.</p>
+<p>Comparison with MUONITH's <code>DetectorPanel</code> (see <a href="../concepts/detector-angles.html">From (tx, ty) to a Ray Direction</a>); <span class="arithmatex">\(u\)</span> denotes each raw number written in <code>azimuth_range</code> / <code>elevation_range</code> (see the table above):</p>
+<table>
+<thead>
+<tr>
+<th>Tool / mode</th>
+<th>Direction from bin values</th>
+<th>Row of constant vertical value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>muonith-path-view, every <code>angle_unit</code></td>
+<td>spherical, <span class="arithmatex">\(v_z = \sin\theta_{\mathrm{elev}}\)</span> (<code>tangent</code> only converts the input, <span class="arithmatex">\(\theta_{\mathrm{elev}} = \arctan u\)</span>)</td>
+<td>cone of constant elevation</td>
+</tr>
+<tr>
+<td>MUONITH <code>DetectorPanel</code>, Degree / Radian</td>
+<td>spherical, <span class="arithmatex">\(v_z = \sin t_y\)</span></td>
+<td>cone of constant elevation</td>
+</tr>
+<tr>
+<td>MUONITH <code>DetectorPanel</code>, Tangent</td>
+<td>slopes, <span class="arithmatex">\(t_y = v_z / v_y\)</span></td>
+<td>tilted plane</td>
+</tr>
+</tbody>
+</table>
+<h4 id="line_path-ray-path-rendering"><code>line_path</code> — Ray Path Rendering<a class="headerlink" href="#line_path-ray-path-rendering" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code></td>
+<td>Minimum path distance from detector [m]</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>Maximum path distance from detector [m]</td>
+</tr>
+<tr>
+<td><code>pitch</code></td>
+<td>Distance step along the path [m]</td>
+</tr>
+<tr>
+<td><code>air_path_width</code>, <code>air_path_color</code>, <code>air_path_alpha</code></td>
+<td>Style for above-ground segments</td>
+</tr>
+<tr>
+<td><code>rock_path_width</code>, <code>rock_path_color</code>, <code>rock_path_alpha</code></td>
+<td>Style for below-ground segments</td>
+</tr>
+</tbody>
+</table>
+<h3 id="charactor_setting-typography"><code>charactor_setting</code> — Typography<a class="headerlink" href="#charactor_setting-typography" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title_fontsize</code></td>
+<td>Font size for plot title [pt]</td>
+</tr>
+<tr>
+<td><code>azimuth_fontsize</code>, <code>azimuth_fontcolor</code></td>
+<td>Font size and color for azimuth annotations</td>
+</tr>
+<tr>
+<td><code>xaxis_tick_fontsize</code>, <code>yaxis_tick_fontsize</code></td>
+<td>Tick label font sizes</td>
+</tr>
+<tr>
+<td><code>xaxis_title_fontsize</code>, <code>yaxis_title_fontsize</code></td>
+<td>Axis title font sizes</td>
+</tr>
+<tr>
+<td><code>caxis_tick_fontsize</code>, <code>caxis_title_fontsize</code></td>
+<td>Colorbar font sizes</td>
+</tr>
+<tr>
+<td><code>caxis_title</code></td>
+<td>Colorbar title text (e.g., <code>"Elevation (m)"</code>)</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>Full example: Showa-shinzan (<code>params/showa.json5</code>)</summary>
+<p>Every key is annotated inline. Paths are placeholders — replace them with your own.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ==== Top-level ====</span>
+<span class="w">  </span><span class="c1">// Number of parallel subprocesses for PNG generation (capped to logical_cores - 1)</span>
+<span class="w">  </span><span class="nv">"num_threads"</span><span class="p">:</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// If true, skip PNG generation and reuse existing PNGs (only if all PNGs already exist)</span>
+<span class="w">  </span><span class="nv">"skip_making_png"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nv">"file_path"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Path to the input DEM. GeoTIFF carries its own CRS, so input_dem_epsg is omitted here</span>
+<span class="w">    </span><span class="nv">"input_dem"</span><span class="p">:</span><span class="w"> </span><span class="s">"path/to/showa_2x2km_cut.tif"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Output directory for generated PNG, PDF, and GIF files</span>
+<span class="w">    </span><span class="nv">"output_dir"</span><span class="p">:</span><span class="w"> </span><span class="s">"projects/showa"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Path to the subprocess script that renders each elevation angle as a PNG</span>
+<span class="w">    </span><span class="nv">"sub_process_python_path"</span><span class="p">:</span><span class="w"> </span><span class="s">"scripts/sub_pathviewer.py"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Filename prefix for the output PDF (used in single-detector mode)</span>
+<span class="w">    </span><span class="nv">"out_pdf_header_name"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Filename prefix for the output GIF</span>
+<span class="w">    </span><span class="nv">"out_gif_header_name"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Path to the general output log file</span>
+<span class="w">    </span><span class="nv">"outlog"</span><span class="p">:</span><span class="w"> </span><span class="s">"projects/showa/tmp.log"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Path to the error log file</span>
+<span class="w">    </span><span class="nv">"error_log"</span><span class="p">:</span><span class="w"> </span><span class="s">"projects/showa/ERROR.log"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Log file write mode: "overwrite" replaces, "append" adds, "archive" rotates</span>
+<span class="w">    </span><span class="nv">"log_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"overwrite"</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nv">"rendering"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// If true, shift all coordinates so that the center point becomes the origin (0,0)</span>
+<span class="w">    </span><span class="nv">"xy_offset_center"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Resolution in dots per inch for PNG/PDF output</span>
+<span class="w">    </span><span class="nv">"dpi"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Frame delay in milliseconds for GIF animation</span>
+<span class="w">    </span><span class="nv">"gif_delay_msec"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Colormap ====</span>
+<span class="w">    </span><span class="c1">// Matplotlib colormap name for elevation visualization</span>
+<span class="w">    </span><span class="nv">"colormap"</span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Color for values exceeding vmax (matplotlib set_over)</span>
+<span class="w">    </span><span class="nv">"color_over"</span><span class="p">:</span><span class="w"> </span><span class="s">"white"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Color for values below vmin (matplotlib set_under)</span>
+<span class="w">    </span><span class="nv">"color_under"</span><span class="p">:</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Color for NoData/NaN pixels (matplotlib set_bad)</span>
+<span class="w">    </span><span class="nv">"color_nodata"</span><span class="p">:</span><span class="w"> </span><span class="s">"silver"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Number of discrete color gradient levels between vmin and vmax</span>
+<span class="w">    </span><span class="nv">"n_grad"</span><span class="p">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Minimum elevation value (meters) for colormap range</span>
+<span class="w">    </span><span class="nv">"vmin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Maximum elevation value (meters) for colormap range. Showa-shinzan spans 0-400 m</span>
+<span class="w">    </span><span class="nv">"vmax"</span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Hillshade ====</span>
+<span class="w">    </span><span class="c1">// If true, overlay a hillshade (relief shading) on the elevation colors.</span>
+<span class="w">    </span><span class="c1">// The command line options --shade / --no-shade override this.</span>
+<span class="w">    </span><span class="nv">"shade"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Opacity of the hillshade overlay (0.0 = invisible, 1.0 = opaque).</span>
+<span class="w">    </span><span class="c1">// The command line option --shade-alpha overrides this.</span>
+<span class="w">    </span><span class="nv">"shade_alpha"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Direction the light comes from, in degrees clockwise from north</span>
+<span class="w">    </span><span class="nv">"shade_azimuth_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">315</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Height of the light above the horizon, in degrees</span>
+<span class="w">    </span><span class="nv">"shade_altitude_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Vertical exaggeration applied to the elevation before shading</span>
+<span class="w">    </span><span class="nv">"shade_vert_exag"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Contour labels ====</span>
+<span class="w">    </span><span class="c1">// Contour label interval (meters)</span>
+<span class="w">    </span><span class="nv">"contour_label_interval"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Contour label font size (pt)</span>
+<span class="w">    </span><span class="nv">"contour_label_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Contour label color</span>
+<span class="w">    </span><span class="nv">"contour_label_color"</span><span class="p">:</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Grid ====</span>
+<span class="w">    </span><span class="c1">// Whether to display grid lines on the plot</span>
+<span class="w">    </span><span class="nv">"grid"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Color of grid lines</span>
+<span class="w">    </span><span class="nv">"grid_color"</span><span class="p">:</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Width of grid lines in points</span>
+<span class="w">    </span><span class="nv">"grid_linewidth"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Line style for grid: "solid", "dashed", "dashdot", or "dotted"</span>
+<span class="w">    </span><span class="nv">"grid_linestyle"</span><span class="p">:</span><span class="w"> </span><span class="s">"dotted"</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Axis ====</span>
+<span class="w">    </span><span class="c1">// Unit for axis labels: "m" for meters, "km" for kilometers</span>
+<span class="w">    </span><span class="nv">"xy_unit"</span><span class="p">:</span><span class="w"> </span><span class="s">"km"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for axis tick labels</span>
+<span class="w">    </span><span class="nv">"xy_tick_font_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for axis title labels (e.g. "X (km)")</span>
+<span class="w">    </span><span class="nv">"xy_axis_title_font_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// ==== Window ====</span>
+<span class="w">    </span><span class="c1">// Half-width of the plot window in meters (xmin = xcnt - x_wid, xmax = xcnt + x_wid)</span>
+<span class="w">    </span><span class="nv">"x_wid"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Half-height of the plot window in meters (ymin = ycnt - y_wid, ymax = ycnt + y_wid)</span>
+<span class="w">    </span><span class="nv">"y_wid"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// If true, clip the axis range to the actual data extent (remove empty margins)</span>
+<span class="w">    </span><span class="nv">"fit_xy_size"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// Detector and path calculation settings</span>
+<span class="w">  </span><span class="nv">"detector_setup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Coordinate reference system (EPSG codes) for coordinate transformation</span>
+<span class="w">    </span><span class="nv">"epsg_system"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// EPSG code for the input detector coordinates</span>
+<span class="w">      </span><span class="nv">"epsg_code_input"</span><span class="p">:</span><span class="w"> </span><span class="s">"6679"</span><span class="p">,</span><span class="w">      </span><span class="c1">// JGD2011 Zone 11</span>
+<span class="w">      </span><span class="c1">// EPSG code for the output plot coordinates (must be a metric/projected CRS)</span>
+<span class="w">      </span><span class="nv">"epsg_code_output"</span><span class="p">:</span><span class="w"> </span><span class="s">"6679"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// External detector files: each supplies x, y, z and yaw_deg (-&gt; azimuth_center).</span>
+<span class="w">    </span><span class="c1">// 13 detectors around Showa-shinzan; these are the same files MUONITH uses.</span>
+<span class="w">    </span><span class="nv">"det_info_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_00.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_01.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_02.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_03.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_04.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_05.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_06.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_07.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_08.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_09.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_10.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_11.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"path/to/detparams/det_12.json5"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">],</span>
+
+<span class="w">    </span><span class="c1">// Direction/angle configuration for path calculation</span>
+<span class="w">    </span><span class="nv">"direction_setup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Unit for angle values: "deg", "rad", or "tangent"</span>
+<span class="w">      </span><span class="nv">"angle_unit"</span><span class="p">:</span><span class="w"> </span><span class="s">"deg"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Reference direction for azimuth=0: "north" or "east"</span>
+<span class="w">      </span><span class="nv">"azimuth_zero"</span><span class="p">:</span><span class="w"> </span><span class="s">"north"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// azimuth_center is loaded from each det_info_file (yaw_deg)</span>
+<span class="w">      </span><span class="c1">// Azimuth generation mode: "array" for explicit list, "interval" for [start, end, step]</span>
+<span class="w">      </span><span class="nv">"azimuth_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"interval"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Azimuth sweep range as [start, end, step]: +-45 deg in 5 deg steps</span>
+<span class="w">      </span><span class="nv">"azimuth_range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-45</span><span class="p">,</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">],</span>
+<span class="w">      </span><span class="c1">// Elevation generation mode: "array" for explicit list, "interval" for [start, end, step]</span>
+<span class="w">      </span><span class="nv">"elevation_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"interval"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Elevation sweep range as [start, end, step]: 45 deg down to 0 deg in 3 deg steps</span>
+<span class="w">      </span><span class="nv">"elevation_range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">45</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">-3</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// Path line rendering parameters for the ray-tracing visualization</span>
+<span class="w">    </span><span class="nv">"line_path"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Minimum path distance (meters) from the detector</span>
+<span class="w">      </span><span class="nv">"min"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Maximum path distance (meters) from the detector</span>
+<span class="w">      </span><span class="nv">"max"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Distance step/interval (meters) along the path</span>
+<span class="w">      </span><span class="nv">"pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Line width (points) for the air (above-ground) segment of the path</span>
+<span class="w">      </span><span class="nv">"air_path_width"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Color for the air (above-ground) segment of the path</span>
+<span class="w">      </span><span class="nv">"air_path_color"</span><span class="p">:</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Opacity for the air segment (0.0 = transparent, 1.0 = opaque)</span>
+<span class="w">      </span><span class="nv">"air_path_alpha"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Line width (points) for the rock (below-ground) segment of the path</span>
+<span class="w">      </span><span class="nv">"rock_path_width"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Color for the rock (below-ground) segment of the path</span>
+<span class="w">      </span><span class="nv">"rock_path_color"</span><span class="p">:</span><span class="w"> </span><span class="s">"white"</span><span class="p">,</span>
+<span class="w">      </span><span class="c1">// Opacity for the rock segment (0.0 = transparent, 1.0 = opaque)</span>
+<span class="w">      </span><span class="nv">"rock_path_alpha"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// Typography and text formatting settings for plot elements</span>
+<span class="w">  </span><span class="nv">"charactor_setting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Scaling factor for beam path visualization relative to character size</span>
+<span class="w">    </span><span class="nv">"beam_path_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.03</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for the plot main title</span>
+<span class="w">    </span><span class="nv">"title_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for azimuth angle text annotations on the plot</span>
+<span class="w">    </span><span class="nv">"azimuth_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Color for azimuth angle text annotations</span>
+<span class="w">    </span><span class="nv">"azimuth_fontcolor"</span><span class="p">:</span><span class="w"> </span><span class="s">"black"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for x-axis tick labels</span>
+<span class="w">    </span><span class="nv">"xaxis_tick_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for y-axis tick labels</span>
+<span class="w">    </span><span class="nv">"yaxis_tick_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for colorbar tick labels</span>
+<span class="w">    </span><span class="nv">"caxis_tick_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for x-axis title</span>
+<span class="w">    </span><span class="nv">"xaxis_title_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for y-axis title</span>
+<span class="w">    </span><span class="nv">"yaxis_title_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Font size (pt) for colorbar title</span>
+<span class="w">    </span><span class="nv">"caxis_title_fontsize"</span><span class="p">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Text displayed as the colorbar title</span>
+<span class="w">    </span><span class="nv">"caxis_title"</span><span class="p">:</span><span class="w"> </span><span class="s">"Elevation (m)"</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="processing-flow">Processing Flow<a class="headerlink" href="#processing-flow" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>           Config file (JSON5)                       DEM (GeoTIFF / .g2zbin / text)
+                    │                                               │
+                    └───────────────────────┬───────────────────────┘
+                                            │
+                                            ▼
+                             mp_pypathviewer_pdf.py
+                                            │
+                  ┌─────────────────────────┼─────────────────────────┐
+                  ▼                         ▼                         ▼
+         sub_pathviewer.py         sub_pathviewer.py         sub_pathviewer.py
+         (elev 45°)                (elev 42°)                (elev 39°) ...
+                  │                         │                         │
+                  ▼                         ▼                         ▼
+               PNG                       PNG                       PNG
+                  │                         │                         │
+                  └─────────────────────────┼─────────────────────────┘
+                                            │
+                            ┌───────────────┴───────────────┐
+                            ▼                               ▼
+                         PDF                              GIF
+                      (ImageMagick)                   (ImageMagick)
+</code></pre></div>
+<p>Each <code>sub_pathviewer.py</code> invocation:</p>
+<ol>
+<li>Loads the DEM and builds a 2D elevation grid</li>
+<li>For each azimuth angle, traces a ray path from the detector</li>
+<li>Classifies each path segment as <strong>air</strong> (above terrain) or <strong>rock</strong> (below terrain)</li>
+<li>Draws the segments with distinct colors and line widths</li>
+<li>Saves the result as a PNG</li>
+</ol>
+<h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Filename pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PNG</td>
+<td><code>fig_elev45.0.png</code></td>
+<td>Topographic map with ray paths for one elevation angle</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td><code>&lt;det_name&gt;.gif</code></td>
+<td>Animated sweep through elevation angles</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td><code>&lt;det_name&gt;.pdf</code></td>
+<td>Multi-page document (one page per elevation angle)</td>
+</tr>
+</tbody>
+</table>
+<p>In multi-detector mode, the PNGs are grouped per detector and the animations and documents are collected together:</p>
+<div class="highlight"><pre><span></span><code>&lt;output_dir&gt;/
+├── det_00/
+│   ├── fig_elev00.0.png
+│   ├── ...
+│   └── fig_elev45.0.png
+├── det_01/
+│   └── ...
+├── gif/
+│   ├── det_00.gif ...
+└── pdf/
+    ├── det_00.pdf ...
+</code></pre></div>
+<h2 id="dem-input-formats">DEM Input Formats<a class="headerlink" href="#dem-input-formats" title="Permanent link">¶</a></h2>
+<p>muonith-path-view automatically detects the input format based on the file extension:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Extension</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GeoTIFF</td>
+<td><code>.tif</code>, <code>.tiff</code></td>
+<td>Georeferenced raster with embedded CRS. CRS must match <code>epsg_code_output</code>.</td>
+</tr>
+<tr>
+<td>Binary</td>
+<td><code>.g2zbin</code></td>
+<td>Compact uniform-grid binary: magic + <code>Grid2d</code> header (x/y axes) + row-major <code>z</code> array. Stores no CRS, so <code>input_dem_epsg</code> must be set in the config. See <a href="../user-guide/input-data.html#dem-digital-elevation-model">Input Data</a>.</td>
+</tr>
+<tr>
+<td>Text</td>
+<td><code>.xyz</code>, <code>.dem</code>, etc.</td>
+<td>Space-separated <code>x y z</code> values, one point per line</td>
+</tr>
+</tbody>
+</table>
+<p>To convert a <code>.g2zbin</code> grid into a GeoTIFF, run the bundled converter with the EPSG code of the grid as the third argument. This is how <code>examples/tutorial/tutorial-5m.tif</code> was produced:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/g2zbin_to_geotiff.py<span class="w"> </span>examples/tutorial/tutorial-5m.g2zbin<span class="w"> </span>examples/tutorial/tutorial-5m.tif<span class="w"> </span><span class="m">6677</span>
+</code></pre></div>
+<p>The EPSG code must be a real projected metre CRS; a made-up code (e.g. 9999) is rejected because it cannot be resolved.</p>
+<h2 id="supplementary-tool-azimuthpy">Supplementary Tool: azimuth.py<a class="headerlink" href="#supplementary-tool-azimuthpy" title="Permanent link">¶</a></h2>
+<p>Calculates the azimuth angle between two points:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/azimuth.py
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<h3 id="imagemagick-policy-error">ImageMagick Policy Error<a class="headerlink" href="#imagemagick-policy-error" title="Permanent link">¶</a></h3>
+<p>If PDF or GIF generation fails with a permission error, check the ImageMagick security policy:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Policy file location</span>
+/etc/ImageMagick-6/policy.xml
+<span class="c1"># or</span>
+/etc/ImageMagick-7/policy.xml
+</code></pre></div>
+<p>Look for <code>&lt;policy domain="coder" rights="none" pattern="PDF" /&gt;</code> and change <code>rights</code> to <code>"read|write"</code>.</p>
+<h3 id="out-of-memory">Out of Memory<a class="headerlink" href="#out-of-memory" title="Permanent link">¶</a></h3>
+<p>When processing large DEMs, reduce <code>num_threads</code> or crop the DEM to a smaller region. Each subprocess loads the full DEM into memory, so total memory usage scales with the number of threads.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

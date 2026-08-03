@@ -1,0 +1,4138 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/reference/parameter-reference.html">
+      
+      
+        <link rel="prev" href="scripts.html">
+      
+      
+        <link rel="next" href="appendix.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Parameter Reference - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#parameter-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Parameter Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="parameter-reference.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LOG_FILE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run_inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN_INVERSION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector_parameter_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETER_LISTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector_parameters-per-detector-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETERS (per-detector file)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid2d_pillar_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID2D_PILLAR_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID3D_VOXEL_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GRID3D_VOXEL_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reconst_voxels-nested-in-grid3d_voxel_parameters-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reconst_voxels (nested in GRID3D_VOXEL_PARAMETERS, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge_params-nested-in-grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        merge_params (nested in GRID3D_VOXEL_PARAMETERS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkerboard_3d_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        checkerboard_3d_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ellipsoid_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ellipsoid_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cylinder_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cylinder_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flux_range_data_table_prior-flux_range_data_table_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FLUX_RANGE_DATA_TABLE_PRIOR / FLUX_RANGE_DATA_TABLE_REAL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path_length_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATH_LENGTH_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin_group_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIN_GROUP_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BIN_GROUP_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-bin-group-list-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual bin-group list file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOISE_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NOISE_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-poisson-noise-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Poisson noise ratio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagainv_parameters-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAMETERS (array)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proj_dens_eval_grouped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PROJ_DENS_EVAL_GROUPED
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z_cross_section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z_CROSS_SECTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagainv_param_sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAM_SWEEP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LOG_FILE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run_inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN_INVERSION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector_parameter_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETER_LISTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector_parameters-per-detector-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETERS (per-detector file)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid2d_pillar_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID2D_PILLAR_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID3D_VOXEL_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GRID3D_VOXEL_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reconst_voxels-nested-in-grid3d_voxel_parameters-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reconst_voxels (nested in GRID3D_VOXEL_PARAMETERS, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge_params-nested-in-grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        merge_params (nested in GRID3D_VOXEL_PARAMETERS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkerboard_3d_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        checkerboard_3d_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ellipsoid_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ellipsoid_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cylinder_params-nested-array-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cylinder_params (nested array, optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flux_range_data_table_prior-flux_range_data_table_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FLUX_RANGE_DATA_TABLE_PRIOR / FLUX_RANGE_DATA_TABLE_REAL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path_length_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATH_LENGTH_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin_group_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIN_GROUP_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BIN_GROUP_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-bin-group-list-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual bin-group list file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#noise_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOISE_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NOISE_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-poisson-noise-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Poisson noise ratio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagainv_parameters-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAMETERS (array)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proj_dens_eval_grouped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PROJ_DENS_EVAL_GROUPED
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z_cross_section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z_CROSS_SECTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagainv_param_sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAM_SWEEP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="parameter-reference">Parameter Reference<a class="headerlink" href="#parameter-reference" title="Permanent link">¶</a></h1>
+<p>Complete reference of all JSON5 configuration parameters. For usage examples and inline comments, see <a href="../user-guide/parameter-files.html">Parameter Files</a>.</p>
+<h2 id="global">Global<a class="headerlink" href="#global" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seed</code></td>
+<td>uint</td>
+<td><code>42</code></td>
+<td>Random seed for reproducibility. CLI <code>-s</code> overrides.</td>
+</tr>
+<tr>
+<td><code>end_stage</code></td>
+<td>int</td>
+<td><code>8</code></td>
+<td>Maximum module to execute. Valid values: 3, 4, 5, 6, 7, 8. CLI <code>--end-stage</code> takes precedence. When less than 8, modules after the specified number are skipped. Not compatible with sweep mode (<code>tf_exec=true</code>) when value is less than 7.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="log_file"><code>LOG_FILE</code><a class="headerlink" href="#log_file" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path_log_dir</code></td>
+<td>string</td>
+<td><code>"logs"</code></td>
+<td>Output directory for log files</td>
+</tr>
+<tr>
+<td><code>give_new_number</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Auto-number log files</td>
+</tr>
+<tr>
+<td><code>log_level.stdout_level</code></td>
+<td>string</td>
+<td><code>"info"</code></td>
+<td>Console log level</td>
+</tr>
+<tr>
+<td><code>log_level.stderr_level</code></td>
+<td>string</td>
+<td><code>"error"</code></td>
+<td>Error stream log level</td>
+</tr>
+<tr>
+<td><code>log_level.file_level</code></td>
+<td>string</td>
+<td><code>"trace"</code></td>
+<td>File log level</td>
+</tr>
+<tr>
+<td><code>default_max_count</code></td>
+<td>int</td>
+<td><code>50</code></td>
+<td>Max log files to keep</td>
+</tr>
+<tr>
+<td><code>archive_existing</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Archive existing logs</td>
+</tr>
+</tbody>
+</table>
+<p>Log levels: <code>trace</code> &gt; <code>debug</code> &gt; <code>info</code> &gt; <code>warn</code> &gt; <code>error</code> &gt; <code>critical</code>.</p>
+<h2 id="run_inversion"><code>RUN_INVERSION</code><a class="headerlink" href="#run_inversion" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_prior_error</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Compute lower/upper prior bounds (3x slower). Default is <code>true</code> (omitting the key, or the whole <code>RUN_INVERSION</code> section, enables the prior-error pass); <code>omuro.json5</code> sets it <code>false</code> explicitly to skip it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detector_parameter_lists"><code>DETECTOR_PARAMETER_LISTS</code><a class="headerlink" href="#detector_parameter_lists" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>det_files</code></td>
+<td>array</td>
+<td>—</td>
+<td>Paths to per-detector JSON5 files</td>
+</tr>
+<tr>
+<td><code>tf_apply_eff</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Apply detector efficiency table</td>
+</tr>
+<tr>
+<td><code>tf_out_txty_ascii</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Write the <code>tmp/&lt;name&gt;_txty_&lt;PL\|dens\|signal&gt;_det&lt;NN&gt;.tmp</code> ASCII dumps. <code>false</code> only stops these dumps: with the current swp001 settings the per-element PL / density / signal figures are plotted from the saved binary, so no figure is lost.</td>
+</tr>
+<tr>
+<td><code>tf_out_g2bg_ascii</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Write the <code>tmp/g2bg_&lt;name&gt;_det&lt;NN&gt;.tmp</code> ASCII dumps. <code>false</code> only stops these dumps: with the current swp001 settings the efficiency figures are plotted from the saved binary, so no figure is lost.</td>
+</tr>
+<tr>
+<td><code>tf_save_arrdet_prior</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Save the prior detector array as <code>det/arrdet_g3vox_prior&lt;suffix&gt;.bin</code>. About 160 MB per file, and three files when <code>tf_prior_error</code> is <code>true</code>. Required to plot the prior array from the binary.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detector_parameters-per-detector-file"><code>DETECTOR_PARAMETERS</code> (per-detector file)<a class="headerlink" href="#detector_parameters-per-detector-file" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Detector panel name</td>
+</tr>
+<tr>
+<td><code>angle_unit</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td><code>"tangent"</code>, <code>"degree"</code>, or <code>"radian"</code></td>
+</tr>
+<tr>
+<td><code>nbinx</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Number of horizontal angular bins</td>
+</tr>
+<tr>
+<td><code>txmin</code></td>
+<td>float</td>
+<td>—</td>
+<td>(angle_unit)</td>
+<td>Horizontal angle minimum</td>
+</tr>
+<tr>
+<td><code>txmax</code></td>
+<td>float</td>
+<td>—</td>
+<td>(angle_unit)</td>
+<td>Horizontal angle maximum</td>
+</tr>
+<tr>
+<td><code>nbiny</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Number of vertical angular bins</td>
+</tr>
+<tr>
+<td><code>tymin</code></td>
+<td>float</td>
+<td>—</td>
+<td>(angle_unit)</td>
+<td>Vertical angle minimum</td>
+</tr>
+<tr>
+<td><code>tymax</code></td>
+<td>float</td>
+<td>—</td>
+<td>(angle_unit)</td>
+<td>Vertical angle maximum</td>
+</tr>
+<tr>
+<td><code>length_hori</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector width</td>
+</tr>
+<tr>
+<td><code>length_vert</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector height</td>
+</tr>
+<tr>
+<td><code>length_dept</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector depth</td>
+</tr>
+<tr>
+<td><code>n_unit</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Number of detector copies</td>
+</tr>
+<tr>
+<td><code>rotation_type</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td><code>"LOCAL"</code> or <code>"GLOBAL"</code></td>
+</tr>
+<tr>
+<td><code>yaw_deg</code></td>
+<td>float</td>
+<td>—</td>
+<td>degrees</td>
+<td>Yaw angle (0°=East, 90°=North, clockwise)</td>
+</tr>
+<tr>
+<td><code>roll_deg</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>degrees</td>
+<td>Roll angle (counterclockwise positive)</td>
+</tr>
+<tr>
+<td><code>pitch_deg</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>degrees</td>
+<td>Pitch angle (counterclockwise positive)</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector x position</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector y position</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Detector z position</td>
+</tr>
+<tr>
+<td><code>days</code></td>
+<td>float</td>
+<td>—</td>
+<td>days</td>
+<td>Exposure time</td>
+</tr>
+<tr>
+<td><code>tf_read_bin_list</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Read angular bin list from file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grid2d_pillar_parameters"><code>GRID2D_PILLAR_PARAMETERS</code><a class="headerlink" href="#grid2d_pillar_parameters" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>initial_uniform_density</code></td>
+<td>float</td>
+<td><code>1000</code></td>
+<td>kg/m³</td>
+<td>Initial uniform rock density</td>
+</tr>
+<tr>
+<td><code>path_dem</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Path to DEM file (<code>.g2zbin</code>)</td>
+</tr>
+<tr>
+<td><code>zmin</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Pillar base elevation</td>
+</tr>
+<tr>
+<td><code>tf_shift_x</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Shift x-origin to xmin</td>
+</tr>
+<tr>
+<td><code>tf_shift_y</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Shift y-origin to ymin</td>
+</tr>
+<tr>
+<td><code>tolerance_ratio</code></td>
+<td>float</td>
+<td><code>0.001</code></td>
+<td>—</td>
+<td>DEM grid spacing tolerance</td>
+</tr>
+<tr>
+<td><code>vertical_dike_params</code></td>
+<td>array</td>
+<td><code>[]</code></td>
+<td>—</td>
+<td>Vertical dike structures</td>
+</tr>
+<tr>
+<td><code>vertical_cylinder_params</code></td>
+<td>array</td>
+<td><code>[]</code></td>
+<td>—</td>
+<td>Vertical cylinder structures</td>
+</tr>
+<tr>
+<td><code>vertical_checkerboard_params</code></td>
+<td>array</td>
+<td><code>[]</code></td>
+<td>—</td>
+<td>Vertical checkerboard structures</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grid3d_voxel_parameters"><code>GRID3D_VOXEL_PARAMETERS</code><a class="headerlink" href="#grid3d_voxel_parameters" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_build_g3vox</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Build 3D grid (false = 2D only)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>use_grid2d_of_g2pil</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Reuse DEM x/y axes</td>
+</tr>
+<tr>
+<td><code>zmin</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Bottom of voxel grid</td>
+</tr>
+<tr>
+<td><code>zmax</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Top of voxel grid</td>
+</tr>
+<tr>
+<td><code>z_pitch</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Vertical voxel spacing</td>
+</tr>
+<tr>
+<td><code>n_hit_det_min</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Min detectors per voxel for inversion</td>
+</tr>
+<tr>
+<td><code>n_hit_det_max</code></td>
+<td>int</td>
+<td><code>INT_MAX</code></td>
+<td>—</td>
+<td>Max detectors per voxel</td>
+</tr>
+<tr>
+<td><code>n_hit_ele_min</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Min elements per voxel</td>
+</tr>
+<tr>
+<td><code>n_hit_ele_max</code></td>
+<td>int</td>
+<td><code>INT_MAX</code></td>
+<td>—</td>
+<td>Max elements per voxel</td>
+</tr>
+<tr>
+<td><code>tf_end_after_merged</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Stop after merge</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reconst_voxels-nested-in-grid3d_voxel_parameters-optional"><code>reconst_voxels</code> (nested in <code>GRID3D_VOXEL_PARAMETERS</code>, optional)<a class="headerlink" href="#reconst_voxels-nested-in-grid3d_voxel_parameters-optional" title="Permanent link">¶</a></h3>
+<p>Selects a sub-volume of the voxel grid that participates in reconstruction. Dimensions are expressed in <strong>meters</strong> (previously <code>_nvox</code> voxel-count fields — now removed). Either AABB or cylinder (or both) may be enabled; when neither is enabled the entire voxel grid is used.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_aabb</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Enable an axis-aligned bounding box</td>
+</tr>
+<tr>
+<td><code>x_aabb_cnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>AABB center x</td>
+</tr>
+<tr>
+<td><code>y_aabb_cnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>AABB center y</td>
+</tr>
+<tr>
+<td><code>x_aabb_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>AABB full width in x (half-extent = <code>x_aabb_meters * 0.5</code>)</td>
+</tr>
+<tr>
+<td><code>y_aabb_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>AABB full width in y (half-extent = <code>y_aabb_meters * 0.5</code>)</td>
+</tr>
+<tr>
+<td><code>aabb_zmin_mode</code></td>
+<td>string</td>
+<td><code>"g3vox_zmin"</code></td>
+<td>—</td>
+<td>How to derive lower z: <code>"g3vox_zmin"</code> or <code>"manual"</code></td>
+</tr>
+<tr>
+<td><code>aabb_zmin_value</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Explicit z-min (used only when <code>aabb_zmin_mode == "manual"</code>)</td>
+</tr>
+<tr>
+<td><code>aabb_zmax</code></td>
+<td>float</td>
+<td><code>DBL_MAX</code></td>
+<td>m</td>
+<td>Upper z bound; terrain surface clips it when the surface is lower</td>
+</tr>
+<tr>
+<td><code>tf_cylinder</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Enable an elliptical-cylinder region</td>
+</tr>
+<tr>
+<td><code>x_cyl_cnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Cylinder axis center x</td>
+</tr>
+<tr>
+<td><code>y_cyl_cnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Cylinder axis center y</td>
+</tr>
+<tr>
+<td><code>cylinder_radius_x_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Elliptical-cylinder semi-axis in x (must be &gt; 0 when <code>tf_cylinder=true</code>)</td>
+</tr>
+<tr>
+<td><code>cylinder_radius_y_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Elliptical-cylinder semi-axis in y (must be &gt; 0 when <code>tf_cylinder=true</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="merge_params-nested-in-grid3d_voxel_parameters"><code>merge_params</code> (nested in <code>GRID3D_VOXEL_PARAMETERS</code>)<a class="headerlink" href="#merge_params-nested-in-grid3d_voxel_parameters" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Execute voxel merge</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Merge config label</td>
+</tr>
+<tr>
+<td><code>x_merge_factor</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>Bins to merge in x</td>
+</tr>
+<tr>
+<td><code>y_merge_factor</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>Bins to merge in y</td>
+</tr>
+<tr>
+<td><code>z_merge_factor</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>Bins to merge in z</td>
+</tr>
+<tr>
+<td><code>x_merge_center</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Merge alignment center x</td>
+</tr>
+<tr>
+<td><code>y_merge_center</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Merge alignment center y</td>
+</tr>
+<tr>
+<td><code>z_merge_center</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Merge alignment center z</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checkerboard_3d_params-nested-array-optional"><code>checkerboard_3d_params</code> (nested array, optional)<a class="headerlink" href="#checkerboard_3d_params-nested-array-optional" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td>—</td>
+<td>—</td>
+<td>Enable this checkerboard</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><code>delta_density</code></td>
+<td>float</td>
+<td>—</td>
+<td>kg/m³</td>
+<td>Density perturbation</td>
+</tr>
+<tr>
+<td><code>delta_density_offset</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>kg/m³</td>
+<td>Density offset</td>
+</tr>
+<tr>
+<td><code>xlen_cells</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Total checkerboard cells in x</td>
+</tr>
+<tr>
+<td><code>ylen_cells</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Total checkerboard cells in y</td>
+</tr>
+<tr>
+<td><code>zlen_cells</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Total checkerboard cells in z</td>
+</tr>
+<tr>
+<td><code>xcnt</code>, <code>ycnt</code>, <code>zcnt</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Pattern center</td>
+</tr>
+<tr>
+<td><code>xlen_interval_mult</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Block size = x_interval × this</td>
+</tr>
+<tr>
+<td><code>ylen_interval_mult</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Block size = y_interval × this</td>
+</tr>
+<tr>
+<td><code>zlen_interval_mult</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Block size = z_interval × this</td>
+</tr>
+<tr>
+<td><code>tf_snap_to_grid</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Snap boundaries to grid lines</td>
+</tr>
+<tr>
+<td><code>region_type</code></td>
+<td>string</td>
+<td><code>"aabb"</code></td>
+<td>—</td>
+<td><code>"aabb"</code> or <code>"cylinder"</code> — shape of the region within which cells are checkerboarded</td>
+</tr>
+<tr>
+<td><code>radius_x_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Cylinder semi-axis in x (used when <code>region_type == "cylinder"</code>)</td>
+</tr>
+<tr>
+<td><code>radius_y_meters</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Cylinder semi-axis in y (used when <code>region_type == "cylinder"</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AABB specification</strong>: The checkerboard AABB is computed symmetrically from the (snapped) center using total cell counts. For each axis: <code>min = cnt_snapped - len_cells * 0.5 * cell_size</code>, <code>max = cnt_snapped + len_cells * 0.5 * cell_size</code>, where <code>cell_size = interval * len_interval_mult</code>. Total cells per axis = <code>len_cells</code>. Odd values are supported (e.g. <code>xlen_cells=5</code> gives a half-extent of 2.5 cells). All three <code>*len_cells</code> values are required and must be positive integers. Direct specification of xmin/xmax/ymin/ymax/zmin/zmax is deprecated and no longer supported; use <code>xlen_cells</code>/<code>ylen_cells</code>/<code>zlen_cells</code> instead.</p>
+<h3 id="ellipsoid_params-nested-array-optional"><code>ellipsoid_params</code> (nested array, optional)<a class="headerlink" href="#ellipsoid_params-nested-array-optional" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Enable this ellipsoid</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td>—</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><code>delta_density</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>kg/m³</td>
+<td>Density perturbation (added to interior voxels)</td>
+</tr>
+<tr>
+<td><code>xcnt</code>, <code>ycnt</code>, <code>zcnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Ellipsoid center position</td>
+</tr>
+<tr>
+<td><code>xlen</code>, <code>ylen</code>, <code>zlen</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Semi-axis lengths (before rotation)</td>
+</tr>
+<tr>
+<td><code>theta_x_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around x-axis</td>
+</tr>
+<tr>
+<td><code>theta_y_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around y-axis</td>
+</tr>
+<tr>
+<td><code>theta_z_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around z-axis</td>
+</tr>
+<tr>
+<td><code>rotation_type</code></td>
+<td>string</td>
+<td><code>"LOCAL"</code></td>
+<td>—</td>
+<td><code>"LOCAL"</code> (intrinsic) or <code>"GLOBAL"</code> (extrinsic)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cylinder_params-nested-array-optional"><code>cylinder_params</code> (nested array, optional)<a class="headerlink" href="#cylinder_params-nested-array-optional" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Enable this cylinder</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td>—</td>
+<td>Label</td>
+</tr>
+<tr>
+<td><code>delta_density</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>kg/m³</td>
+<td>Density perturbation (added to interior voxels)</td>
+</tr>
+<tr>
+<td><code>xcnt</code>, <code>ycnt</code>, <code>zcnt</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>m</td>
+<td>Cylinder center position</td>
+</tr>
+<tr>
+<td><code>xlen</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Elliptical cross-section semi-axis in x (must be &gt; 0)</td>
+</tr>
+<tr>
+<td><code>ylen</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Elliptical cross-section semi-axis in y (must be &gt; 0)</td>
+</tr>
+<tr>
+<td><code>zlen</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Cylinder height (must be &gt; 0)</td>
+</tr>
+<tr>
+<td><code>theta_x_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around x-axis</td>
+</tr>
+<tr>
+<td><code>theta_y_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around y-axis</td>
+</tr>
+<tr>
+<td><code>theta_z_deg</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>degrees</td>
+<td>Rotation around z-axis</td>
+</tr>
+<tr>
+<td><code>rotation_type</code></td>
+<td>string</td>
+<td><code>"LOCAL"</code></td>
+<td>—</td>
+<td><code>"LOCAL"</code> (intrinsic) or <code>"GLOBAL"</code> (extrinsic)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flux_range_data_table_prior-flux_range_data_table_real"><code>FLUX_RANGE_DATA_TABLE_PRIOR</code> / <code>FLUX_RANGE_DATA_TABLE_REAL</code><a class="headerlink" href="#flux_range_data_table_prior-flux_range_data_table_real" title="Permanent link">¶</a></h2>
+<p>Both sections have identical format.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pathin_log_peneflux</code></td>
+<td>string</td>
+<td>—</td>
+<td>Path to log10(flux) table (<code>.g2zbin</code>)</td>
+</tr>
+<tr>
+<td><code>tf_xcnt_peneflux</code></td>
+<td>bool</td>
+<td>—</td>
+<td>Use bin center for cos(θz)</td>
+</tr>
+<tr>
+<td><code>tf_ycnt_peneflux</code></td>
+<td>bool</td>
+<td>—</td>
+<td>Use bin center for density-length</td>
+</tr>
+<tr>
+<td><code>pathin_dFdR_R_costhz</code></td>
+<td>string</td>
+<td>—</td>
+<td>Path to dF/dR table (<code>.g2zbin</code>)</td>
+</tr>
+<tr>
+<td><code>tf_xcnt_dFdR</code></td>
+<td>bool</td>
+<td>—</td>
+<td>Use bin center for cos(θz)</td>
+</tr>
+<tr>
+<td><code>tf_ycnt_dFdR</code></td>
+<td>bool</td>
+<td>—</td>
+<td>Use bin center for range</td>
+</tr>
+</tbody>
+</table>
+<h2 id="path_length_parameters"><code>PATH_LENGTH_PARAMETERS</code><a class="headerlink" href="#path_length_parameters" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>tf_add_PLDL</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Compute PL and DL</td>
+</tr>
+<tr>
+<td><code>tf_incr_nhit_det</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Count detector hits per voxel</td>
+</tr>
+<tr>
+<td><code>tf_incr_nhit_ele</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Count element hits per voxel</td>
+</tr>
+<tr>
+<td><code>tf_add_shell</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Include shell geometry</td>
+</tr>
+<tr>
+<td><code>BL_max</code></td>
+<td>float</td>
+<td><code>5000</code></td>
+<td>m</td>
+<td>Max beam length threshold [m]; <code>&lt;= 0</code> disables the warning</td>
+</tr>
+<tr>
+<td><code>PL_min</code></td>
+<td>float</td>
+<td>required</td>
+<td>m</td>
+<td>Lower bound of the path-length range</td>
+</tr>
+<tr>
+<td><code>PL_max</code></td>
+<td>float</td>
+<td>required</td>
+<td>m</td>
+<td>Upper bound of the path-length range</td>
+</tr>
+<tr>
+<td><code>PL_pit</code></td>
+<td>float</td>
+<td>required</td>
+<td>m</td>
+<td>Bin pitch along the path-length axis</td>
+</tr>
+<tr>
+<td><code>reference_matPL_sparse</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>—</td>
+<td>Sparse matrix reference value</td>
+</tr>
+<tr>
+<td><code>epsilon_matPL_sparse</code></td>
+<td>float</td>
+<td><code>1.0e-9</code></td>
+<td>—</td>
+<td>Sparse matrix epsilon. Values below <code>reference_matPL_sparse * epsilon_matPL_sparse</code> are zeroed</td>
+</tr>
+<tr>
+<td><code>tf_load_arrdet_g2pil</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Load 2D detector array binary</td>
+</tr>
+<tr>
+<td><code>tf_save_arrdet_g2pil</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Save 2D detector array binary</td>
+</tr>
+<tr>
+<td><code>path_arrdet_g2pil_bin</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>File path for 2D array binary</td>
+</tr>
+<tr>
+<td><code>tf_load_arrdet_g3vox</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Load 3D detector array binary</td>
+</tr>
+<tr>
+<td><code>tf_save_arrdet_g3vox</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Save 3D detector array binary</td>
+</tr>
+<tr>
+<td><code>path_arrdet_g3vox_bin</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>File path for 3D array binary</td>
+</tr>
+<tr>
+<td><code>path_vec_spmat_PL_bin</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>File path for sparse PL matrices</td>
+</tr>
+<tr>
+<td><code>tf_load_bin_obs_mat_dNdD</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Load observation matrix binary</td>
+</tr>
+<tr>
+<td><code>tf_save_bin_obs_mat_dNdD</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Save observation matrix binary</td>
+</tr>
+<tr>
+<td><code>path_bin_obs_mat_dNdD</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>File path for dN/dD matrix</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bin_group_parameters"><code>BIN_GROUP_PARAMETERS</code><a class="headerlink" href="#bin_group_parameters" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>signal_init</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Initial signal value</td>
+</tr>
+<tr>
+<td><code>noise_init</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Initial noise value</td>
+</tr>
+<tr>
+<td><code>is_avail_init</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Initial availability</td>
+</tr>
+<tr>
+<td><code>PL_thres</code></td>
+<td>float</td>
+<td><code>20</code></td>
+<td>m</td>
+<td>Min path length threshold</td>
+</tr>
+<tr>
+<td><code>DL_thres</code></td>
+<td>float</td>
+<td><code>10000</code></td>
+<td>kg/m²</td>
+<td>Max density length threshold</td>
+</tr>
+<tr>
+<td><code>is_avail_under_thres</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Availability for sub-threshold bins</td>
+</tr>
+<tr>
+<td><code>signal_under_thres</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+<td>—</td>
+<td>Signal for disabled bins</td>
+</tr>
+<tr>
+<td><code>noise_under_thres</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+<td>—</td>
+<td>Noise for disabled bins</td>
+</tr>
+<tr>
+<td><code>tf_run_1st_grouping</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Run initial grouping</td>
+</tr>
+<tr>
+<td><code>tf_run_auto_grouping</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Run adaptive subdivision</td>
+</tr>
+<tr>
+<td><code>igroup_start</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Starting group ID</td>
+</tr>
+<tr>
+<td><code>nx_div_init</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>Initial horizontal divisions</td>
+</tr>
+<tr>
+<td><code>ny_div_init</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>—</td>
+<td>Initial vertical divisions</td>
+</tr>
+<tr>
+<td><code>signal_noise_group_trig</code></td>
+<td>float</td>
+<td><code>20</code></td>
+<td>—</td>
+<td>S/N threshold for subdivision</td>
+</tr>
+<tr>
+<td><code>ixlen_min</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Min group width (bins)</td>
+</tr>
+<tr>
+<td><code>iylen_min</code></td>
+<td>int</td>
+<td>—</td>
+<td>—</td>
+<td>Min group height (bins)</td>
+</tr>
+<tr>
+<td><code>tf_prefer_split_x</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Prefer horizontal splits</td>
+</tr>
+<tr>
+<td><code>nloop_limit</code></td>
+<td>int</td>
+<td><code>10000</code></td>
+<td>—</td>
+<td>Max subdivision iterations</td>
+</tr>
+<tr>
+<td><code>n_detector_grouping_manual</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Number of detectors using manual bin-group lists (<code>&gt; 0</code> enables the manual route; read only when <code>tf_run_1st_grouping</code> and <code>tf_run_auto_grouping</code> are both <code>false</code>)</td>
+</tr>
+<tr>
+<td><code>vec_tf_read_bin_group_list</code></td>
+<td>array of bool</td>
+<td><code>[]</code></td>
+<td>—</td>
+<td>Per-detector flags (size = number of detectors) to read a manual bin-group list</td>
+</tr>
+<tr>
+<td><code>vec_file_path_bin_group_list</code></td>
+<td>array of string</td>
+<td><code>[]</code></td>
+<td>—</td>
+<td>Per-detector paths to bin-group list files (size = number of detectors)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="manual-bin-group-list-file">Manual bin-group list file<a class="headerlink" href="#manual-bin-group-list-file" title="Permanent link">¶</a></h3>
+<p>Each file referenced by <code>vec_file_path_bin_group_list</code> is a plain-text file with
+one rectangle (= one group) per line, four space-separated columns:</p>
+<div class="highlight"><pre><span></span><code>xlow xup ylow yup
+</code></pre></div>
+<p>Values are angular coordinates in the panel's <code>angle_unit</code> (default: tangent,
+dimensionless). Membership uses half-open intervals (<code>min &lt;= t &lt; max</code>). The
+rectangles must tile the panel's field of view — overlaps between group
+rectangles, gaps, and uncovered bin centers are rejected with an error.</p>
+<p>To leave a region out of the analysis on purpose, prefix its rectangle with the
+keyword <code>exclude</code>:</p>
+<div class="highlight"><pre><span></span><code>exclude xlow xup ylow yup
+</code></pre></div>
+<p>An excluded region counts as tiled, and its bins belong to no group — they
+appear in no export, figure, or matrix row. A group rectangle overlapping an
+excluded region is dropped whole at load time (logged), so the removed area
+can be wider than the declared band. A gap <em>without</em> the keyword is still an
+error. Blank lines and <code>#</code> comments are skipped; any other leading token
+(e.g. <code>EXCLUDE</code>) stops the run with its line number. See
+<a href="../concepts/bin-grouping.html#manual-bin-grouping">Bin Grouping — Manual Bin Grouping</a>.</p>
+<h2 id="noise_parameters"><code>NOISE_PARAMETERS</code><a class="headerlink" href="#noise_parameters" title="Permanent link">¶</a></h2>
+<p>Measurement noise added to the expected muon counts before inversion. Noise has
+two independent sources (flux-proportional and SOT-proportional), and each source
+is split into a deterministic floor part and a Poisson-fluctuated part. The total
+noise is <code>(flux_floor + SOT_floor) + Poisson(flux_poisson + SOT_poisson)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td><code>"noise_tmp"</code></td>
+<td>—</td>
+<td>Instance name (free-form)</td>
+</tr>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Apply noise modeling (false = skip the block)</td>
+</tr>
+<tr>
+<td><code>flux_proport_ratio_floor</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Flux-proportional noise, deterministic floor (no fluctuation)</td>
+</tr>
+<tr>
+<td><code>flux_proport_ratio_poisson</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Flux-proportional noise, Poisson-fluctuated component</td>
+</tr>
+<tr>
+<td><code>SOT_proport_noise_ratio_floor</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>SOT-proportional (angle-independent) noise, deterministic floor</td>
+</tr>
+<tr>
+<td><code>SOT_proport_noise_ratio_poisson</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>SOT-proportional (angle-independent) noise, Poisson-fluctuated component</td>
+</tr>
+<tr>
+<td><code>user_defined_noise_flux_ratio</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>User-defined noise flux ratio</td>
+</tr>
+<tr>
+<td><code>pathin_user_defined_noise_distribution</code></td>
+<td>array</td>
+<td>—</td>
+<td>—</td>
+<td>File paths to user-defined noise flux tables</td>
+</tr>
+</tbody>
+</table>
+<h3 id="choosing-the-poisson-noise-ratio">Choosing the Poisson noise ratio<a class="headerlink" href="#choosing-the-poisson-noise-ratio" title="Permanent link">¶</a></h3>
+<p>The Poisson-fluctuated ratios (<code>flux_proport_ratio_poisson</code>,
+<code>SOT_proport_noise_ratio_poisson</code>) set how strongly noise scales with the
+expected counts. Too large a ratio drives the deep (high-path-length) bins below
+a signal-to-noise ratio of one, where noise dominates the signal and the
+reconstruction breaks down.</p>
+<p>The panels below show the per-element signal-to-noise ratio (<code>sig/noi</code>) for
+detector <code>det_2018_A</code> of the Omuro synthetic array (green = high SNR,
+yellow ≈ 1, orange/red = low SNR). For where <code>det_2018_A</code> and the other
+detectors sit on the dome, see the
+<a href="../concepts/bin-grouping.html#automatic-bin-grouping">Omuro detector layout</a>.
+This comparison is the direct basis for preferring <code>1.0E-3</code> over <code>1.0E-2</code> in the
+Omuro synthetic study.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/det00_sig_over_noise_0.1pct.png" data-desc-position="bottom"><img alt="det_2018_A signal-to-noise at noise ratio 1.0E-3" src="../assets/images/det00_sig_over_noise_0.1pct.png"></a></p>
+<p><em>Noise ratio <code>1.0E-3</code> (0.1%): the deep bins (low <code>ty</code>) stay near or above SNR = 1.</em></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/det00_sig_over_noise_0.5pct.png" data-desc-position="bottom"><img alt="det_2018_A signal-to-noise at noise ratio 5.0E-3" src="../assets/images/det00_sig_over_noise_0.5pct.png"></a></p>
+<p><em>Noise ratio <code>5.0E-3</code> (0.5%): the low-SNR region (orange) begins to spread into the deep bins.</em></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/det00_sig_over_noise_1.0pct.png" data-desc-position="bottom"><img alt="det_2018_A signal-to-noise at noise ratio 1.0E-2" src="../assets/images/det00_sig_over_noise_1.0pct.png"></a></p>
+<p><em>Noise ratio <code>1.0E-2</code> (1%): the deep bins turn red — noise exceeds signal over a wide region.</em></p>
+<h2 id="nagainv_parameters-array"><code>NAGAINV_PARAMETERS</code> (array)<a class="headerlink" href="#nagainv_parameters-array" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>Instance name</td>
+</tr>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Execute this configuration</td>
+</tr>
+<tr>
+<td><code>tf_signal_poisson</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Apply Poisson error to signal counts (noise counts fluctuate via the <code>*_poisson</code> ratios under <code>NOISE_PARAMETERS</code>)</td>
+</tr>
+<tr>
+<td><code>nmuon_thres</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>—</td>
+<td>Min muon count threshold</td>
+</tr>
+<tr>
+<td><code>nmuon_under_thres</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>—</td>
+<td>Replacement for sub-threshold counts</td>
+</tr>
+<tr>
+<td><code>uniform_prior_density</code></td>
+<td>float</td>
+<td><code>2000</code></td>
+<td>kg/m³</td>
+<td>Prior density assumption</td>
+</tr>
+<tr>
+<td><code>shell_density_upper</code></td>
+<td>float</td>
+<td><code>uniform_prior_density</code></td>
+<td>kg/m³</td>
+<td>Prior density for the upper shell (falls back to <code>uniform_prior_density</code> if omitted)</td>
+</tr>
+<tr>
+<td><code>shell_density_lower</code></td>
+<td>float</td>
+<td><code>uniform_prior_density</code></td>
+<td>kg/m³</td>
+<td>Prior density for the lower shell (falls back to <code>uniform_prior_density</code>)</td>
+</tr>
+<tr>
+<td><code>shell_density_lateral</code></td>
+<td>float</td>
+<td><code>uniform_prior_density</code></td>
+<td>kg/m³</td>
+<td>Prior density for the lateral shell (falls back to <code>uniform_prior_density</code>)</td>
+</tr>
+<tr>
+<td><code>tf_logN</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Use log-count formulation in the likelihood</td>
+</tr>
+<tr>
+<td><code>corr_length</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Isotropic correlation length</td>
+</tr>
+<tr>
+<td><code>sigma_rho</code></td>
+<td>float</td>
+<td>—</td>
+<td>kg/m³</td>
+<td>Density prior standard deviation</td>
+</tr>
+<tr>
+<td><code>sigma_rho_diag</code></td>
+<td>float</td>
+<td>—</td>
+<td>kg/m³</td>
+<td>Diagonal covariance std dev</td>
+</tr>
+<tr>
+<td><code>tf_aniso</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Enable anisotropic covariance</td>
+</tr>
+<tr>
+<td><code>corr_length_xy</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Horizontal correlation length</td>
+</tr>
+<tr>
+<td><code>corr_length_z</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Vertical correlation length</td>
+</tr>
+<tr>
+<td><code>aniso_cov_type</code></td>
+<td>string</td>
+<td><code>"separable"</code></td>
+<td>—</td>
+<td><code>"separable"</code> or <code>"ellipsoidal"</code></td>
+</tr>
+<tr>
+<td><code>tf_eff_cn_diag</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Add efficiency uncertainty to the observation covariance diagonal <span class="arithmatex">\(\mathbf{C}_N\)</span>. Also gates the central efficiency (<code>eff_cnt</code>) applied to the forward count, so the count and its error band turn on together. Widens the 2D projected-density error band (see <a href="../concepts/inversion.html#observation-covariance-mathbfc_n">Inversion</a>)</td>
+</tr>
+<tr>
+<td><code>tf_eff_cn_diag_independent</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Treat the efficiency uncertainty as independent per element. Only effective when <code>tf_eff_cn_diag</code> is <code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="proj_dens_eval_grouped"><code>PROJ_DENS_EVAL_GROUPED</code><a class="headerlink" href="#proj_dens_eval_grouped" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Run projected density evaluation</td>
+</tr>
+<tr>
+<td><code>tf_signal_poisson</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>—</td>
+<td>Apply Poisson error to signal counts (noise counts fluctuate via the <code>*_poisson</code> ratios under <code>NOISE_PARAMETERS</code>)</td>
+</tr>
+<tr>
+<td><code>dens_min</code></td>
+<td>float</td>
+<td><code>0</code></td>
+<td>kg/m³</td>
+<td>Min density to scan</td>
+</tr>
+<tr>
+<td><code>dens_max</code></td>
+<td>float</td>
+<td><code>10000</code></td>
+<td>kg/m³</td>
+<td>Max density to scan</td>
+</tr>
+<tr>
+<td><code>dens_steps</code></td>
+<td>array</td>
+<td>—</td>
+<td>kg/m³</td>
+<td>Multi-pass step sizes (coarse to fine)</td>
+</tr>
+<tr>
+<td><code>range_factor</code></td>
+<td>float</td>
+<td><code>2.0</code></td>
+<td>—</td>
+<td>Search range factor for refinement</td>
+</tr>
+<tr>
+<td><code>sigma</code></td>
+<td>float</td>
+<td><code>1.5</code></td>
+<td>σ</td>
+<td>Significance threshold</td>
+</tr>
+</tbody>
+</table>
+<h2 id="z_cross_section"><code>Z_CROSS_SECTION</code><a class="headerlink" href="#z_cross_section" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Lowest z-elevation for output</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>float</td>
+<td>—</td>
+<td>m</td>
+<td>Highest z-elevation for output</td>
+</tr>
+<tr>
+<td><code>zstep</code></td>
+<td>double</td>
+<td><code>0</code></td>
+<td>m</td>
+<td>Direct z-step size. If 0 or omitted, z_interval is used</td>
+</tr>
+<tr>
+<td><code>output_binary</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>—</td>
+<td>Also emit the cross-section data in binary form</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nagainv_param_sweep"><code>NAGAINV_PARAM_SWEEP</code><a class="headerlink" href="#nagainv_param_sweep" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_exec</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Run parameter sweep</td>
+</tr>
+<tr>
+<td><code>base_index</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Index in <code>NAGAINV_PARAMETERS</code> to use as template</td>
+</tr>
+<tr>
+<td><code>vec_sigma_rho</code></td>
+<td>array</td>
+<td>—</td>
+<td>sigma_rho values to sweep [kg/m³]</td>
+</tr>
+<tr>
+<td><code>vec_corr_length</code></td>
+<td>array</td>
+<td>—</td>
+<td>corr_length values to sweep [m]</td>
+</tr>
+<tr>
+<td><code>vec_uniform_prior_density</code></td>
+<td>array</td>
+<td>—</td>
+<td>Prior density values to sweep [kg/m³]. Each element: scalar (all shells equal) or <code>[prior, upper, lower, lateral]</code>. Mixable.</td>
+</tr>
+<tr>
+<td><code>link_diag_to_sigma</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Set sigma_rho_diag = sigma_rho</td>
+</tr>
+<tr>
+<td><code>vec_sigma_rho_diag</code></td>
+<td>array</td>
+<td>—</td>
+<td>sigma_rho_diag values to sweep [kg/m³]. Required when <code>link_diag_to_sigma=false</code></td>
+</tr>
+<tr>
+<td><code>module8_mode</code></td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td><code>"none"</code>, <code>"all"</code>, <code>"last"</code>, <code>"selected"</code></td>
+</tr>
+<tr>
+<td><code>module8_indices</code></td>
+<td>array</td>
+<td><code>[]</code></td>
+<td>Sweep indices for <code>module8_mode="selected"</code> (e.g. <code>[0, 2, 5]</code>)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

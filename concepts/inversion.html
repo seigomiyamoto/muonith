@@ -1,0 +1,2544 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/concepts/inversion.html">
+      
+      
+        <link rel="prev" href="ray-tracing.html">
+      
+      
+        <link rel="next" href="depth-resolution.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>3D Inversion - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3d-inversion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3D Inversion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="inversion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observation-matrix-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation Matrix Construction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAP Estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computation Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covariance-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Covariance Matrices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Covariance Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-covariance-mathbfc_n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation Covariance (\(\mathbf{C}_N\))
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-density-covariance-mathbfc_rho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prior Density Covariance (\(\mathbf{C}_\rho\))
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anisotropic-correlation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anisotropic Correlation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numerical-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/parameter-files.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observation-matrix-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation Matrix Construction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAP Estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computation Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covariance-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Covariance Matrices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Covariance Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-covariance-mathbfc_n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation Covariance (\(\mathbf{C}_N\))
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prior-density-covariance-mathbfc_rho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prior Density Covariance (\(\mathbf{C}_\rho\))
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anisotropic-correlation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anisotropic Correlation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numerical-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3d-inversion">3D Inversion<a class="headerlink" href="#3d-inversion" title="Permanent link">¶</a></h1>
+<p>3D density inversion is the process of estimating the internal 3D density distribution of a target volume from observed muon counts. MUONITH implements a <strong>Maximum A Posteriori (MAP) estimation</strong> approach with Bayesian regularization over a voxelized density model.</p>
+<div class="admonition note">
+<p class="admonition-title">Full equation reference</p>
+<p>For the linearized observation-matrix derivation, the complete notation
+table with input/intermediate/output roles, and the dense-covariance memory
+limit, see <a href="../reference/appendix.html#3d-density-reconstruction">Appendix: 3D Density Reconstruction</a>.</p>
+</div>
+<h2 id="problem-statement">Problem Statement<a class="headerlink" href="#problem-statement" title="Permanent link">¶</a></h2>
+<p>Given:</p>
+<ul>
+<li>A set of muon count observations <span class="arithmatex">\(\vec{N}_{\text{obs}}\)</span> from one or more detectors</li>
+<li>A forward model that predicts expected counts <span class="arithmatex">\(\vec{N}_0\)</span> based on a prior density <span class="arithmatex">\(\vec{\rho}_0\)</span></li>
+<li>An observation matrix <span class="arithmatex">\(\mathbf{A}\)</span> relating density changes to count changes (constructed in the next section)</li>
+</ul>
+<p>Estimate the density perturbation <span class="arithmatex">\(\delta\vec{\rho}\)</span> such that:</p>
+<div class="arithmatex">\[\vec{\rho}' = \vec{\rho}_0 + \delta\vec{\rho}\]</div>
+<p>best explains the observed data while remaining consistent with prior knowledge.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/showa_rec001_detectors.png" data-desc-position="bottom"><img alt="Showa-shinzan detector layout" src="../assets/images/showa_rec001_detectors.png"></a></p>
+<p><em>Example observation geometry at Showa-shinzan volcano. Thirteen detectors are placed around the dome, each viewing the target from a different azimuth. Numbers along the lines indicate the distance from each detector to the summit in meters. This multi-directional coverage is the basis for 3D density reconstruction.</em></p>
+<h2 id="observation-matrix-construction">Observation Matrix Construction<a class="headerlink" href="#observation-matrix-construction" title="Permanent link">¶</a></h2>
+<p>The observation matrix <span class="arithmatex">\(\mathbf{A}\)</span> is built from the geometric path-length matrix <span class="arithmatex">\(\mathbf{L}\)</span> computed in <a href="ray-tracing.html#path-length-matrix">Ray Tracing</a>. Each element <span class="arithmatex">\(L_{ij}\)</span> is the path length of ray <span class="arithmatex">\(i\)</span> through voxel <span class="arithmatex">\(j\)</span> [m].</p>
+<p>Following the derivation in <a href="ray-tracing.html#nagahara2022">Nagahara et al. (2022)</a> (Eqs. 12–18), the density length along ray <span class="arithmatex">\(i\)</span> is the weighted sum of voxel densities</p>
+<div class="arithmatex">\[X_i \;=\; \sum_j L_{ij}\,\rho_j \qquad [\text{kg/m}^2]\]</div>
+<p>and the nonlinear map from density length to muon count is given by the flux table</p>
+<div class="arithmatex">\[N_i \;=\; g_i(X_i)\]</div>
+<p>Linearizing around a prior density length <span class="arithmatex">\(X_{0,i}\)</span> yields the <strong>muon count sensitivity matrix</strong> <span class="arithmatex">\(\mathbf{A}_N\)</span>:</p>
+<div class="arithmatex">\[A_{N,ij} \;=\; \frac{\partial N_i}{\partial \rho_j} \;=\; L_{ij}\, \frac{dN_i}{dX_i}\!\left(X_{0,i}\right)\]</div>
+<p>which is Eq. (18) of <a href="ray-tracing.html#nagahara2022">Nagahara et al. (2022)</a>. Each element of <span class="arithmatex">\(\mathbf{A}_N\)</span> is the geometric path length <span class="arithmatex">\(L_{ij}\)</span> multiplied by the derivative of the muon-count response with respect to density length, evaluated at the prior density length <span class="arithmatex">\(X_{0,i}\)</span> of ray <span class="arithmatex">\(i\)</span>. The derivative factor <span class="arithmatex">\(dN_i/dX_i\)</span> is computed from the muon flux table and combines:</p>
+<ul>
+<li>The derivative of muon flux with respect to density length (<span class="arithmatex">\(dF/dR\)</span>)</li>
+<li>The cosine of the zenith angle</li>
+<li>The detector's effective area, solid angle, and exposure time</li>
+</ul>
+<p>In the MAP formulas below, <span class="arithmatex">\(\mathbf{A} \equiv \mathbf{A}_N\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Why linearize at the count level</p>
+<p>Building <span class="arithmatex">\(\mathbf{A}_N\)</span> directly — rather than treating the path-length relation <span class="arithmatex">\(X_i = \sum_j L_{ij}\rho_j\)</span> as the observation equation and linearizing the flux response around it as a whole-bin operation — has two practical benefits:</p>
+<ol>
+<li><strong>Bin merging is linear in <span class="arithmatex">\(\mathbf{A}_N\)</span>.</strong> If angular bins <span class="arithmatex">\(\{i\}\)</span> are merged into a single super-bin <span class="arithmatex">\(k\)</span> with <span class="arithmatex">\(N'_k = \sum_i N_i\)</span>, then <span class="arithmatex">\(A'_{N,kj} = \sum_i A_{N,ij}\)</span> — i.e. merging is just summation, the same as for the observed counts. This is what enables the adaptive bin grouping in <a href="bin-grouping.html">Grid2dBinGroup</a>. When a ridge line crosses a coarse bin, the sum is taken only over sub-bins below the ridge.</li>
+<li><strong>Higher numerical accuracy.</strong> The muon flux varies nonlinearly with path and elevation angle, so a single linearization at the coarse-bin level degrades as bins become coarser. The <span class="arithmatex">\(\mathbf{A}_N\)</span> form keeps the derivative <span class="arithmatex">\(dN_i/dX_i\)</span> evaluated at the correct <span class="arithmatex">\(X_{0,i}\)</span> for each underlying small bin, then sums — preserving accuracy even for merged bins.</li>
+</ol>
+</div>
+<h2 id="map-estimation">MAP Estimation<a class="headerlink" href="#map-estimation" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_inv_formula.dio.png" data-desc-position="bottom"><img alt="Inversion formula and variable mapping" src="../assets/images/chart_inv_formula.dio.png"></a></p>
+<p>First, define the <strong>posterior covariance</strong> and the <strong>count residual</strong>:</p>
+<div class="arithmatex">\[\mathbf{C}_{\rho'} = \left(\mathbf{A}^T \mathbf{C}_N^{-1} \mathbf{A} + \mathbf{C}_\rho^{-1}\right)^{-1}\]</div>
+<div class="arithmatex">\[\delta\vec{N} = \vec{N}_{\text{obs}} - \vec{N}_0\]</div>
+<p>The reconstruction formula then becomes:</p>
+<div class="arithmatex">\[\delta\vec{\rho} = \mathbf{C}_{\rho'} \, \mathbf{A}^T \mathbf{C}_N^{-1} \, \delta\vec{N}\]</div>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Dimensions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\delta\vec{\rho}\)</span></td>
+<td>Density perturbation</td>
+<td><span class="arithmatex">\(n_v \times 1\)</span></td>
+<td>Estimated change from prior density [kg/m³]</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\vec{\rho}_0\)</span></td>
+<td>Prior density</td>
+<td><span class="arithmatex">\(n_v \times 1\)</span></td>
+<td>Initial density assumption [kg/m³]</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{A}\)</span></td>
+<td>Observation matrix</td>
+<td><span class="arithmatex">\(n_d \times n_v\)</span></td>
+<td><span class="arithmatex">\(\partial N / \partial \rho\)</span> (muon count sensitivity)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{C}_N\)</span></td>
+<td>Observation covariance</td>
+<td><span class="arithmatex">\(n_d \times n_d\)</span></td>
+<td>Uncertainty in muon counts</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{C}_\rho\)</span></td>
+<td>Prior density covariance</td>
+<td><span class="arithmatex">\(n_v \times n_v\)</span></td>
+<td>Prior uncertainty and spatial correlation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{C}_{\rho'}\)</span></td>
+<td>Posterior covariance</td>
+<td><span class="arithmatex">\(n_v \times n_v\)</span></td>
+<td>Posterior uncertainty of reconstructed density</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\vec{N}_{\text{obs}}\)</span></td>
+<td>Observed counts</td>
+<td><span class="arithmatex">\(n_d \times 1\)</span></td>
+<td>Measured muon counts</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\vec{N}_0\)</span></td>
+<td>Prior expected counts</td>
+<td><span class="arithmatex">\(n_d \times 1\)</span></td>
+<td>Forward-modeled counts at <span class="arithmatex">\(\vec{\rho}_0\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\delta\vec{N}\)</span></td>
+<td>Count residual</td>
+<td><span class="arithmatex">\(n_d \times 1\)</span></td>
+<td>Difference between observed and prior counts</td>
+</tr>
+</tbody>
+</table>
+<p>Where <span class="arithmatex">\(n_d\)</span> = number of detector elements (observations) and <span class="arithmatex">\(n_v\)</span> = number of voxels (unknowns). Here <span class="arithmatex">\(n_v\)</span> counts only the voxels in the reconstruction sub-volume, not the whole mountain; the surrounding terrain attenuates each ray at a fixed density and is not part of the unknowns (see <a href="grid-system.html#what-is-reconstructed-vs-what-only-attenuates">Grid System</a>).</p>
+<h2 id="computation-steps">Computation Steps<a class="headerlink" href="#computation-steps" title="Permanent link">¶</a></h2>
+<p>The inversion proceeds in the following order:</p>
+<ol>
+<li><strong>Compute</strong> <span class="arithmatex">\(\mathbf{C}_N^{-1}\)</span> — Inverse of observation covariance</li>
+<li><strong>Compute</strong> <span class="arithmatex">\(\mathbf{C}_\rho^{-1}\)</span> — Inverse of prior density covariance</li>
+<li><strong>Compute posterior covariance inverse:</strong> <span class="arithmatex">\(\mathbf{C}_{\rho'}^{-1} = \mathbf{A}^T \mathbf{C}_N^{-1} \mathbf{A} + \mathbf{C}_\rho^{-1}\)</span></li>
+<li><strong>Invert</strong> to obtain posterior covariance <span class="arithmatex">\(\mathbf{C}_{\rho'}\)</span> (using LAPACK LU decomposition)</li>
+<li><strong>Compute count residual:</strong> <span class="arithmatex">\(\delta\vec{N} = \vec{N}_{\text{obs}} - \vec{N}_0\)</span></li>
+<li><strong>Compute density perturbation:</strong> <span class="arithmatex">\(\delta\vec{\rho} = \mathbf{C}_{\rho'} \, \mathbf{A}^T \mathbf{C}_N^{-1} \, \delta\vec{N}\)</span></li>
+<li><strong>Reconstruct density:</strong> <span class="arithmatex">\(\vec{\rho}' = \vec{\rho}_0 + \delta\vec{\rho}\)</span></li>
+</ol>
+<h2 id="covariance-matrices">Covariance Matrices<a class="headerlink" href="#covariance-matrices" title="Permanent link">¶</a></h2>
+<h3 id="observation-covariance-mathbfc_n">Observation Covariance (<span class="arithmatex">\(\mathbf{C}_N\)</span>)<a class="headerlink" href="#observation-covariance-mathbfc_n" title="Permanent link">¶</a></h3>
+<p>A diagonal matrix representing the statistical uncertainty of muon counts:</p>
+<table>
+<thead>
+<tr>
+<th>Variance of element <span class="arithmatex">\(i\)</span></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(N_i\)</span></td>
+<td>Poisson statistics in linear space</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(N_i + \sigma_{\varepsilon,i}^{2}\)</span></td>
+<td>When <code>tf_eff_cn_diag</code> is enabled (efficiency uncertainty added)</td>
+</tr>
+</tbody>
+</table>
+<p>When <code>tf_eff_cn_diag</code> is on, an efficiency-uncertainty variance <span class="arithmatex">\(\sigma_{\varepsilon,i}^{2}\)</span> is added to each diagonal entry, so the standard deviation of grouped observation <span class="arithmatex">\(i\)</span> becomes</p>
+<div class="arithmatex">\[\sigma_i = \sqrt{N_i + \sigma_{\varepsilon,i}^{2}}.\]</div>
+<p>Let <span class="arithmatex">\(\varepsilon_k\)</span> be the detector efficiency of angular element <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(\delta\varepsilon_k = \tfrac{1}{2}\left(\varepsilon_{\mathrm{upp},k} - \varepsilon_{\mathrm{low},k}\right)\)</span> its uncertainty (the half-width of the lower/upper band in the efficiency table). With <span class="arithmatex">\(b_k\)</span> the efficiency-free base count of element <span class="arithmatex">\(k\)</span>, the variance summed over the angular elements <span class="arithmatex">\(k\)</span> merged into grouped bin <span class="arithmatex">\(i\)</span> is</p>
+<div class="arithmatex">\[
+\sigma_{\varepsilon,i}^{2} =
+\begin{cases}
+\left(\displaystyle\sum_{k \in i} \delta\varepsilon_k \, b_k\right)^{2} &amp; \text{(correlated; default)} \\[6pt]
+\displaystyle\sum_{k \in i} \left(\delta\varepsilon_k \, b_k\right)^{2} &amp; \text{(independent)}
+\end{cases}
+\]</div>
+<p>The correlated form is the same as the grouped-relative expression
+<span class="arithmatex">\((s_iN_i)^2\)</span> used in the design notes. With central element counts
+<span class="arithmatex">\(N_k=\varepsilon_k b_k\)</span>, grouped count <span class="arithmatex">\(N_i=\sum_{k\in i}N_k\)</span>, and relative
+uncertainty <span class="arithmatex">\(s_k=\delta\varepsilon_k/\varepsilon_k\)</span>, the grouped relative
+uncertainty is
+<span class="arithmatex">\(s_i=\left(\sum_{k\in i}s_kN_k\right)/N_i\)</span>. Therefore
+<span class="arithmatex">\((s_iN_i)^2=\left(\sum_{k\in i}\delta\varepsilon_k b_k\right)^2\)</span>.</p>
+<p>The independent form is selected by <code>tf_eff_cn_diag_independent</code>. The same flag also widens the 2D projected-density error band (see <a href="detector-model.html">Detector Model</a>). See <a href="../reference/parameter-reference.html#nagainv_parameters-array">Parameter Reference</a> for both flags, and <a href="../reference/appendix.html#efficiency-uncertainty-in-mathbfc_n">Appendix</a> for the implementation mapping.</p>
+<p>This remains a diagonal <span class="arithmatex">\(\mathbf{C}_N\)</span> model because the efficiency table defines
+per-element uncertainty widths, but does not define correlations between angular
+bins, detectors, or calibration-source groups. MUONITH assumes any common
+efficiency component is closed inside the grouped angular bin, so that component
+can be folded into the grouped diagonal variance above. Cross-bin or
+cross-detector common calibration errors would be off-diagonal in principle, but
+are outside the current fast evaluation path used for layout and relative
+contrast comparison.</p>
+<h3 id="prior-density-covariance-mathbfc_rho">Prior Density Covariance (<span class="arithmatex">\(\mathbf{C}_\rho\)</span>)<a class="headerlink" href="#prior-density-covariance-mathbfc_rho" title="Permanent link">¶</a></h3>
+<p>Encodes prior knowledge about density uncertainty and spatial correlation:</p>
+<div class="arithmatex">\[C_{\rho,ij} = \sigma_\rho^2 \exp\left(-\frac{d_{ij}}{l_c}\right)\]</div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sigma_rho</code></td>
+<td><span class="arithmatex">\(\sigma_\rho\)</span></td>
+<td>kg/m³</td>
+<td>Standard deviation of density uncertainty</td>
+</tr>
+<tr>
+<td><code>corr_length</code></td>
+<td><span class="arithmatex">\(l_c\)</span></td>
+<td>m</td>
+<td>Spatial correlation length</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(d_{ij}\)</span></td>
+<td>—</td>
+<td>m</td>
+<td>Distance between voxels <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Large <span class="arithmatex">\(\sigma_\rho\)</span></strong>: Trusts the data more (less regularization)</li>
+<li><strong>Small <span class="arithmatex">\(\sigma_\rho\)</span></strong>: Trusts the prior more (more regularization)</li>
+<li><strong>Large <span class="arithmatex">\(l_c\)</span></strong>: Smooth reconstruction (nearby voxels correlated)</li>
+<li><strong>Small <span class="arithmatex">\(l_c\)</span></strong>: Allows sharper features (less smoothing)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The choice of <span class="arithmatex">\(\sigma_\rho\)</span> and <span class="arithmatex">\(l_c\)</span> significantly affects reconstruction quality. See <a href="../reference/parameter-reference.html">Parameter Reference</a> for recommended ranges.</p>
+</div>
+<h3 id="anisotropic-correlation">Anisotropic Correlation<a class="headerlink" href="#anisotropic-correlation" title="Permanent link">¶</a></h3>
+<p>The isotropic form above applies a single correlation length <span class="arithmatex">\(l_c\)</span> in every direction. MUONITH can instead use direction-dependent correlation lengths, enabled by <code>tf_aniso</code> (or automatically when <code>corr_length_xy</code> or <code>corr_length_z</code> is set to a positive value). Two anisotropic forms are available, selected by <code>aniso_cov_type</code>:</p>
+<p>Separable (<code>aniso_cov_type: "separable"</code>, the default):</p>
+<div class="arithmatex">\[C_{\rho,ij} = \sigma_\rho^2 \exp\left(-\frac{d^{xy}_{ij}}{l_{xy}} - \frac{d^{z}_{ij}}{l_{z}}\right)\]</div>
+<p>Ellipsoidal (<code>aniso_cov_type: "ellipsoidal"</code>):</p>
+<div class="arithmatex">\[C_{\rho,ij} = \sigma_\rho^2 \exp\left(-\sqrt{\left(\frac{d^{xy}_{ij}}{l_{xy}}\right)^2 + \left(\frac{d^{z}_{ij}}{l_{z}}\right)^2}\right)\]</div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>corr_length_xy</code></td>
+<td><span class="arithmatex">\(l_{xy}\)</span></td>
+<td>m</td>
+<td>Horizontal (xy-plane) correlation length</td>
+</tr>
+<tr>
+<td><code>corr_length_z</code></td>
+<td><span class="arithmatex">\(l_z\)</span></td>
+<td>m</td>
+<td>Vertical (z) correlation length</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(d^{xy}_{ij}\)</span></td>
+<td>—</td>
+<td>m</td>
+<td>Horizontal distance between voxels <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(d^{z}_{ij}\)</span></td>
+<td>—</td>
+<td>m</td>
+<td>Vertical distance between voxels <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If <code>corr_length_xy</code> or <code>corr_length_z</code> is left unset (non-positive), it falls back to the isotropic <code>corr_length</code>.</p>
+<h2 id="numerical-implementation">Numerical Implementation<a class="headerlink" href="#numerical-implementation" title="Permanent link">¶</a></h2>
+<p>MUONITH uses platform-specific BLAS/LAPACK implementations for matrix operations:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>BLAS/LAPACK backend</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td>Apple Accelerate</td>
+<td>Default; uses vecLib internally</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>OpenBLAS + LAPACKE</td>
+<td>Installed via system packages or Nix</td>
+</tr>
+</tbody>
+</table>
+<p>On macOS, the Accelerate framework does not provide the LAPACKE C interface
+directly. MUONITH includes thin wrapper functions (<code>blas_backend.hpp</code>) that
+bridge Fortran-style <code>sgetrf_</code>/<code>sgetri_</code> calls to a LAPACKE-compatible API.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Precision</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mp_reconst_density_float()</code></td>
+<td>float</td>
+<td>Default; faster, sufficient for most cases</td>
+</tr>
+<tr>
+<td><code>mp_reconst_density_double()</code></td>
+<td>double</td>
+<td>More numerically stable for ill-conditioned problems</td>
+</tr>
+</tbody>
+</table>
+<p>Matrix inversion uses <strong>LU decomposition</strong> (<code>LAPACKE_sgetrf</code> + <code>LAPACKE_sgetri</code>).
+All Eigen matrices are stored in <strong>column-major</strong> format for BLAS/LAPACK compatibility.</p>
+<div class="admonition info">
+<p class="admonition-title">Cross-platform numerical reproducibility</p>
+<p>Different BLAS implementations (Accelerate, OpenBLAS) use different internal
+algorithms for matrix multiplication and decomposition. This produces tiny
+numerical differences in the reconstruction output — typically a symmetric
+relative error of ~10⁻⁷ for density values. Both results are equally valid.
+If bit-exact reproducibility across platforms is required, ensure the same
+BLAS implementation is used on all machines.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The dense covariance matrix scales as <span class="arithmatex">\(O(n_v^2)\)</span> in memory. The limit <code>MAX_VOXEL_FOR_DENSE_COV = 50000</code> corresponds to approximately 9.3 GB for a float matrix.</p>
+</div>
+<h2 id="reconstruction-output">Reconstruction Output<a class="headerlink" href="#reconstruction-output" title="Permanent link">¶</a></h2>
+<p>The inversion produces a <code>ReconstResult</code> containing:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vecxf_dens_rec</code></td>
+<td>Reconstructed density <span class="arithmatex">\(\vec{\rho}'\)</span> [kg/m³]</td>
+</tr>
+<tr>
+<td><code>vecxf_diag_sqrt_cov_dens</code></td>
+<td>Diagonal of <span class="arithmatex">\(\sqrt{\mathbf{C}_{\rho'}}\)</span> (posterior uncertainty)</td>
+</tr>
+<tr>
+<td><code>vecxf_delta_dens_prior</code></td>
+<td><span class="arithmatex">\(\vec{\rho}' - \vec{\rho}_0\)</span> (change from prior)</td>
+</tr>
+<tr>
+<td><code>vecxf_diff_from_real</code></td>
+<td><span class="arithmatex">\(\vec{\rho}' - \vec{\rho}_{\text{true}}\)</span> (error, if true density is known)</td>
+</tr>
+<tr>
+<td><code>is_valid</code></td>
+<td>Whether the reconstruction succeeded</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reconstruction-example">Reconstruction Example<a class="headerlink" href="#reconstruction-example" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Input (ground truth)</th>
+<th style="text-align: center;">Reconstruction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/zcross_g3vox_input_00_-z_anim.gif" data-desc-position="bottom"><img alt="Input density" src="../assets/images/zcross_g3vox_input_00_-z_anim.gif"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/zcross_g3vox_rec_center_00_-z_anim.gif" data-desc-position="bottom"><img alt="Reconstructed density" src="../assets/images/zcross_g3vox_rec_center_00_-z_anim.gif"></a></td>
+</tr>
+</tbody>
+</table>
+<p><em>Animated horizontal cross-sections at successive elevations for the Showa-shinzan synthetic test case. Left: true density model with an embedded low-density anomaly. Right: MAP-reconstructed density from 13 detectors. The inversion successfully recovers the location and magnitude of the anomaly.</em></p>
+<h2 id="pipeline-context">Pipeline Context<a class="headerlink" href="#pipeline-context" title="Permanent link">¶</a></h2>
+<p>In the MUONITH execution pipeline, inversion corresponds to <strong>Invert Density (Module 7)</strong>:</p>
+<ol>
+<li>Build Geometry (Module 3) → Grid3dVoxel</li>
+<li>Trace Path Lengths (Module 4) → <strong>Density-independent</strong> path-length matrices <code>vec_spmat_PL</code> and shell path lengths <code>shell_pl</code></li>
+<li>Compute Prior (Module 5) → Prior density-length (<code>DL_prior</code>) and expected counts (density-dependent)</li>
+<li>Build Observation Matrix (Module 6) → Observation matrix <span class="arithmatex">\(\mathbf{A}\)</span> via the <code>calc_dNdD</code> namespace (historically under <code>pathcalc::matrix</code>, now a top-level namespace)</li>
+<li><strong>Invert Density (Module 7)</strong> → Density reconstruction</li>
+<li>Analyze Errors and Output (Module 8) → Error analysis and output</li>
+</ol>
+<p>See <a href="../user-guide/pipeline.html">Pipeline</a> for the complete execution flow.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ul>
+<li>S. Nagahara, S. Miyamoto, et al. (2022). <em>Bulletin of Volcanology</em>. <a href="https://doi.org/10.1007/s00445-022-01596-y">DOI:10.1007/s00445-022-01596-y</a></li>
+<li>M. Rosas-Carbajal, K. Jourde, J. Marteau, et al. (2017). <em>Geophysical Research Letters</em>. <a href="https://doi.org/10.1002/2017GL074285">DOI:10.1002/2017GL074285</a></li>
+<li>R. Nishiyama, S. Miyamoto, N. Naganawa (2014). <a href="https://doi.org/10.5194/gi-3-29-2014">DOI:10.5194/gi-3-29-2014</a></li>
+<li>A. Tarantola (2005). <em>Inverse Problem Theory and Methods for Model Parameter Estimation</em>. SIAM. <a href="https://doi.org/10.1137/1.9780898717921">DOI:10.1137/1.9780898717921</a></li>
+<li>D. E. Groom, N. V. Mokhov, S. I. Striganov (2001). <em>Atomic Data and Nuclear Data Tables</em>, 78(2), 183–356. <a href="https://doi.org/10.1006/adnd.2001.0861">DOI:10.1006/adnd.2001.0861</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,3012 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MUONITH: Muographic Unified Observation and Numerical Inversion &amp; Tomographic Hub">
+      
+      
+      
+        <link rel="canonical" href="https://seigomiyamoto.github.io/muonith/user-guide/parameter-files.html">
+      
+      
+        <link rel="prev" href="../concepts/depth-resolution.html">
+      
+      
+        <link rel="next" href="pipeline.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Parameter Files - MUONITH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="../assets/javascripts/iframe-worker.js"></script>
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#parameter-files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="MUONITH" class="md-header__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MUONITH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Parameter Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="MUONITH" class="md-nav__button md-logo" aria-label="MUONITH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    MUONITH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/nix-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nix Setup (macOS, optional)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quickstart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/muography.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Muography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coordinate-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/grid-system.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/bin-grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bin Grouping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/detector-angles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From (tx, ty) to a Ray Direction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/ray-tracing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/inversion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Inversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/depth-resolution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth vs. Spatial Resolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="parameter-files.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sections Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seed-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seed (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LOG_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end_stage-optional-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        end_stage (optional, top-level)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector_parameter_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETER_LISTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid2d_pillar_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID2D_PILLAR_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID3D_VOXEL_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flux_range_data_table_prior-flux_range_data_table_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FLUX_RANGE_DATA_TABLE_PRIOR / FLUX_RANGE_DATA_TABLE_REAL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path_length_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATH_LENGTH_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bin_group_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIN_GROUP_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BIN_GROUP_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-bin-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual bin grouping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noise_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOISE_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nagainv_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proj_dens_eval_grouped-required-from-trace-path-lengths-module-4-onward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PROJ_DENS_EVAL_GROUPED (required from Trace Path Lengths, Module 4, onward)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z_cross_section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z_CROSS_SECTION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_inversion-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN_INVERSION (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nagainv_param_sweep-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAM_SWEEP (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector-parameter-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detector Parameter Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detector Parameter Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#efficiency-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orientation-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orientation parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-path-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Path Resolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="input-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detector Efficiency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detector Efficiency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/efficiency-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Model (JSON5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="detector-efficiency/efficiency-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficiency Table (text)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Making Penetrating Muon Flux Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Making Penetrating Muon Flux Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/range-table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Range Table (CSDA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/flux-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux Model (dF/dE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flux-tables/build-and-install.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="placing-detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placing Detectors from a Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="synthetic-dem-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthetic DEM Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="external-reconstruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auxiliary Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Auxiliary Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/gsi-dem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GSI DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auxiliary-tools/path-view.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scripts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/parameter-reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sections Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seed-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seed (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LOG_FILE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end_stage-optional-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        end_stage (optional, top-level)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector_parameter_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DETECTOR_PARAMETER_LISTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid2d_pillar_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID2D_PILLAR_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grid3d_voxel_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRID3D_VOXEL_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flux_range_data_table_prior-flux_range_data_table_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FLUX_RANGE_DATA_TABLE_PRIOR / FLUX_RANGE_DATA_TABLE_REAL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path_length_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATH_LENGTH_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bin_group_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BIN_GROUP_PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BIN_GROUP_PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-bin-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual bin grouping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noise_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOISE_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nagainv_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAMETERS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proj_dens_eval_grouped-required-from-trace-path-lengths-module-4-onward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PROJ_DENS_EVAL_GROUPED (required from Trace Path Lengths, Module 4, onward)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z_cross_section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z_CROSS_SECTION
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_inversion-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RUN_INVERSION (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nagainv_param_sweep-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAGAINV_PARAM_SWEEP (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detector-parameter-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detector Parameter Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detector Parameter Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#efficiency-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orientation-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orientation parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-path-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Path Resolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="parameter-files">Parameter Files<a class="headerlink" href="#parameter-files" title="Permanent link">¶</a></h1>
+<p>MUONITH configuration files use the <code>.json5</code> extension and are parsed by nlohmann/json with comment stripping enabled (<code>ignore_comments</code>). The parser accepts standard JSON plus <code>//</code> line comments and <code>/* */</code> block comments. Trailing commas and unquoted keys are <strong>not</strong> supported: every key must be double-quoted, and no comma may follow the last element of an array or object.</p>
+<h2 id="file-format">File Format<a class="headerlink" href="#file-format" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// This is a comment</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nv">"section_name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"key"</span><span class="p">:</span><span class="w"> </span><span class="s">"value"</span><span class="p">,</span><span class="w">     </span><span class="c1">// inline comment</span>
+<span class="w">    </span><span class="nv">"number"</span><span class="p">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"flag"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="w">        </span><span class="c1">// no comma after the last element</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Extension</strong>: <code>.json5</code></li>
+<li><strong>Comments</strong>: <code>//</code> line comments and <code>/* */</code> block comments</li>
+<li><strong>Trailing commas</strong>: Not supported (standard JSON syntax)</li>
+<li><strong>Keys</strong>: Must be double-quoted (unquoted keys are not supported)</li>
+</ul>
+<h2 id="configuration-structure">Configuration Structure<a class="headerlink" href="#configuration-structure" title="Permanent link">¶</a></h2>
+<p>A MUONITH configuration file contains multiple sections. Here is a minimal example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nv">"seed"</span><span class="p">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w">                          </span><span class="c1">// Random seed for reproducibility (CLI -s overrides)</span>
+
+<span class="w">  </span><span class="nv">"LOG_FILE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"path_log_dir"</span><span class="p">:</span><span class="w"> </span><span class="s">"logs"</span><span class="p">,</span><span class="w">            </span><span class="c1">// Directory for log file output</span>
+<span class="w">    </span><span class="nv">"log_level"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">"stdout_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"info"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Console output: trace/debug/info/warn/error</span>
+<span class="w">      </span><span class="nv">"stderr_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"error"</span><span class="p">,</span><span class="w">         </span><span class="c1">// Error stream level</span>
+<span class="w">      </span><span class="nv">"file_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"trace"</span><span class="w">            </span><span class="c1">// Log file level (most verbose)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nv">"DETECTOR_PARAMETER_LISTS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"my_detectors"</span><span class="p">,</span><span class="w">            </span><span class="c1">// Instance name (arbitrary label)</span>
+<span class="w">    </span><span class="nv">"det_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                     </span><span class="c1">// Per-detector JSON5 files (relative paths)</span>
+<span class="w">      </span><span class="s">"detparams/det_00.json5"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"detparams/det_01.json5"</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nv">"GRID2D_PILLAR_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"terrain"</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Instance name</span>
+<span class="w">    </span><span class="nv">"initial_uniform_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w">   </span><span class="c1">// Uniform rock density [kg/m³]</span>
+<span class="w">    </span><span class="nv">"path_dem"</span><span class="p">:</span><span class="w"> </span><span class="s">"dem/my_terrain.g2zbin"</span><span class="w"> </span><span class="c1">// Path to DEM binary file</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nv">"GRID3D_VOXEL_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"tf_build_g3vox"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// true = build 3D grid; false = 2D analysis only</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"voxel_grid"</span><span class="p">,</span><span class="w">              </span><span class="c1">// Instance name</span>
+<span class="w">    </span><span class="nv">"use_grid2d_of_g2pil"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">       </span><span class="c1">// Reuse DEM's x/y axes for voxel grid</span>
+<span class="w">    </span><span class="nv">"zmin"</span><span class="p">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Bottom of voxel grid [m a.s.l.]</span>
+<span class="w">    </span><span class="nv">"zmax"</span><span class="p">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Top of voxel grid [m a.s.l.]</span>
+<span class="w">    </span><span class="nv">"z_pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">10</span><span class="w">                      </span><span class="c1">// Vertical voxel spacing [m]</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nv">"FLUX_RANGE_DATA_TABLE_PRIOR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// Muon flux table for prior model</span>
+<span class="w">  </span><span class="nv">"FLUX_RANGE_DATA_TABLE_REAL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">   </span><span class="c1">// Muon flux table for observed data</span>
+
+<span class="w">  </span><span class="nv">"NAGAINV_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">  </span><span class="c1">// Array of inversion configs (sigma_rho, corr_length, etc.)</span>
+
+<span class="w">  </span><span class="nv">"Z_CROSS_SECTION"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"min"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">                      </span><span class="c1">// Lowest z-elevation for output cross-sections [m]</span>
+<span class="w">    </span><span class="nv">"max"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="w">                       </span><span class="c1">// Highest z-elevation for output cross-sections [m]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="sections-reference">Sections Reference<a class="headerlink" href="#sections-reference" title="Permanent link">¶</a></h2>
+<h3 id="seed-optional"><code>seed</code> (optional)<a class="headerlink" href="#seed-optional" title="Permanent link">¶</a></h3>
+<p>Random seed for reproducibility. CLI argument (<code>-s</code>) overrides this value.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"seed"</span><span class="p">:</span><span class="w"> </span><span class="mf">42</span><span class="w">  </span><span class="c1">// Reproducibility seed; CLI -s overrides this value</span>
+</code></pre></div>
+<h3 id="log_file"><code>LOG_FILE</code><a class="headerlink" href="#log_file" title="Permanent link">¶</a></h3>
+<p>Controls logging output.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"LOG_FILE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"path_log_dir"</span><span class="p">:</span><span class="w"> </span><span class="s">"logs"</span><span class="p">,</span><span class="w">         </span><span class="c1">// Output directory for log files</span>
+<span class="w">  </span><span class="nv">"give_new_number"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">       </span><span class="c1">// true = auto-number logs (log_00, log_01, ...)</span>
+<span class="w">  </span><span class="nv">"log_level"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"stdout_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"debug"</span><span class="p">,</span><span class="w">      </span><span class="c1">// Console verbosity: trace/debug/info/warn/error</span>
+<span class="w">    </span><span class="nv">"stderr_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"error"</span><span class="p">,</span><span class="w">      </span><span class="c1">// Error stream verbosity</span>
+<span class="w">    </span><span class="nv">"file_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"trace"</span><span class="w">         </span><span class="c1">// File verbosity (trace = most verbose)</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nv">"default_max_count"</span><span class="p">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w">        </span><span class="c1">// Max number of log files to keep</span>
+<span class="w">  </span><span class="nv">"archive_existing"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="w">       </span><span class="c1">// true = archive old logs before overwriting</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Log levels (from most to least verbose): <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>.</p>
+<h3 id="end_stage-optional-top-level"><code>end_stage</code> (optional, top-level)<a class="headerlink" href="#end_stage-optional-top-level" title="Permanent link">¶</a></h3>
+<p>Controls how far the pipeline executes.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Valid values: 3, 4, 5, 6, 7, 8 (default: 8 = all modules)</span>
+<span class="c1">// CLI --end-stage takes precedence over this value.</span>
+<span class="s">"end_stage"</span><span class="p">:</span><span class="w"> </span><span class="mf">7</span>
+</code></pre></div>
+<h3 id="detector_parameter_lists"><code>DETECTOR_PARAMETER_LISTS</code><a class="headerlink" href="#detector_parameter_lists" title="Permanent link">¶</a></h3>
+<p>Specifies the detector array configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"DETECTOR_PARAMETER_LISTS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"arrdet_02msq120days"</span><span class="p">,</span><span class="w">   </span><span class="c1">// Instance name (arbitrary label)</span>
+<span class="w">  </span><span class="nv">"det_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                   </span><span class="c1">// List of per-detector JSON5 files (relative paths)</span>
+<span class="w">    </span><span class="s">"../detparams/det_00.json5"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"../detparams/det_01.json5"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"../detparams/det_02.json5"</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nv">"tf_apply_eff"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">           </span><span class="c1">// true = apply detector efficiency table</span>
+<span class="w">  </span><span class="c1">// false stops the txty ASCII dumps under tmp/. With the current swp001 settings the</span>
+<span class="w">  </span><span class="c1">// per-element PL / density / signal figures are plotted from the saved binary,</span>
+<span class="w">  </span><span class="c1">// so no figure is lost.</span>
+<span class="w">  </span><span class="nv">"tf_out_txty_ascii"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// false stops the g2bg ASCII dumps under tmp/. With the current swp001 settings the</span>
+<span class="w">  </span><span class="c1">// efficiency figures are plotted from the saved binary, so no figure is lost.</span>
+<span class="w">  </span><span class="nv">"tf_out_g2bg_ascii"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// true saves det/arrdet_g3vox_prior&lt;suffix&gt;.bin (about 160 MB each, three files</span>
+<span class="w">  </span><span class="c1">// when tf_prior_error is true). Needed to plot the prior array from the binary.</span>
+<span class="w">  </span><span class="nv">"tf_save_arrdet_prior"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="grid2d_pillar_parameters"><code>GRID2D_PILLAR_PARAMETERS</code><a class="headerlink" href="#grid2d_pillar_parameters" title="Permanent link">¶</a></h3>
+<p>Defines the terrain (DEM) grid.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"GRID2D_PILLAR_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"showa01_2x2km_2000kgm3"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Instance name</span>
+<span class="w">  </span><span class="nv">"initial_uniform_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w">   </span><span class="c1">// Uniform initial rock density [kg/m³]</span>
+<span class="w">  </span><span class="nv">"path_dem"</span><span class="p">:</span><span class="w"> </span><span class="s">"../dem/showa01_2x2km.g2zbin"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Path to DEM binary file</span>
+<span class="w">  </span><span class="nv">"zmin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Pillar base elevation [m a.s.l.]</span>
+<span class="w">  </span><span class="nv">"tf_shift_x"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                </span><span class="c1">// true = shift x origin to xmin (useful for UTM coords)</span>
+<span class="w">  </span><span class="nv">"tf_shift_y"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                </span><span class="c1">// true = shift y origin to ymin</span>
+<span class="w">  </span><span class="nv">"tolerance_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">           </span><span class="c1">// Allowed relative error in DEM grid spacing</span>
+<span class="w">  </span><span class="nv">"vertical_dike_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">        </span><span class="c1">// Optional: vertical dike density structures</span>
+<span class="w">  </span><span class="nv">"vertical_cylinder_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">    </span><span class="c1">// Optional: vertical cylinder density structures</span>
+<span class="w">  </span><span class="nv">"vertical_checkerboard_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="c1">// Optional: vertical checkerboard density structures</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="grid3d_voxel_parameters"><code>GRID3D_VOXEL_PARAMETERS</code><a class="headerlink" href="#grid3d_voxel_parameters" title="Permanent link">¶</a></h3>
+<p>Defines the 3D voxel grid for inversion.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/images/chart_CheckerBoard3d_concept.drawio.png" data-desc-position="bottom"><img alt="Checkerboard 3D concept — block size, cell count, and center snap" src="../assets/images/chart_CheckerBoard3d_concept.drawio.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="s">"GRID3D_VOXEL_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"tf_build_g3vox"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">         </span><span class="c1">// true = build 3D grid; false = 2D analysis only</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"g3vox_5m_2000kgm3"</span><span class="p">,</span><span class="w">   </span><span class="c1">// Instance name</span>
+<span class="w">  </span><span class="nv">"use_grid2d_of_g2pil"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">    </span><span class="c1">// true = reuse DEM's x/y grid axes</span>
+<span class="w">  </span><span class="nv">"zmin"</span><span class="p">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Bottom of voxel grid [m a.s.l.]</span>
+<span class="w">  </span><span class="nv">"zmax"</span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Top of voxel grid [m a.s.l.]</span>
+<span class="w">  </span><span class="nv">"z_pitch"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Vertical voxel size [m]</span>
+<span class="w">  </span><span class="nv">"n_hit_det_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w">             </span><span class="c1">// Min detectors hitting a voxel to include in inversion</span>
+<span class="w">  </span><span class="nv">"n_hit_det_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">2147483647</span><span class="p">,</span><span class="w">    </span><span class="c1">// Max detectors hitting a voxel (default: INT_MAX)</span>
+<span class="w">  </span><span class="nv">"n_hit_ele_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">             </span><span class="c1">// Min detector elements hitting a voxel</span>
+<span class="w">  </span><span class="nv">"n_hit_ele_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">2147483647</span><span class="p">,</span><span class="w">    </span><span class="c1">// Max detector elements hitting a voxel (default: INT_MAX)</span>
+
+<span class="w">  </span><span class="c1">// Optional: density anomalies for synthetic tests</span>
+<span class="w">  </span><span class="nv">"checkerboard_3d_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Extent is specified via total cell counts (xlen_cells, ylen_cells, zlen_cells).</span>
+<span class="w">    </span><span class="c1">// Direct xmin/xmax/ymin/ymax/zmin/zmax specification is deprecated.</span>
+<span class="w">    </span><span class="c1">// The AABB is computed symmetrically from the (snapped) center:</span>
+<span class="w">    </span><span class="c1">//   min = cnt_snapped − len_cells × 0.5 × cell_size</span>
+<span class="w">    </span><span class="c1">//   max = cnt_snapped + len_cells × 0.5 × cell_size</span>
+<span class="w">    </span><span class="c1">//   where cell_size = interval × len_interval_mult</span>
+<span class="w">    </span><span class="c1">//   Total cells per axis = len_cells</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// Enable this checkerboard</span>
+<span class="w">      </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"cb_3d_500"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Checkerboard label</span>
+<span class="w">      </span><span class="nv">"delta_density_offset"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Density offset [kg/m³] (applied before delta_density)</span>
+<span class="w">      </span><span class="nv">"delta_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">       </span><span class="c1">// Density perturbation [kg/m³]</span>
+<span class="w">      </span><span class="nv">"xlen_cells"</span><span class="p">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w">            </span><span class="c1">// Total number of checkerboard cells in x</span>
+<span class="w">      </span><span class="nv">"ylen_cells"</span><span class="p">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w">            </span><span class="c1">// Total number of checkerboard cells in y</span>
+<span class="w">      </span><span class="nv">"zlen_cells"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w">            </span><span class="c1">// Total number of checkerboard cells in z</span>
+<span class="w">      </span><span class="nv">"xcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-71565.3</span><span class="p">,</span><span class="w"> </span><span class="nv">"ycnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-145112.5</span><span class="p">,</span><span class="w"> </span><span class="nv">"zcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">990</span><span class="p">,</span><span class="w"> </span><span class="c1">// Pattern center [m]</span>
+<span class="w">      </span><span class="nv">"xlen_interval_mult"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">    </span><span class="c1">// Block size = voxel_x_interval × 5</span>
+<span class="w">      </span><span class="nv">"ylen_interval_mult"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">"zlen_interval_mult"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">"tf_snap_to_grid"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="w">     </span><span class="c1">// Snap block boundaries to grid lines</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+
+<span class="w">  </span><span class="c1">// Optional: ellipsoidal density anomaly for synthetic tests</span>
+<span class="w">  </span><span class="nv">"ellipsoid_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// Enable this ellipsoid</span>
+<span class="w">      </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"ell_low_density"</span><span class="p">,</span><span class="w">  </span><span class="c1">// Ellipsoid label</span>
+<span class="w">      </span><span class="nv">"delta_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">-300</span><span class="p">,</span><span class="w">      </span><span class="c1">// Density perturbation [kg/m³]</span>
+<span class="w">      </span><span class="nv">"xcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">50500</span><span class="p">,</span><span class="w"> </span><span class="nv">"ycnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161500</span><span class="p">,</span><span class="w"> </span><span class="nv">"zcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="c1">// Center position [m]</span>
+<span class="w">      </span><span class="nv">"xlen"</span><span class="p">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nv">"ylen"</span><span class="p">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nv">"zlen"</span><span class="p">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="c1">// Semi-axis lengths [m]</span>
+<span class="w">      </span><span class="nv">"theta_x_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">        </span><span class="c1">// Rotation around x-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"theta_y_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">        </span><span class="c1">// Rotation around y-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"theta_z_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">       </span><span class="c1">// Rotation around z-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"rotation_type"</span><span class="p">:</span><span class="w"> </span><span class="s">"LOCAL"</span><span class="w">    </span><span class="c1">// "LOCAL" (intrinsic) or "GLOBAL" (extrinsic)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+
+<span class="w">  </span><span class="c1">// Optional: cylindrical density anomaly for synthetic tests</span>
+<span class="w">  </span><span class="nv">"cylinder_params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// Enable this cylinder</span>
+<span class="w">      </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"cyl_conduit"</span><span class="p">,</span><span class="w">     </span><span class="c1">// Cylinder label</span>
+<span class="w">      </span><span class="nv">"delta_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">-500</span><span class="p">,</span><span class="w">      </span><span class="c1">// Density perturbation [kg/m³]</span>
+<span class="w">      </span><span class="nv">"xcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">50400</span><span class="p">,</span><span class="w"> </span><span class="nv">"ycnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161600</span><span class="p">,</span><span class="w"> </span><span class="nv">"zcnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="c1">// Center position [m]</span>
+<span class="w">      </span><span class="nv">"xlen"</span><span class="p">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nv">"ylen"</span><span class="p">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nv">"zlen"</span><span class="p">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="c1">// x/y = cross-section semi-axes, z = height [m]</span>
+<span class="w">      </span><span class="nv">"theta_x_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">        </span><span class="c1">// Rotation around x-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"theta_y_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">        </span><span class="c1">// Rotation around y-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"theta_z_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">        </span><span class="c1">// Rotation around z-axis [degrees]</span>
+<span class="w">      </span><span class="nv">"rotation_type"</span><span class="p">:</span><span class="w"> </span><span class="s">"LOCAL"</span><span class="w">    </span><span class="c1">// "LOCAL" (intrinsic) or "GLOBAL" (extrinsic)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+
+<span class="w">  </span><span class="c1">// Voxel merging: reduce resolution by grouping adjacent voxels</span>
+<span class="w">  </span><span class="nv">"merge_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">              </span><span class="c1">// true = perform merge</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"merge_01"</span><span class="p">,</span><span class="w">           </span><span class="c1">// Merge config label</span>
+<span class="w">    </span><span class="nv">"x_merge_center"</span><span class="p">:</span><span class="w"> </span><span class="mf">50500</span><span class="p">,</span><span class="w">      </span><span class="c1">// Merge alignment center x [m]</span>
+<span class="w">    </span><span class="nv">"y_merge_center"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161720</span><span class="p">,</span><span class="w">    </span><span class="c1">// Merge alignment center y [m]</span>
+<span class="w">    </span><span class="nv">"z_merge_center"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">      </span><span class="c1">// Merge alignment center z [m]</span>
+<span class="w">    </span><span class="nv">"x_merge_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w">          </span><span class="c1">// Merge 4 bins → 1 in x direction</span>
+<span class="w">    </span><span class="nv">"y_merge_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w">          </span><span class="c1">// Merge 4 bins → 1 in y direction</span>
+<span class="w">    </span><span class="nv">"z_merge_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="w">           </span><span class="c1">// Merge 4 bins → 1 in z direction</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// Reconstruction sub-volume (sizes in METERS, not voxel counts).</span>
+<span class="w">  </span><span class="c1">// AABB and cylinder can be combined; when neither is enabled the whole voxel grid is used.</span>
+<span class="w">  </span><span class="nv">"reconst_voxels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"tf_aabb"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">              </span><span class="c1">// true = enable AABB region</span>
+<span class="w">    </span><span class="nv">"x_aabb_cnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">50500</span><span class="p">,</span><span class="w">          </span><span class="c1">// AABB center x [m]</span>
+<span class="w">    </span><span class="nv">"y_aabb_cnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161720</span><span class="p">,</span><span class="w">        </span><span class="c1">// AABB center y [m]</span>
+<span class="w">    </span><span class="nv">"x_aabb_meters"</span><span class="p">:</span><span class="w"> </span><span class="mf">800</span><span class="p">,</span><span class="w">         </span><span class="c1">// Full AABB width in x [m] (half-extent = x_aabb_meters * 0.5)</span>
+<span class="w">    </span><span class="nv">"y_aabb_meters"</span><span class="p">:</span><span class="w"> </span><span class="mf">800</span><span class="p">,</span><span class="w">         </span><span class="c1">// Full AABB width in y [m]</span>
+<span class="w">    </span><span class="nv">"aabb_zmin_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"g3vox_zmin"</span><span class="p">,</span><span class="w"> </span><span class="c1">// "g3vox_zmin" (default) | "manual"</span>
+<span class="w">    </span><span class="nv">"aabb_zmin_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w">       </span><span class="c1">// Used only when aabb_zmin_mode = "manual"</span>
+<span class="w">    </span><span class="nv">"aabb_zmax"</span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w">             </span><span class="c1">// Terrain surface clips this when the surface is lower</span>
+
+<span class="w">    </span><span class="nv">"tf_cylinder"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">         </span><span class="c1">// true = enable elliptical-cylinder region</span>
+<span class="w">    </span><span class="nv">"x_cyl_cnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">50500</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"y_cyl_cnt"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161720</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"cylinder_radius_x_meters"</span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="c1">// Semi-axis in x [m]; must be &gt; 0 when tf_cylinder=true</span>
+<span class="w">    </span><span class="nv">"cylinder_radius_y_meters"</span><span class="p">:</span><span class="w"> </span><span class="mf">400</span><span class="w">  </span><span class="c1">// Semi-axis in y [m]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="flux_range_data_table_prior-flux_range_data_table_real"><code>FLUX_RANGE_DATA_TABLE_PRIOR</code> / <code>FLUX_RANGE_DATA_TABLE_REAL</code><a class="headerlink" href="#flux_range_data_table_prior-flux_range_data_table_real" title="Permanent link">¶</a></h3>
+<p>Muon flux lookup tables. Both sections have the same format. They often point to the same files.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"FLUX_RANGE_DATA_TABLE_PRIOR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"pathin_log_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="s">"../fluxtable/costhz-kgm2-log10peneflux-allinone.g2zbin"</span><span class="p">,</span>
+<span class="w">                                   </span><span class="c1">// log10(penetrating muon flux) table [1/(m² sr s)]</span>
+<span class="w">  </span><span class="nv">"tf_xcnt_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">        </span><span class="c1">// true = use bin center for cos(θz); false = use bin edge</span>
+<span class="w">  </span><span class="nv">"tf_ycnt_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">       </span><span class="c1">// true = use bin center for DL; false = use bin edge</span>
+<span class="w">  </span><span class="nv">"pathin_dFdR_R_costhz"</span><span class="p">:</span><span class="w"> </span><span class="s">"../fluxtable/g2_dFdR_R_costhz.g2zbin"</span><span class="p">,</span>
+<span class="w">                                   </span><span class="c1">// dF/dR flux derivative table</span>
+<span class="w">  </span><span class="nv">"tf_xcnt_dFdR"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// true = use bin center for cos(θz)</span>
+<span class="w">  </span><span class="nv">"tf_ycnt_dFdR"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="w">            </span><span class="c1">// true = use bin center for range</span>
+<span class="p">}</span><span class="err">,</span>
+
+<span class="s">"FLUX_RANGE_DATA_TABLE_REAL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Same format as PRIOR — can point to the same or different files</span>
+<span class="w">  </span><span class="nv">"pathin_log_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="s">"../fluxtable/costhz-kgm2-log10peneflux-allinone.g2zbin"</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"tf_xcnt_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"tf_ycnt_peneflux"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"pathin_dFdR_R_costhz"</span><span class="p">:</span><span class="w"> </span><span class="s">"../fluxtable/g2_dFdR_R_costhz.g2zbin"</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"tf_xcnt_dFdR"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">"tf_ycnt_dFdR"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Selecting a flux model with <code>flux_groom</code></p>
+<p>Station configs generated by <code>scripts/init_work_site.py</code> fill these two paths from
+the <code>flux_groom</code> key in <code>param_sites/&lt;site&gt;.json5</code> (default: <code>daemon_groom</code>),
+pointing to <code>fluxtable/&lt;flux_groom&gt;/costhz-kgm2-log10peneflux-allinone.g2zbin</code> and
+<code>fluxtable/&lt;flux_groom&gt;/g2_dFdR_R_costhz.g2zbin</code>. To switch flux models, place the
+two tables under <code>fluxtable/&lt;name&gt;/</code> with those canonical names and set
+<code>"flux_groom": "&lt;name&gt;"</code>. See
+<a href="flux-tables/index.html">Making Penetrating Muon Flux Tables</a>.</p>
+</div>
+<h3 id="path_length_parameters"><code>PATH_LENGTH_PARAMETERS</code><a class="headerlink" href="#path_length_parameters" title="Permanent link">¶</a></h3>
+<p>Controls ray tracing and path length computation.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"PATH_LENGTH_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"range2000_pitch1"</span><span class="p">,</span><span class="w">      </span><span class="c1">// Instance name</span>
+<span class="w">  </span><span class="nv">"tf_add_PLDL"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">            </span><span class="c1">// true = compute path length (PL) and density length (DL)</span>
+<span class="w">  </span><span class="nv">"tf_incr_nhit_det"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">       </span><span class="c1">// true = count how many detectors hit each voxel</span>
+<span class="w">  </span><span class="nv">"tf_incr_nhit_ele"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">       </span><span class="c1">// true = count how many elements hit each voxel</span>
+<span class="w">  </span><span class="nv">"tf_add_shell"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">           </span><span class="c1">// true = include upper/lower shell in path calculation</span>
+<span class="w">  </span><span class="nv">"BL_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Max beam length warning threshold [kg/m²]</span>
+<span class="w">  </span><span class="nv">"reference_matPL_sparse"</span><span class="p">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">    </span><span class="c1">// Reference value for sparse matrix zero-threshold</span>
+<span class="w">  </span><span class="nv">"epsilon_matPL_sparse"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w"> </span><span class="c1">// Elements &lt; reference × epsilon are set to zero</span>
+
+<span class="w">  </span><span class="c1">// Binary I/O: save/load intermediate results to avoid recomputation</span>
+<span class="w">  </span><span class="nv">"tf_load_arrdet_g2pil"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// true = load 2D detector array from binary</span>
+<span class="w">  </span><span class="nv">"tf_save_arrdet_g2pil"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// true = save 2D detector array to binary</span>
+<span class="w">  </span><span class="nv">"path_arrdet_g2pil_bin"</span><span class="p">:</span><span class="w"> </span><span class="s">"arrdet_g2pil.tmp.bin"</span><span class="p">,</span><span class="w"> </span><span class="c1">// File path for 2D array binary</span>
+
+<span class="w">  </span><span class="nv">"tf_load_arrdet_g3vox"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// true = load 3D detector array from binary</span>
+<span class="w">  </span><span class="nv">"tf_save_arrdet_g3vox"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// true = save 3D detector array to binary</span>
+<span class="w">  </span><span class="nv">"path_arrdet_g3vox_bin"</span><span class="p">:</span><span class="w"> </span><span class="s">"arrdet_g3vox.tmp.bin"</span><span class="p">,</span><span class="w"> </span><span class="c1">// File path for 3D array binary</span>
+<span class="w">  </span><span class="nv">"path_vec_spmat_PL_bin"</span><span class="p">:</span><span class="w"> </span><span class="s">"vec_spmat_PL.tmp.bin"</span><span class="p">,</span><span class="w"> </span><span class="c1">// File path for sparse PL matrices</span>
+
+<span class="w">  </span><span class="nv">"tf_load_bin_obs_mat_dNdD"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// true = load observation matrix from binary</span>
+<span class="w">  </span><span class="nv">"tf_save_bin_obs_mat_dNdD"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// true = save observation matrix to binary</span>
+<span class="w">  </span><span class="nv">"path_bin_obs_mat_dNdD"</span><span class="p">:</span><span class="w"> </span><span class="s">"obs_mat_dNdD.tmp.bin"</span><span class="w">  </span><span class="c1">// File path for dN/dD matrix</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="bin_group_parameters"><code>BIN_GROUP_PARAMETERS</code><a class="headerlink" href="#bin_group_parameters" title="Permanent link">¶</a></h3>
+<p>Controls angular bin grouping for signal-to-noise optimization. Bins with insufficient statistics are merged into groups.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"BIN_GROUP_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"prm_bingroup_g2pil"</span><span class="p">,</span><span class="w">   </span><span class="c1">// Instance name</span>
+<span class="w">  </span><span class="nv">"signal_init"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">               </span><span class="c1">// Initial signal value for bins</span>
+<span class="w">  </span><span class="nv">"noise_init"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                </span><span class="c1">// Initial noise value for bins</span>
+<span class="w">  </span><span class="nv">"is_avail_init"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">          </span><span class="c1">// Initial availability flag for bins</span>
+<span class="w">  </span><span class="nv">"PL_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">                </span><span class="c1">// Min path length [m]; bins below this are disabled</span>
+<span class="w">  </span><span class="nv">"DL_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000</span><span class="p">,</span><span class="w">              </span><span class="c1">// Max density length [kg/m²]; bins above this are disabled</span>
+<span class="w">  </span><span class="nv">"is_avail_under_thres"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// Availability for bins below PL_thres</span>
+<span class="w">  </span><span class="nv">"signal_under_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">,</span><span class="w">     </span><span class="c1">// Signal value for disabled bins (-1 = marker)</span>
+<span class="w">  </span><span class="nv">"noise_under_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">,</span><span class="w">      </span><span class="c1">// Noise value for disabled bins</span>
+<span class="w">  </span><span class="nv">"tf_run_1st_grouping"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">    </span><span class="c1">// true = run initial grouping pass</span>
+<span class="w">  </span><span class="nv">"tf_run_auto_grouping"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">   </span><span class="c1">// true = run adaptive subdivision loop</span>
+<span class="w">  </span><span class="nv">"igroup_start"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">              </span><span class="c1">// Starting group ID</span>
+<span class="w">  </span><span class="nv">"nx_div_init"</span><span class="p">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w">               </span><span class="c1">// Initial horizontal divisions</span>
+<span class="w">  </span><span class="nv">"ny_div_init"</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w">               </span><span class="c1">// Initial vertical divisions</span>
+<span class="w">  </span><span class="nv">"signal_noise_group_trig"</span><span class="p">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// S/N threshold; groups above this are subdivided</span>
+<span class="w">  </span><span class="nv">"ixlen_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Min group width in bins (stops subdivision)</span>
+<span class="w">  </span><span class="nv">"iylen_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Min group height in bins (stops subdivision)</span>
+<span class="w">  </span><span class="nv">"tf_prefer_split_x"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">     </span><span class="c1">// true = prefer horizontal splits over vertical</span>
+<span class="w">  </span><span class="nv">"nloop_limit"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000</span><span class="w">            </span><span class="c1">// Max subdivision iterations</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="manual-bin-grouping">Manual bin grouping<a class="headerlink" href="#manual-bin-grouping" title="Permanent link">¶</a></h4>
+<p>To specify groups yourself instead of the automatic subdivision, disable both
+grouping passes and provide one rectangle-list file per detector:</p>
+<div class="highlight"><pre><span></span><code><span class="s">"BIN_GROUP_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ... same keys as above ...</span>
+<span class="w">  </span><span class="nv">"tf_run_1st_grouping"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// both passes must be false</span>
+<span class="w">  </span><span class="nv">"tf_run_auto_grouping"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">  </span><span class="c1">//   to enable the manual route</span>
+<span class="w">  </span><span class="nv">"n_detector_grouping_manual"</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w">                  </span><span class="c1">// number of detectors with a manual list</span>
+<span class="w">  </span><span class="nv">"vec_tf_read_bin_group_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">],</span><span class="w">       </span><span class="c1">// one flag per detector</span>
+<span class="w">  </span><span class="nv">"vec_file_path_bin_group_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">"bin_group_list.txt"</span><span class="p">,</span><span class="w"> </span><span class="s">"bin_group_list.txt"</span><span class="p">]</span><span class="w"> </span><span class="c1">// one path per detector</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Each list file has one rectangle (= one group) per line, <code>xlow xup ylow yup</code>,
+in the panel's <code>angle_unit</code> (default: tangent). For example, four quadrants
+covering tx in [-1.6, 1.6] and ty in [0, 1.6]:</p>
+<div class="highlight"><pre><span></span><code>-1.6 0.0 0.0 0.8
+0.0 1.6 0.0 0.8
+-1.6 0.0 0.8 1.6
+0.0 1.6 0.8 1.6
+</code></pre></div>
+<p>The rectangles must tile the panel's field of view without gaps, and two group
+rectangles must not overlap; every bin center must fall inside a rectangle.
+Violations stop the run with an error naming the offending rectangles or bin.</p>
+<p>To leave part of the field of view out of the analysis on purpose, declare it
+with the <code>exclude</code> keyword instead of simply omitting it:</p>
+<div class="highlight"><pre><span></span><code>exclude -1.6 1.6 0.0 0.05
+-1.6 0.0 0.05 0.8
+0.0 1.6 0.05 0.8
+-1.6 0.0 0.8 1.6
+0.0 1.6 0.8 1.6
+</code></pre></div>
+<p>A declared region counts as tiled, so it does not trigger the gap check. The
+bins inside it belong to no group at all, so they appear in no group export or
+figure and contribute to no row of the inversion matrix. Omitting the same band
+<em>without</em> the keyword still stops the run — that is what separates a deliberate
+exclusion from a rectangle you forgot to write.</p>
+<p>A group rectangle overlapping a declared region is not an error: the rectangle
+is dropped whole at load time and its bins count as excluded too. Because the
+whole rectangle disappears, the removed area can be wider than the declared
+band — in the example above you could keep the two lower rectangles at
+<code>ylow</code> = 0.0, but both would then be dropped and the whole lower half would
+vanish. With a fine grid the drop removes just the touching row, so a plain
+full-grid list plus one <code>exclude</code> line is the easiest way to cut a band off
+the bottom of the field of view. Every drop is reported in the log with the
+number of dropped rectangles. Overlaps between two group rectangles still stop
+the run.</p>
+<p>Blank lines and lines starting with <code>#</code> are skipped. Any other leading token,
+<code>EXCLUDE</code> included, stops the run and names the offending line number, so a
+malformed file is never read only part-way.</p>
+<p>To verify a configuration, run the pipeline through detector construction only,
+e.g. <code>bash run_prg.sh true 42 4</code>, and check the log for
+<code>Loaded RectAngularBinGroup from &lt;file&gt; (nbin=N, nbin_exclude=M, nbin_dropped=K)</code>
+lines — <code>N</code> is the number of surviving group rectangles, <code>M</code> the number of
+<code>exclude</code> lines, and <code>K</code> the number of rectangles dropped for overlapping an
+excluded region (each drop is also announced as
+<code>dropped K group rectangle(s) overlapping M excluded region(s) ...</code>).
+Excluded bins are reported once per detector as
+<code>... bins excluded on purpose by M exclude region(s) ...</code>. See
+<a href="../reference/parameter-reference.html#bin_group_parameters">Parameter Reference — BIN_GROUP_PARAMETERS</a>
+for the key list and file format.</p>
+<p>A ready-made example ships with the tutorial station. Adding
+<code>manual_bin_group_file</code> to a <code>swp001_runs</code> entry in <code>param_sites/&lt;site&gt;.json5</code>
+makes <code>setup_station.sh</code> generate that run with the manual route enabled and
+copy the named list file from <code>scripts/templates/</code> into the run directory:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>setup_station.sh<span class="w"> </span>tutorial
+<span class="nb">cd</span><span class="w"> </span>work/tutorial/manual-bin-merge-rec3d
+bash<span class="w"> </span>run_prg.sh<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="m">42</span>
+</code></pre></div>
+<p>This run uses <code>bin_group_list_16x8.txt</code> (128 rectangles: tx in [-1.6, 1.6],
+ty in [0, 1.6], 0.2 pitch) and runs through 3-D reconstruction. Check the log
+for <code>Loaded RectAngularBinGroup from bin_group_list_16x8.txt (nbin=128)</code> —
+one line per detector.</p>
+<h3 id="noise_parameters"><code>NOISE_PARAMETERS</code><a class="headerlink" href="#noise_parameters" title="Permanent link">¶</a></h3>
+<p>Models measurement noise added to the expected muon counts before inversion. Noise
+comes from two independent sources, and each source is split into a deterministic
+<em>floor</em> part (added as-is) and a <em>Poisson</em> part (Poisson-fluctuated):</p>
+<ul>
+<li><strong>Flux-proportional noise</strong> scales with each bin's own signal.</li>
+<li><strong>SOT-proportional noise</strong> is an angle-independent background: it takes a fixed fraction of the <em>total</em> signal and redistributes it across bins by their exposure share.</li>
+</ul>
+<p>The noise is computed per detector bin (<code>DetectorPanel::mp_set_noise</code>). Bins whose
+density length <code>DL</code> is below <code>DL_thres</code> are skipped: these empty bins (too little
+density length) contribute nothing and are excluded from the totals below. For a bin
+with <code>signal</code> (<code>get_signal()</code>) and exposure <code>SOT</code> (<code>get_SOT()</code>, the factor converting
+flux to counts), <code>total_signal_DL_thres</code> and <code>total_SOT_DL_thres</code> are the <code>signal</code>
+and <code>SOT</code> summed over the kept bins only (<code>DL &gt;= DL_thres</code>; the empty bins are not
+counted — <code>mp_calc_total_signal_DLthres</code> / <code>mp_calc_total_SOT_DLthres</code>):</p>
+<div class="highlight"><pre><span></span><code>Flux-proportional (uses the bin's own signal):
+  flux_floor   = signal * flux_proport_ratio_floor
+  flux_poisson = signal * flux_proport_ratio_poisson
+
+SOT-proportional (angle-independent; a share of total_signal_DL_thres):
+  SOT_floor    = (SOT / total_SOT_DL_thres) * SOT_proport_noise_ratio_floor   * total_signal_DL_thres
+  SOT_poisson  = (SOT / total_SOT_DL_thres) * SOT_proport_noise_ratio_poisson * total_signal_DL_thres
+</code></pre></div>
+<p>Each bin stores two accumulators — <code>noise_det = flux_floor + SOT_floor</code>
+(deterministic, passed through as-is) and <code>noise_poi = flux_poisson + SOT_poisson</code>
+(the mean of a Poisson-fluctuated bucket). The <code>*_floor</code> parts stay deterministic;
+the <code>*_poisson</code> parts are drawn from a Poisson distribution at bin-grouping time, so
+a group's observed noise is <code>noise_det + Poisson(noise_poi)</code>. In short:
+flux-proportional noise is large where the bin's own signal is large, while
+SOT-proportional noise ignores the bin's own signal and spreads a fraction of the
+total signal by exposure.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"NOISE_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"noise_tmp"</span><span class="p">,</span><span class="w">                        </span><span class="c1">// Free-form instance name</span>
+<span class="w">  </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                            </span><span class="c1">// true = apply noise modeling (false = skip)</span>
+<span class="w">  </span><span class="nv">"flux_proport_ratio_floor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">            </span><span class="c1">// Flux-proportional, deterministic floor</span>
+<span class="w">  </span><span class="nv">"flux_proport_ratio_poisson"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0E-3</span><span class="p">,</span><span class="w">       </span><span class="c1">// Flux-proportional, Poisson-fluctuated</span>
+<span class="w">  </span><span class="nv">"SOT_proport_noise_ratio_floor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">       </span><span class="c1">// SOT-proportional, deterministic floor</span>
+<span class="w">  </span><span class="nv">"SOT_proport_noise_ratio_poisson"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0E-3</span><span class="w">   </span><span class="c1">// SOT-proportional, Poisson-fluctuated</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>All four ratios are dimensionless and default to <code>0.0</code> (no contribution); <code>tf_exec</code>
+defaults to <code>false</code>. When <code>tf_exec</code> is <code>false</code> the block is skipped regardless of
+the ratio values.</p>
+<h3 id="nagainv_parameters"><code>NAGAINV_PARAMETERS</code><a class="headerlink" href="#nagainv_parameters" title="Permanent link">¶</a></h3>
+<p>An <strong>array</strong> of inversion configurations. Multiple configurations can be defined and selectively executed.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"NAGAINV_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"nagainv72_0"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Instance name</span>
+<span class="w">    </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">               </span><span class="c1">// true = execute this inversion config</span>
+<span class="w">    </span><span class="nv">"tf_signal_poisson"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">    </span><span class="c1">// true = apply Poisson error to signal counts</span>
+<span class="w">    </span><span class="nv">"nmuon_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0e-10</span><span class="p">,</span><span class="w">       </span><span class="c1">// Min muon count; elements below are excluded</span>
+<span class="w">    </span><span class="nv">"nmuon_under_thres"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0e-10</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replacement value for excluded elements</span>
+<span class="w">    </span><span class="nv">"uniform_prior_density"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Prior density assumption [kg/m³]</span>
+
+<span class="w">    </span><span class="c1">// Per-shell density override (optional, non-sweep only)</span>
+<span class="w">    </span><span class="c1">// If omitted, each shell uses uniform_prior_density as its density.</span>
+<span class="w">    </span><span class="c1">// These keys are used in non-sweep execution (tf_exec=false in sweep config).</span>
+<span class="w">    </span><span class="c1">// In sweep mode, shell densities come from vec_uniform_prior_density instead.</span>
+<span class="w">    </span><span class="nv">"shell_density_upper"</span><span class="p">:</span><span class="w"> </span><span class="mf">2100</span><span class="p">,</span><span class="w">   </span><span class="c1">// Upper shell density [kg/m³] (optional)</span>
+<span class="w">    </span><span class="nv">"shell_density_lower"</span><span class="p">:</span><span class="w"> </span><span class="mf">2300</span><span class="p">,</span><span class="w">   </span><span class="c1">// Lower shell density [kg/m³] (optional)</span>
+<span class="w">    </span><span class="nv">"shell_density_lateral"</span><span class="p">:</span><span class="w"> </span><span class="mf">2200</span><span class="p">,</span><span class="w"> </span><span class="c1">// Lateral shell density [kg/m³] (optional)</span>
+
+<span class="w">    </span><span class="c1">// Covariance matrix parameters — see Concepts &gt; Inversion</span>
+<span class="w">    </span><span class="nv">"corr_length"</span><span class="p">:</span><span class="w"> </span><span class="mf">70</span><span class="p">,</span><span class="w">             </span><span class="c1">// Isotropic spatial correlation length [m]</span>
+<span class="w">    </span><span class="nv">"sigma_rho"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">              </span><span class="c1">// Density prior std dev [kg/m³] (larger = trust data more)</span>
+<span class="w">    </span><span class="nv">"sigma_rho_diag"</span><span class="p">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">         </span><span class="c1">// Diagonal covariance std dev [kg/m³]</span>
+
+<span class="w">    </span><span class="c1">// Anisotropic covariance (optional)</span>
+<span class="w">    </span><span class="nv">"tf_aniso"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span><span class="w">             </span><span class="c1">// true = use direction-dependent correlation</span>
+<span class="w">    </span><span class="nv">"corr_length_xy"</span><span class="p">:</span><span class="w"> </span><span class="mf">70</span><span class="p">,</span><span class="w">          </span><span class="c1">// Horizontal correlation length [m] (if tf_aniso=true)</span>
+<span class="w">    </span><span class="nv">"corr_length_z"</span><span class="p">:</span><span class="w"> </span><span class="mf">70</span><span class="p">,</span><span class="w">           </span><span class="c1">// Vertical correlation length [m] (if tf_aniso=true)</span>
+<span class="w">    </span><span class="nv">"aniso_cov_type"</span><span class="p">:</span><span class="w"> </span><span class="s">"separable"</span><span class="w">  </span><span class="c1">// "separable" or "ellipsoidal"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>See <a href="../concepts/inversion.html">3D Inversion</a> for the mathematical background of these parameters.</p>
+<h3 id="proj_dens_eval_grouped-required-from-trace-path-lengths-module-4-onward"><code>PROJ_DENS_EVAL_GROUPED</code> (required from Trace Path Lengths, Module 4, onward)<a class="headerlink" href="#proj_dens_eval_grouped-required-from-trace-path-lengths-module-4-onward" title="Permanent link">¶</a></h3>
+<p>Controls projected density evaluation for grouped bins. This section must be
+present whenever Trace Path Lengths (Module 4) or later runs — the pipeline reads it with <code>.at(...)</code>,
+which fails if the section is missing. Set <code>tf_exec=false</code> to skip the
+projected-density computation while keeping the section in place.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"PROJ_DENS_EVAL_GROUPED"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                </span><span class="c1">// true = run projected density evaluation</span>
+<span class="w">  </span><span class="nv">"tf_signal_poisson"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">      </span><span class="c1">// true = apply Poisson error to signal counts</span>
+<span class="w">  </span><span class="nv">"dens_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                  </span><span class="c1">// Min density to scan [kg/m³]</span>
+<span class="w">  </span><span class="nv">"dens_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000</span><span class="p">,</span><span class="w">              </span><span class="c1">// Max density to scan [kg/m³]</span>
+<span class="w">  </span><span class="nv">"dens_steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">],</span><span class="w">    </span><span class="c1">// Multi-pass search step sizes [kg/m³] (coarse → fine)</span>
+<span class="w">  </span><span class="nv">"range_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">            </span><span class="c1">// Search range factor for refinement passes</span>
+<span class="w">  </span><span class="nv">"sigma"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w">                    </span><span class="c1">// Significance threshold [σ]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="z_cross_section"><code>Z_CROSS_SECTION</code><a class="headerlink" href="#z_cross_section" title="Permanent link">¶</a></h3>
+<p>Defines the z-range for cross-section output.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"Z_CROSS_SECTION"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"min"</span><span class="p">:</span><span class="w"> </span><span class="mf">160.0</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Lowest z-elevation for output [m a.s.l.]</span>
+<span class="w">  </span><span class="nv">"max"</span><span class="p">:</span><span class="w"> </span><span class="mf">400.0</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Highest z-elevation for output [m a.s.l.]</span>
+<span class="w">  </span><span class="c1">// "zstep": 40                   // Optional: z-step in meters (default: 0 = use z_interval)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="run_inversion-optional"><code>RUN_INVERSION</code> (optional)<a class="headerlink" href="#run_inversion-optional" title="Permanent link">¶</a></h3>
+<p>Controls inversion behavior.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"RUN_INVERSION"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"tf_prior_error"</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="w">          </span><span class="c1">// true = compute lower/upper prior bounds (3× slower)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="nagainv_param_sweep-optional"><code>NAGAINV_PARAM_SWEEP</code> (optional)<a class="headerlink" href="#nagainv_param_sweep-optional" title="Permanent link">¶</a></h3>
+<p>Systematic parameter sweep over inversion parameters.
+Total combinations = <code>len(vec_sigma_rho) × len(vec_corr_length) × len(vec_uniform_prior_density)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="s">"NAGAINV_PARAM_SWEEP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">"tf_exec"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">                </span><span class="c1">// true = run parameter sweep</span>
+<span class="w">  </span><span class="nv">"base_index"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                </span><span class="c1">// Index in NAGAINV_PARAMETERS to use as template</span>
+<span class="w">  </span><span class="nv">"vec_sigma_rho"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">],</span><span class="w">           </span><span class="c1">// Values to sweep [kg/m³]</span>
+<span class="w">  </span><span class="nv">"vec_corr_length"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">70</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">],</span><span class="w">           </span><span class="c1">// Values to sweep [m]</span>
+<span class="w">  </span><span class="c1">// Density sweep values [kg/m³]. Each element can be:</span>
+<span class="w">  </span><span class="c1">//   Scalar: applies to voxels and all shells equally (expanded to [v, v, v, v])</span>
+<span class="w">  </span><span class="c1">//   Quad:   [prior_density, shell_upper, shell_lower, shell_lateral]</span>
+<span class="w">  </span><span class="c1">// Scalar and Quad can be mixed in the same array.</span>
+<span class="w">  </span><span class="nv">"vec_uniform_prior_density"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="mf">1500</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w">                           </span><span class="c1">// scalar: all shells equal</span>
+<span class="w">    </span><span class="p">[</span><span class="mf">2000</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">2500</span><span class="p">,</span><span class="w"> </span><span class="mf">1800</span><span class="p">]</span><span class="w">              </span><span class="c1">// quad: per-shell override</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nv">"link_diag_to_sigma"</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w">     </span><span class="c1">// true = set sigma_rho_diag = sigma_rho for each run</span>
+<span class="w">  </span><span class="c1">// "vec_sigma_rho_diag": [200, 300], // Required when link_diag_to_sigma=false [kg/m³]</span>
+<span class="w">  </span><span class="nv">"module8_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"none"</span><span class="p">,</span><span class="w">         </span><span class="c1">// "none"/"all"/"last"/"selected" — run Analyze Errors (Module 8) for which combos</span>
+<span class="w">  </span><span class="nv">"module8_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">           </span><span class="c1">// Sweep indices for module8_mode="selected" (e.g. [0, 2, 5])</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="detector-parameter-files">Detector Parameter Files<a class="headerlink" href="#detector-parameter-files" title="Permanent link">¶</a></h2>
+<p>Each detector is configured in a separate JSON5 file referenced from <code>DETECTOR_PARAMETER_LISTS.det_files</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nv">"DETECTOR_PARAMETERS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"det_00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"angle_unit"</span><span class="p">:</span><span class="w"> </span><span class="s">"tangent"</span><span class="p">,</span><span class="w">     </span><span class="c1">// "tangent", "degree", or "radian"</span>
+
+<span class="w">    </span><span class="c1">// Angular bins: path-length computation elements, not the</span>
+<span class="w">    </span><span class="c1">// hardware angular resolution (see Concepts -- Detector Model).</span>
+<span class="w">    </span><span class="nv">"nbinx"</span><span class="p">:</span><span class="w"> </span><span class="mf">320</span><span class="p">,</span><span class="w">               </span><span class="c1">// Number of horizontal bins</span>
+<span class="w">    </span><span class="nv">"txmin"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.6</span><span class="p">,</span><span class="w">               </span><span class="c1">// Horizontal angle min</span>
+<span class="w">    </span><span class="nv">"txmax"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w">                </span><span class="c1">// Horizontal angle max</span>
+<span class="w">    </span><span class="nv">"nbiny"</span><span class="p">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w">                </span><span class="c1">// Number of vertical bins</span>
+<span class="w">    </span><span class="nv">"tymin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">                </span><span class="c1">// Vertical angle min</span>
+<span class="w">    </span><span class="nv">"tymax"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w">                </span><span class="c1">// Vertical angle max</span>
+
+<span class="w">    </span><span class="c1">// Physical dimensions [m]</span>
+<span class="w">    </span><span class="nv">"length_hori"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.33</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"length_vert"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.33</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"length_dept"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.03</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nv">"n_unit"</span><span class="p">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w">                 </span><span class="c1">// Number of detector copies</span>
+
+<span class="w">    </span><span class="c1">// Position [m]</span>
+<span class="w">    </span><span class="nv">"x"</span><span class="p">:</span><span class="w"> </span><span class="mf">50168.1</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"y"</span><span class="p">:</span><span class="w"> </span><span class="mf">-161872.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"z"</span><span class="p">:</span><span class="w"> </span><span class="mf">208.4</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// Orientation [degrees]</span>
+<span class="w">    </span><span class="nv">"rotation_type"</span><span class="p">:</span><span class="w"> </span><span class="s">"LOCAL"</span><span class="p">,</span><span class="w">    </span><span class="c1">// "LOCAL" or "GLOBAL"</span>
+<span class="w">    </span><span class="nv">"yaw_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">59.09</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"roll_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"pitch_deg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nv">"days"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.0</span><span class="p">,</span><span class="w">               </span><span class="c1">// Exposure time [days]</span>
+
+<span class="w">    </span><span class="c1">// Efficiency input (see the Detector Efficiency page).</span>
+<span class="w">    </span><span class="c1">// path_eff_model takes precedence unless set to "none".</span>
+<span class="w">    </span><span class="nv">"path_eff_model"</span><span class="p">:</span><span class="w"> </span><span class="s">"../detparams/eff_model/small_uncertainty.json5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">"path_eff_table"</span><span class="p">:</span><span class="w"> </span><span class="s">"../detparams/eff_table/eff_table_sample00.txt"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="efficiency-input">Efficiency input<a class="headerlink" href="#efficiency-input" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path_eff_model</code></td>
+<td><code>"none"</code></td>
+<td>Analytic efficiency model (JSON5). Preferred; used when not <code>"none"</code>.</td>
+</tr>
+<tr>
+<td><code>path_eff_table</code></td>
+<td>—</td>
+<td>Legacy per-bin text table. Used only when <code>path_eff_model</code> is <code>"none"</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="detector-efficiency/index.html">Detector Efficiency</a> for the model file format and the evaluation formulas.</p>
+<h3 id="orientation-parameters">Orientation parameters<a class="headerlink" href="#orientation-parameters" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Unit</th>
+<th>Convention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yaw_deg</code></td>
+<td>degrees</td>
+<td>0° = East, 90° = North; clockwise positive</td>
+</tr>
+<tr>
+<td><code>roll_deg</code></td>
+<td>degrees</td>
+<td>Counterclockwise positive</td>
+</tr>
+<tr>
+<td><code>pitch_deg</code></td>
+<td>degrees</td>
+<td>Counterclockwise positive</td>
+</tr>
+<tr>
+<td><code>rotation_type</code></td>
+<td>—</td>
+<td><code>LOCAL</code> = detector-local axes; <code>GLOBAL</code> = terrain-fixed axes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="file-path-resolution">File Path Resolution<a class="headerlink" href="#file-path-resolution" title="Permanent link">¶</a></h2>
+<p>All relative file paths in the JSON5 configuration are resolved <strong>relative to the current working directory at run time</strong>, not relative to the JSON5 file's location. The station scripts run the executable from inside the run directory — for example <code>cd work/&lt;site&gt;/swp001</code> before <code>bash run_prg.sh ...</code> — so a path such as <code>../dem/terrain.g2zbin</code> is interpreted from that directory. Always run the executable from the directory that the relative paths assume.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/mathjax/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
