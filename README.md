@@ -5,6 +5,9 @@
 A fast C++ simulation tool for multi-directional muography observation design
 and 3D density reconstruction.
 
+**Manual: <https://seigomiyamoto.github.io/muonith/>** -- the same pages are in
+`docs/` and can be read offline.
+
 ---
 
 ## What is muography?
@@ -85,9 +88,6 @@ of observation designs:
 | macOS (Nix environment) | Fully supported |
 
 ## Getting started
-
-The full manual is published at <https://seigomiyamoto.github.io/muonith/>. The
-same pages are in `docs/` and can be read offline.
 
 - [Installation](docs/getting-started/installation.md) -- Build dependencies and
   compilation instructions
