@@ -1,6 +1,6 @@
 site_name: MUONITH
 site_description: "MUONITH: Muographic Unified Observation and Numerical Inversion & Tomographic Hub"
-site_url: ""
+site_url: "https://seigomiyamoto.github.io/muonith/"
 
 # Use port 8001 to avoid conflict with other mkdocs instances (default: 8000).
 # Override with: mkdocs serve -a 127.0.0.1:<port>
