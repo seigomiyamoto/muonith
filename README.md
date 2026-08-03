@@ -86,6 +86,9 @@ of observation designs:
 
 ## Getting started
 
+The full manual is published at <https://seigomiyamoto.github.io/muonith/>. The
+same pages are in `docs/` and can be read offline.
+
 - [Installation](docs/getting-started/installation.md) -- Build dependencies and
   compilation instructions
 - [Nix Setup](docs/getting-started/nix-setup.md) -- Optional: isolated reproducible
@@ -119,7 +122,7 @@ them.
 If you use MUONITH in academic work, please cite the software. Archived releases
 are deposited on Zenodo:
 
-[![DOI](https://zenodo.org/badge/1302348299.svg)](https://doi.org/10.5281/zenodo.21694789)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21694789.svg)](https://doi.org/10.5281/zenodo.21694789)
 
 The DOI above always resolves to the latest release. To cite the exact version
 you used, take the version-specific DOI from that Zenodo record; for v1.0.0 it is
