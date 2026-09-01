@@ -129,6 +129,13 @@ you used, take the version-specific DOI from that Zenodo record; for v1.0.0 it i
 [10.5281/zenodo.21694790](https://doi.org/10.5281/zenodo.21694790). Machine-readable
 metadata is in [CITATION.cff](CITATION.cff).
 
+A preprint describing MUONITH is available on EarthArXiv — please cite it
+together with the software:
+
+> Miyamoto, S. and Nagahara, S. (2026). MUONITH v1.0 — A Fast Simulation Tool
+> for Multi-directional Muography Observation Design. EarthArXiv preprint.
+> [doi:10.31223/X5XN57](https://doi.org/10.31223/X5XN57)
+
 ## License
 
 MUONITH source code and project-authored documentation are licensed under the

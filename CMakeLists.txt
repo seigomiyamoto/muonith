@@ -31,6 +31,11 @@ if(DBGPRINT)
   add_compile_definitions(DBGPRINT)
 endif()
 
+# Pin floating-point contraction to keep numerical results identical across
+# compilers and targets: GCC defaults to -ffp-contract=fast and Clang to "on",
+# so FMA fusion could silently change last digits on arm64 or with -march.
+add_compile_options(-ffp-contract=off)
+
 # Generate compile_commands.json (per-file compile information)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 

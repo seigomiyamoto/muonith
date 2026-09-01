@@ -12,3 +12,14 @@ type: software
 version: "1.0.0"
 date-released: "2026-07-29"
 doi: "10.5281/zenodo.21694790"
+references:
+  - type: article
+    title: "MUONITH v1.0 — A Fast Simulation Tool for Multi-directional Muography Observation Design"
+    authors:
+      - family-names: "Miyamoto"
+        given-names: "Seigo"
+      - family-names: "Nagahara"
+        given-names: "Shogo"
+    year: 2026
+    doi: "10.31223/X5XN57"
+    notes: "EarthArXiv preprint describing MUONITH; please cite together with the software"
