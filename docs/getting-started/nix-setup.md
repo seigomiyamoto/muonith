@@ -128,7 +128,7 @@ compiler selection:
 | Condition | `CC` | `CXX` |
 |---|---|---|
 | `IN_NIX_SHELL` is set | `cc` (Nix wrapper) | `c++` (Nix wrapper) |
-| macOS without Nix | `gcc-14` or `gcc-13` (Homebrew) | `g++-14` or `g++-13` |
+| macOS without Nix | `/usr/bin/clang` (Apple Clang) | `/usr/bin/clang++` (Apple Clang) |
 | Linux without Nix | `gcc` | `g++` |
 
 This means the same `build.sh` works identically inside and outside of

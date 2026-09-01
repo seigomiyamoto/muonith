@@ -47,10 +47,11 @@ MUONITH requires a C++20 compiler: GCC 13+ or Apple Clang 17+.
 
 === "macOS"
 
-    Install GCC 14 (preferred) or 13 via Homebrew:
+    Apple Clang 17+ ships with the Xcode Command Line Tools and is what
+    `build.sh` uses:
 
     ```bash
-    brew install gcc@14
+    xcode-select --install
     ```
 
     Or use the [Nix development environment](../getting-started/nix-setup.md) which provides
@@ -71,7 +72,7 @@ See [Nix Setup](../getting-started/nix-setup.md) for full instructions.
 
 An environment variable set to `1` by the Nix devShell. `build.sh` checks it
 to decide the compiler selection strategy: in a Nix shell, it uses the
-Nix-provided `cc`/`c++` wrappers instead of searching for Homebrew GCC.
+Nix-provided `cc`/`c++` wrappers instead of the platform default.
 
 ## Running
 

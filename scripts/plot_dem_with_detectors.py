@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
+import matplotlib.patheffects as path_effects
 import matplotlib.pyplot as plt
 from matplotlib.colors import LightSource
 import numpy as np
@@ -196,6 +197,55 @@ def load_detectors_from_csv(csv_path: Path) -> Tuple[List[Dict[str, Any]], Tuple
   return detectors, target_xy
 
 
+def crop_to_window(xi, yi, Z, x_lo: float, x_hi: float, y_lo: float, y_hi: float):
+  """Crop the DEM grid to the given window (meters).
+
+  Args:
+    xi: 1-D x coordinate array (meters).
+    yi: 1-D y coordinate array (meters).
+    Z: 2-D elevation array shaped (len(yi), len(xi)).
+    x_lo, x_hi, y_lo, y_hi: Window edges, in meters.
+
+  Returns:
+    (xi, yi, Z) restricted to the window.
+  """
+  ix = np.where((xi >= x_lo) & (xi <= x_hi))[0]
+  iy = np.where((yi >= y_lo) & (yi <= y_hi))[0]
+  if ix.size == 0 or iy.size == 0:
+    raise ValueError(
+        f"Crop window is empty: x {x_lo:.1f}..{x_hi:.1f}, y {y_lo:.1f}..{y_hi:.1f} "
+        f"does not overlap the DEM (x: {xi.min():.1f}..{xi.max():.1f}, "
+        f"y: {yi.min():.1f}..{yi.max():.1f}).")
+  return xi[ix], yi[iy], Z[iy[0]:iy[-1] + 1, ix[0]:ix[-1] + 1]
+
+
+def crop_around(xi, yi, Z, center_xy: Tuple[float, float], half_range: float):
+  """Crop the DEM grid to center_xy +/- half_range (meters)."""
+  cx, cy = center_xy
+  return crop_to_window(xi, yi, Z,
+                        cx - half_range, cx + half_range,
+                        cy - half_range, cy + half_range)
+
+
+def add_range_circles(ax, center_xy: Tuple[float, float], radii: Sequence[float],
+                      scale: float = 1.0, color: str = "black"):
+  """Draw circles of the given radii (meters) centered on center_xy."""
+  cx = center_xy[0] / scale
+  cy = center_xy[1] / scale
+  # A pale outline keeps the line readable where it crosses dark terrain.
+  halo = [path_effects.withStroke(linewidth=2.5, foreground="white", alpha=0.8)]
+  for radius in radii:
+    r = radius / scale
+    circle = plt.Circle((cx, cy), r, fill=False, color=color,
+                        linewidth=1.0, linestyle="--", alpha=0.9, zorder=7,
+                        path_effects=halo)
+    ax.add_patch(circle)
+    label = f"{radius / 1000.0:g} km"
+    ax.text(cx, cy + r, label, color=color, fontsize=7,
+            ha="center", va="bottom", zorder=8,
+            bbox=dict(boxstyle="round,pad=0.1", fc="white", ec="none", alpha=0.7))
+
+
 def plot_background(ax, xi, yi, Z, cmap: str, zmin: float | None, zmax: float | None,
                     contour: bool, cint: float, xyunit: str = "m",
                     shade: bool = False, shade_alpha: float = 0.2,
@@ -213,7 +263,12 @@ def plot_background(ax, xi, yi, Z, cmap: str, zmin: float | None, zmax: float | 
     dx = float(np.nanmedian(np.diff(np.sort(np.unique(xi)))))
     dy = float(np.nanmedian(np.diff(np.sort(np.unique(yi)))))
     ls = LightSource(azdeg=shade_azdeg, altdeg=shade_altdeg)
-    hillshade = ls.hillshade(Z, vert_exag=shade_vert_exag, dx=dx, dy=dy)
+    # LightSource.hillshade treats row 0 as the north edge, but this grid is drawn
+    # with origin="lower", so row 0 is the south edge. Shading it as-is mirrors the
+    # light north-south: with the default azdeg=315 it arrives from the lower left
+    # and ridges read as valleys. Flip before shading and flip the result back so
+    # shade_azdeg keeps its plain meaning (315 = light from the upper left).
+    hillshade = ls.hillshade(Z[::-1, :], vert_exag=shade_vert_exag, dx=dx, dy=dy)[::-1, :]
     ax.imshow(hillshade, extent=extent, origin="lower", aspect="equal",
               cmap="gray", alpha=shade_alpha, interpolation="nearest")
   ax.set_xlabel(f"Easting ({xyunit})")
@@ -233,13 +288,50 @@ def plot_background(ax, xi, yi, Z, cmap: str, zmin: float | None, zmax: float | 
   return extent, cbar, scale
 
 
+def name_label_position(det_x: float, det_y: float,
+                        tgt_x: float | None, tgt_y: float | None,
+                        offset: float, fallback_dx: float, fallback_dy: float):
+  """Place a detector's name just past it, on the target-to-detector line.
+
+  Args:
+    det_x, det_y: Detector position in plot units.
+    tgt_x, tgt_y: Target position in plot units, or None when there is no target.
+    offset: How far past the detector to put the label, in plot units.
+    fallback_dx, fallback_dy: Offset used when there is no target to aim away from.
+
+  Returns:
+    (x, y, ha, va) for the text call. With a target, the name box is centered on
+    the point, so its middle sits on the target-to-detector line.
+  """
+  if tgt_x is None or tgt_y is None:
+    return det_x + fallback_dx, det_y + fallback_dy, "left", "bottom"
+
+  vx = det_x - tgt_x
+  vy = det_y - tgt_y
+  length = float(np.hypot(vx, vy))
+  if length == 0.0:
+    return det_x + fallback_dx, det_y + fallback_dy, "left", "bottom"
+
+  ux = vx / length
+  uy = vy / length
+  # Centered on both axes so the middle of the name box lands on the line itself,
+  # not one of its corners.
+  return det_x + ux * offset, det_y + uy * offset, "center", "center"
+
+
 def add_detectors(ax, detectors: List[Dict[str, Any]],
                   target_xy: Tuple[float, float] | None, extent, show_distance: bool,
-                  scale: float = 1.0):
+                  scale: float = 1.0, label_offset: float | None = None):
   xspan = extent[1] - extent[0]
   yspan = extent[3] - extent[2]
   dx = max(xspan * 0.01, 2.0 / scale)
   dy = max(yspan * 0.01, 2.0 / scale)
+  # label_offset arrives in meters; default to 3% of the plotted width.
+  offset = (label_offset / scale) if label_offset is not None else xspan * 0.03
+  # Pale outlines, same as the range circles, so the black marks stay visible
+  # where they cross dark terrain.
+  line_halo = [path_effects.withStroke(linewidth=2.2, foreground="white", alpha=0.8)]
+  marker_halo = [path_effects.withStroke(linewidth=2.5, foreground="white", alpha=0.9)]
 
   for det in detectors:
     det_x = det["x"] / scale
@@ -247,11 +339,20 @@ def add_detectors(ax, detectors: List[Dict[str, Any]],
     if target_xy:
       tgt_x = target_xy[0] / scale
       tgt_y = target_xy[1] / scale
+      # Opaque on purpose: a see-through line lets the white outline underneath
+      # show through and the line reads as white instead of black.
       ax.plot([det_x, tgt_x], [det_y, tgt_y],
-              color="black", linewidth=0.8, alpha=0.7, zorder=4)
-    ax.scatter(det_x, det_y, color="black", s=35, zorder=5)
-    ax.text(det_x + dx, det_y + dy, det["name"],
-            color="black", fontsize=8, ha="left", va="bottom",
+              color="black", linewidth=1.0, zorder=4,
+              path_effects=line_halo)
+    ax.scatter(det_x, det_y, color="black", s=35, zorder=5,
+               path_effects=marker_halo)
+    label_x, label_y, ha, va = name_label_position(
+        det_x, det_y,
+        target_xy[0] / scale if target_xy else None,
+        target_xy[1] / scale if target_xy else None,
+        offset, dx, dy)
+    ax.text(label_x, label_y, det["name"],
+            color="black", fontsize=8, ha=ha, va=va,
             zorder=6, bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.7))
     if show_distance and target_xy:
       tgt_x = target_xy[0] / scale
@@ -268,7 +369,7 @@ def add_detectors(ax, detectors: List[Dict[str, Any]],
     tgt_x = target_xy[0] / scale
     tgt_y = target_xy[1] / scale
     ax.scatter([tgt_x], [tgt_y], marker="*", s=160,
-               color="black", zorder=6)
+               color="black", zorder=6, path_effects=marker_halo)
 
 
 def main():
@@ -312,6 +413,29 @@ def main():
                       help="X/Y axis unit: 'm' (meters) or 'km' (kilometers). Default: m")
   parser.add_argument("--epsg", type=int, default=None,
                       help="EPSG code to display in the plot title (e.g. 6677)")
+  parser.add_argument("--half-range", "--half_range", dest="half_range",
+                      type=float, default=None,
+                      help="Crop the DEM to the target point +/- this many meters")
+  parser.add_argument("--xmin", type=float, default=None,
+                      help="Left edge of the drawn area, in meters. Cuts further than "
+                           "--half-range; the plot center moves accordingly.")
+  parser.add_argument("--xmax", type=float, default=None,
+                      help="Right edge of the drawn area, in meters")
+  parser.add_argument("--ymin", type=float, default=None,
+                      help="Bottom edge of the drawn area, in meters")
+  parser.add_argument("--ymax", type=float, default=None,
+                      help="Top edge of the drawn area, in meters")
+  parser.add_argument("--circles", default=None,
+                      help="Comma-separated circle radii in meters, drawn around the "
+                           "target point (e.g. 500,1000,1500)")
+  parser.add_argument("--circle-color", "--circle_color", dest="circle_color",
+                      default="black",
+                      help="Color of the range circles and their labels (default: black)")
+  parser.add_argument("--label-offset", "--label_offset", dest="label_offset",
+                      type=float, default=None,
+                      help="How far past each detector to put its name, in meters, "
+                           "measured along the target-to-detector line "
+                           "(default: 3%% of the plotted width)")
 
   args = parser.parse_args()
 
@@ -428,6 +552,26 @@ def main():
   if has_extent_error:
     sys.exit(1)
 
+  circle_radii: List[float] = []
+  if args.circles:
+    circle_radii = [float(tok) for tok in args.circles.split(",") if tok.strip()]
+
+  if (args.half_range is not None or circle_radii) and target_xy is None:
+    parser.error("--half-range and --circles need a target point. "
+                 "Give --xcnt/--ycnt, or a config/CSV that provides one.")
+
+  # Window: start from the whole DEM, narrow it by --half-range around the target,
+  # then let any explicit edge cut it further.
+  win = [x_lo, x_hi, y_lo, y_hi]
+  if args.half_range is not None:
+    win = [target_xy[0] - args.half_range, target_xy[0] + args.half_range,
+           target_xy[1] - args.half_range, target_xy[1] + args.half_range]
+  for i, edge in enumerate((args.xmin, args.xmax, args.ymin, args.ymax)):
+    if edge is not None:
+      win[i] = edge
+  if win != [x_lo, x_hi, y_lo, y_hi]:
+    xi, yi, Z = crop_to_window(xi, yi, Z, *win)
+
   # Plot
   fig, ax = plt.subplots(figsize=(8, 6))
   extent, _, scale = plot_background(ax, xi, yi, Z, args.cmap, args.zmin, args.zmax,
@@ -435,7 +579,12 @@ def main():
                                      args.shade, args.shade_alpha,
                                      args.shade_azdeg, args.shade_altdeg,
                                      args.shade_vert_exag)
-  add_detectors(ax, detectors, target_xy, extent, args.show_dist, scale)
+  add_detectors(ax, detectors, target_xy, extent, args.show_dist, scale, args.label_offset)
+  if circle_radii:
+    add_range_circles(ax, target_xy, circle_radii, scale, args.circle_color)
+  # Keep the view on the DEM window even when detectors or circles reach outside it
+  ax.set_xlim(extent[0], extent[1])
+  ax.set_ylim(extent[2], extent[3])
 
   title = args.title or f"{dem_path.name} with detectors"
   if args.epsg is not None:

@@ -16,7 +16,7 @@ This page lists the executable programs included in MUONITH and their command-li
 
 All scripts call `build.sh` internally, which handles:
 
-- **Compiler selection**: Nix shell → Homebrew GCC (14→13) → Apple Clang → system GCC
+- **Compiler selection**: Nix shell → macOS: Apple Clang → Linux: system GCC (override with `CC`/`CXX`)
 - **Parallel builds**: Job count = stricter of (a) core headroom (`logical_cpus - max(2, ncpu/8)`) and (b) a memory cap of ~2 GB per compile job. Override with the `BUILD_JOBS` environment variable
 - **ccache**: Enabled by default for faster incremental builds
 - **OpenMP**: On non-Nix macOS, detects Homebrew `libomp` and passes `-DOpenMP_ROOT` to CMake

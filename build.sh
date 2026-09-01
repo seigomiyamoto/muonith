@@ -64,30 +64,25 @@ echo "total_threads for process: $total_threads"
 
 # Compiler selection: honor CC/CXX env vars.
 # Nix shell: use cc/c++ (Nix wrapper, Clang on macOS, GCC on Linux).
-# Non-Nix macOS: Homebrew GCC if available, otherwise Apple Clang.
+# Non-Nix macOS: Apple Clang. This is the only native macOS toolchain the
+# release checklist verified and the only one README's platform table
+# promises. Homebrew GCC is still reachable by exporting CC/CXX.
 # Non-Nix Linux: gcc/g++.
 if [ -n "${IN_NIX_SHELL:-}" ]; then
   : "${CC:=cc}"
   : "${CXX:=c++}"
 elif [ "$(uname -s)" = "Darwin" ]; then
-  if command -v gcc-14 > /dev/null 2>&1; then
-    : "${CC:=gcc-14}"
-    : "${CXX:=g++-14}"
-  elif command -v gcc-13 > /dev/null 2>&1; then
-    : "${CC:=gcc-13}"
-    : "${CXX:=g++-13}"
-  else
-    # Use Apple Clang by absolute path so a Homebrew LLVM clang earlier on
-    # PATH is not picked up (it can fail to build the bundled fmt version).
-    : "${CC:=/usr/bin/clang}"
-    : "${CXX:=/usr/bin/clang++}"
-  fi
+  # Use Apple Clang by absolute path so a Homebrew LLVM clang earlier on
+  # PATH is not picked up (it can fail to build the bundled fmt version).
+  : "${CC:=/usr/bin/clang}"
+  : "${CXX:=/usr/bin/clang++}"
 else
   : "${CC:=gcc}"
   : "${CXX:=g++}"
 fi
 
-# Homebrew libomp hint for Apple Clang (not needed in a Nix environment)
+# Homebrew libomp hint on macOS outside Nix. Apple Clang needs it; a
+# GCC selected through CC/CXX ignores it and uses its bundled libgomp.
 EXTRA_CMAKE_ARGS=""
 if [ "$(uname -s)" = "Darwin" ] && [ -z "${IN_NIX_SHELL:-}" ]; then
   LIBOMP_PREFIX="$(brew --prefix libomp 2>/dev/null)"

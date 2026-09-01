@@ -287,15 +287,16 @@ selects the compiler based on the environment:
 
 | Environment | Compiler | Selection logic |
 |---|---|---|
-| macOS (native) | Homebrew GCC 14 → 13 → Apple Clang | First available is used |
+| macOS (native) | Apple Clang (`/usr/bin/clang++`) | Default; override with `CC`/`CXX` |
 | macOS (Nix shell) | `cc` / `c++` (Nix wrapper) | Apple Clang via stdenv |
 | Linux (native) | `gcc` / `g++` | System default |
 | Linux (Nix shell) | `cc` / `c++` (Nix wrapper) | GCC via stdenv |
 
 !!! note "Apple Clang on macOS"
     Apple Clang 17+ (Xcode Command Line Tools) fully supports the C++20 features
-    used by MUONITH. If Homebrew GCC is not installed, `build.sh` falls back to
-    Apple Clang automatically. OpenMP requires `libomp` (see [OpenMP](#openmp)).
+    used by MUONITH and is what `build.sh` selects on native macOS. The absolute
+    path is used so a Homebrew LLVM clang earlier on `PATH` is not picked up.
+    OpenMP requires `libomp` (see [OpenMP](#openmp)).
 
 === "Linux / WSL2 (Ubuntu 24.04)"
 
@@ -351,9 +352,11 @@ selects the compiler based on the environment:
     (see [OpenMP](#openmp)).
 
     !!! note "Optional: Homebrew GCC"
-        If Homebrew GCC 14 or 13 is installed, `build.sh` will prefer it
-        over Apple Clang. GCC bundles OpenMP, so no separate `libomp` is
-        needed. To install: `brew install gcc@14`.
+        Homebrew GCC is not selected automatically -- the native macOS build is
+        verified only with Apple Clang. To use it anyway, install it with
+        `brew install gcc@14` and export the compilers explicitly:
+        `CC=gcc-14 CXX=g++-14 bash bdebug.sh`. GCC bundles OpenMP, so no
+        separate `libomp` is needed in that case.
 
 ## BLAS/LAPACK
 
@@ -410,8 +413,8 @@ is selected automatically by CMake based on the platform:
     `build.sh` automatically detects Homebrew libomp and passes
     `-DOpenMP_ROOT` to CMake.
 
-    If compiling with Homebrew GCC, OpenMP is included — no additional
-    package is needed.
+    If you override the compiler with a Homebrew GCC (`CC=gcc-14`), OpenMP is
+    included with it — no additional package is needed.
 
 ## Doxygen (optional)
 
